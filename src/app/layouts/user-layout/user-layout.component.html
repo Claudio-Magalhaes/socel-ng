@@ -1,0 +1,26 @@
+<div class="wrapper d-flex align-items-stretch">
+
+  <app-sidebar #sidebar>
+    <app-sidebar-logo></app-sidebar-logo>
+
+    <app-navigation
+      [startHr]="true"
+      [listNavigation]="[]"
+    ></app-navigation>
+  </app-sidebar>
+
+  <!-- Page Content  -->
+  <div id="content">
+
+    <div id='layout-appRoot'>
+
+      <navbar-header (changeSidebar)="sidebar.changeState()"></navbar-header>
+
+      <div class="router-outlet-root">
+        <router-outlet>
+        </router-outlet>
+
+      </div>
+    </div>
+  </div>
+</div>

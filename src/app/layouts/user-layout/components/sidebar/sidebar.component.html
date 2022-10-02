@@ -1,0 +1,42 @@
+
+<!--
+    USADO PAERA DEMARCAR POSIÇÕES NA TELA
+-->
+<div
+  id="user-sidebar-menu"
+  [class.sidebar-menu-open]="_open"
+  [class.sidebar-menu-close]="!_open"
+  class="sidebar-half-collapse-{{halfCollapse}} sidebar-collapse-{{collapse}} user-sidebar-menu"
+>
+
+  <div
+    id="background-sidebar-menu"
+    class="background-sidebar-menu"
+    [class.show-background-sidebar-collaps]="showBackground"
+    (click)="bgChangeState()"
+  ></div>
+
+
+  <!--
+      BASE DO SIDEBAR-MENU.
+      CONTENDO IMAGEM BG
+    -->
+  <div
+    id="sidebar-wrapper"
+    [class.sidebar-menu-open]="_open"
+    [class.sidebar-menu-close]="!_open"
+    class="sidebar-half-collapse-{{halfCollapse}} sidebar-collapse-{{halfCollapse}} sidebar-wrapper"
+  >
+    <!--
+        PELICURA DE COR SOBRE SIDEBAR
+     -->
+    <div id="sidebar-pelicula">
+
+      <div id="sidebar-root" class="sidebar-root">
+
+        <ng-content></ng-content>
+
+      </div>
+    </div>
+  </div>
+</div>

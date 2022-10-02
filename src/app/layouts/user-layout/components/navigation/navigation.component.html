@@ -1,0 +1,50 @@
+<hr *ngIf="startHr" style="margin: 0 .1rem">
+<ul
+  class="nav flex-column sidebar-navigation"
+  [class.subMenu]="isSubmenu"
+  [class.open]="open"
+  style="{{open ? 'height: auto' : 'height: 0'}}"
+>
+  <li
+    class="nav-item"
+    *ngFor="let menuAdm of listNavigation; let i = index"
+  >
+    <a
+      class="nav-link"
+      *ngIf="!menuAdm.subMenu; else templateSubMenu"
+      [class.checked]="activeItemMenu(menuAdm)"
+      [routerLink]="clearExternalLinkUrl(menuAdm.url)"
+      (click)="redirectExternalLink(menuAdm.url)"
+    >
+      <mat-icon>{{ menuAdm.icon }}</mat-icon>
+      <span>{{ menuAdm.nome }}</span>
+    </a>
+
+    <ng-template #templateSubMenu>
+
+      <a
+        class="nav-link"
+        (click)="navigationComponent.click()"
+        [class.checked]="activeItemMenu(menuAdm, true)"
+      >
+
+        <mat-icon class="icon-nav-item">{{ menuAdm.icon }}</mat-icon>
+        <span>{{ menuAdm.nome }}</span>
+
+        <mat-icon class="icon-drowdown" [class.open-dropdown]="IconDropdown">chevron_left</mat-icon>
+
+      </a>
+
+      <app-navigation
+        #navigationComponent
+        [isSubmenu]="true"
+        [listNavigation]="menuAdm.subMenu"
+        [open]="(activeSubmenuUrl(menuAdm) ? true : false)"
+        (changedropdown)="IconDropdown = $event"
+      >
+      </app-navigation>
+    </ng-template>
+
+  </li>
+</ul>
+<hr *ngIf="endHr" style="margin: 0 .1rem">

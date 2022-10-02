@@ -1,0 +1,62 @@
+@import "~src/assets/scss/variables";
+::ng-deep #user-header-principal {
+  //background-color: #e5e5e5;
+  height: 80px;
+  border-bottom: rgba(169, 169, 169, 0.55) 1px solid;
+  padding-top: 0 !important;
+  padding-bottom: 0;
+
+  .container-fluid {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+  }
+
+  .nav-item {
+    height: 100%;
+  }
+
+  .nav-link {
+    height: 100%;
+    color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      //color: $colors-verde-claro;
+    }
+  }
+
+  .meus-pontos {
+    height: 100%;
+    //background-color: $colors-verde-claro;
+    white-space: break-spaces !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    * {
+      color: white;
+    }
+  }
+
+  .dropdown-menu {
+    padding: .5rem;
+  }
+
+  .dropdown-item {
+    color: grey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: .6rem;
+
+    mat-icon {
+      margin-right: .3rem;
+    }
+
+    &:hover {
+      //color: $colors-verde-claro;
+    }
+  }
+}

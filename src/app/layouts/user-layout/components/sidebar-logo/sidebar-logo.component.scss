@@ -1,0 +1,13 @@
+// tratando a logo
+::ng-deep .user-sidebar-menu {
+  .sidebar-logo {
+    padding: 1rem 0;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+
+    img {
+      max-width: 100% !important;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+/**
+      SIZES
+
+   O conjunto de variaveis abaixo irão definir os sizes do sidebar
+*/
+
+// tamanho do sidebar quando minimizado
+$sidebar-size-close: 4rem !default;
+
+// tamanho do sidebar quando maximizado
+$sidebar-size-open: 16.3rem !default;
+
+
+$sidebar-scrollbar-width: 5px;
+
+
+/**
+      TRANSITIONS
+   O conjunto de variaveis abaixo irão definir os tempos de transiçõs
+ */
+
+// velocidade de transição do estado do sidebar
+$sidebar-transition-open-close: .4s !default;
+
+// velocidade de transição do efeito HOVER dos links
+$sidebar-transition-hover-link: .5s !default;
+
+
+
+/**
+      PADDING & SPACING & MARGINS
+   O conjunto de variaveis abaixo irão definir os tempos de transiçõs
+ */
+
+// padding do sidebar.
+// Esse campo está diretamente relacionado a área útil do sidebar
+// seu padrão é com um pequeno espaço abaixo para melhorar a leitura
+// dos links na rolagem
+$sidebar-padding-content: .1rem .1rem 1.5rem .5rem !default;
+
+// padding adicional a lista de menu
+$sidebar-padding-menu: 0 .3rem 0 0 !default;
+
+// padding aplicado apenas em sub-menus
+// use esse padding para criar uma diferença entre elementos
+// elementos pai e filhos
+$sidebar-padding-subMenu: .2rem 0 .2rem .8rem !default;
+
+// espaço dado entre o icone e a palavra di link-item
+$sidebar-spacing-icon-text: .3rem !default;
+
+// espaço dado entre os linkt-itens
+$sidebar-margin-item-menu: .15rem;
+
+$sidebar-padding-menu-item: .8rem !default;
+
+
+
+/**
+      COLORS
+ */
+
+$sidebar-color-link: #FFFFFFFF !default;
+$sidebar-color-link-hover: #FFFFFFFF !default;
+
+$sidebar-color-pelicula: rgba(0,0,0,.4) !default;
+
+$sidebar-backgroundColor-link: none !default;
+$sidebar-backgroundColor-link-hover: rgba(255, 255, 255, 0.3) !default;
+
+$sidebar-backgroundColor-link-checked: none !default;
+$sidebar-backgroundColor-link-checked-hover: rgba(255, 255, 255, 0.3) !default;
+
+$sidebar-scrollbar-base: rgba(244, 244, 244, 0.05) !default;
+$sidebar-scrollbar-base-thumb: rgba(218, 215, 215, .2) !default;
+
+/**
+      BORDERS
+*/
+
+$sidebar-radius-item-menu: 8px !default;
+
+$sidebar-radius-scrollbar: 25px !default;
+
+

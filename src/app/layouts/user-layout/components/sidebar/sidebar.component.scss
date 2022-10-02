@@ -1,0 +1,119 @@
+@import '../variables-sidebar';
+
+$dir-logo: "/assets/img/bg/bg-sidebar-menu.jpg";
+
+#user-sidebar-menu, #sidebar-wrapper, #sidebar-root, #sidebar-pelicula {
+  height: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+
+  &.sidebar-menu-close {
+    width: $sidebar-size-close;
+    transition-duration: $sidebar-transition-open-close;
+  }
+
+  &.sidebar-menu-open, &.sidebar-menu-close:hover:not(#user-sidebar-menu) {
+    width: $sidebar-size-open;
+    transition-duration: $sidebar-transition-open-close;
+  }
+}
+
+#sidebar-wrapper {
+  position: fixed;
+  overflow: hidden !important;
+  background-image: url($dir-logo);
+  //background-size: auto auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#sidebar-pelicula {
+  overflow-x: hidden;
+  background: $sidebar-color-pelicula;
+  padding: $sidebar-padding-content;
+}
+
+#sidebar-root, .sidebar-root {
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar-track {
+    width: $sidebar-scrollbar-width !important;
+    background-color: $sidebar-scrollbar-base !important;
+    border-radius: $sidebar-radius-scrollbar !important;
+  }
+
+  // container da barra
+  &::-webkit-scrollbar {
+    width: $sidebar-scrollbar-width !important;
+    background: $sidebar-scrollbar-base !important;
+    border-radius: $sidebar-radius-scrollbar !important;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: $sidebar-scrollbar-width !important;
+    background: $sidebar-scrollbar-base-thumb !important;
+    border-radius: $sidebar-radius-scrollbar !important;
+  }
+}
+
+// tratando a logo
+//#user-sidebar-menu {
+//  .sidebar-logo {
+//    padding: 1rem 0;
+//    display: inline-flex;
+//    justify-content: center;
+//    width: 100%;
+//
+//    img {
+//      max-width: 100% !important;
+//    }
+//  }
+//}
+
+// tratando menu admin
+#user-sidebar-menu {
+  &.sidebar-menu-close {
+    .nav-link{
+      justify-content: center;
+
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+
+::ng-deep .sidebar-half-collapse-md {
+  @media only screen and (max-width: 991px) {
+    &.user-sidebar-menu {
+      width: $sidebar-size-close !important;
+
+      &.sidebar-menu-open {
+        .show-background-sidebar-collaps {
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .sidebar-collapse-sm {
+  @media only screen and (max-width: 767px) {
+    &.user-sidebar-menu {
+      width: 0 !important;
+    }
+
+    .sidebar-wrapper {
+
+      &.sidebar-menu-close {
+        width: 0 !important;
+      }
+    }
+  }
+}

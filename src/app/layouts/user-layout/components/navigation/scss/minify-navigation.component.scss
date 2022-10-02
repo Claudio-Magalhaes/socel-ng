@@ -1,0 +1,28 @@
+::ng-deep .sidebar-menu-close:not(:hover) {
+
+  .nav-link{
+    justify-content: center;
+
+    span {
+      display: none;
+    }
+
+    .icon-drowdown {
+      display: none !important;
+    }
+
+    .icon-nav-item {
+      width: auto;
+    }
+  }
+
+  .subMenu {
+    padding: 0!important;
+
+    .nav-item {
+      width: 100%;
+    }
+  }
+}
+
+

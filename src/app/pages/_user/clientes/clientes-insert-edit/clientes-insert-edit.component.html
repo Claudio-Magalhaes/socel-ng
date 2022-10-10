@@ -1,0 +1,156 @@
+<div id="page-clientes">
+  <form [formGroup]="form">
+
+    <div class="container-data">
+      <div class="row">
+
+        <div class="col-12">
+          <card>
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label for="permissao-nome" class="form-label">Nome</label>
+                    <input formControlName="nome" type="email" class="form-control" id="permissao-nome"
+                           placeholder="name@example.com">
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-3">
+                    <label class="form-label">Documento</label>
+                    <input type="text" class="form-control" placeholder="000.000.000-00/ - 00.000.000/0001-00">
+                  </div>
+                </div>
+
+                <div class="col-4 d-flex align-items-center pt-4">
+                  <div class="form-check">
+                    <input value="1" formControlName="pessoa_fisica" class="form-check-input" type="radio"
+                           name="pessoa_fisica" id="Pessoa_fisica">
+                    <label class="form-check-label" for="Pessoa_fisica">
+                      Pessoa Física
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input value="0" formControlName="pessoa_fisica" class="form-check-input" type="radio"
+                           name="pessoa_fisica" id="Pessoa_juridica" checked>
+                    <label class="form-check-label" for="Pessoa_juridica">
+                      Pessoa Jurídica
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-4 d-flex align-items-center pt-4">
+                  <div class="form-check">
+                    <input [disabled]="form.value['pessoa_fisica'] == '1'" value="1" class="form-check-input"
+                           type="radio" name="pessoa_fisica" id="masculino">
+                    <label class="form-check-label" for="masculino">
+                      Masculino
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input [disabled]="form.value['pessoa_fisica'] == '1'" value="0" class="form-check-input"
+                           type="radio" name="pessoa_fisica" id="feminino" checked>
+                    <label class="form-check-label" for="feminino">
+                      Feminino
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!--        <div class="card-footer">-->
+            <!--          <button crud-voltar class="btn btn-info" style="margin-right: .5rem">-->
+            <!--            Voltar-->
+            <!--          </button>-->
+            <!--          <button crud-salvar class="btn btn-success">-->
+            <!--            Salvar-->
+            <!--          </button>-->
+            <!--        </div>-->
+
+          </card>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container-data">
+      <div class="row">
+        <card>
+          <div class="card-body">
+            <crud-data-table
+              [entityMap]="enderecosEntity"
+              path="http://localhost:3000"
+              context="clientes_enderecos"
+            >
+            </crud-data-table>
+          </div>
+        </card>
+      </div>
+    </div>
+
+    <div class="container-data">
+      <div class="row">
+        <card>
+          <div class="card-body">
+            <crud-data-table
+              [entityMap]="contatoEntity"
+              path="http://localhost:3000"
+              context="clientes_contatos"
+            >
+            </crud-data-table>
+          </div>
+        </card>
+      </div>
+    </div>
+
+    <div class="container-data">
+      <div class="row">
+        <card>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-3">
+                <label class="form-label">CEP</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-4">
+                <label class="form-label">Cidade</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-4">
+                <label class="form-label">Bairro</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-1">
+                <label class="form-label">UF</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label class="form-label">Rua</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-2">
+                <label class="form-label">Numero</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-5">
+                <label class="form-label">Complemento</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </card>
+      </div>
+    </div>
+
+  </form>
+
+</div>

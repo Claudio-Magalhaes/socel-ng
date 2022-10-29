@@ -1,0 +1,17 @@
+<div id="page-clientes" class="container">
+
+  <card>
+    <div class="mat-card-header">
+      <h4 class="card-title">Usuários</h4>
+    </div>
+    <div class="card-body">
+      <crud-data-table
+        [entityMap]="entity"
+      >
+      </crud-data-table>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-success" [routerLink]="'novo'">Adicionar</button>
+    </div>
+  </card>
+</div>

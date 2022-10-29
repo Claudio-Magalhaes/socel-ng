@@ -5,7 +5,7 @@ import {environment} from "../../../../environments/environment";
 import {CLIENTE} from "../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl_mock,
+  path: environment.apiUrl,
   context: CLIENTE
 })
 export class ClientesEntity extends AbstractEntity {

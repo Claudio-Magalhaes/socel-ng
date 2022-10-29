@@ -33,7 +33,7 @@ export class EnderecosComponent implements OnInit {
   });
 
   constructor(
-    public service: MockService,
+    public service: GenericService,
     private httpHelper: HttpHelperService
   ) {
     this.form.controls['cep'].valueChanges.subscribe(
@@ -49,12 +49,12 @@ export class EnderecosComponent implements OnInit {
       }
     )
 
-    this.getMock();
+    // this.getMock();
   }
 
-  getMock() {
-    this.service.getListData(CLIENTE_ENDERECOS, (data: EnderecoEntity[]) => this.dataMock = data)
-  }
+  // getMock() {
+  //   this.service.getListData(CLIENTE_ENDERECOS, (data: EnderecoEntity[]) => this.dataMock = data)
+  // }
 
   ngOnInit(): void {
   }
@@ -76,11 +76,11 @@ export class EnderecosComponent implements OnInit {
   saveOrUpdate(data: any) {
     if (this.edit) {
       data['id'] = this.idEndereco;
-      return this.service.update(CLIENTE_ENDERECOS, data, this.dataMock)
-      // return this.service.put('', data)
+      // return this.service.update(CLIENTE_ENDERECOS, data, this.dataMock)
+      return this.service.put(CLIENTE_ENDERECOS, data)
     } else {
-      return this.service.save(CLIENTE_ENDERECOS, data, this.dataMock)
-      // return this.service.post('', data)
+      // return this.service.save(CLIENTE_ENDERECOS, data, this.dataMock)
+      return this.service.post(CLIENTE_ENDERECOS, data)
     }
   }
 
@@ -97,7 +97,7 @@ export class EnderecosComponent implements OnInit {
     this.saveOrUpdate(data).subscribe(
       resp => {
         window.dispatchEvent(new CustomEvent('dg-table-atualizar-event', { detail: 'enderecosEntity' }))
-        this.getMock()
+        // this.getMock()
         this.modal.close()
       }
     )

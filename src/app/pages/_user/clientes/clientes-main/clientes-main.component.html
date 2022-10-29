@@ -1,15 +1,12 @@
-<script
-  src="../../../../../../../../../server/Host/ng-magales/src/app/pages/_user/clientes/clientes-insert-edit/clientes-insert-edit.component.ts"></script>
 <div id="page-clientes" class="container">
 
   <card>
     <div class="mat-card-header">
-      <h4 class="card-title">title</h4>
+      <h4 class="card-title">Clientes</h4>
     </div>
     <div class="card-body">
       <crud-data-table
         [entityMap]="entity"
-        [service]="service"
       >
       </crud-data-table>
     </div>
@@ -18,3 +15,6 @@
     </div>
   </card>
 </div>
+
+<button class="btn btn-success" (click)="teste()">teste</button>
+<button class="btn btn-success" (click)="teste2()">teste by ID</button>

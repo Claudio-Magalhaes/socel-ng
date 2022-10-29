@@ -9,7 +9,6 @@ import {PublicModule} from "./pages/_public/public.module";
 import {HttpClientModule} from "@angular/common/http";
 import {LayoutsModule} from "./layouts/layouts.module";
 import {UiModule} from "./shared/ui/ui.module";
-import {ProdutosModule} from "./pages/_user/produtos/produtos.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import {ProdutosModule} from "./pages/_user/produtos/produtos.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     UserModule,
-    ProdutosModule,
     PublicModule,
     HttpClientModule,
     LayoutsModule,

@@ -25,6 +25,11 @@ export class UserLayoutComponent implements OnInit {
       nome: 'Produtos'
     },
     {
+      url: '/user/categorias',
+      icon: 'home',
+      nome: 'Categorias'
+    },
+    {
       url: '/user/locacoes',
       icon: 'home',
       nome: 'Locações'
@@ -38,6 +43,16 @@ export class UserLayoutComponent implements OnInit {
       url: '/user/servicos',
       icon: 'home',
       nome: 'serviçoes'
+    },
+    {
+      url: '/configuracoes',
+      icon: 'home',
+      nome: 'Configurações',
+      subMenu: [
+        { url: '/user/configuracoes/usuarios', icon: 'home', nome: 'Usuários' },
+        { url: '/user/configuracoes/permissoes', icon: 'home', nome: 'Permissões' },
+        { url: '/user/configuracoes/dados-da-empresa', icon: 'home', nome: 'Dados da Empresa' }
+      ]
     }
   ]
 

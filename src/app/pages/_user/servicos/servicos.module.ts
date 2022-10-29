@@ -1,12 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ServicosMainComponent } from './servicos-main/servicos-main.component';
+import { ServicosInsertEditComponent } from './servicos-insert-edit/servicos-insert-edit.component';
+import {UiModule} from "../../../shared/ui/ui.module";
+import {DgCrudModule} from "@datagrupo/dg-crud";
+import {RouterModule} from "@angular/router";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ServicosMainComponent,
+    ServicosInsertEditComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    UiModule,
+    DgCrudModule,
+    RouterModule
   ]
 })
 export class ServicosModule { }

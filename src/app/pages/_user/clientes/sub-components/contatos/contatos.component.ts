@@ -6,6 +6,7 @@ import {CLIENTE_CONTATOS} from "../../../../../_core/endpoints";
 import {EnderecoEntity} from "../../_entitys/endereco.entity";
 import Swal from "sweetalert2";
 import {ContatoEntity} from "../../_entitys/contato.entity";
+import {GenericService} from "../../../../../services/generic-service/generic.service";
 
 @Component({
   selector: 'subComponent-contatos',
@@ -28,13 +29,13 @@ export class ContatosComponent implements OnInit {
     principal: new FormControl('')
   })
 
-  constructor(public service: MockService) {
-    this.getMock();
+  constructor(public service: GenericService) {
+    // this.getMock();
   }
 
-  getMock() {
-    this.service.getListData(CLIENTE_CONTATOS, (data: EnderecoEntity[]) => this.dataMock = data)
-  }
+  // getMock() {
+  //   this.service.getListData(CLIENTE_CONTATOS, (data: EnderecoEntity[]) => this.dataMock = data)
+  // }
 
   ngOnInit(): void {
   }
@@ -62,11 +63,11 @@ export class ContatosComponent implements OnInit {
   saveOrUpdate(data: any) {
     if (this.edit) {
       data['id'] = this.idContato;
-      return this.service.update(CLIENTE_CONTATOS, data, this.dataMock)
-      // return this.service.put('', data)
+      // return this.service.update(CLIENTE_CONTATOS, data, this.dataMock)
+      return this.service.put(CLIENTE_CONTATOS, data)
     } else {
-      return this.service.save(CLIENTE_CONTATOS, data, this.dataMock)
-      // return this.service.post('', data)
+      // return this.service.save(CLIENTE_CONTATOS, data, this.dataMock)
+      return this.service.post(CLIENTE_CONTATOS, data)
     }
   }
 

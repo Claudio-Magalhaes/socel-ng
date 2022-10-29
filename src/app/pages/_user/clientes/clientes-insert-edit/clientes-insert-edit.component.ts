@@ -40,14 +40,9 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit<ClientesEnti
 
   constructor(
     public config: InsertEditConfig,
-    // public service: ClientesService,
     protected route: ActivatedRoute,
-    public contatoS: ContatoService,
-    // public enderecoService: EnderecoService
   ) {
     super(config, { path: environment.apiUrl, context: CLIENTE });
-    // enderecoService.editEndpoint('findAll', { params: {} })
-    contatoS.editEndpoint('findAll', { params: {} })
 
     this.enderecosEntity.addActions([
       {
@@ -91,6 +86,7 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit<ClientesEnti
     const data = this.form.value;
 
     this.entity = {
+      ...this.entity,
       ...data
     }
 

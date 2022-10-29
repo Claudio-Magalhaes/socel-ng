@@ -1,0 +1,43 @@
+@import "../variables";
+
+.crud-table {
+  margin: 0 !important;
+  width: 100% !important;
+
+  thead {
+
+    th {
+      //color: # !important;
+      font-weight: bold;
+      font-size: 11pt;
+      text-align: start;
+    }
+    table-colum-fixed-end, .mat-column-actions {
+      align-items: center !important;
+      text-align: center !important;
+    }
+  }
+
+  tbody {
+    td {
+      text-align: start;
+      padding: .8rem 0;
+      color: grey !important;
+    }
+
+    .table-colum-fixed-end, .mat-column-actions {
+      align-items: center !important;
+      min-height: 100% !important;
+      height: 100% !important;
+      text-align: center;
+    }
+
+    tr:hover {
+      background-color: rgba(128, 128, 128, 0.1);
+    }
+  }
+
+  .button-menu {
+
+  }
+}

@@ -1,0 +1,15 @@
+@import "../variables";
+
+body {
+  /*************************************************
+      ESTILOS COMUM A TODOS OS INPUTS
+   ************************************************/
+
+  // estilo de erro ao preencher input
+  input.ng-touched, select.ng-touched, ng-autocomplete.ng-touched, textarea.ng-touched {
+    &.ng-invalid {
+      border-color: red !important;
+    }
+  }
+
+}

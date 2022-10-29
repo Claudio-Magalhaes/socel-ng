@@ -6,20 +6,26 @@ import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
+import { EnderecosComponent } from './sub-components/enderecos/enderecos.component';
+import {NgxMaskModule} from "ngx-mask";
+import { ContatosComponent } from './sub-components/contatos/contatos.component';
 
 
 @NgModule({
   declarations: [
     ClientesMainComponent,
-    ClientesInsertEditComponent
+    ClientesInsertEditComponent,
+    EnderecosComponent,
+    ContatosComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule,
+        NgxMaskModule
+    ]
 })
 export class ClientesModule {
 }

@@ -1,6 +1,11 @@
-import {AbstractEntity} from "@datagrupo/dg-crud";
+import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
+import {environment} from "../../../../../environments/environment";
+import {CLIENTE_ENDERECOS} from "../../../../_core/endpoints";
 
-
+@DataServer({
+  path: environment.apiUrl_mock,
+  context: CLIENTE_ENDERECOS
+})
 export class EnderecoEntity extends AbstractEntity {
 
   constructor(
@@ -26,12 +31,13 @@ export class EnderecoEntity extends AbstractEntity {
     this.descricao = descricao;
   }
 
+  @DgTableColumn({ columnName: 'Rua' })
+  rua: string | undefined;
+  numero: string | undefined;
   cep: string | undefined;
   uf: string | undefined;
   cidade: string | undefined;
   bairro: string | undefined;
-  rua: string | undefined;
-  numero: string | undefined;
   complemento: string | undefined;
   descricao: string | undefined;
 }

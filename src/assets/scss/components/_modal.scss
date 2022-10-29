@@ -1,0 +1,33 @@
+.modal-content {
+  .modal-header {
+    border: none;
+    display: inline-flex !important;
+    background-color: #56a44d;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+
+    * {
+      color: white !important;
+    }
+
+    .header-row-close-button {
+
+      button.btn-modal-close {
+        background-color: white !important;
+        width: 2rem;
+        height: 2rem;
+        border-color: white !important;
+
+        &:hover {
+          opacity: .7;
+          background-color: white !important;
+        }
+
+        mat-icon {
+          color: #56a44d !important;
+          font-size: 11pt;
+        }
+      }
+    }
+  }
+}

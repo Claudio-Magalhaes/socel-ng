@@ -20,22 +20,22 @@ export class UserLayoutComponent implements OnInit {
       nome: 'clientes'
     },
     {
-      url: 'user/produtos',
+      url: '/user/produtos',
       icon: 'home',
       nome: 'Produtos'
     },
     {
-      url: 'user/locacoes',
+      url: '/user/locacoes',
       icon: 'home',
       nome: 'Locações'
     },
     {
-      url: 'user/lancamentos',
+      url: '/user/lancamentos',
       icon: 'home',
       nome: 'Lançamentos'
     },
     {
-      url: 'user/servicos',
+      url: '/user/servicos',
       icon: 'home',
       nome: 'serviçoes'
     }

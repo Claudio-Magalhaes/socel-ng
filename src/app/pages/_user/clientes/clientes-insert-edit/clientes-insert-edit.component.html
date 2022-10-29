@@ -11,9 +11,8 @@
               <div class="row">
                 <div class="col-12">
                   <div class="mb-3">
-                    <label for="permissao-nome" class="form-label">Nome</label>
-                    <input formControlName="nome" type="email" class="form-control" id="permissao-nome"
-                           placeholder="name@example.com">
+                    <label class="form-label">Nome</label>
+                    <input formControlName="nome"  class="form-control">
                   </div>
                 </div>
 
@@ -82,13 +81,20 @@
     <div class="container-data">
       <div class="row">
         <card>
+          <div class="card-header">
+            <h4 class="card-title">Endereços</h4>
+          </div>
+
           <div class="card-body">
             <crud-data-table
               [entityMap]="enderecosEntity"
-              path="http://localhost:3000"
-              context="clientes_enderecos"
+              tableEventId="enderecosEntity"
             >
             </crud-data-table>
+          </div>
+
+          <div class="card-footer">
+            <button class="btn btn-success" (click)="enderecosModal.open()">Adicionar</button>
           </div>
         </card>
       </div>
@@ -100,57 +106,24 @@
           <div class="card-body">
             <crud-data-table
               [entityMap]="contatoEntity"
-              path="http://localhost:3000"
-              context="clientes_contatos"
+              tableEventId="ContatoEntity"
             >
             </crud-data-table>
           </div>
-        </card>
-      </div>
-    </div>
-
-    <div class="container-data">
-      <div class="row">
-        <card>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-3">
-                <label class="form-label">CEP</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-4">
-                <label class="form-label">Cidade</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-4">
-                <label class="form-label">Bairro</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-1">
-                <label class="form-label">UF</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-5">
-                <label class="form-label">Rua</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-2">
-                <label class="form-label">Numero</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-5">
-                <label class="form-label">Complemento</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
+          <div class="card-footer">
+            <button class="btn btn-success" (click)="contatoModal.open()">Adicionar</button>
           </div>
         </card>
       </div>
     </div>
+
 
   </form>
 
 </div>
+
+<subComponent-enderecos #enderecosModal></subComponent-enderecos>
+
+<subComponent-contatos
+  #contatoModal
+></subComponent-contatos>

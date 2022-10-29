@@ -3,9 +3,52 @@
     "data": []
   },
   "clientes_enderecos": {
-    "data": []
+    "data": [
+      {
+        "cep": "21011130",
+        "numero": "80",
+        "cidade": "Rio de Janeiro",
+        "bairro": "Penha Circular",
+        "uf": "RJ",
+        "rua": "Rua Ourique",
+        "complemento": "",
+        "id": 1
+      },
+      {
+        "cep": "21011130",
+        "numero": "80",
+        "cidade": "Rio de Janeiro",
+        "bairro": "Penha Circular",
+        "uf": "RJ",
+        "rua": "Rua Ourique",
+        "complemento": "",
+        "id": 2
+      },
+      {
+        "cep": "21011120",
+        "numero": "80",
+        "cidade": "Rio de Janeiro",
+        "bairro": "Braz de Pina",
+        "uf": "RJ",
+        "rua": "Rua Gurupema",
+        "complemento": "",
+        "id": 3
+      }
+    ]
   },
   "clientes_contatos": {
+    "data": [
+      {
+        "descricao": "teste 2",
+        "telefone": "22222222222",
+        "email": "",
+        "principal": "",
+        "id": 1,
+        "status_mock": true
+      }
+    ]
+  },
+  "produtos": {
     "data": []
   }
 }

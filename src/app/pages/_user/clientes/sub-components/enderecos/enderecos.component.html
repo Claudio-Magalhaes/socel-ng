@@ -1,0 +1,47 @@
+<dg-modal
+  #enderecosModal
+  [afterClose]="close"
+>
+  <div dg-content>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-3">
+          <label class="form-label">CEP</label>
+          <input type="text" id="cep" formControlName="cep" class="form-control" mask="00.000.000">
+        </div>
+        <div class="col-4">
+          <label class="form-label">Cidade</label>
+          <input type="text" id="cidade" formControlName="cidade" class="form-control">
+        </div>
+        <div class="col-4">
+          <label class="form-label">Bairro</label>
+          <input type="text" id="bairro" formControlName="bairro" class="form-control">
+        </div>
+        <div class="col-1">
+          <label class="form-label">UF</label>
+          <input type="text" id="uf" formControlName="uf" class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5">
+          <label class="form-label">Rua</label>
+          <input type="text" id="rua" formControlName="rua" class="form-control">
+        </div>
+        <div class="col-2">
+          <label class="form-label">Numero</label>
+          <input type="text" id="numero" formControlName="numero" class="form-control">
+        </div>
+        <div class="col-5">
+          <label class="form-label">Complemento</label>
+          <input type="text" id="complemento" formControlName="complemento" class="form-control">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div dg-footer>
+    <button class="btn btn-success" (click)="save()">Salvar</button>
+    <button class="btn btn-secondary" (click)="enderecosModal.close()">Sair</button>
+  </div>
+</dg-modal>

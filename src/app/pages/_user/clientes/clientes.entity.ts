@@ -1,8 +1,13 @@
-import {AbstractEntity, DgTableColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
 import {EnderecoEntity} from "./_entitys/endereco.entity";
 import {ContatoEntity} from "./_entitys/contato.entity";
+import {environment} from "../../../../environments/environment";
+import {CLIENTE} from "../../../_core/endpoints";
 
-
+@DataServer({
+  path: environment.apiUrl_mock,
+  context: CLIENTE
+})
 export class ClientesEntity extends AbstractEntity {
 
   constructor(

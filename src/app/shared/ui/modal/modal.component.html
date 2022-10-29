@@ -1,0 +1,70 @@
+<!-- DG-MODAL - Componente de modal para o sistema -->
+<div
+  class="dg-modal active-background"
+  [class.open]="config.open"
+  [class.close]="!config.open"
+  [ngStyle]="{'z-index': config.zIndex }"
+>
+
+  <!-- Modal root -->
+  <div (click)="bgClick($event)" class="root-modal">
+
+    <!-- modal content -->
+    <div #carModal class="modal-content {{size}} alignV-{{alignV}} alignH-{{alignH}}">
+
+      <!-- modal header -->
+      <div class="modal-header" id="header">
+        <!-- Apresentação de dados enviados por INPUT -->
+        <div class="container" [hidden]="config.htmlHeader">
+          <div class="row">
+            <div class="col-11 d-flex justify-content-start align-items-center">
+              <h2 class="h2-header-text">{{title}}</h2>
+              <span *ngIf="!!titleSpan" class="span-header-text">{{titleSpan}}</span>
+            </div>
+
+            <div class="col-1 header-row-close-button">
+              <button (click)="close()" class="btn-modal-close" mat-mini-fab aria-label="Fechar">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- html header -->
+        <div
+          class="container-fluid"
+          #htmlHeader
+          [hidden]="!config.htmlHeader"
+        >
+          <ng-content select=[dg-header]></ng-content>
+        </div>
+      </div>
+
+      <!-- modal body -->
+      <div class="modal-body" id="body">
+        <ng-content select=[dg-content]></ng-content>
+      </div>
+
+      <!-- modal footer -->
+      <div class="modal-footer" id="footer">
+        <div class="justify-content-end" [hidden]="config.htmlFooter">
+          <button
+            mat-raised-button
+            (click)="close()"
+            class="grayButton"
+            style="min-width: 10%;"
+          >
+            Fechar
+          </button>
+        </div>
+        <!-- html footer -->
+        <div
+          #htmlFooter
+          [hidden]="!config.htmlFooter"
+          style="width: 100%; justify-content: center; display: inline-flex;"
+        >
+          <ng-content select=[dg-footer]></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

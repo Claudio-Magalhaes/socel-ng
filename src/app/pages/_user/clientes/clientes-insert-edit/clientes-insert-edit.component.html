@@ -122,7 +122,11 @@
 
 </div>
 
-<button class="btn btn-success" crud-salvar>salvar</button>
+<page-footer>
+  <button class="btn btn-success" crud-salvar [backAfterSave]="false">Salvar</button>
+  <button class="btn btn-success" crud-salvar>Salvar e Voltar</button>
+  <button class="btn btn-secondary" crud-voltar>Voltar</button>
+</page-footer>
 
 <subComponent-enderecos #enderecosModal></subComponent-enderecos>
 

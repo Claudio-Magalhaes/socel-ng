@@ -4,13 +4,15 @@ import { CardComponent } from './card/card.component';
 import {ModalComponent} from "./modal/modal.component";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {PageFooterComponent} from "./page-footer/page-footer.component";
 
 
 
 @NgModule({
   declarations: [
     CardComponent,
-    ModalComponent
+    ModalComponent,
+    PageFooterComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import {MatButtonModule} from "@angular/material/button";
   ],
    exports: [
      CardComponent,
-     ModalComponent
+     ModalComponent,
+     PageFooterComponent
    ]
 })
 export class UiModule { }

@@ -4,12 +4,13 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-@import 'https://fonts.googleapis.com/css?family=Open+Sans';
-
 @import "./assets/scss/variables";
+
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+@import "./assets/scss/typography";
 @import "./assets/scss/util";
 @import "./assets/scss/components/modal";
 @import "./assets/scss/components/inputs";

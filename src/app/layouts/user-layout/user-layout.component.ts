@@ -11,47 +11,47 @@ export class UserLayoutComponent implements OnInit {
   public navigateMenu: InterfaceMenuList[] = [
     {
       url: '/user',
-      icon: 'home',
+      icon: 'dashboard',
       nome: 'Dashboard'
     },
     {
       url: '/user/clientes',
-      icon: 'home',
+      icon: 'group',
       nome: 'clientes'
     },
     {
       url: '/user/produtos',
-      icon: 'home',
+      icon: 'qr_code_2',
       nome: 'Produtos'
     },
     {
       url: '/user/categorias',
-      icon: 'home',
+      icon: 'category',
       nome: 'Categorias'
     },
     {
       url: '/user/locacoes',
-      icon: 'home',
+      icon: 'category',
       nome: 'Locações'
     },
     {
       url: '/user/lancamentos',
-      icon: 'home',
+      icon: 'payments',
       nome: 'Lançamentos'
     },
     {
       url: '/user/servicos',
-      icon: 'home',
+      icon: 'build',
       nome: 'serviçoes'
     },
     {
       url: '/configuracoes',
-      icon: 'home',
+      icon: 'settings',
       nome: 'Configurações',
       subMenu: [
-        { url: '/user/configuracoes/usuarios', icon: 'home', nome: 'Usuários' },
-        { url: '/user/configuracoes/permissoes', icon: 'home', nome: 'Permissões' },
-        { url: '/user/configuracoes/dados-da-empresa', icon: 'home', nome: 'Dados da Empresa' }
+        { url: '/user/configuracoes/usuarios', icon: 'manage_accounts', nome: 'Usuários' },
+        { url: '/user/configuracoes/permissoes', icon: 'badge', nome: 'Permissões' },
+        { url: '/user/configuracoes/dados-da-empresa', icon: 'description', nome: 'Dados da Empresa' }
       ]
     }
   ]

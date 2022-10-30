@@ -1,0 +1,46 @@
+@import "./variables";
+
+@font-face {
+  font-family: fredoka;
+  src: url("/assets/fonts/fredoka_oneregular/FredokaOne-Regular.ttf");
+}
+
+.font-fredoka {
+  font-family: fredoka, sans-serif;
+}
+
+body {
+  p, input, select, table, td, dg-card.card-header {
+    font-weight: 400;
+    color: #888;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #888;
+  }
+
+  .form-label, .form-check-label {
+    color: #888;
+    font-size: 9pt;
+  }
+
+  // Font Sizes - gera classes de fontes de 1 a 100
+  @for $i from 1 through 100 {
+    .font-size-#{$i}, .fs-#{$i} {
+      font-size: #{$i}pt !important;
+    }
+  }
+
+  // Fonts Colors - gera classes de cores em texto
+  @each $key, $color in $arrayColors {
+    .font-color-#{$key}, .fc-#{$key} {
+      color: $color;
+    }
+  }
+
+}
+
+.f-bold {
+  font-weight: bold;
+}
+

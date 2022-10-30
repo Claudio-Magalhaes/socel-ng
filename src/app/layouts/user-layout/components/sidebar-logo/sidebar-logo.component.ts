@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-logo',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-logo.component.scss']
 })
 export class SidebarLogoComponent implements OnInit {
+
+  @Input('url-img') img: string | undefined
 
   constructor() { }
 

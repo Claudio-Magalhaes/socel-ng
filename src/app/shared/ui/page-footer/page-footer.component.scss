@@ -1,0 +1,71 @@
+@import '~src/app/layouts/user-layout/components/variables-sidebar';
+@import '~src/assets/scss/variables';
+
+::ng-deep .page-footer {
+  transition: all $sidebar-transition-open-close;
+  position: fixed;
+  top: auto;
+  left: $sidebar-size-close;
+  width: calc(100% - #{$sidebar-size-close});
+  bottom: 0;
+  height: 4.5rem;
+  border-top: #C9C9C9FF solid 1px;
+  background-color: rgb(215, 215, 215);
+  padding: 0;
+  margin: 0;
+
+  &.sidebar-opened {
+    left: $sidebar-size-open !important;
+    width: calc(100% - #{$sidebar-size-open});
+  }
+
+  .row-btn {
+    padding: 1rem 1rem 1rem 2rem;
+    height: 100% !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .copyright {
+    padding: 1rem 2rem 1rem 1rem;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  button {
+    margin: 0 .25rem !important;
+  }
+
+  @media #{$md-layout} {
+    height: auto;
+
+    .copyright {
+      padding: 0 2rem 0;
+    }
+    .row-btn {
+      padding: .5rem 2rem .5rem;
+    }
+
+    &.sidebar-opened {
+      left: $sidebar-size-close !important;
+      width: calc(100% - #{$sidebar-size-close});
+    }
+  }
+
+  @media #{$sm-layout} {
+    left: 0;
+    width: 100%;
+    height: auto;
+
+    .copyright {
+      padding: 0 2rem 0;
+      font-size: 8pt;
+    }
+    .row-btn {
+      padding: .5rem 2rem .5rem;
+    }
+  }
+}

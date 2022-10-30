@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractInsertEdit, InsertEditConfig} from "@datagrupo/dg-crud";
 import {ProdutosEntity} from "../produtos.entity";
-import {ConfigDgCrudService} from "../../../../_core/config/config-dg-crud/config-dg-crud.service";
 import {environment} from "../../../../../environments/environment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PRODUTOS} from "../../../../_core/endpoints";

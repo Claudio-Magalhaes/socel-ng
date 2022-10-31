@@ -5,6 +5,7 @@ import { LocacaoInsertEditComponent } from './locacao-insert-edit/locacao-insert
 import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -13,11 +14,12 @@ import {RouterModule} from "@angular/router";
     LocacaoMainComponent,
     LocacaoInsertEditComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule
+    ]
 })
 export class LocacaoModule { }

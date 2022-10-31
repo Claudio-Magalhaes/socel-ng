@@ -1,1 +1,30 @@
-<p>permissoes-insert-edit works!</p>
+<div class="container">
+
+  <card>
+    <div class="card-header">
+      <h4 class="card-title">Permissões</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-12">
+            <label class="form-label">Nome</label>
+            <input class="form-control" formControlName="nome">
+          </div>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-12">
+          criar conjunto de permissões
+        </div>
+      </div>
+    </div>
+  </card>
+
+</div>
+
+<page-footer>
+  <button class="btn btn-success" crud-salvar>Salvar</button>
+  <button class="btn btn-secondary" crud-voltar>Voltar</button>
+</page-footer>

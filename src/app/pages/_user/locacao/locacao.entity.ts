@@ -1,4 +1,4 @@
-import {AbstractEntity, DataServer} from "@datagrupo/dg-crud";
+import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
 import {ClientesEntity} from "../clientes/clientes.entity";
 import {ContatoEntity} from "../clientes/_entitys/contato.entity";
 import {EnderecoEntity} from "../clientes/_entitys/endereco.entity";
@@ -34,6 +34,7 @@ export class LocacaoEntity extends AbstractEntity {
     this.obsercacoes = obsercacoes;
   }
 
+  @DgTableColumn({ columnName: 'Cliente', resource: (val: ClientesEntity) => val.nome || '--' })
   public cliente: ClientesEntity | undefined
   public contato: ContatoEntity | undefined
   public endereco: EnderecoEntity | undefined

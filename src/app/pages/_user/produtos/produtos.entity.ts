@@ -1,6 +1,7 @@
 import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {PRODUTOS} from "../../../_core/endpoints";
+import {CategoriasEntity} from "../categorias/categorias.entity";
 
 @DataServer({
   path: environment.apiUrl,
@@ -11,7 +12,7 @@ export class ProdutosEntity extends AbstractEntity {
   constructor(
     id?: number | string,
     nome?: string,
-    categoria?: string,
+    categoria?: CategoriasEntity,
     preco?: string,
     estoqueAtual?: string,
     alertaEstoqueMinimo?: string,
@@ -31,7 +32,7 @@ export class ProdutosEntity extends AbstractEntity {
 
   @DgTableColumn({ columnName: 'nome' })
   nome: string | undefined
-  categoria: string | undefined
+  categoria: CategoriasEntity | undefined
   preco: string | undefined
   estoqueAtual: string | undefined
   alertaEstoqueMinimo: string | undefined

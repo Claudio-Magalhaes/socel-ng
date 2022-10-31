@@ -1,1 +1,46 @@
-<p>usuarios-insert-edit works!</p>
+<div>
+  <form [formGroup]="form">
+    <div class="container-data">
+      <card>
+        <div class="card-header">
+          <h4 class="card-title">Usuario</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <label class="form-label">Nome</label>
+              <input class="form-control" formControlName="nome">
+            </div>
+            <div class="col-6">
+              <label class="form-label">E-mail</label>
+              <input class="form-control" formControlName="email">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <label class="form-label">Permissão</label>
+              <select class="form-select" formControlName="permissao">
+                <option disabled selected value="">Selecione uma permissão</option>
+                <option *ngFor="let p of listPermission" [value]="p.id">{{p.nome}}</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="form-label">CPF</label>
+              <input class="form-control" formControlName="cpf">
+            </div>
+            <div class="col-4">
+              <label class="form-label">Telefone</label>
+              <input class="form-control" formControlName="telefone">
+            </div>
+          </div>
+        </div>
+      </card>
+    </div>
+  </form>
+</div>
+
+<page-footer>
+  <button class="btn btn-success" crud-salvar>Salvar</button>
+  <button class="btn btn-secondary" crud-voltar>Voltar</button>
+</page-footer>

@@ -5,6 +5,7 @@ import { PermissoesInsertEditComponent } from './permissoes-insert-edit/permisso
 import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -13,11 +14,12 @@ import {RouterModule} from "@angular/router";
     PermissoesMainComponent,
     PermissoesInsertEditComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule
+    ]
 })
 export class PermissoesModule { }

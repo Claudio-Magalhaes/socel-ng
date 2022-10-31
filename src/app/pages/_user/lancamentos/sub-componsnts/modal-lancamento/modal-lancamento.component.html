@@ -1,0 +1,53 @@
+<dg-modal
+  #modal
+  [afterClose]="close"
+  [class.modal-fatura-receita]="entity.tipo == 'RECEITA'"
+  [class.modal-fatura-despesa]="entity.tipo == 'DESPESA'"
+>
+  <div dg-content>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-12">
+          <label>Cliente</label>
+          <select formControlName="cliente" class="form-select">
+            <option value="" disabled selected>Selecione um cliente</option>
+            <option *ngFor="let c of listClientes" [value]="c.id">{{c.nome}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label>Valor</label>
+          <input class="form-control" formControlName="valor">
+        </div>
+        <div class="col-6">
+          <label>Vencimento</label>
+          <input type="date" class="form-control" formControlName="data_vencimento">
+        </div>
+      </div>
+
+      <div class="row mt-3 mb-3">
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="fatura_paga">
+            <label class="form-check-label" for="fatura_paga">
+              Essa fatura já está paga
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <label>Descrição</label>
+          <textarea formControlName="descricao" class="form-control"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div dg-footer>
+    <button class="btn btn-success" (click)="save()">Salvar</button>
+    <button class="btn btn-secondary" (click)="modal.close()">Sair</button>
+  </div>
+</dg-modal>

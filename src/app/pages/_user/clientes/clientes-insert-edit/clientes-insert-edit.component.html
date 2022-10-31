@@ -22,7 +22,7 @@
                 <div class="col-4">
                   <div class="mb-3">
                     <label class="form-label">Documento</label>
-                    <input type="text" class="form-control" placeholder="000.000.000-00/ - 00.000.000/0001-00">
+                    <input type="text" class="form-control" formControlName="documento">
                   </div>
                 </div>
 
@@ -63,22 +63,13 @@
 
             </div>
 
-            <!--        <div class="card-footer">-->
-            <!--          <button crud-voltar class="btn btn-info" style="margin-right: .5rem">-->
-            <!--            Voltar-->
-            <!--          </button>-->
-            <!--          <button crud-salvar class="btn btn-success">-->
-            <!--            Salvar-->
-            <!--          </button>-->
-            <!--        </div>-->
-
           </card>
         </div>
 
       </div>
     </div>
 
-    <div class="container-data">
+    <div *ngIf="!!entity?.id" class="container-data">
       <div class="row">
         <card>
           <div class="card-header">
@@ -89,6 +80,7 @@
             <crud-data-table
               [entityMap]="enderecosEntity"
               tableEventId="enderecosEntity"
+              [persistentParams]="tableParams"
             >
             </crud-data-table>
           </div>
@@ -100,13 +92,14 @@
       </div>
     </div>
 
-    <div class="container-data">
+    <div *ngIf="!!entity?.id" class="container-data">
       <div class="row">
         <card>
           <div class="card-body">
             <crud-data-table
               [entityMap]="contatoEntity"
               tableEventId="ContatoEntity"
+              [persistentParams]="tableParams"
             >
             </crud-data-table>
           </div>
@@ -128,8 +121,12 @@
   <button class="btn btn-secondary" crud-voltar>Voltar</button>
 </page-footer>
 
-<subComponent-enderecos #enderecosModal></subComponent-enderecos>
+<subComponent-enderecos
+  #enderecosModal
+  [idCliente]="entity?.id"
+></subComponent-enderecos>
 
 <subComponent-contatos
   #contatoModal
+  [idCliente]="entity?.id"
 ></subComponent-contatos>

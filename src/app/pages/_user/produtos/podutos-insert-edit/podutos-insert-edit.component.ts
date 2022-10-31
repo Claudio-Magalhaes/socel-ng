@@ -3,7 +3,9 @@ import {AbstractInsertEdit, InsertEditConfig} from "@datagrupo/dg-crud";
 import {ProdutosEntity} from "../produtos.entity";
 import {environment} from "../../../../../environments/environment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {PRODUTOS} from "../../../../_core/endpoints";
+import {CATEGORIAS, PRODUTOS} from "../../../../_core/endpoints";
+import {GenericService} from "../../../../services/generic-service/generic.service";
+import {CategoriasEntity} from "../../categorias/categorias.entity";
 
 @Component({
   selector: 'app-podutos-insert-edit',
@@ -22,8 +24,18 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit<ProdutosEntit
     descricao: new FormControl(''),
   })
 
-  constructor(public config: InsertEditConfig) {
+  public listCategorias: CategoriasEntity[] = [];
+
+  constructor(
+    public config: InsertEditConfig,
+    private service: GenericService
+  ) {
     super(config, { path: environment.apiUrl, context: PRODUTOS })
+    service.get(CATEGORIAS).subscribe(
+      resp => {
+        this.listCategorias = resp.data;
+      }
+    )
   }
 
   override ngOnInit(): void {
@@ -35,7 +47,10 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit<ProdutosEntit
   }
 
   override afterFetchEntity() {
-    this.form.patchValue({...this.entity})
+    this.form.patchValue({
+      ...this.entity,
+      categoria: this.entity.categoria?.id
+    })
   }
 
   override beforeSaveEntity(): boolean {
@@ -44,9 +59,12 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit<ProdutosEntit
       return false;
     }
 
+    const form = this.form.value;
+
     this.entity = {
       ...this.entity,
-      ...this.form.value
+      ...form,
+      categoria: { id: form.categoria }
     }
 
     return true;

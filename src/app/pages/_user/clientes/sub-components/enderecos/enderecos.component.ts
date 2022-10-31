@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ModalComponent} from "../../../../../shared/ui/modal/modal.component";
 import {GenericService} from "../../../../../services/generic-service/generic.service";
@@ -16,6 +16,8 @@ import {MockService} from "../../../../../services/mock/mock.service";
 export class EnderecosComponent implements OnInit {
 
   @ViewChild('enderecosModal') modal!: ModalComponent;
+
+  @Input('idCliente') idCliente: number | string | undefined;
 
   private edit = false;
   private idEndereco: number | string | undefined
@@ -60,6 +62,7 @@ export class EnderecosComponent implements OnInit {
   }
 
   open(data?: EnderecoEntity) {
+    if (!this.idCliente) return;
 
     if (!!data) {
       this.form.patchValue({
@@ -92,6 +95,7 @@ export class EnderecosComponent implements OnInit {
 
     const data = {
       ...this.form.value,
+      cliente: { id: this.idCliente }
     }
 
     this.saveOrUpdate(data).subscribe(

@@ -1,4 +1,4 @@
-import {AbstractEntity, DataServer} from "@datagrupo/dg-crud";
+import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {PERMISSAO} from "../../../_core/endpoints";
 
@@ -17,5 +17,6 @@ export class PermissaoEntity extends AbstractEntity {
     this.nome = nome;
   }
 
+  @DgTableColumn({ columnName: 'Nome' })
   public nome: string | undefined;
 }

@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ClientesService} from "../services/clientes/clientes.service";
 import {ActivatedRoute} from "@angular/router";
 import {ClientesEntity} from "../clientes.entity";
-import {AbstractInsertEdit, InsertEditConfig} from "@datagrupo/dg-crud";
+import {AbstractInsertEdit, clearEntity, InsertEditConfig} from "@datagrupo/dg-crud";
 import {EnderecoEntity} from "../_entitys/endereco.entity";
 import {ContatoEntity} from "../_entitys/contato.entity";
 import {ContatoService} from "../services/contato/contato.service";
@@ -25,6 +25,8 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit<ClientesEnti
 
   public enderecosEntity = new EnderecoEntity();
   public contatoEntity = new ContatoEntity()
+
+  public tableParams = {}
 
   public form: FormGroup = new FormGroup({
     nome: new FormControl('', [Validators.required]),
@@ -70,12 +72,9 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit<ClientesEnti
   override afterFetchEntity() {
     console.log(this.entity);
     this.form.patchValue({
-      nome: this.entity.nome,
-      sexo: this.entity.sexo,
-      pessoa_fisica: this.entity.pessoa_fisica,
-      email: this.entity.email,
-      documento: this.entity.documento
-    })
+      ...this.entity
+    });
+    this.tableParams = { clienteId: this.entity.id }
   }
 
   override beforeSaveEntity(): boolean {
@@ -85,6 +84,7 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit<ClientesEnti
     }
     const data = this.form.value;
 
+    // @ts-ignore
     this.entity = {
       ...this.entity,
       ...data

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {LancamentoEntity} from "../lancamento.entity";
+import {ModalLancamentoComponent} from "../sub-componsnts/modal-lancamento/modal-lancamento.component";
 
 @Component({
   selector: 'app-lancamentos-main',
@@ -8,9 +9,18 @@ import {LancamentoEntity} from "../lancamento.entity";
 })
 export class LancamentosMainComponent implements OnInit {
 
+  @ViewChild('modalLancamentos') modal!: ModalLancamentoComponent;
+
   public entity = new LancamentoEntity()
 
-  constructor() { }
+  constructor() {
+    this.entity.addActions([
+      {
+        name: 'Editar',
+        action: (val: LancamentoEntity) => this.modal.open(val)
+      }
+    ])
+  }
 
   ngOnInit(): void {
   }

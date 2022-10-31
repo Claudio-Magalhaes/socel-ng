@@ -1,4 +1,4 @@
-import {AbstractEntity, DataServer} from "@datagrupo/dg-crud";
+import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {SERVICO} from "../../../_core/endpoints";
 
@@ -20,7 +20,11 @@ export class ServicoEntity extends AbstractEntity {
     this.descricao = descricao;
   }
 
+  @DgTableColumn({ columnName: 'nome' })
   nome: string | undefined
+
+  @DgTableColumn({ columnName: 'Valor Base' })
   valorBase: number | string | undefined
+
   descricao: string | undefined
 }

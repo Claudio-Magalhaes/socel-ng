@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ModalComponent} from "../../../../../shared/ui/modal/modal.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MockService} from "../../../../../services/mock/mock.service";
@@ -17,10 +17,10 @@ export class ContatosComponent implements OnInit {
 
   @ViewChild('modal') modal!: ModalComponent;
 
+  @Input('idCliente') idCliente: number | string | undefined;
+
   public edit = false;
   public idContato: number | string | undefined;
-
-  private dataMock: any[] = [];
 
   public form = new FormGroup({
     descricao: new FormControl(''),
@@ -41,6 +41,7 @@ export class ContatosComponent implements OnInit {
   }
 
   public open(data?: ContatoEntity) {
+    if (!this.idCliente) return;
 
     if (!!data) {
       this.form.patchValue({
@@ -74,7 +75,7 @@ export class ContatosComponent implements OnInit {
   salvar() {
     const form = this.form.value;
 
-    if (!form.telefone && !form.contato) {
+    if (!form.telefone && !form.email) {
       Swal.fire({
         icon: 'warning',
         title: 'Um telefone ou e-mail deve ser informado',
@@ -84,7 +85,8 @@ export class ContatosComponent implements OnInit {
     }
 
     const data = {
-      ...form
+      ...form,
+      cliente: { id: this.idCliente }
     }
 
     this.saveOrUpdate(data).subscribe(

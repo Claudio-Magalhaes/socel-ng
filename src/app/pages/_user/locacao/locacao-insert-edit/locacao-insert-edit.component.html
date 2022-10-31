@@ -1,1 +1,73 @@
-<p>locacao-insert-edit works!</p>
+<div>
+  <form [formGroup]="form">
+    <div class="container-data">
+      <card>
+        <div class="card-header">
+          <h4 class="card-title">Dados da locação</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <label class="form-label">Cliente</label>
+              <select class="form-select" formControlName="cliente">
+                <option disabled selected value="">Selecione um cliente</option>
+                <option *ngFor="let cli of listClientes" [value]="cli.id">{{cli.nome}}</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="form-label">Cliente</label>
+              <select class="form-select" formControlName="contato">
+                <option disabled selected value="">Selecione um cliente</option>
+                <option *ngFor="let con of listContato" [value]="con.id">{{con.telefone}} | {{con.descricao}}</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="form-label">Cliente</label>
+              <select class="form-select" formControlName="endereco">
+                <option disabled selected value="">Selecione um cliente</option>
+                <option *ngFor="let end of listEndereco" [value]="end.id">{{end.descricao}} | {{end.rua}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <label class="form-label">Data Inicial</label>
+              <input class="form-control" type="date" formControlName="dataInicial">
+            </div>
+            <div class="col-4">
+              <label class="form-label">Data Final</label>
+              <input class="form-control" type="date" formControlName="dataFinal">
+            </div>
+          </div>
+        </div>
+      </card>
+    </div>
+
+    <div class="container-data">
+      <card>
+        <div class="card-header">
+          <h4 class="card-title">Informações</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <label class="form-label">Descrição</label>
+              <textarea rows="8" class="form-control" formControlName="descricao"></textarea>
+            </div>
+            <div class="col-6">
+              <label class="form-label">Observações <span class="fs-8 fc-grey">Não serão vistas pelo cliente</span> </label>
+              <textarea rows="8" class="form-control" formControlName="observacao"></textarea>
+            </div>
+          </div>
+        </div>
+      </card>
+    </div>
+  </form>
+</div>
+
+<page-footer>
+  <button class="btn btn-success" crud-salvar [backAfterSave]="false">Salvar</button>
+  <button class="btn btn-success" crud-salvar>Salvar e voltar</button>
+  <button class="btn btn-secondary" crud-voltar>Voltar</button>
+</page-footer>

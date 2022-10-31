@@ -1,6 +1,7 @@
-import {AbstractEntity, DataServer} from "@datagrupo/dg-crud";
+import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {USUARIO} from "../../../_core/endpoints";
+import {PermissaoEntity} from "../permissoes/permissao.entity";
 
 @DataServer({
   path: environment.apiUrl,
@@ -10,12 +11,25 @@ export class UsuariosEntity extends AbstractEntity {
 
   constructor(
     id?: number | string,
-    nome?: string
+    nome?: string,
+    cpf?: string,
+    permissao?: PermissaoEntity,
+    email?: string,
+    telefone?: string
   ) {
     super();
     this.id = id;
     this.nome = nome;
+    this.cpf = cpf;
+    this.permissao = permissao;
+    this.email = email;
+    this.telefone = telefone;
   }
 
+  @DgTableColumn({ columnName: 'Nome' })
   public nome: string | undefined;
+  public cpf: string | undefined
+  public email: string | undefined
+  public telefone: string | undefined
+  public permissao: PermissaoEntity | undefined
 }

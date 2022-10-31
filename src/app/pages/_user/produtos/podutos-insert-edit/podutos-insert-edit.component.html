@@ -12,7 +12,10 @@
           </div>
           <div class="col-5">
             <label id="categoria" class="form-label">Categoria</label>
-            <input class="form-control" type="text" formControlName="categoria">
+            <select class="form-select" formControlName="categoria">
+              <option>Selecione uma categoria</option>
+              <option *ngFor="let categ of listCategorias" [value]="categ.id">{{categ.nome}}</option>
+            </select>
           </div>
         </div>
 

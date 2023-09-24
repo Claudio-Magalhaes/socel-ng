@@ -1,11 +1,11 @@
-import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
 import {EnderecoEntity} from "./_entitys/endereco.entity";
 import {ContatoEntity} from "./_entitys/contato.entity";
 import {environment} from "../../../../environments/environment";
 import {CLIENTE} from "../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl,
+  path: environment.apiUrl_mock,
   context: CLIENTE
 })
 export class ClientesEntity extends AbstractEntity2 {
@@ -31,10 +31,10 @@ export class ClientesEntity extends AbstractEntity2 {
   }
 
 
-  // @DgTableColumn({columnName: 'Id:'})
+  @DynamicColumn({ headerName: 'id' })
   override id: string | number | undefined;
 
-  // @DgTableColumn({columnName: 'nome:'})
+  @DynamicColumn({ headerName: 'nome:'})
   public nome: string | undefined;
 
   public sexo: string | undefined;

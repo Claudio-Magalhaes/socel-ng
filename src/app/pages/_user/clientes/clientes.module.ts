@@ -7,6 +7,10 @@ import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgxMaskModule} from "ngx-mask";
+import {
+  CdkDynamicTableModule,
+  DgTableModule
+} from "dg-ng-util";
 
 
 @NgModule({
@@ -16,14 +20,16 @@ import {NgxMaskModule} from "ngx-mask";
     // EnderecosComponent,
     // ContatosComponent
   ],
-    imports: [
-        CommonModule,
-        UiModule,
-        DgCrudModule,
-        RouterModule,
-        ReactiveFormsModule,
-        NgxMaskModule
-    ]
+  imports: [
+    CommonModule,
+    UiModule,
+    DgCrudModule,
+    RouterModule,
+    ReactiveFormsModule,
+    NgxMaskModule,
+    DgTableModule,
+    CdkDynamicTableModule
+  ]
 })
 export class ClientesModule {
 }

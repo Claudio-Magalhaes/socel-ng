@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientesEntity} from "../clientes.entity";
+import {CdkDynamicTable, CdkDynamicTableService} from "dg-ng-util";
 
 @Component({
   selector: 'app-clientes-main',
@@ -9,27 +10,13 @@ import {ClientesEntity} from "../clientes.entity";
 export class ClientesMainComponent implements OnInit {
 
   public entity = new ClientesEntity();
+  public table: CdkDynamicTable.tableClass
 
-  // constructor(public service: ClientesService) { }
-  constructor() { }
+  constructor(public cdkTable: CdkDynamicTableService,) {
+    this.table = cdkTable.createByCrudEnity2(new ClientesEntity())
+  }
 
   ngOnInit(): void {
-  }
-
-  teste() {
-    // this.service.get('', {path: environment.apiUrl, context: 'clientes'}).subscribe(
-    //   resp => {
-    //     console.log(resp)
-    //   }
-    // )
-  }
-
-  teste2() {
-    // this.service.get('clientes/1', {path: environment.apiUrl}).subscribe(
-    //   resp => {
-    //     console.log(resp)
-    //   }
-    // )
   }
 
 }

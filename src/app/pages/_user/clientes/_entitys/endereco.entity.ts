@@ -1,9 +1,9 @@
-import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
 import {environment} from "../../../../../environments/environment";
 import {CLIENTE_ENDERECOS} from "../../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl,
+  path: environment.apiUrl_mock,
   context: CLIENTE_ENDERECOS
 })
 export class EnderecoEntity extends AbstractEntity2 {
@@ -31,7 +31,7 @@ export class EnderecoEntity extends AbstractEntity2 {
     this.descricao = descricao;
   }
 
-  // @DgTableColumn({ columnName: 'Rua' })
+  @DynamicColumn({ headerName: 'Rua' })
   rua: string | undefined;
   numero: string | undefined;
   cep: string | undefined;

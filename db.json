@@ -1,51 +1,86 @@
 {
-  "clientes": [],
-  "clientes_enderecos": {
-    "data": [
-      {
-        "cep": "21011130",
-        "numero": "80",
-        "cidade": "Rio de Janeiro",
-        "bairro": "Penha Circular",
-        "uf": "RJ",
-        "rua": "Rua Ourique",
-        "complemento": "",
-        "id": 1
-      },
-      {
-        "cep": "21011130",
-        "numero": "80",
-        "cidade": "Rio de Janeiro",
-        "bairro": "Penha Circular",
-        "uf": "RJ",
-        "rua": "Rua Ourique",
-        "complemento": "",
-        "id": 2
-      },
-      {
-        "cep": "21011120",
-        "numero": "80",
-        "cidade": "Rio de Janeiro",
-        "bairro": "Braz de Pina",
-        "uf": "RJ",
-        "rua": "Rua Gurupema",
-        "complemento": "",
-        "id": 3
-      }
-    ]
-  },
-  "clientes_contatos": {
-    "data": [
-      {
-        "descricao": "teste 2",
-        "telefone": "22222222222",
-        "email": "",
-        "principal": "",
-        "id": 1,
-        "status_mock": true
-      }
-    ]
-  },
+  "clientes": [
+    {
+      "enderecos": [],
+      "contatos": [],
+      "nome": "nome",
+      "sexo": "",
+      "pessoa_fisica": "1",
+      "email": "",
+      "documento": "1111",
+      "id": 1
+    }
+  ],
+  "clientes_enderecos": [
+    {
+      "cep": "21011130",
+      "numero": "80",
+      "cidade": "Rio de Janeiro",
+      "bairro": "Penha Circular",
+      "uf": "RJ",
+      "rua": "Rua Ourique",
+      "complemento": "",
+      "id": 1,
+      "empresa": 1
+    },
+    {
+      "cep": "21011130",
+      "numero": "80",
+      "cidade": "Rio de Janeiro",
+      "bairro": "Penha Circular",
+      "uf": "RJ",
+      "rua": "Rua Ourique",
+      "complemento": "",
+      "id": 2,
+      "empresa": 1
+    },
+    {
+      "cep": "21011120",
+      "numero": "80",
+      "cidade": "Rio de Janeiro",
+      "bairro": "Braz de Pina",
+      "uf": "RJ",
+      "rua": "Rua Gurupema",
+      "complemento": "",
+      "id": 3,
+      "empresa": 2
+    }
+  ],
+  "clientes_contatos": [
+    {
+      "descricao": "teste 2",
+      "telefone": "22222222222",
+      "email": "",
+      "principal": "",
+      "id": 1,
+      "status_mock": true,
+      "cliente": 1
+    },
+    {
+      "descricao": "teste",
+      "telefone": "21980384668",
+      "email": "claudio.magalhaes@outlook.com.br",
+      "principal": "",
+      "cliente": 1,
+      "id": 2
+    },
+    {
+      "descricao": "teste 3",
+      "telefone": "22222222222",
+      "email": "claudio.magalhaes@outlook.com.br",
+      "principal": "",
+      "cliente": 1,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "descricao": "teste 4",
+      "telefone": "22222222222",
+      "email": "claudio.magalhaes@outlook.com.br",
+      "principal": "",
+      "cliente": 1
+    }
+  ],
   "produtos": {
     "data": []
   }

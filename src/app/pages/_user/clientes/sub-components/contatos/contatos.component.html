@@ -1,9 +1,9 @@
 <dg-modal
   #modal
   title="Contato"
-  [afterClose]="close"
+  (afterClose)="close()"
 >
-  <div dg-content>
+  <div modal-body>
     <form [formGroup]="form">
       <div class="row">
         <div class="col-12">
@@ -23,7 +23,7 @@
       </div>
     </form>
   </div>
-  <div dg-footer>
+  <div modal-footer>
     <button class="btn btn-success" (click)="salvar()">Salvar</button>
     <button class="btn btn-secondary" (click)="modal.close()">Salir</button>
   </div>

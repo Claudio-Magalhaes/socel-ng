@@ -1,9 +1,9 @@
-import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
 import {environment} from "../../../../../environments/environment";
 import {CLIENTE_CONTATOS} from "../../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl,
+  path: environment.apiUrl_mock,
   context: CLIENTE_CONTATOS
 })
 export class ContatoEntity extends AbstractEntity2 {
@@ -23,13 +23,13 @@ export class ContatoEntity extends AbstractEntity2 {
     this.principal = !!principal;
   }
 
-  // @DgTableColumn({ columnName: 'Descrição' })
+  @DynamicColumn({ headerName: 'Descrição' })
   public descricao: string | undefined
-  // @DgTableColumn({ columnName: 'Telefone' })
+  @DynamicColumn({ headerName: 'Telefone' })
   public telefone: string | undefined
-  // @DgTableColumn({ columnName: 'E-mail' })
+  @DynamicColumn({ headerName: 'E-mail' })
   public email: string | undefined
-  // @DgTableColumn({ columnName: 'Principal' })
+  @DynamicColumn({ headerName: 'Principal' })
   public principal: boolean = false
 
 }

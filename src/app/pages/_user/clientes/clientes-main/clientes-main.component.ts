@@ -12,7 +12,7 @@ export class ClientesMainComponent implements OnInit {
   public entity = new ClientesEntity();
   public table: CdkDynamicTable.tableClass
 
-  constructor(public cdkTable: CdkDynamicTableService,) {
+  constructor(public cdkTable: CdkDynamicTableService) {
     this.table = cdkTable.createByCrudEnity2(new ClientesEntity())
   }
 

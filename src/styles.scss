@@ -10,6 +10,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+@import "../node_modules/dg-ng-util/assets/scss/dg-ng-util";
+
 @import "./assets/scss/typography";
 @import "./assets/scss/util";
 @import "./assets/scss/components/modal";

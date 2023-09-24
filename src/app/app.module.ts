@@ -20,6 +20,18 @@ ConfigDynamicTable.set(configLocalDynamicTable)
 // ConfigDgTable.set(configLocalDgTable)
 // ConfigDgCurd.set(ConfigLocalDgCrud)
 
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import {IConfig, NgxMaskModule} from "ngx-mask";
+
+registerLocaleData(localePt);
+
+// config para não impor validação em mascaras NGX-MASK
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -32,7 +44,8 @@ ConfigDynamicTable.set(configLocalDynamicTable)
     PublicModule,
     HttpClientModule,
     LayoutsModule,
-    UiModule
+    UiModule,
+    NgxMaskModule.forRoot(maskConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]

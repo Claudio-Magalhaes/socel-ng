@@ -1,4 +1,4 @@
-import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {EnderecoEntity} from "./_entitys/endereco.entity";
 import {ContatoEntity} from "./_entitys/contato.entity";
 import {environment} from "../../../../environments/environment";
@@ -8,7 +8,7 @@ import {CLIENTE} from "../../../_core/endpoints";
   path: environment.apiUrl,
   context: CLIENTE
 })
-export class ClientesEntity extends AbstractEntity {
+export class ClientesEntity extends AbstractEntity2 {
 
   constructor(
     id?: string | number,
@@ -31,10 +31,10 @@ export class ClientesEntity extends AbstractEntity {
   }
 
 
-  @DgTableColumn({columnName: 'Id:'})
+  // @DgTableColumn({columnName: 'Id:'})
   override id: string | number | undefined;
 
-  @DgTableColumn({columnName: 'nome:'})
+  // @DgTableColumn({columnName: 'nome:'})
   public nome: string | undefined;
 
   public sexo: string | undefined;

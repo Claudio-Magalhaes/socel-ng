@@ -1,4 +1,4 @@
-import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {environment} from "../../../../../environments/environment";
 import {CLIENTE_CONTATOS} from "../../../../_core/endpoints";
 
@@ -6,7 +6,7 @@ import {CLIENTE_CONTATOS} from "../../../../_core/endpoints";
   path: environment.apiUrl,
   context: CLIENTE_CONTATOS
 })
-export class ContatoEntity extends AbstractEntity {
+export class ContatoEntity extends AbstractEntity2 {
 
   constructor(
     id?: number | string,
@@ -23,13 +23,13 @@ export class ContatoEntity extends AbstractEntity {
     this.principal = !!principal;
   }
 
-  @DgTableColumn({ columnName: 'Descrição' })
+  // @DgTableColumn({ columnName: 'Descrição' })
   public descricao: string | undefined
-  @DgTableColumn({ columnName: 'Telefone' })
+  // @DgTableColumn({ columnName: 'Telefone' })
   public telefone: string | undefined
-  @DgTableColumn({ columnName: 'E-mail' })
+  // @DgTableColumn({ columnName: 'E-mail' })
   public email: string | undefined
-  @DgTableColumn({ columnName: 'Principal' })
+  // @DgTableColumn({ columnName: 'Principal' })
   public principal: boolean = false
 
 }

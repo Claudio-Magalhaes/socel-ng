@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import {AbstractHttpService} from "@datagrupo/dg-crud";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {AbstractGenericService} from "dg-ng-util";
 
 @Injectable({
   providedIn: 'root'
 })
-export class GenericService extends AbstractHttpService<any> {
+export class GenericService extends AbstractGenericService {
 
-  constructor(Http: HttpClient) {
-    super(Http, environment.apiUrl, '')
+  constructor(protected Http: HttpClient) {
+    super(Http, environment.apiUrl_mock)
   }
 }

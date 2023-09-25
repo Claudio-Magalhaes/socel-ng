@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsuariosEntity} from "../usuarios.entity";
-import {AbstractInsertEdit, InsertEditConfig} from "@datagrupo/dg-crud";
+import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {environment} from "../../../../../environments/environment";
 import {PERMISSAO, USUARIO} from "../../../../_core/endpoints";
 import {GenericService} from "../../../../services/generic-service/generic.service";
@@ -11,7 +11,9 @@ import {GenericService} from "../../../../services/generic-service/generic.servi
   templateUrl: './usuarios-insert-edit.component.html',
   styleUrls: ['./usuarios-insert-edit.component.scss']
 })
-export class UsuariosInsertEditComponent extends AbstractInsertEdit<UsuariosEntity> implements OnInit {
+export class UsuariosInsertEditComponent extends AbstractInsertEdit2<UsuariosEntity> implements OnInit {
+
+  rootEntity = new UsuariosEntity();
 
   public form = new FormGroup({
     nome: new FormControl('', [Validators.required]),
@@ -24,14 +26,14 @@ export class UsuariosInsertEditComponent extends AbstractInsertEdit<UsuariosEnti
   public listPermission: UsuariosEntity[] = [];
 
   constructor(
-    public config: InsertEditConfig,
+    public config: InsertEditConfig2,
     public service: GenericService
   ) {
     super(config, { path: environment.apiUrl, context: USUARIO });
 
     service.get(PERMISSAO).subscribe(
       resp => {
-        this.listPermission = resp.data;
+        this.listPermission = resp;
       }
     )
   }
@@ -40,14 +42,10 @@ export class UsuariosInsertEditComponent extends AbstractInsertEdit<UsuariosEnti
     super.ngOnInit();
   }
 
-  initNewEntity(): void {
-    this.entity = new UsuariosEntity();
-  }
-
   override afterFetchEntity() {
     this.form.patchValue({
       ...this.entity,
-      permissao: this.entity?.permissao?.id
+      permissao: this.entity?.permissao
     })
   }
 
@@ -62,7 +60,7 @@ export class UsuariosInsertEditComponent extends AbstractInsertEdit<UsuariosEnti
     this.entity = {
       ...this.entity,
       ...form,
-      permissao: { id: form.permissao }
+      permissao: form.permissao
     }
 
     return true;

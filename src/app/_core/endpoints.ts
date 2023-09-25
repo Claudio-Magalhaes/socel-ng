@@ -12,7 +12,7 @@ export const SERVICO = 'servico';
 
 export const LANCAMENTO = 'lancamento';
 
-export const USUARIO = 'usuario';
+export const USUARIO = 'usuarios';
 
 export const LOCACAO = 'locacao';
 

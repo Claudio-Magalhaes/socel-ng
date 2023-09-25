@@ -7,15 +7,7 @@ import {CategoriasModule} from "./categorias/categorias.module";
 import {ProdutosModule} from "./produtos/produtos.module";
 import {ServicosModule} from "./servicos/servicos.module";
 import {PermissoesModule} from "./permissoes/permissoes.module";
-// import {CategoriasModule} from "./categorias/categorias.module";
-// import {ProdutosModule} from "./produtos/produtos.module";
-// import {LocacaoModule} from "./locacao/locacao.module";
-// import {LancamentosModule} from "./lancamentos/lancamentos.module";
-// import {ServicosModule} from "./servicos/servicos.module";
-// import {UsuariosModule} from "./usuarios/usuarios.module";
-// import {DadosEmpresaModule} from "./dados-empresa/dados-empresa.module";
-// import {PermissoesModule} from "./permissoes/permissoes.module";
-
+import {UsuariosModule} from "./usuarios/usuarios.module";
 
 
 @NgModule({
@@ -30,7 +22,7 @@ import {PermissoesModule} from "./permissoes/permissoes.module";
     // LocacaoModule,
     // LancamentosModule,
     ServicosModule,
-    // UsuariosModule,
+    UsuariosModule,
     PermissoesModule,
     // DadosEmpresaModule
   ]

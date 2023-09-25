@@ -167,5 +167,15 @@
       "nome": "ADM editado",
       "id": 1
     }
+  ],
+  "usuarios": [
+    {
+      "nome": "teste",
+      "cpf": "teste",
+      "permissao": 1,
+      "email": "teste",
+      "telefone": "teste",
+      "id": 1
+    }
   ]
 }

@@ -11,6 +11,8 @@ import {ServicosMainComponent} from "./servicos/servicos-main/servicos-main.comp
 import {ServicosInsertEditComponent} from "./servicos/servicos-insert-edit/servicos-insert-edit.component";
 import {PermissoesMainComponent} from "./permissoes/permissoes-main/permissoes-main.component";
 import {PermissoesInsertEditComponent} from "./permissoes/permissoes-insert-edit/permissoes-insert-edit.component";
+import {UsuariosMainComponent} from "./usuarios/usuarios-main/usuarios-main.component";
+import {UsuariosInsertEditComponent} from "./usuarios/usuarios-insert-edit/usuarios-insert-edit.component";
 
 
 
@@ -83,16 +85,16 @@ const routes: Routes = [
   //   ]
   // },
   //
-  // {
-  //   path: 'configuracoes/usuarios',
-  //   component: UsuariosMainComponent
-  // },
-  // {
-  //   path: 'configuracoes/usuarios',
-  //   children: [
-  //     { path: ':id', component: UsuariosInsertEditComponent}
-  //   ]
-  // },
+  {
+    path: 'configuracoes/usuarios',
+    component: UsuariosMainComponent
+  },
+  {
+    path: 'configuracoes/usuarios',
+    children: [
+      { path: ':id', component: UsuariosInsertEditComponent }
+    ]
+  },
   //
   {
     path: 'configuracoes/permissoes',

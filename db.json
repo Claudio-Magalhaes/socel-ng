@@ -21,18 +21,18 @@
       "rua": "Rua Ourique",
       "complemento": "",
       "id": 1,
-      "empresa": 1
+      "cliente": 1
     },
     {
+      "id": 2,
       "cep": "21011130",
       "numero": "80",
       "cidade": "Rio de Janeiro",
       "bairro": "Penha Circular",
       "uf": "RJ",
       "rua": "Rua Ourique",
-      "complemento": "",
-      "id": 2,
-      "empresa": 1
+      "complemento": "teste",
+      "cliente": 1
     },
     {
       "cep": "21011120",
@@ -44,6 +44,50 @@
       "complemento": "",
       "id": 3,
       "empresa": 2
+    },
+    {
+      "cep": "21011130",
+      "numero": "80",
+      "cidade": "Rio de Janeiro",
+      "bairro": "Penha Circular",
+      "uf": "RJ",
+      "rua": "Rua Ourique",
+      "complemento": "complemento",
+      "cliente": 1,
+      "id": 4
+    },
+    {
+      "id": 5,
+      "cep": "21011130",
+      "numero": "80",
+      "cidade": "Rio de Janeiro",
+      "bairro": "Penha Circular",
+      "uf": "RJ",
+      "rua": "Rua Ourique",
+      "complemento": "apto 201",
+      "cliente": 1
+    },
+    {
+      "id": 6,
+      "cep": "21011130",
+      "numero": "80",
+      "cidade": "Rio de Janeiro",
+      "bairro": "Penha Circular",
+      "uf": "RJ",
+      "rua": "Rua Ourique",
+      "complemento": "eeeeeee",
+      "cliente": 1
+    },
+    {
+      "cep": "21011130",
+      "numero": "80",
+      "cidade": "Rio de Janeiro",
+      "bairro": "Penha Circular",
+      "uf": "RJ",
+      "rua": "Rua Ourique",
+      "complemento": "",
+      "cliente": 1,
+      "id": 7
     }
   ],
   "clientes_contatos": [

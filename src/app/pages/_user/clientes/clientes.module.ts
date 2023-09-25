@@ -12,13 +12,14 @@ import {
   DgTableModule
 } from "dg-ng-util";
 import {ContatosComponent} from "./sub-components/contatos/contatos.component";
+import {EnderecosComponent} from "./sub-components/enderecos/enderecos.component";
 
 
 @NgModule({
   declarations: [
     ClientesMainComponent,
     ClientesInsertEditComponent,
-    // EnderecosComponent,
+    EnderecosComponent,
     ContatosComponent
   ],
   imports: [

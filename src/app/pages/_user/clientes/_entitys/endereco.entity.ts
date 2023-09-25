@@ -31,13 +31,16 @@ export class EnderecoEntity extends AbstractEntity2 {
     this.descricao = descricao;
   }
 
+  @DynamicColumn({ headerName: 'Bairro' })
+  bairro: string | undefined;
   @DynamicColumn({ headerName: 'Rua' })
   rua: string | undefined;
+  @DynamicColumn({ headerName: 'Numero' })
   numero: string | undefined;
+  @DynamicColumn({ headerName: 'Complemento' })
+  complemento: string | undefined;
   cep: string | undefined;
   uf: string | undefined;
   cidade: string | undefined;
-  bairro: string | undefined;
-  complemento: string | undefined;
   descricao: string | undefined;
 }

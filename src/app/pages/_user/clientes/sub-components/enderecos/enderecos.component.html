@@ -1,8 +1,9 @@
 <dg-modal
   #enderecosModal
-  [afterClose]="close"
+  title="Endereços"
+  (afterClose)="close()"
 >
-  <div dg-content>
+  <div modal-body>
     <form [formGroup]="form">
       <div class="row">
         <div class="col-3">
@@ -40,7 +41,7 @@
     </form>
   </div>
 
-  <div dg-footer>
+  <div modal-footer>
     <button class="btn btn-success" (click)="save()">Salvar</button>
     <button class="btn btn-secondary" (click)="enderecosModal.close()">Sair</button>
   </div>

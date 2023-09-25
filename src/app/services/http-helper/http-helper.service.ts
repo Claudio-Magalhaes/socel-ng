@@ -10,7 +10,7 @@ export class HttpHelperService {
   constructor(public http: HttpClient) {}
 
   public getCep(cep: string, action: Function): void {
-    if (cep.length < 8) return;
+    if ((cep || '').length < 8) return;
     this.http.get(`https://viacep.com.br/ws/${cep}/json/`).subscribe(
       (resp: any) => {
         if (!resp?.erro) {

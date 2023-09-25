@@ -6,6 +6,7 @@ import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {CdkDynamicTable, CdkDynamicTableService} from "dg-ng-util";
 import {ClientesEntity} from "../clientes.entity";
 import {ContatosComponent} from "../sub-components/contatos/contatos.component";
+import {EnderecosComponent} from "../sub-components/enderecos/enderecos.component";
 
 @Component({
   selector: 'app-clientes-insert-edit',
@@ -19,13 +20,8 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit2<ClientesEnt
   public tableEnderecos: CdkDynamicTable.tableClass
   public tableContatos: CdkDynamicTable.tableClass
 
-  // @ViewChild('enderecosModal') enderecosModal!: EnderecosComponent;
+  @ViewChild('enderecosModal') enderecosModal!: EnderecosComponent;
   @ViewChild('contatoModal') contatoModal!: ContatosComponent;
-
-  public enderecosEntity = new EnderecoEntity();
-  public contatoEntity = new ContatoEntity()
-
-  public tableParams = {}
 
   public form: FormGroup = new FormGroup({
     nome: new FormControl('', [Validators.required]),
@@ -44,7 +40,11 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit2<ClientesEnt
     private cdkTable: CdkDynamicTableService
   ) {
     super(config, {backAfterSave: false})
-    this.tableEnderecos = cdkTable.createByCrudEnity2(new EnderecoEntity())
+    this.tableEnderecos = cdkTable.createByCrudEnity2(new EnderecoEntity(), {
+      actions: {
+        edit: { name: 'Editar', dbClick: true, action: (val: EnderecoEntity) => this.enderecosModal.open(val) }
+      }
+    })
     this.tableContatos = cdkTable.createByCrudEnity2(new ContatoEntity(), {
       actions: {
         edit: { name: 'Editar', dbClick: true, action: (val: ContatoEntity) => this.contatoModal.open(val) }
@@ -62,7 +62,7 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit2<ClientesEnt
 
   override afterFetchEntity(entityData: ClientesEntity) {
     this.form.patchValue(this.entity);
-    this.tableEnderecos.controls.apiData.set({params: {empresa: entityData.id}})
+    this.tableEnderecos.controls.apiData.set({params: {cliente: entityData.id}})
   }
 
   override beforeSaveEntity(): boolean {

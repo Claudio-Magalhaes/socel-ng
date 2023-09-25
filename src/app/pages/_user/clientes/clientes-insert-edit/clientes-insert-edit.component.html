@@ -81,7 +81,7 @@
           </div>
 
           <div class="card-footer">
-<!--            <button class="btn btn-success" (click)="enderecosModal.open()">Adicionar</button>-->
+            <button class="btn btn-success" (click)="enderecosModal.open()">Adicionar</button>
           </div>
         </card>
       </div>
@@ -116,10 +116,11 @@
   <button class="btn btn-secondary" crud-voltar>Voltar</button>
 </page-footer>
 
-<!--<subComponent-enderecos-->
-<!--  #enderecosModal-->
-<!--  [idCliente]="entity?.id"-->
-<!--&gt;</subComponent-enderecos>-->
+<subComponent-enderecos
+  #enderecosModal
+  [idCliente]="entity?.id"
+  (afterSave)="tableEnderecos.find()"
+></subComponent-enderecos>
 
 <subComponent-contatos
   #contatoModal

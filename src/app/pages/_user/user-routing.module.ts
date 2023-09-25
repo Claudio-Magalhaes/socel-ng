@@ -7,6 +7,8 @@ import {CategoriaMainComponent} from "./categorias/categoria-main/categoria-main
 import {CategoriaInsertEditComponent} from "./categorias/categoria-insert-edit/categoria-insert-edit.component";
 import {PodutosMainComponent} from "./produtos/podutos-main/podutos-main.component";
 import {PodutosInsertEditComponent} from "./produtos/podutos-insert-edit/podutos-insert-edit.component";
+import {ServicosMainComponent} from "./servicos/servicos-main/servicos-main.component";
+import {ServicosInsertEditComponent} from "./servicos/servicos-insert-edit/servicos-insert-edit.component";
 
 
 
@@ -47,16 +49,16 @@ const routes: Routes = [
       { path: ':id', component:  CategoriaInsertEditComponent}
     ]
   },
-  // {
-  //   path: 'servicos',
-  //   component: ServicosMainComponent
-  // },
-  // {
-  //   path: 'servicos',
-  //   children: [
-  //     { path: ':id', component:  ServicosInsertEditComponent}
-  //   ]
-  // },
+  {
+    path: 'servicos',
+    component: ServicosMainComponent
+  },
+  {
+    path: 'servicos',
+    children: [
+      { path: ':id', component:  ServicosInsertEditComponent}
+    ]
+  },
   // {
   //   path: 'lancamentos',
   //   component: LancamentosMainComponent

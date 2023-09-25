@@ -153,5 +153,13 @@
       "nome": "ferro fundido",
       "id": 1
     }
+  ],
+  "servico": [
+    {
+      "nome": "Retifica",
+      "valorBase": "251,00",
+      "descricao": "",
+      "id": 1
+    }
   ]
 }

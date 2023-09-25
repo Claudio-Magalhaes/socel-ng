@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AbstractInsertEdit, InsertEditConfig} from "@datagrupo/dg-crud";
+import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {ServicoEntity} from "../servico.entity";
 import {environment} from "../../../../../environments/environment";
 import {SERVICO} from "../../../../_core/endpoints";
@@ -10,7 +10,9 @@ import {SERVICO} from "../../../../_core/endpoints";
   templateUrl: './servicos-insert-edit.component.html',
   styleUrls: ['./servicos-insert-edit.component.scss']
 })
-export class ServicosInsertEditComponent extends AbstractInsertEdit<ServicoEntity> implements OnInit {
+export class ServicosInsertEditComponent extends AbstractInsertEdit2<ServicoEntity> implements OnInit {
+
+  rootEntity = new ServicoEntity();
 
   public form = new FormGroup({
     nome: new FormControl('', [Validators.required]),
@@ -19,17 +21,13 @@ export class ServicosInsertEditComponent extends AbstractInsertEdit<ServicoEntit
   })
 
   constructor(
-    public config: InsertEditConfig
+    public config: InsertEditConfig2
   ) {
     super(config, { path: environment.apiUrl, context: SERVICO })
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-  }
-
-  initNewEntity(): void {
-    this.entity = new ServicoEntity();
   }
 
   override afterFetchEntity() {

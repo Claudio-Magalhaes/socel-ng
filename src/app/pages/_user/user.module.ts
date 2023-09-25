@@ -5,6 +5,7 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 import {ClientesModule} from "./clientes/clientes.module";
 import {CategoriasModule} from "./categorias/categorias.module";
 import {ProdutosModule} from "./produtos/produtos.module";
+import {ServicosModule} from "./servicos/servicos.module";
 // import {CategoriasModule} from "./categorias/categorias.module";
 // import {ProdutosModule} from "./produtos/produtos.module";
 // import {LocacaoModule} from "./locacao/locacao.module";
@@ -27,7 +28,7 @@ import {ProdutosModule} from "./produtos/produtos.module";
     ProdutosModule,
     // LocacaoModule,
     // LancamentosModule,
-    // ServicosModule,
+    ServicosModule,
     // UsuariosModule,
     // PermissoesModule,
     // DadosEmpresaModule

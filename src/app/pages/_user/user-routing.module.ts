@@ -9,6 +9,8 @@ import {PodutosMainComponent} from "./produtos/podutos-main/podutos-main.compone
 import {PodutosInsertEditComponent} from "./produtos/podutos-insert-edit/podutos-insert-edit.component";
 import {ServicosMainComponent} from "./servicos/servicos-main/servicos-main.component";
 import {ServicosInsertEditComponent} from "./servicos/servicos-insert-edit/servicos-insert-edit.component";
+import {PermissoesMainComponent} from "./permissoes/permissoes-main/permissoes-main.component";
+import {PermissoesInsertEditComponent} from "./permissoes/permissoes-insert-edit/permissoes-insert-edit.component";
 
 
 
@@ -92,16 +94,16 @@ const routes: Routes = [
   //   ]
   // },
   //
-  // {
-  //   path: 'configuracoes/permissoes',
-  //   component: PermissoesMainComponent
-  // },
-  // {
-  //   path: 'configuracoes/permissoes',
-  //   children: [
-  //     { path: ':id', component: PermissoesInsertEditComponent}
-  //   ]
-  // },
+  {
+    path: 'configuracoes/permissoes',
+    component: PermissoesMainComponent
+  },
+  {
+    path: 'configuracoes/permissoes',
+    children: [
+      { path: ':id', component: PermissoesInsertEditComponent}
+    ]
+  },
   //
   // {
   //   path: 'configuracoes/dados-da-empresa',

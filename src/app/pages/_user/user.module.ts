@@ -6,6 +6,7 @@ import {ClientesModule} from "./clientes/clientes.module";
 import {CategoriasModule} from "./categorias/categorias.module";
 import {ProdutosModule} from "./produtos/produtos.module";
 import {ServicosModule} from "./servicos/servicos.module";
+import {PermissoesModule} from "./permissoes/permissoes.module";
 // import {CategoriasModule} from "./categorias/categorias.module";
 // import {ProdutosModule} from "./produtos/produtos.module";
 // import {LocacaoModule} from "./locacao/locacao.module";
@@ -30,7 +31,7 @@ import {ServicosModule} from "./servicos/servicos.module";
     // LancamentosModule,
     ServicosModule,
     // UsuariosModule,
-    // PermissoesModule,
+    PermissoesModule,
     // DadosEmpresaModule
   ]
 })

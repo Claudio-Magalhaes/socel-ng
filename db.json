@@ -161,5 +161,11 @@
       "descricao": "",
       "id": 1
     }
+  ],
+  "permissao": [
+    {
+      "nome": "ADM editado",
+      "id": 1
+    }
   ]
 }

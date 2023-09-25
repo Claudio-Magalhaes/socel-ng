@@ -1,12 +1,12 @@
-import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {PERMISSAO} from "../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl,
+  path: environment.apiUrl_mock,
   context: PERMISSAO
 })
-export class PermissaoEntity extends AbstractEntity {
+export class PermissaoEntity extends AbstractEntity2 {
 
   constructor(
     id?: number | string,
@@ -17,6 +17,6 @@ export class PermissaoEntity extends AbstractEntity {
     this.nome = nome;
   }
 
-  @DgTableColumn({ columnName: 'Nome' })
+  @DynamicColumn({ headerName: 'Nome' })
   public nome: string | undefined;
 }

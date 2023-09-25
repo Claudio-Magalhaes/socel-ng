@@ -8,6 +8,7 @@ import {ProdutosModule} from "./produtos/produtos.module";
 import {ServicosModule} from "./servicos/servicos.module";
 import {PermissoesModule} from "./permissoes/permissoes.module";
 import {UsuariosModule} from "./usuarios/usuarios.module";
+import {LocacaoModule} from "./locacao/locacao.module";
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import {UsuariosModule} from "./usuarios/usuarios.module";
     ClientesModule,
     CategoriasModule,
     ProdutosModule,
-    // LocacaoModule,
+    LocacaoModule,
     // LancamentosModule,
     ServicosModule,
     UsuariosModule,

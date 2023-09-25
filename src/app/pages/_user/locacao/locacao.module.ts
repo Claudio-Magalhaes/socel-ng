@@ -6,6 +6,10 @@ import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
+import {
+  CdkDynamicTableModule,
+  DgPaginatorModule, DgTableModule
+} from "dg-ng-util";
 
 
 
@@ -14,12 +18,15 @@ import {ReactiveFormsModule} from "@angular/forms";
     LocacaoMainComponent,
     LocacaoInsertEditComponent
   ],
-    imports: [
-        CommonModule,
-        UiModule,
-        DgCrudModule,
-        RouterModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    UiModule,
+    DgCrudModule,
+    RouterModule,
+    ReactiveFormsModule,
+    DgPaginatorModule,
+    CdkDynamicTableModule,
+    DgTableModule
+  ]
 })
 export class LocacaoModule { }

@@ -177,5 +177,23 @@
       "telefone": "teste",
       "id": 1
     }
+  ],
+  "locacao": [
+    {
+      "cliente": {
+        "id": "1"
+      },
+      "contato": {
+        "id": "1"
+      },
+      "endereco": {
+        "id": "1"
+      },
+      "dataInicial": "2023-09-24",
+      "dataFinal": "2023-09-30",
+      "descricao": "",
+      "observacao": "",
+      "id": 1
+    }
   ]
 }

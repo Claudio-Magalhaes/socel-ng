@@ -1,4 +1,4 @@
-import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
 import {ClientesEntity} from "../clientes/clientes.entity";
 import {ContatoEntity} from "../clientes/_entitys/contato.entity";
 import {EnderecoEntity} from "../clientes/_entitys/endereco.entity";
@@ -6,10 +6,10 @@ import {environment} from "../../../../environments/environment";
 import {LOCACAO} from "../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl,
+  path: environment.apiUrl_mock,
   context: LOCACAO
 })
-export class LocacaoEntity extends AbstractEntity {
+export class LocacaoEntity extends AbstractEntity2 {
 
   constructor(
     id?: number | string,
@@ -34,7 +34,7 @@ export class LocacaoEntity extends AbstractEntity {
     this.obsercacoes = obsercacoes;
   }
 
-  @DgTableColumn({ columnName: 'Cliente', resource: (val: ClientesEntity) => val.nome || '--' })
+  @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => val.nome || '--' })
   public cliente: ClientesEntity | undefined
   public contato: ContatoEntity | undefined
   public endereco: EnderecoEntity | undefined

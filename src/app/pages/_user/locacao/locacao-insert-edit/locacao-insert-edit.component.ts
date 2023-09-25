@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AbstractInsertEdit, InsertEditConfig} from "@datagrupo/dg-crud";
+import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {LocacaoEntity} from "../locacao.entity";
 import {environment} from "../../../../../environments/environment";
 import {CLIENTE, CLIENTE_CONTATOS, CLIENTE_ENDERECOS, LOCACAO} from "../../../../_core/endpoints";
@@ -14,7 +14,9 @@ import {GenericService} from "../../../../services/generic-service/generic.servi
   templateUrl: './locacao-insert-edit.component.html',
   styleUrls: ['./locacao-insert-edit.component.scss']
 })
-export class LocacaoInsertEditComponent extends AbstractInsertEdit<LocacaoEntity> implements OnInit {
+export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntity> implements OnInit {
+
+  rootEntity = new LocacaoEntity()
 
   public form = new FormGroup({
     cliente: new FormControl('', [Validators.required]),
@@ -31,14 +33,14 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit<LocacaoEntity
   public listEndereco: EnderecoEntity[] = [];
 
   constructor(
-    public config: InsertEditConfig,
+    public config: InsertEditConfig2,
     public service: GenericService
   ) {
     super(config, { path: environment.apiUrl, context: LOCACAO })
 
     this.service.get(CLIENTE).subscribe(
       resp => {
-        this.listClientes = resp.data;
+        this.listClientes = resp;
       }
     )
 
@@ -52,13 +54,13 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit<LocacaoEntity
   loadSelects(clienteId: number | string) {
     this.service.get(CLIENTE_CONTATOS, { params: { clienteId } }).subscribe(
       resp => {
-        this.listContato = resp.data;
+        this.listContato = resp;
       }
     )
 
     this.service.get(CLIENTE_ENDERECOS, { params: { clienteId } }).subscribe(
       resp => {
-        this.listEndereco = resp.data;
+        this.listEndereco = resp;
       }
     )
 
@@ -68,10 +70,6 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit<LocacaoEntity
 
   override ngOnInit(): void {
     super.ngOnInit()
-  }
-
-  initNewEntity(): void {
-    this.entity = new LocacaoEntity()
   }
 
   override afterFetchEntity() {

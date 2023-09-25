@@ -13,6 +13,8 @@ import {PermissoesMainComponent} from "./permissoes/permissoes-main/permissoes-m
 import {PermissoesInsertEditComponent} from "./permissoes/permissoes-insert-edit/permissoes-insert-edit.component";
 import {UsuariosMainComponent} from "./usuarios/usuarios-main/usuarios-main.component";
 import {UsuariosInsertEditComponent} from "./usuarios/usuarios-insert-edit/usuarios-insert-edit.component";
+import {LocacaoMainComponent} from "./locacao/locacao-main/locacao-main.component";
+import {LocacaoInsertEditComponent} from "./locacao/locacao-insert-edit/locacao-insert-edit.component";
 
 
 
@@ -74,17 +76,17 @@ const routes: Routes = [
   //   ]
   // },
   //
-  // {
-  //   path: 'locacoes',
-  //   component: LocacaoMainComponent
-  // },
-  // {
-  //   path: 'locacoes',
-  //   children: [
-  //     { path: ':id', component: LocacaoInsertEditComponent}
-  //   ]
-  // },
-  //
+  {
+    path: 'locacoes',
+    component: LocacaoMainComponent
+  },
+  {
+    path: 'locacoes',
+    children: [
+      { path: ':id', component: LocacaoInsertEditComponent}
+    ]
+  },
+
   {
     path: 'configuracoes/usuarios',
     component: UsuariosMainComponent

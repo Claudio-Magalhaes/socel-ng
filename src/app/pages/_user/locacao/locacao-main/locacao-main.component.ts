@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {LocacaoEntity} from "../locacao.entity";
+import {
+  CdkDynamicTable,
+  CdkDynamicTableService
+} from "dg-ng-util";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-locacao-main',
@@ -8,9 +13,24 @@ import {LocacaoEntity} from "../locacao.entity";
 })
 export class LocacaoMainComponent implements OnInit {
 
-  public entity = new LocacaoEntity()
+  table: CdkDynamicTable.tableClass;
 
-  constructor() { }
+  constructor(
+    private CdkTable: CdkDynamicTableService,
+    private router: Router
+  ) {
+    this.table = CdkTable.createByCrudEnity2(new LocacaoEntity(), {
+      actions: {
+        edit: {
+          name: 'Editar',
+          dbClick: true,
+          action: (val: LocacaoEntity) => {
+            this.router.navigate(['user', 'produtos', val?.id])
+          }
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
   }

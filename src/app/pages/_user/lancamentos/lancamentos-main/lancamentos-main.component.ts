@@ -1,6 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {LancamentoEntity} from "../lancamento.entity";
 import {ModalLancamentoComponent} from "../sub-componsnts/modal-lancamento/modal-lancamento.component";
+import {
+  CdkDynamicTable,
+  CdkDynamicTableService
+} from "dg-ng-util";
 
 @Component({
   selector: 'app-lancamentos-main',
@@ -9,17 +13,24 @@ import {ModalLancamentoComponent} from "../sub-componsnts/modal-lancamento/modal
 })
 export class LancamentosMainComponent implements OnInit {
 
-  @ViewChild('modalLancamentos') modal!: ModalLancamentoComponent;
+  // @ViewChild('modalLancamentos') modal!: ModalLancamentoComponent;
 
-  public entity = new LancamentoEntity()
+  public table: CdkDynamicTable.tableClass;
 
-  constructor() {
-    this.entity.addActions([
-      {
-        name: 'Editar',
-        action: (val: LancamentoEntity) => this.modal.open(val)
+  constructor(
+    private CdkTable: CdkDynamicTableService
+  ) {
+    this.table = CdkTable.createByCrudEnity2(new LancamentoEntity(), {
+      actions: {
+        edit: {
+          name: 'Editar',
+          dbClick: true,
+          action: (val: LancamentoEntity) => {
+
+          }
+        }
       }
-    ])
+    })
   }
 
   ngOnInit(): void {

@@ -15,6 +15,7 @@ import {UsuariosMainComponent} from "./usuarios/usuarios-main/usuarios-main.comp
 import {UsuariosInsertEditComponent} from "./usuarios/usuarios-insert-edit/usuarios-insert-edit.component";
 import {LocacaoMainComponent} from "./locacao/locacao-main/locacao-main.component";
 import {LocacaoInsertEditComponent} from "./locacao/locacao-insert-edit/locacao-insert-edit.component";
+import {LancamentosMainComponent} from "./lancamentos/lancamentos-main/lancamentos-main.component";
 
 
 
@@ -65,17 +66,11 @@ const routes: Routes = [
       { path: ':id', component:  ServicosInsertEditComponent}
     ]
   },
-  // {
-  //   path: 'lancamentos',
-  //   component: LancamentosMainComponent
-  // },
-  // {
-  //   path: 'lancamentos',
-  //   children: [
-  //     { path: ':id', component:  LancamentosInsertEditComponent}
-  //   ]
-  // },
-  //
+  {
+    path: 'lancamentos',
+    component: LancamentosMainComponent
+  },
+
   {
     path: 'locacoes',
     component: LocacaoMainComponent

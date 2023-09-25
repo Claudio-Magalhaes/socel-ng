@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ModalComponent} from "../../../../../shared/ui/modal/modal.component";
 import {LancamentoEntity} from "../../lancamento.entity";
 import {GenericService} from "../../../../../services/generic-service/generic.service";
 import {CLIENTE, LANCAMENTO} from "../../../../../_core/endpoints";
 import {ClientesEntity} from "../../../clientes/clientes.entity";
+import {DgModalComponent} from "dg-ng-util";
 
 @Component({
   selector: 'subComponent-modal-lancamento',
@@ -13,7 +13,7 @@ import {ClientesEntity} from "../../../clientes/clientes.entity";
 })
 export class ModalLancamentoComponent implements OnInit {
 
-  @ViewChild('modal') modal!: ModalComponent
+  @ViewChild('modal') modal!: DgModalComponent
 
   public entity = new LancamentoEntity()
 

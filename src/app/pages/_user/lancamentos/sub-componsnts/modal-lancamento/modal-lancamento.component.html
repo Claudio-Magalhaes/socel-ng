@@ -1,10 +1,10 @@
 <dg-modal
   #modal
-  [afterClose]="close"
+  (afterClose)="close()"
   [class.modal-fatura-receita]="entity.tipo == 'RECEITA'"
   [class.modal-fatura-despesa]="entity.tipo == 'DESPESA'"
 >
-  <div dg-content>
+  <div modal-body>
     <form [formGroup]="form">
       <div class="row">
         <div class="col-12">
@@ -46,7 +46,7 @@
       </div>
     </form>
   </div>
-  <div dg-footer>
+  <div modal-footer>
     <button class="btn btn-success" (click)="save()">Salvar</button>
     <button class="btn btn-secondary" (click)="modal.close()">Sair</button>
   </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractInsertEdit, InsertEditConfig} from "@datagrupo/dg-crud";
+import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {ProdutosEntity} from "../produtos.entity";
 import {environment} from "../../../../../environments/environment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -12,7 +12,9 @@ import {CategoriasEntity} from "../../categorias/categorias.entity";
   templateUrl: './podutos-insert-edit.component.html',
   styleUrls: ['./podutos-insert-edit.component.scss']
 })
-export class PodutosInsertEditComponent extends AbstractInsertEdit<ProdutosEntity> implements OnInit {
+export class PodutosInsertEditComponent extends AbstractInsertEdit2<ProdutosEntity> implements OnInit {
+
+  rootEntity = new ProdutosEntity();
 
   public form = new FormGroup({
     nome: new FormControl('', [Validators.required]),
@@ -27,13 +29,13 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit<ProdutosEntit
   public listCategorias: CategoriasEntity[] = [];
 
   constructor(
-    public config: InsertEditConfig,
+    public config: InsertEditConfig2,
     private service: GenericService
   ) {
     super(config, { path: environment.apiUrl, context: PRODUTOS })
     service.get(CATEGORIAS).subscribe(
       resp => {
-        this.listCategorias = resp.data;
+        this.listCategorias = resp;
       }
     )
   }
@@ -42,14 +44,10 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit<ProdutosEntit
     super.ngOnInit();
   }
 
-  initNewEntity(): void {
-    this.entity = new ProdutosEntity();
-  }
-
   override afterFetchEntity() {
     this.form.patchValue({
       ...this.entity,
-      categoria: this.entity.categoria?.id
+      categoria: this.entity.categoria
     })
   }
 
@@ -64,7 +62,7 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit<ProdutosEntit
     this.entity = {
       ...this.entity,
       ...form,
-      categoria: { id: form.categoria }
+      categoria: form.categoria
     }
 
     return true;

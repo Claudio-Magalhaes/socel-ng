@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {InterfaceMenuList} from "./components/navigation/navigation.component";
+import Swal from "sweetalert2";
+import {CdkAbstractInsertEdit} from "@datagrupo/dg-crud";
 
 @Component({
   selector: 'app-user-layout',
@@ -61,4 +63,25 @@ export class UserLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @HostListener('window:crud-callback-message', ['$event'])
+  crudCallbackMessage(ev: CustomEvent<CdkAbstractInsertEdit.crudCallbackMessage>) {
+    const data = ev.detail;
+    if (data.origin == 'dg-crud') {
+      if (!!data.message?.status) {
+        Swal.fire({
+          icon: !!data.message?.status ? 'success' :'warning',
+          title: data.message?.title || '',
+          text: data.message?.text || ''
+        }).then()
+      } else {
+        Swal.fire({
+          icon: !!data.message?.message?.status ? 'success' :'warning',
+          title: data.message?.message?.title || '',
+          text: data.message?.message?.text || ''
+        }).then()
+      }
+      return;
+    }
+    console.log(data)
+  }
 }

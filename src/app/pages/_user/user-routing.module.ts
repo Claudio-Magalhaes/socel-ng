@@ -5,6 +5,8 @@ import {ClientesMainComponent} from "./clientes/clientes-main/clientes-main.comp
 import {ClientesInsertEditComponent} from "./clientes/clientes-insert-edit/clientes-insert-edit.component";
 import {CategoriaMainComponent} from "./categorias/categoria-main/categoria-main.component";
 import {CategoriaInsertEditComponent} from "./categorias/categoria-insert-edit/categoria-insert-edit.component";
+import {PodutosMainComponent} from "./produtos/podutos-main/podutos-main.component";
+import {PodutosInsertEditComponent} from "./produtos/podutos-insert-edit/podutos-insert-edit.component";
 
 
 
@@ -25,16 +27,16 @@ const routes: Routes = [
       { path: ':id', component:  ClientesInsertEditComponent}
     ]
   },
-  // {
-  //   path: 'produtos',
-  //   component: PodutosMainComponent
-  // },
-  // {
-  //   path: 'produtos',
-  //   children: [
-  //     { path: ':id', component:  PodutosInsertEditComponent}
-  //   ]
-  // },
+  {
+    path: 'produtos',
+    component: PodutosMainComponent
+  },
+  {
+    path: 'produtos',
+    children: [
+      { path: ':id', component:  PodutosInsertEditComponent}
+    ]
+  },
   {
     path: 'categorias',
     component: CategoriaMainComponent

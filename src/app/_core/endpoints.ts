@@ -4,7 +4,7 @@ export const CLIENTE = 'clientes';
 export const CLIENTE_ENDERECOS = 'clientes_enderecos';
 export const CLIENTE_CONTATOS = 'clientes_contatos';
 
-export const PRODUTOS = 'produto';
+export const PRODUTOS = 'produtos';
 
 export const CATEGORIAS = 'categoria';
 

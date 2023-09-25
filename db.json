@@ -125,9 +125,28 @@
       "cliente": 1
     }
   ],
-  "produtos": {
-    "data": []
-  },
+  "produtos": [
+    {
+      "disponivelSite": false,
+      "nome": "andaime 2m",
+      "categoria": 1,
+      "preco": "2,90",
+      "estoqueAtual": "200",
+      "alertaEstoqueMinimo": "10",
+      "descricao": "",
+      "id": 1
+    },
+    {
+      "disponivelSite": "",
+      "nome": "joelho",
+      "categoria": "1",
+      "preco": "2,90",
+      "estoqueAtual": "200",
+      "alertaEstoqueMinimo": "10",
+      "descricao": "",
+      "id": 2
+    }
+  ],
   "categoria": [
     {
       "disponivelSite": false,

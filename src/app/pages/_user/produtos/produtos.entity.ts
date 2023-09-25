@@ -1,13 +1,13 @@
-import {AbstractEntity, DataServer, DgTableColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {PRODUTOS} from "../../../_core/endpoints";
 import {CategoriasEntity} from "../categorias/categorias.entity";
 
 @DataServer({
-  path: environment.apiUrl,
+  path: environment.apiUrl_mock,
   context: PRODUTOS
 })
-export class ProdutosEntity extends AbstractEntity {
+export class ProdutosEntity extends AbstractEntity2 {
 
   constructor(
     id?: number | string,
@@ -17,6 +17,7 @@ export class ProdutosEntity extends AbstractEntity {
     estoqueAtual?: string,
     alertaEstoqueMinimo?: string,
     disponivelSite?: boolean,
+    status?: boolean,
     descricao?: string,
   ) {
     super();
@@ -28,14 +29,20 @@ export class ProdutosEntity extends AbstractEntity {
     this.alertaEstoqueMinimo = alertaEstoqueMinimo;
     this.disponivelSite = !!disponivelSite;
     this.descricao = descricao;
+    this.status = !!status;
   }
 
-  @DgTableColumn({ columnName: 'nome' })
+  @DynamicColumn({ headerName: 'nome' })
   nome: string | undefined
   categoria: CategoriasEntity | undefined
+  @DynamicColumn({ headerName: 'Preço atual' })
   preco: string | undefined
+  @DynamicColumn({ headerName: 'Estoque' })
   estoqueAtual: string | undefined
+  @DynamicColumn({ headerName: 'Estoque mínimo' })
   alertaEstoqueMinimo: string | undefined
+  @DynamicColumn({ headerName: 'Status' })
+  status: boolean = false
   disponivelSite: boolean = false
   descricao: string | undefined
 }

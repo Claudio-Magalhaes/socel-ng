@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractInsertEdit, InsertEditConfig} from "@datagrupo/dg-crud";
+import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {CategoriasEntity} from "../categorias.entity";
-import {environment} from "../../../../../environments/environment";
-import {CATEGORIAS} from "../../../../_core/endpoints";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -10,23 +8,21 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   templateUrl: './categoria-insert-edit.component.html',
   styleUrls: ['./categoria-insert-edit.component.scss']
 })
-export class CategoriaInsertEditComponent extends AbstractInsertEdit<CategoriasEntity> implements OnInit {
+export class CategoriaInsertEditComponent extends AbstractInsertEdit2<CategoriasEntity> implements OnInit {
+
+  rootEntity = new CategoriasEntity()
 
   public form = new FormGroup({
     nome: new FormControl('', [Validators.required]),
     disponivelSite: new FormControl('')
   })
 
-  constructor(public config: InsertEditConfig) {
-    super(config, { path: environment.apiUrl, context: CATEGORIAS })
+  constructor(public config: InsertEditConfig2) {
+    super(config)
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-  }
-
-  initNewEntity(): void {
-    this.entity = new CategoriasEntity();
   }
 
   override afterFetchEntity() {

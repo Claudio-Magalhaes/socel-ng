@@ -18,7 +18,7 @@ import {configLocalDynamicTable} from "./_core/dg-ng-util/config-local-dynamic-t
 
 ConfigDynamicTable.set(configLocalDynamicTable)
 // ConfigDgTable.set(configLocalDgTable)
-// ConfigDgCurd.set(ConfigLocalDgCrud)
+ConfigDgCurd.set(ConfigLocalDgCrud)
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';

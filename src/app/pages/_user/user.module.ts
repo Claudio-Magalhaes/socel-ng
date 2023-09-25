@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {UserRoutingModule} from "./user-routing.module";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {ClientesModule} from "./clientes/clientes.module";
+import {CategoriasModule} from "./categorias/categorias.module";
 // import {CategoriasModule} from "./categorias/categorias.module";
 // import {ProdutosModule} from "./produtos/produtos.module";
 // import {LocacaoModule} from "./locacao/locacao.module";
@@ -21,7 +22,7 @@ import {ClientesModule} from "./clientes/clientes.module";
     UserRoutingModule,
     DashboardModule,
     ClientesModule,
-    // CategoriasModule,
+    CategoriasModule,
     // ProdutosModule,
     // LocacaoModule,
     // LancamentosModule,

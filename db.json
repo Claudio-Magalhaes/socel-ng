@@ -127,5 +127,12 @@
   ],
   "produtos": {
     "data": []
-  }
+  },
+  "categoria": [
+    {
+      "disponivelSite": false,
+      "nome": "ferro fundido",
+      "id": 1
+    }
+  ]
 }

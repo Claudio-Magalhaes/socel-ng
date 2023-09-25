@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoriaMainComponent } from './categoria-main/categoria-main.component';
-import { CategoriaInsertEditComponent } from './categoria-insert-edit/categoria-insert-edit.component';
 import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
+import {
+  CdkDynamicTableModule, DgPaginatorModule,
+  DgTableModule
+} from "dg-ng-util";
+import {CategoriaInsertEditComponent} from "./categoria-insert-edit/categoria-insert-edit.component";
 
 
 
@@ -19,7 +23,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     UiModule,
     DgCrudModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DgTableModule,
+    CdkDynamicTableModule,
+    DgPaginatorModule,
   ]
 })
 export class CategoriasModule { }

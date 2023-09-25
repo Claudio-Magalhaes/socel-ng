@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {DashboardMainComponent} from "./dashboard/dashboard-main/dashboard-main.component";
 import {ClientesMainComponent} from "./clientes/clientes-main/clientes-main.component";
 import {ClientesInsertEditComponent} from "./clientes/clientes-insert-edit/clientes-insert-edit.component";
+import {CategoriaMainComponent} from "./categorias/categoria-main/categoria-main.component";
+import {CategoriaInsertEditComponent} from "./categorias/categoria-insert-edit/categoria-insert-edit.component";
 
 
 
@@ -33,16 +35,16 @@ const routes: Routes = [
   //     { path: ':id', component:  PodutosInsertEditComponent}
   //   ]
   // },
-  // {
-  //   path: 'categorias',
-  //   component: CategoriaMainComponent
-  // },
-  // {
-  //   path: 'categorias',
-  //   children: [
-  //     { path: ':id', component:  CategoriaInsertEditComponent}
-  //   ]
-  // },
+  {
+    path: 'categorias',
+    component: CategoriaMainComponent
+  },
+  {
+    path: 'categorias',
+    children: [
+      { path: ':id', component:  CategoriaInsertEditComponent}
+    ]
+  },
   // {
   //   path: 'servicos',
   //   component: ServicosMainComponent

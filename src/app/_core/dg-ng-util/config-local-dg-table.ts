@@ -1,4 +1,4 @@
-import {setConfigDgTable} from "dg-ng-util";
+import {setConfigDgTable} from "@datagrupo/dg-ng-util";
 
 
 export const configLocalDgTable: setConfigDgTable = {

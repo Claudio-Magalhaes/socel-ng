@@ -3,7 +3,7 @@ import {UsuariosEntity} from "../usuarios.entity";
 import {
   CdkDynamicTable,
   CdkDynamicTableService
-} from "dg-ng-util";
+} from "@datagrupo/dg-ng-util";
 import {ServicoEntity} from "../../servicos/servico.entity";
 import {Router} from "@angular/router";
 

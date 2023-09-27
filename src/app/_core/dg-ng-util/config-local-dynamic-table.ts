@@ -1,4 +1,4 @@
-import {setConfigDynamicTable} from "dg-ng-util";
+import {setConfigDynamicTable} from "@datagrupo/dg-ng-util";
 import {environment} from "../../../environments/environment";
 
 export const configLocalDynamicTable: setConfigDynamicTable = {

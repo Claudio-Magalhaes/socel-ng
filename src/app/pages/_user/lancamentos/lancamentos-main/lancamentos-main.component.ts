@@ -4,7 +4,7 @@ import {ModalLancamentoComponent} from "../sub-componsnts/modal-lancamento/modal
 import {
   CdkDynamicTable,
   CdkDynamicTableService
-} from "dg-ng-util";
+} from "@datagrupo/dg-ng-util";
 
 @Component({
   selector: 'app-lancamentos-main',

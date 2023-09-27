@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientesEntity} from "../clientes.entity";
-import {CdkDynamicTable, CdkDynamicTableService} from "dg-ng-util";
+import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util";
 
 @Component({
   selector: 'app-clientes-main',

@@ -3,7 +3,7 @@ import {LocacaoEntity} from "../locacao.entity";
 import {
   CdkDynamicTable,
   CdkDynamicTableService
-} from "dg-ng-util";
+} from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
 
 @Component({

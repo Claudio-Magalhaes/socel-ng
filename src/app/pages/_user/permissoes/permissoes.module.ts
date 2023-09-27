@@ -9,7 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {
   CdkDynamicTableModule, DgPaginatorModule,
   DgTableModule
-} from "dg-ng-util";
+} from "@datagrupo/dg-ng-util";
 
 
 @NgModule({

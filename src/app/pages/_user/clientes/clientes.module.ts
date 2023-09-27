@@ -10,7 +10,7 @@ import {NgxMaskModule} from "ngx-mask";
 import {
   CdkDynamicTableModule, DgModalModule, DgPaginatorModule,
   DgTableModule
-} from "dg-ng-util";
+} from "@datagrupo/dg-ng-util";
 import {ContatosComponent} from "./sub-components/contatos/contatos.component";
 import {EnderecosComponent} from "./sub-components/enderecos/enderecos.component";
 

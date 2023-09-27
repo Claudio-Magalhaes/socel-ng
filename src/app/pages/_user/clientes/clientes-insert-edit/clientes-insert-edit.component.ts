@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EnderecoEntity} from "../_entitys/endereco.entity";
 import {ContatoEntity} from "../_entitys/contato.entity";
 import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
-import {CdkDynamicTable, CdkDynamicTableService} from "dg-ng-util";
+import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util";
 import {ClientesEntity} from "../clientes.entity";
 import {ContatosComponent} from "../sub-components/contatos/contatos.component";
 import {EnderecosComponent} from "../sub-components/enderecos/enderecos.component";

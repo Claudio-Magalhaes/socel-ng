@@ -6,7 +6,7 @@ import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
 import {ModalLancamentoComponent} from './sub-componsnts/modal-lancamento/modal-lancamento.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {CdkDynamicTableModule, DgModalModule, DgPaginatorModule, DgTableModule} from "dg-ng-util";
+import {CdkDynamicTableModule, DgModalModule, DgPaginatorModule, DgTableModule} from "@datagrupo/dg-ng-util";
 
 
 @NgModule({

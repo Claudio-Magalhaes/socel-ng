@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ContatoEntity} from "../../_entitys/contato.entity";
 import {GenericService} from "../../../../../services/generic-service/generic.service";
-import {DgModalComponent} from "dg-ng-util";
+import {DgModalComponent} from "@datagrupo/dg-ng-util";
 import {CLIENTE_CONTATOS} from "../../../../../_core/endpoints";
 import Swal from 'sweetalert2';
 

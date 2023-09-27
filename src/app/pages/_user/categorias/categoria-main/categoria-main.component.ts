@@ -3,7 +3,7 @@ import {CategoriasEntity} from "../categorias.entity";
 import {
   CdkDynamicTable,
   CdkDynamicTableService
-} from "dg-ng-util";
+} from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
 
 @Component({

@@ -4,7 +4,7 @@ import {LancamentoEntity} from "../../lancamento.entity";
 import {GenericService} from "../../../../../services/generic-service/generic.service";
 import {CLIENTE, LANCAMENTO} from "../../../../../_core/endpoints";
 import {ClientesEntity} from "../../../clientes/clientes.entity";
-import {DgModalComponent} from "dg-ng-util";
+import {DgModalComponent} from "@datagrupo/dg-ng-util";
 
 @Component({
   selector: 'subComponent-modal-lancamento',

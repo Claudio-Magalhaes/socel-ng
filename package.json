@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@datagrupo/dg-crud": "^1.0.1",
+    "@datagrupo/dg-ng-util": "^0.2.1",
     "@popperjs/core": "^2.11.6",
     "@sweetalert2/ngx-sweetalert2": "^11.0.0",
     "bootstrap": "^5.2.1",
@@ -31,7 +32,6 @@
     "sweetalert2": "^11.6.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",
-    "dg-ng-util": "../../../../../datagrupo/_libs/libs-dg-ng-util/dist/dg-ng-util",
     "dg-crud": "../../../../../datagrupo/_libs/lib-dg-crud/dist/dg-crud"
   },
   "devDependencies": {

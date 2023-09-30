@@ -7,8 +7,9 @@ import {UiModule} from "../../../shared/ui/ui.module";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {
-  CdkDynamicTableModule,
-  DgTableModule
+    CdkDynamicGroupModule,
+    CdkDynamicTableModule,
+    DgTableModule
 } from "@datagrupo/dg-ng-util";
 
 
@@ -17,15 +18,16 @@ import {
     PodutosInsertEditComponent,
     PodutosMainComponent
   ],
-  imports: [
-    CommonModule,
-    DgCrudModule,
-    UiModule,
-    RouterModule,
-    ReactiveFormsModule,
-    DgTableModule,
-    CdkDynamicTableModule
-  ]
+    imports: [
+        CommonModule,
+        DgCrudModule,
+        UiModule,
+        RouterModule,
+        ReactiveFormsModule,
+        DgTableModule,
+        CdkDynamicTableModule,
+        CdkDynamicGroupModule
+    ]
 })
 export class ProdutosModule {
 }

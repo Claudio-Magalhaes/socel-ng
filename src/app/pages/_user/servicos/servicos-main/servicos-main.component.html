@@ -2,6 +2,25 @@
 
   <card>
     <div class="card-header">
+      <h4 class="card-title">Clientes</h4>
+      <custom-filters group="servicos">
+        <div body-filters>
+          <form [formGroup]="form">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+              <label class="form-label">Nome</label>
+              <input
+                class="form-control"
+                formControlName="nome"
+                dg-dynamic-group="servicos"
+                paramName="nome"
+                (clearParams)="form.patchValue({ nome: '' })"
+              >
+            </div>
+          </form>
+        </div>
+      </custom-filters>
+    </div>
+    <div class="card-header">
       <h4 class="card-title">Serviços</h4>
     </div>
     <div class="card-body">

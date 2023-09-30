@@ -5,6 +5,8 @@ import {
   CdkDynamicTableService
 } from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
+import {produtosFilters} from "../produtos.filters";
 
 @Component({
   selector: 'app-podutos-main',
@@ -12,6 +14,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./podutos-main.component.scss']
 })
 export class PodutosMainComponent implements OnInit {
+
+  form = new FormGroup({
+    nome: new FormControl('')
+  })
 
   table: CdkDynamicTable.tableClass;
 
@@ -25,10 +31,11 @@ export class PodutosMainComponent implements OnInit {
           name: 'Editar',
           dbClick: true,
           action: (val: ProdutosEntity) => {
-            this.router.navigate(['user', 'produtos', val?.id])
+            this.router.navigate(['user', 'produtos', val?.id]).then()
           }
         }
-      }
+      },
+      filters: { group: 'produtos', filters: produtosFilters}
     })
   }
 

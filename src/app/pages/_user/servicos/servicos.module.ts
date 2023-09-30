@@ -7,8 +7,9 @@ import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {
-  CdkDynamicTableModule,
-  DgPaginatorModule, DgTableModule
+    CdkDynamicGroupModule,
+    CdkDynamicTableModule,
+    DgPaginatorModule, DgTableModule
 } from "@datagrupo/dg-ng-util";
 
 
@@ -17,15 +18,16 @@ import {
     ServicosMainComponent,
     ServicosInsertEditComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule,
-    ReactiveFormsModule,
-    DgPaginatorModule,
-    CdkDynamicTableModule,
-    DgTableModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule,
+        DgPaginatorModule,
+        CdkDynamicTableModule,
+        DgTableModule,
+        CdkDynamicGroupModule
+    ]
 })
 export class ServicosModule { }

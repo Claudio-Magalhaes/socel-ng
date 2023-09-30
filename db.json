@@ -162,6 +162,11 @@
       "disponivelSite": false,
       "nome": "ferro fundido",
       "id": 1
+    },
+    {
+      "disponivelSite": "",
+      "nome": "madeira de pino",
+      "id": 2
     }
   ],
   "servico": [
@@ -170,6 +175,12 @@
       "valorBase": "251,00",
       "descricao": "",
       "id": 1
+    },
+    {
+      "nome": "torneiro",
+      "valorBase": "250",
+      "descricao": "",
+      "id": 2
     }
   ],
   "permissao": [

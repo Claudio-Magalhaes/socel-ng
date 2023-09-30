@@ -5,6 +5,7 @@ import {
   CdkDynamicTableService
 } from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-categoria-main',
@@ -12,6 +13,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./categoria-main.component.scss']
 })
 export class CategoriaMainComponent implements OnInit {
+
+  form = new FormGroup({
+    nome: new FormControl('')
+  })
 
   table: CdkDynamicTable.tableClass;
 
@@ -25,6 +30,11 @@ export class CategoriaMainComponent implements OnInit {
           name: "Editar",
           dbClick: true,
           action: (val: CategoriasEntity) => router.navigate(['user', 'categorias', val?.id]).then()
+        }
+      },
+      filters: {
+        group: 'categorias', filters: {
+          nome: { findFunc: val => { return { nome_like: val } } }
         }
       }
     })

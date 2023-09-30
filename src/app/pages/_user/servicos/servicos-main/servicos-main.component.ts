@@ -5,6 +5,7 @@ import {
   CdkDynamicTableService
 } from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-servicos-main',
@@ -12,6 +13,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./servicos-main.component.scss']
 })
 export class ServicosMainComponent implements OnInit {
+
+  form = new FormGroup({
+    nome: new FormControl('')
+  })
 
   table: CdkDynamicTable.tableClass;
 
@@ -28,7 +33,10 @@ export class ServicosMainComponent implements OnInit {
             this.router.navigate(['user', 'servicos', val?.id]).then()
           }
         }
-      }
+      },
+      filters: { group: 'servicos', filters: {
+        nome: { findFunc: val => { return { nome_like: val } } }
+        } }
     })
   }
 

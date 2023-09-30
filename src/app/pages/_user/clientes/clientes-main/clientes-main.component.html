@@ -8,7 +8,13 @@
           <form [formGroup]="form">
             <div class="col-4">
               <label class="form-label">Nome</label>
-              <input class="form-control" formControlName="nome" dg-dynamic-group="clientes" paramName="nome">
+              <input
+                class="form-control"
+                formControlName="nome"
+                dg-dynamic-group="clientes"
+                paramName="nome"
+                (clearParams)="form.patchValue({ nome: '' })"
+              >
             </div>
           </form>
         </div>

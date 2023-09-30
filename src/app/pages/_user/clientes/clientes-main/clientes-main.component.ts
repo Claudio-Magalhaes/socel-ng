@@ -31,10 +31,8 @@ export class ClientesMainComponent implements OnInit {
           }
         }
       },
-      // group: { group: 'clientes' },
+      filters: { group: 'clientes', filters: clienteFilters },
     })
-    this.table.controls.filters.start('clientes')
-    this.table.controls.filters.setObject(clienteFilters)
   }
 
   ngOnInit(): void {

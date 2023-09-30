@@ -3,6 +3,16 @@
   <card>
     <div class="card-header">
       <h4 class="card-title">Clientes</h4>
+      <custom-filters group="clientes">
+        <div body-filters>
+          <form [formGroup]="form">
+            <div class="col-4">
+              <label class="form-label">Nome</label>
+              <input class="form-control" formControlName="nome" dg-dynamic-group="clientes" paramName="nome">
+            </div>
+          </form>
+        </div>
+      </custom-filters>
     </div>
     <div class="card-body">
       <dg-table dg-dynamic-table [dynamicTable]="table"></dg-table>

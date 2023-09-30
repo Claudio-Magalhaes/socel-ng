@@ -9,6 +9,16 @@
       "email": "",
       "documento": "1111",
       "id": 1
+    },
+    {
+      "enderecos": [],
+      "contatos": [],
+      "nome": "havana",
+      "sexo": "",
+      "pessoa_fisica": "0",
+      "email": "",
+      "documento": "000",
+      "id": 2
     }
   ],
   "clientes_enderecos": [

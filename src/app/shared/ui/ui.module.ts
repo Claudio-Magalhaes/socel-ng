@@ -4,22 +4,27 @@ import { CardComponent } from './card/card.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {PageFooterComponent} from "./page-footer/page-footer.component";
+import { FiltersComponent } from './filters/filters.component';
+import {CdkDynamicGroupModule} from "@datagrupo/dg-ng-util";
 
 
 
 @NgModule({
   declarations: [
     CardComponent,
-    PageFooterComponent
+    PageFooterComponent,
+    FiltersComponent
   ],
   imports: [
     CommonModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    CdkDynamicGroupModule
   ],
    exports: [
      CardComponent,
-     PageFooterComponent
+     PageFooterComponent,
+     FiltersComponent
    ]
 })
 export class UiModule { }

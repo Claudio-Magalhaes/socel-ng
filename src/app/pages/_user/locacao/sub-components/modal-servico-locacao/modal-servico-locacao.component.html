@@ -1,1 +1,28 @@
-<p>modal-servico-locacao works!</p>
+<dg-modal #modal title="Serviço" (afterClose)="clear()">
+  <div modal-body>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-8">
+          <label class="form-label">Serviço</label>
+          <dg-autocomplete
+            classes="form-control"
+            formControlName="servico"
+            label="nome"
+            typeFilter="outside"
+            [data]="listServicos"
+          >
+          </dg-autocomplete>
+        </div>
+        <div class="col-4">
+          <label class="form-label">Valor</label>
+          <input class="form-control" formControlName="valor">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div modal-footer>
+    <button (click)="close()" class="btn btn-secondary m-1">Sair</button>
+    <button (click)="save()" class="btn btn-success m-1">Salvar</button>
+    <button (click)="save(true)" class="btn btn-success m-1">Salvar e adiconar próximo</button>
+  </div>
+</dg-modal>

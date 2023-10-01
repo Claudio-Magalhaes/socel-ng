@@ -22,12 +22,20 @@ export class ModalProdutoLocacaoComponent implements OnInit {
     quantidade: new FormControl('', [Validators.required]),
   })
 
+  public listProdutos: ProdutosEntity[] = [];
+
   constructor(private service: GenericService) { }
 
   ngOnInit(): void {
   }
 
   open(data?: ProdutosEntity) {
+    this.service.get(PRODUTOS).subscribe(
+      resp => {
+        this.listProdutos = resp;
+      }
+    )
+
     if (!!data) {
       this.service.get(PRODUTOS, { params: { id: data.id } }).subscribe(
         resp => {

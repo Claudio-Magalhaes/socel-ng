@@ -3,7 +3,14 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {LocacaoEntity} from "../locacao.entity";
 import {environment} from "../../../../../environments/environment";
-import {CLIENTE, CLIENTE_CONTATOS, CLIENTE_ENDERECOS, LOCACAO, LOCACAO_PRODUTOS} from "../../../../_core/endpoints";
+import {
+  CLIENTE,
+  CLIENTE_CONTATOS,
+  CLIENTE_ENDERECOS,
+  LOCACAO,
+  LOCACAO_PRODUTOS,
+  LOCACAO_SERVICOS
+} from "../../../../_core/endpoints";
 import {EnderecoEntity} from "../../clientes/_entitys/endereco.entity";
 import {ContatoEntity} from "../../clientes/_entitys/contato.entity";
 import {ClientesEntity} from "../../clientes/clientes.entity";
@@ -46,7 +53,7 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
 
     this.tableProtudos = this.CdkTable.create('request', {
       columns: [
-        { name: 'produto', headerName: 'Produto' },
+        { name: 'produto', headerName: 'Produto', resource: val => val?.nome || '--' },
         { name: 'quantidade', headerName: 'Quantidade' },
       ],
       apiData: {
@@ -55,7 +62,13 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
       }
     })
 
-    this.tableServicos = this.CdkTable.createByCrudEnity2(new ServicoEntity())
+    this.tableServicos = this.CdkTable.create('request', {
+      columns: [
+        { name: 'servico', headerName: 'Serviço', resource: val => val.nome || '--' },
+        { name: 'valor', headerName: 'valor' },
+      ],
+      apiData: { path: environment.apiUrl_mock, context: LOCACAO_SERVICOS }
+    })
     this.tableServicos.controls.apiData.set({ context: 'locacao_servicos' })
 
     this.service.get(CLIENTE).subscribe(

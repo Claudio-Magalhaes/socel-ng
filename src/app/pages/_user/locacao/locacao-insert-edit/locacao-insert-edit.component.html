@@ -78,24 +78,6 @@
           <h4 class="card-title">Produtos</h4>
           <button (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
         </div>
-        <div class="card-header">
-          <div class="alert alert-success" role="alert">
-            <h5>Adicionar Produto</h5>
-            <div class="row">
-              <div class="col-6">
-                <label class="form-label">Produto</label>
-                <input class="form-control">
-              </div>
-              <div class="col-4">
-                <label class="form-label">Quantidade</label>
-                <input class="form-control">
-              </div>
-              <div class="col-2 d-flex align-items-end">
-                <button class="btn btn-success">Adicionar</button>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="card-body">
           <div class="row">
             <dg-table dg-dynamic-table [dynamicTable]="tableProtudos">
@@ -112,15 +94,13 @@
       <card>
         <div class="card-header">
           <h4 class="card-title">Serviços</h4>
+          <button (click)="modalServico.open()" class="btn btn-success">Adicionar</button>
         </div>
         <div class="card-body">
           <div class="row">
             <dg-table dg-dynamic-table [dynamicTable]="tableServicos">
             </dg-table>
           </div>
-        </div>
-        <div class="card-footer">
-
         </div>
         <div class="card-footer">
           <p>Valor total de serviços: R$ 250,00</p>
@@ -140,3 +120,4 @@
 
 
 <modal-produto-locacao #modalProduto (afterSave)="tableProtudos.find()" [licacaoId]="entity?.id"></modal-produto-locacao>
+<modal-servico-locacao #modalServico (afterSave)="tableServicos.find()" [licacaoId]="entity?.id"></modal-servico-locacao>

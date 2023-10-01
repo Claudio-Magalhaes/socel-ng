@@ -237,22 +237,31 @@
   "locacao_produtos": [
     {
       "id": 1,
-      "produto": "produto x",
-      "quantidade": "12",
-      "locacao": 1
-    },
-    {
-      "id": 2,
-      "produto": "produto y",
-      "quantidade": "6",
-      "locacao": 1
-    },
-    {
-      "id": 3,
-      "produto": "produto z",
-      "quantidade": "8",
+      "produto": {
+        "disponivelSite": false,
+        "nome": "andaime 2m",
+        "categoria": 1,
+        "preco": "2,90",
+        "estoqueAtual": "200",
+        "alertaEstoqueMinimo": "10",
+        "descricao": "",
+        "id": 1
+      },
+      "quantidade": "2",
       "locacao": 1
     }
   ],
-  "locacao_servicos": []
+  "locacao_servicos": [
+    {
+      "id": 1,
+      "servico": {
+        "nome": "Retifica",
+        "valorBase": "251,00",
+        "descricao": "",
+        "id": 1
+      },
+      "valor": "12",
+      "locacao": 1
+    }
+  ]
 }

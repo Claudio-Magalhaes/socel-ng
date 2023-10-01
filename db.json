@@ -40,7 +40,7 @@
       "cidade": "Rio de Janeiro",
       "bairro": "Penha Circular",
       "uf": "RJ",
-      "rua": "Rua Ourique",
+      "rua": "AV.GOVERNADOR LEONEL BRIZOLA",
       "complemento": "teste",
       "cliente": 1
     },
@@ -63,7 +63,7 @@
       "uf": "RJ",
       "rua": "Rua Ourique",
       "complemento": "complemento",
-      "cliente": 1,
+      "cliente": 2,
       "id": 4
     },
     {
@@ -75,7 +75,7 @@
       "uf": "RJ",
       "rua": "Rua Ourique",
       "complemento": "apto 201",
-      "cliente": 1
+      "cliente": 2
     },
     {
       "id": 6,
@@ -102,7 +102,7 @@
   ],
   "clientes_contatos": [
     {
-      "descricao": "teste 2",
+      "descricao": "Juliano",
       "telefone": "22222222222",
       "email": "",
       "principal": "",
@@ -111,24 +111,24 @@
       "cliente": 1
     },
     {
-      "descricao": "teste",
+      "descricao": "Monteiro Lobato",
       "telefone": "21980384668",
       "email": "claudio.magalhaes@outlook.com.br",
       "principal": "",
-      "cliente": 1,
+      "cliente": 2,
       "id": 2
     },
     {
-      "descricao": "teste 3",
+      "descricao": "Tio patinhas",
       "telefone": "22222222222",
       "email": "claudio.magalhaes@outlook.com.br",
       "principal": "",
-      "cliente": 1,
+      "cliente": 2,
       "id": 3
     },
     {
       "id": 4,
-      "descricao": "teste 4",
+      "descricao": "Professor Xavier",
       "telefone": "22222222222",
       "email": "claudio.magalhaes@outlook.com.br",
       "principal": "",
@@ -215,7 +215,44 @@
       "descricao": "",
       "observacao": "",
       "id": 1
+    },
+    {
+      "cliente": {
+        "id": 1
+      },
+      "contato": {
+        "id": "1"
+      },
+      "endereco": {
+        "id": "2"
+      },
+      "dataInicial": "2023-09-30",
+      "dataFinal": "2023-10-30",
+      "descricao": "",
+      "observacao": "",
+      "id": 2
     }
   ],
-  "lancamento": []
+  "lancamento": [],
+  "locacao_produtos": [
+    {
+      "id": 1,
+      "produto": "produto x",
+      "quantidade": "12",
+      "locacao": 1
+    },
+    {
+      "id": 2,
+      "produto": "produto y",
+      "quantidade": "6",
+      "locacao": 1
+    },
+    {
+      "id": 3,
+      "produto": "produto z",
+      "quantidade": "8",
+      "locacao": 1
+    }
+  ],
+  "locacao_servicos": []
 }

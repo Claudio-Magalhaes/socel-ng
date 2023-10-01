@@ -3,11 +3,14 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {LocacaoEntity} from "../locacao.entity";
 import {environment} from "../../../../../environments/environment";
-import {CLIENTE, CLIENTE_CONTATOS, CLIENTE_ENDERECOS, LOCACAO} from "../../../../_core/endpoints";
+import {CLIENTE, CLIENTE_CONTATOS, CLIENTE_ENDERECOS, LOCACAO, LOCACAO_PRODUTOS} from "../../../../_core/endpoints";
 import {EnderecoEntity} from "../../clientes/_entitys/endereco.entity";
 import {ContatoEntity} from "../../clientes/_entitys/contato.entity";
 import {ClientesEntity} from "../../clientes/clientes.entity";
 import {GenericService} from "../../../../services/generic-service/generic.service";
+import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util";
+import {ProdutosEntity} from "../../produtos/produtos.entity";
+import {ServicoEntity} from "../../servicos/servico.entity";
 
 @Component({
   selector: 'app-locacao-insert-edit',
@@ -17,6 +20,8 @@ import {GenericService} from "../../../../services/generic-service/generic.servi
 export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntity> implements OnInit {
 
   rootEntity = new LocacaoEntity()
+  tableProtudos: CdkDynamicTable.tableClass;
+  tableServicos: CdkDynamicTable.tableClass;
 
   public form = new FormGroup({
     cliente: new FormControl('', [Validators.required]),
@@ -34,9 +39,24 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
 
   constructor(
     public config: InsertEditConfig2,
-    public service: GenericService
+    public service: GenericService,
+    private CdkTable: CdkDynamicTableService
   ) {
-    super(config, { path: environment.apiUrl, context: LOCACAO })
+    super(config)
+
+    this.tableProtudos = this.CdkTable.create('request', {
+      columns: [
+        { name: 'produto', headerName: 'Produto' },
+        { name: 'quantidade', headerName: 'Quantidade' },
+      ],
+      apiData: {
+        path: environment.apiUrl_mock,
+        context: LOCACAO_PRODUTOS
+      }
+    })
+
+    this.tableServicos = this.CdkTable.createByCrudEnity2(new ServicoEntity())
+    this.tableServicos.controls.apiData.set({ context: 'locacao_servicos' })
 
     this.service.get(CLIENTE).subscribe(
       resp => {
@@ -51,14 +71,14 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
     )
   }
 
-  loadSelects(clienteId: number | string) {
-    this.service.get(CLIENTE_CONTATOS, { params: { clienteId } }).subscribe(
+  loadSelects(cliente: number | string) {
+    this.service.get(CLIENTE_CONTATOS, { params: { cliente } }).subscribe(
       resp => {
         this.listContato = resp;
       }
     )
 
-    this.service.get(CLIENTE_ENDERECOS, { params: { clienteId } }).subscribe(
+    this.service.get(CLIENTE_ENDERECOS, { params: { cliente } }).subscribe(
       resp => {
         this.listEndereco = resp;
       }
@@ -79,6 +99,9 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
       contato: this.entity.contato?.id,
       endereco: this.entity.endereco?.id
     })
+
+    this.tableServicos.controls.apiData.set({ params: { locacao: this.entity.id } })
+    this.tableProtudos.controls.apiData.set({ params: { locacao: this.entity.id } })
   }
 
   override beforeSaveEntity(): boolean {

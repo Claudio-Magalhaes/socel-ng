@@ -7,26 +7,32 @@ import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {
-  CdkDynamicTableModule,
-  DgPaginatorModule, DgTableModule
+    CdkDynamicTableModule, DgAutocomplete2Module, DgModalModule,
+    DgPaginatorModule, DgTableModule
 } from "@datagrupo/dg-ng-util";
+import { ModalProdutoLocacaoComponent } from './sub-components/modal-produto-locacao/modal-produto-locacao.component';
+import { ModalServicoLocacaoComponent } from './sub-components/modal-servico-locacao/modal-servico-locacao.component';
 
 
 
 @NgModule({
   declarations: [
     LocacaoMainComponent,
-    LocacaoInsertEditComponent
+    LocacaoInsertEditComponent,
+    ModalProdutoLocacaoComponent,
+    ModalServicoLocacaoComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule,
-    ReactiveFormsModule,
-    DgPaginatorModule,
-    CdkDynamicTableModule,
-    DgTableModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule,
+        DgPaginatorModule,
+        CdkDynamicTableModule,
+        DgTableModule,
+        DgAutocomplete2Module,
+        DgModalModule
+    ]
 })
 export class LocacaoModule { }

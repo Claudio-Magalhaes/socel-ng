@@ -4,6 +4,7 @@ import {ContatoEntity} from "../clientes/_entitys/contato.entity";
 import {EnderecoEntity} from "../clientes/_entitys/endereco.entity";
 import {environment} from "../../../../environments/environment";
 import {LOCACAO} from "../../../_core/endpoints";
+import {LancamentoEntity} from "../lancamentos/lancamento.entity";
 
 @DataServer({
   path: environment.apiUrl_mock,
@@ -34,13 +35,21 @@ export class LocacaoEntity extends AbstractEntity2 {
     this.obsercacoes = obsercacoes;
   }
 
-  @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => val.nome || '--' })
+  @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => String(val.id || '--') })
   public cliente: ClientesEntity | undefined
+  @DynamicColumn({ headerName: 'Data Início' })
+  public dataInicial: string | undefined
+  @DynamicColumn({ headerName: 'Data Fim' })
+  public dataFinal: string | undefined
+  @DynamicColumn({ headerName: 'Status' })
+  public status: string | undefined
+  @DynamicColumn({ headerName: 'Valor' })
+  public valor: string | undefined
+  @DynamicColumn({ headerName: 'Faturamento', resource: val => 'CRIAR' })
+  public faturamento: LancamentoEntity | undefined
+
   public contato: ContatoEntity | undefined
   public endereco: EnderecoEntity | undefined
-  public status: string | undefined
-  public dataInicial: string | undefined
-  public dataFinal: string | undefined
   public descricao: string | undefined
   public obsercacoes: string | undefined
 

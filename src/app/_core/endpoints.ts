@@ -15,6 +15,7 @@ export const LANCAMENTO = 'lancamento';
 export const USUARIO = 'usuarios';
 
 export const LOCACAO = 'locacao';
+export const LOCACAO_PRODUTOS = 'locacao_produtos';
 
 export const PERMISSAO = 'permissao';
 

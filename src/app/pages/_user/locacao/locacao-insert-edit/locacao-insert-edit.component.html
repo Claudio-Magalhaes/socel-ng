@@ -9,23 +9,31 @@
           <div class="row">
             <div class="col-4">
               <label class="form-label">Cliente</label>
-              <select class="form-select" formControlName="cliente">
-                <option disabled selected value="">Selecione um cliente</option>
-                <option *ngFor="let cli of listClientes" [value]="cli.id">{{cli.nome}}</option>
-              </select>
+              <dg-autocomplete
+                formControlName="cliente"
+                typeFilter="outside"
+                [data]="listClientes"
+                key="id"
+                label="nome"
+                classes="form-control"
+              ></dg-autocomplete>
             </div>
             <div class="col-4">
-              <label class="form-label">Cliente</label>
+              <label class="form-label">Contato</label>
               <select class="form-select" formControlName="contato">
                 <option disabled selected value="">Selecione um cliente</option>
-                <option *ngFor="let con of listContato" [value]="con.id">{{con.telefone}} | {{con.descricao}}</option>
+                <option *ngFor="let item of listContato" [value]="item.id">
+                  Id: {{item?.id}} | Desc.:{{item?.descricao}} | Tel.:{{item?.telefone}} | Email:{{item?.email}}
+                </option>
               </select>
             </div>
             <div class="col-4">
-              <label class="form-label">Cliente</label>
+              <label class="form-label">Endereço</label>
               <select class="form-select" formControlName="endereco">
                 <option disabled selected value="">Selecione um cliente</option>
-                <option *ngFor="let end of listEndereco" [value]="end.id">{{end.descricao}} | {{end.rua}}</option>
+                <option *ngFor="let item of listEndereco" [value]="item.id">
+                  Id: {{item?.id}} | Desc.: {{item?.descricao}} | Rua: {{item?.rua}} | N: {{item?.numero}}
+                </option>
               </select>
             </div>
           </div>
@@ -63,6 +71,64 @@
         </div>
       </card>
     </div>
+
+    <div *ngIf="!!entity?.id" class="container-data">
+      <card>
+        <div class="card-header">
+          <h4 class="card-title">Produtos</h4>
+          <button (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
+        </div>
+        <div class="card-header">
+          <div class="alert alert-success" role="alert">
+            <h5>Adicionar Produto</h5>
+            <div class="row">
+              <div class="col-6">
+                <label class="form-label">Produto</label>
+                <input class="form-control">
+              </div>
+              <div class="col-4">
+                <label class="form-label">Quantidade</label>
+                <input class="form-control">
+              </div>
+              <div class="col-2 d-flex align-items-end">
+                <button class="btn btn-success">Adicionar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <dg-table dg-dynamic-table [dynamicTable]="tableProtudos">
+            </dg-table>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p>Valor total de produtos: R$ 250,00</p>
+        </div>
+      </card>
+    </div>
+
+    <div *ngIf="!!entity?.id" class="container-data">
+      <card>
+        <div class="card-header">
+          <h4 class="card-title">Serviços</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <dg-table dg-dynamic-table [dynamicTable]="tableServicos">
+            </dg-table>
+          </div>
+        </div>
+        <div class="card-footer">
+
+        </div>
+        <div class="card-footer">
+          <p>Valor total de serviços: R$ 250,00</p>
+        </div>
+      </card>
+    </div>
+
+
   </form>
 </div>
 
@@ -71,3 +137,6 @@
   <button class="btn btn-success" crud-salvar>Salvar e voltar</button>
   <button class="btn btn-secondary" crud-voltar>Voltar</button>
 </page-footer>
+
+
+<modal-produto-locacao #modalProduto (afterSave)="tableProtudos.find()" [licacaoId]="entity?.id"></modal-produto-locacao>

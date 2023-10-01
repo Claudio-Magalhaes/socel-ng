@@ -25,7 +25,7 @@ export class LocacaoMainComponent implements OnInit {
           name: 'Editar',
           dbClick: true,
           action: (val: LocacaoEntity) => {
-            this.router.navigate(['user', 'produtos', val?.id])
+            this.router.navigate(['user', 'locacoes', val?.id]).then()
           }
         }
       }

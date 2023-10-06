@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {SiteHomeComponent} from "./pages/_public/site-home/site-home.component";
+import {SiteHomeComponent} from "./pages/public/site-home/site-home.component";
 import {UserLayoutComponent} from "./layouts/user-layout/user-layout.component";
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'user',
     component: UserLayoutComponent,
     loadChildren: () =>
-      import('./pages/_user/user.module').then((m) => m.UserModule)
+      import('./pages/private/user.module').then((m) => m.UserModule)
   },
 
   {

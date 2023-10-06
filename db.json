@@ -3,7 +3,7 @@
     {
       "enderecos": [],
       "contatos": [],
-      "nome": "nome",
+      "nome": "Roberval",
       "sexo": "",
       "pessoa_fisica": "1",
       "email": "",
@@ -249,6 +249,21 @@
       },
       "quantidade": "2",
       "locacao": 1
+    },
+    {
+      "id": 2,
+      "produto": {
+        "disponivelSite": false,
+        "nome": "andaime 2m",
+        "categoria": 1,
+        "preco": "2,90",
+        "estoqueAtual": "200",
+        "alertaEstoqueMinimo": "10",
+        "descricao": "",
+        "id": 1
+      },
+      "quantidade": "2",
+      "locacao": 2
     }
   ],
   "locacao_servicos": [
@@ -261,6 +276,17 @@
         "id": 1
       },
       "valor": "12",
+      "locacao": 1
+    },
+    {
+      "id": 2,
+      "servico": {
+        "nome": "torneiro",
+        "valorBase": "250",
+        "descricao": "",
+        "id": 2
+      },
+      "valor": "16",
       "locacao": 1
     }
   ]

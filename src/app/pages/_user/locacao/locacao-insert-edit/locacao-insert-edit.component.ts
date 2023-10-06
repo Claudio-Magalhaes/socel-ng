@@ -137,4 +137,14 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
     return true;
   }
 
+  totaisTabelas(table: 'tableServicos' | 'tableProtudos') {
+    let total: number = 0;
+
+    this[table].data.dataSource.map((item: any) => {
+      console.log(item);
+      total = total + Number(item.valor) || 0
+    })
+
+    return total;
+  }
 }

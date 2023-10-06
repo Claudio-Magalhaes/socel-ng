@@ -75,8 +75,17 @@
     <div *ngIf="!!entity?.id" class="container-data">
       <card>
         <div class="card-header">
-          <h4 class="card-title">Produtos</h4>
-          <button (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
+          <div class="row">
+            <div class="col-4">
+              <h4 class="card-title">Produtos</h4>
+            </div>
+            <div class="col-6">
+              <h5 class="card-title">Valor total de produtos: R$ {{totaisTabelas('tableProtudos')}}</h5>
+            </div>
+            <div class="col-2">
+              <button (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="row">
@@ -84,17 +93,23 @@
             </dg-table>
           </div>
         </div>
-        <div class="card-footer">
-          <p>Valor total de produtos: R$ 250,00</p>
-        </div>
       </card>
     </div>
 
     <div *ngIf="!!entity?.id" class="container-data">
       <card>
         <div class="card-header">
-          <h4 class="card-title">Serviços</h4>
-          <button (click)="modalServico.open()" class="btn btn-success">Adicionar</button>
+          <div class="row">
+            <div class="col-4">
+              <h4 class="card-title">Serviços</h4>
+            </div>
+            <div class="col-6">
+              <h5 class="card-title">Valor total de serviços: R$ {{totaisTabelas('tableServicos')}}</h5>
+            </div>
+            <div class="col-2">
+            <button (click)="modalServico.open()" class="btn btn-success">Adicionar</button>
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="row">
@@ -102,12 +117,8 @@
             </dg-table>
           </div>
         </div>
-        <div class="card-footer">
-          <p>Valor total de serviços: R$ 250,00</p>
-        </div>
       </card>
     </div>
-
 
   </form>
 </div>

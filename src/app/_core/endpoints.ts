@@ -8,7 +8,7 @@ export const PRODUTOS = 'produtos';
 
 export const CATEGORIAS = 'categoria';
 
-export const SERVICO = 'servico';
+export const SERVICO = 'servicos';
 
 export const LANCAMENTO = 'lancamento';
 

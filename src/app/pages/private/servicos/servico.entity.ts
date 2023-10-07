@@ -3,7 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {SERVICO} from "../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl_mock,
+  path: environment.apiUrl,
   context: SERVICO
 })
 export class ServicoEntity extends AbstractEntity2 {

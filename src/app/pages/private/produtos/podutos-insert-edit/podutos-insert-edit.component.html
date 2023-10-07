@@ -22,15 +22,15 @@
         <div class="row">
           <div class="col-4">
             <label class="form-label">Preço de Locacao</label>
-            <input id="preco" class="form-control" type="text" formControlName="preco">
+            <input id="preco" mask="0||00||0,00||00,00||000,00||0000,00||00000,00" class="form-control" type="text" formControlName="preco">
           </div>
           <div class="col-4">
             <label class="form-label">Estoque Atual</label>
-            <input id="estoqu" class="form-control" type="text" formControlName="estoqueAtual">
+            <input id="estoqu" class="form-control" type="number" formControlName="estoqueAtual">
           </div>
           <div class="col-4">
             <label class="form-label">Alerta de Estoque mínimo</label>
-            <input id="alerta" class="form-control" type="text" formControlName="alertaEstoqueMinimo">
+            <input id="alerta" class="form-control" type="number" formControlName="alertaEstoqueMinimo">
           </div>
         </div>
 

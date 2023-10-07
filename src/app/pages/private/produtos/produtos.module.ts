@@ -11,6 +11,7 @@ import {
     CdkDynamicTableModule,
     DgTableModule
 } from "@datagrupo/dg-ng-util";
+import {NgxMaskModule} from "ngx-mask";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {
         ReactiveFormsModule,
         DgTableModule,
         CdkDynamicTableModule,
-        CdkDynamicGroupModule
+        CdkDynamicGroupModule,
+        NgxMaskModule
     ]
 })
 export class ProdutosModule {

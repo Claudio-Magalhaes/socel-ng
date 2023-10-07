@@ -32,6 +32,8 @@ export class ProdutosEntity extends AbstractEntity2 {
     this.status = !!status;
   }
 
+  @DynamicColumn({ headerName: 'ID' })
+  override id: number | string | undefined;
   @DynamicColumn({ headerName: 'nome' })
   nome: string | undefined
   categoria: CategoriasEntity | undefined
@@ -41,7 +43,7 @@ export class ProdutosEntity extends AbstractEntity2 {
   estoqueAtual: string | undefined
   @DynamicColumn({ headerName: 'Estoque mínimo' })
   alertaEstoqueMinimo: string | undefined
-  @DynamicColumn({ headerName: 'Status' })
+  @DynamicColumn({ headerName: 'Status', resource: val => !!val ? 'ATIVO' : 'INATIVO' })
   status: boolean = false
   disponivelSite: boolean = false
   descricao: string | undefined

@@ -4,7 +4,7 @@ import {PRODUTOS} from "../../../_core/endpoints";
 import {CategoriasEntity} from "../categorias/categorias.entity";
 
 @DataServer({
-  path: environment.apiUrl_mock,
+  path: environment.apiUrl,
   context: PRODUTOS
 })
 export class ProdutosEntity extends AbstractEntity2 {

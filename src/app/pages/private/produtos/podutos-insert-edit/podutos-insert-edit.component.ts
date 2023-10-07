@@ -33,9 +33,10 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit2<ProdutosEnti
     private service: GenericService
   ) {
     super(config, { path: environment.apiUrl, context: PRODUTOS })
+    service.changePath(environment.apiUrl)
     service.get(CATEGORIAS).subscribe(
       resp => {
-        this.listCategorias = resp;
+        this.listCategorias = resp.data;
       }
     )
   }
@@ -47,7 +48,7 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit2<ProdutosEnti
   override afterFetchEntity() {
     this.form.patchValue({
       ...this.entity,
-      categoria: this.entity.categoria
+      categoria: this.entity.categoria?.id || ''
     })
   }
 
@@ -62,7 +63,7 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit2<ProdutosEnti
     this.entity = {
       ...this.entity,
       ...form,
-      categoria: form.categoria
+      categoria: { id: form.categoria }
     }
 
     return true;

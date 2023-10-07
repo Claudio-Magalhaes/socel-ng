@@ -9,20 +9,17 @@ import {PublicModule} from "./pages/public/public.module";
 import {HttpClientModule} from "@angular/common/http";
 import {LayoutsModule} from "./layouts/layouts.module";
 import {UiModule} from "./shared/ui/ui.module";
-import {ConfigDgTable, ConfigDynamicTable} from "@datagrupo/dg-ng-util";
+import {ConfigDynamicTable} from "@datagrupo/dg-ng-util";
 import {ConfigDgCurd} from "@datagrupo/dg-crud";
 import {ConfigLocalDgCrud} from "./_core/config/dg-crud/config-local-dg-crud";
-import {configLocalDgTable} from "./_core/dg-ng-util/config-local-dg-table";
-import {configLocalDynamicTable} from "./_core/dg-ng-util/config-local-dynamic-table";
-
-
-ConfigDynamicTable.set(configLocalDynamicTable)
-// ConfigDgTable.set(configLocalDgTable)
-ConfigDgCurd.set(ConfigLocalDgCrud)
-
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import {IConfig, NgxMaskModule} from "ngx-mask";
+import {configLocalDynamicTable} from "./_core/config/dg-ng-util/config-local-dynamic-table";
+
+
+ConfigDynamicTable.set(configLocalDynamicTable)
+ConfigDgCurd.set(ConfigLocalDgCrud)
 
 registerLocaleData(localePt);
 

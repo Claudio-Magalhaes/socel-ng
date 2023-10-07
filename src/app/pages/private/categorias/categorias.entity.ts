@@ -3,7 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {CATEGORIAS} from "../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl_mock,
+  path: environment.apiUrl,
   context: CATEGORIAS
 })
 export class CategoriasEntity extends AbstractEntity2 {

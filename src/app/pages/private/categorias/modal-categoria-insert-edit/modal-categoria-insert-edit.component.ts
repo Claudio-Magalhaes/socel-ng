@@ -5,6 +5,7 @@ import {CATEGORIAS, LOCACAO_SERVICOS} from "../../../../_core/endpoints";
 import {ServicoEntity} from "../../servicos/servico.entity";
 import {GenericService} from "../../../../services/generic-service/generic.service";
 import {CategoriasEntity} from "../categorias.entity";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'modal-categoria-insert-edit',
@@ -23,20 +24,22 @@ export class ModalCategoriaInsertEditComponent implements OnInit {
     status: new FormControl(true)
   })
 
-  constructor(private service: GenericService) { }
+  constructor(private service: GenericService) {
+    this.service.changePath(environment.apiUrl)
+  }
 
   ngOnInit(): void {
   }
 
   open(data?: CategoriasEntity) {
-
     if (!data) {
       this.modal.open()
       return;
     }
 
     this.service.get(CATEGORIAS + '/' + data.id).subscribe(resp => {
-      this.form.patchValue({...resp, status: resp.status == 'true' || resp.status == true});
+      // this.form.patchValue({...resp.data, status: resp.status == 'true' || resp.status == true});
+      this.form.patchValue({...resp.data});
       this.modal.open()
     })
   }
@@ -62,6 +65,7 @@ export class ModalCategoriaInsertEditComponent implements OnInit {
     if (!!form.id) {
       request = this.service.put(CATEGORIAS + '/' + form.id, form)
     } else {
+      delete form.id;
       request = this.service.post(CATEGORIAS, form)
     }
 
@@ -69,6 +73,5 @@ export class ModalCategoriaInsertEditComponent implements OnInit {
       this.afterSave.emit(resp)
       this.close()
     })
-
   }
 }

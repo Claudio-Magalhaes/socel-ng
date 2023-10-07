@@ -1,13 +1,17 @@
 import {setConfigDynamicTable} from "@datagrupo/dg-ng-util";
-import {environment} from "../../../environments/environment";
+
 
 export const configLocalDynamicTable: setConfigDynamicTable = {
-  apiData: {
-    path: environment.apiUrl_mock,
-    context: ''
-  },
+  // apiData: {
+  //   path: environment.ap,
+  //   context: ''
+  // },
   pipeRequest: (a: any) => {
-    return a
+    return a?.data || a;
+  },
+  outputParamsPagination: (value: any) => {
+    const { page, size, sort } = value;
+    return {page, size, sort}
   },
   pipePagination: (p:any) => {
     console.log('pipePagination', p)

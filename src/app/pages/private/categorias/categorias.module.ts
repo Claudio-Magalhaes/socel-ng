@@ -7,17 +7,17 @@ import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {
     CdkDynamicGroupModule,
-    CdkDynamicTableModule, DgPaginatorModule,
+    CdkDynamicTableModule, DgModalModule, DgPaginatorModule,
     DgTableModule
 } from "@datagrupo/dg-ng-util";
-import {CategoriaInsertEditComponent} from "./categoria-insert-edit/categoria-insert-edit.component";
+import { ModalCategoriaInsertEditComponent } from './modal-categoria-insert-edit/modal-categoria-insert-edit.component';
 
 
 
 @NgModule({
   declarations: [
     CategoriaMainComponent,
-    CategoriaInsertEditComponent
+    ModalCategoriaInsertEditComponent
   ],
     imports: [
         CommonModule,
@@ -29,6 +29,7 @@ import {CategoriaInsertEditComponent} from "./categoria-insert-edit/categoria-in
         CdkDynamicTableModule,
         DgPaginatorModule,
         CdkDynamicGroupModule,
+        DgModalModule,
     ]
 })
 export class CategoriasModule { }

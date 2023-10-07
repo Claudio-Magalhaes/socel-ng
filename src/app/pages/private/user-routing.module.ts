@@ -4,7 +4,6 @@ import {DashboardMainComponent} from "./dashboard/dashboard-main/dashboard-main.
 import {ClientesMainComponent} from "./clientes/clientes-main/clientes-main.component";
 import {ClientesInsertEditComponent} from "./clientes/clientes-insert-edit/clientes-insert-edit.component";
 import {CategoriaMainComponent} from "./categorias/categoria-main/categoria-main.component";
-import {CategoriaInsertEditComponent} from "./categorias/categoria-insert-edit/categoria-insert-edit.component";
 import {PodutosMainComponent} from "./produtos/podutos-main/podutos-main.component";
 import {PodutosInsertEditComponent} from "./produtos/podutos-insert-edit/podutos-insert-edit.component";
 import {ServicosMainComponent} from "./servicos/servicos-main/servicos-main.component";
@@ -49,12 +48,6 @@ const routes: Routes = [
   {
     path: 'categorias',
     component: CategoriaMainComponent
-  },
-  {
-    path: 'categorias',
-    children: [
-      { path: ':id', component:  CategoriaInsertEditComponent}
-    ]
   },
   {
     path: 'servicos',

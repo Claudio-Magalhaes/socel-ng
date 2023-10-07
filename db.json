@@ -159,14 +159,19 @@
   ],
   "categoria": [
     {
-      "disponivelSite": false,
+      "id": 1,
       "nome": "ferro fundido",
-      "id": 1
+      "status": true
     },
     {
-      "disponivelSite": "",
-      "nome": "madeira de pino",
-      "id": 2
+      "id": 2,
+      "nome": "madeira de pino2",
+      "status": false
+    },
+    {
+      "id": 3,
+      "nome": "rolamento",
+      "status": true
     }
   ],
   "servico": [

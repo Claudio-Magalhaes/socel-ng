@@ -11,16 +11,19 @@ export class CategoriasEntity extends AbstractEntity2 {
   constructor(
     id?: number | string,
     nome?: string,
-    disponivelSite?: boolean,
+    status?: boolean,
   ) {
     super();
     this.id = id;
     this.nome = nome;
-    this.disponivelSite = !!disponivelSite
+    this.status = !!status
   }
 
 
+  @DynamicColumn({ headerName: 'ID' })
+  override id: number | string | undefined;
   @DynamicColumn({ headerName: 'nome' })
-  nome: string | undefined
-  disponivelSite: boolean = false
+  nome: string | undefined;
+  @DynamicColumn({ headerName: 'status', resource: (val:boolean) => !!val ? "ATIVO" : "INATIVO" })
+  status: boolean = false;
 }

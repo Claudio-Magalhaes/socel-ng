@@ -1,0 +1,24 @@
+<dg-modal #modal title="Categoria" size="md" (afterClose)="clear()">
+  <div modal-body>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-8">
+          <label class="form-label">Nome da Categoria</label>
+          <input class="form-control" type="text" formControlName="nome">
+        </div>
+        <div class="col-4">
+          <label class="form-label">Status</label>
+          <select class="form-select" type="text" formControlName="status">
+            <option [value]="true">Ativo</option>
+            <option [value]="false">Inativo</option>
+          </select>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div modal-footer>
+    <button (click)="modal.close()" class="btn btn-secondary m-1">Sair</button>
+    <button (click)="save()" class="btn btn-success m-1">Salvar</button>
+  </div>
+</dg-modal>

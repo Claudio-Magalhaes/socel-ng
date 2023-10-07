@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CategoriasEntity} from "../categorias.entity";
 import {
   CdkDynamicTable,
@@ -6,6 +6,8 @@ import {
 } from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
+import {ModalCategoriaInsertEditComponent} from "../modal-categoria-insert-edit/modal-categoria-insert-edit.component";
+import {categoriaFilters} from "../categoria.filters";
 
 @Component({
   selector: 'app-categoria-main',
@@ -13,6 +15,8 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./categoria-main.component.scss']
 })
 export class CategoriaMainComponent implements OnInit {
+
+  @ViewChild('modal') modal!: ModalCategoriaInsertEditComponent;
 
   form = new FormGroup({
     nome: new FormControl('')
@@ -29,14 +33,11 @@ export class CategoriaMainComponent implements OnInit {
         edit: {
           name: "Editar",
           dbClick: true,
-          action: (val: CategoriasEntity) => router.navigate(['user', 'categorias', val?.id]).then()
+          action: (val: CategoriasEntity) => this.modal.open(val)
+          // action: (val: CategoriasEntity) => router.navigate(['user', 'categorias', val?.id]).then()
         }
       },
-      filters: {
-        group: 'categorias', filters: {
-          nome: { findFunc: val => { return { nome_like: val } } }
-        }
-      }
+      filters: { group: 'categorias', filters: categoriaFilters }
     })
   }
 

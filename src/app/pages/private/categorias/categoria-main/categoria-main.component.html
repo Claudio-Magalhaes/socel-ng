@@ -1,9 +1,10 @@
 <div id="page-clientes" class="container">
 
   <card>
-
     <div class="card-header">
-      <h4 class="card-title">Clientes</h4>
+      <h4 class="card-title">Categoria</h4>
+    </div>
+    <div class="card-header">
       <custom-filters group="categorias">
         <div body-filters>
           <form [formGroup]="form">
@@ -21,17 +22,17 @@
         </div>
       </custom-filters>
     </div>
-    <div class="card-header">
-      <h4 class="card-title">Categoria</h4>
-    </div>
     <div class="card-body">
       <dg-table dg-dynamic-table [dynamicTable]="table"></dg-table>
     </div>
     <div class="card-footer">
       <dg-paginator dg-dynamic-paginator [dynamicTable]="table"></dg-paginator>
     </div>
-    <div class="card-footer">
-      <button class="btn btn-success" [routerLink]="'novo'">Adicionar</button>
-    </div>
   </card>
 </div>
+
+<page-footer>
+  <button class="btn btn-success" (click)="modal.open()">Novo</button>
+</page-footer>
+
+<modal-categoria-insert-edit #modal (afterSave)="table.find()"></modal-categoria-insert-edit>

@@ -5,7 +5,7 @@ import {environment} from "../../../../environments/environment";
 import {CLIENTE} from "../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl_mock,
+  path: environment.apiUrl,
   context: CLIENTE
 })
 export class ClientesEntity extends AbstractEntity2 {
@@ -14,20 +14,19 @@ export class ClientesEntity extends AbstractEntity2 {
     id?: string | number,
     nome?: string,
     sexo?: string,
-    pessoa_fisica?: string,
+    tipoPessoa?: string,
     documento?: string,
-    enderecos?: EnderecoEntity[],
-    contatos?: ContatoEntity[]
+    // enderecos?: EnderecoEntity[],
+    // contatos?: ContatoEntity[]
   ) {
     super()
     this.id = id;
     this.nome = nome;
-    this.sexo = nome;
-    this.pessoa_fisica = nome;
-    this.email = nome;
-    this.documento = nome;
-    this.enderecos = Array.isArray(enderecos) ? enderecos : [];
-    this.contatos = Array.isArray(contatos) ? contatos : [];
+    this.sexo = sexo;
+    this.tipoPessoa = tipoPessoa;
+    this.documento = documento;
+    // this.enderecos = Array.isArray(enderecos) ? enderecos : [];
+    // this.contatos = Array.isArray(contatos) ? contatos : [];
   }
 
 
@@ -38,11 +37,11 @@ export class ClientesEntity extends AbstractEntity2 {
   public nome: string | undefined;
 
   public sexo: string | undefined;
-  public pessoa_fisica: string | undefined;
+  public tipoPessoa: string | undefined;
   public email: string | undefined;
   public documento: string | undefined;
 
-  public enderecos: EnderecoEntity[] = []
-  public contatos: ContatoEntity[] = []
+  // public enderecos: EnderecoEntity[] = []
+  // public contatos: ContatoEntity[] = []
 
 }

@@ -26,8 +26,8 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit2<ClientesEnt
   public form: FormGroup = new FormGroup({
     nome: new FormControl('', [Validators.required]),
     sexo: new FormControl(''),
-    pessoa_fisica: new FormControl('1'),
-    email: new FormControl(''),
+    tipoPessoa: new FormControl('1'),
+    // email: new FormControl(''),
     documento: new FormControl('')
   });
 
@@ -49,6 +49,9 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit2<ClientesEnt
       actions: {
         edit: { name: 'Editar', dbClick: true, action: (val: ContatoEntity) => this.contatoModal.open(val) }
       }
+    })
+    this.form.controls['tipoPessoa'].valueChanges.subscribe(resp => {
+      this.form.controls['sexo'][resp != 'FISICA' ? 'disable' : 'enable']()
     })
   }
 

@@ -12,7 +12,7 @@
                 <div class="col-12">
                   <div class="mb-3">
                     <label class="form-label">Nome</label>
-                    <input formControlName="nome"  class="form-control">
+                    <input formControlName="nome" class="form-control">
                   </div>
                 </div>
 
@@ -22,21 +22,21 @@
                 <div class="col-4">
                   <div class="mb-3">
                     <label class="form-label">Documento</label>
-                    <input type="text" class="form-control" formControlName="documento">
+                    <input type="text" mask="000.000.000-00" class="form-control" formControlName="documento">
                   </div>
                 </div>
 
                 <div class="col-4 d-flex align-items-center pt-4">
                   <div class="form-check">
-                    <input value="1" formControlName="pessoa_fisica" class="form-check-input" type="radio"
-                           name="pessoa_fisica" id="Pessoa_fisica">
+                    <input value="FISICA" formControlName="tipoPessoa" class="form-check-input" type="radio"
+                           name="tipoPessoa" id="Pessoa_fisica">
                     <label class="form-check-label" for="Pessoa_fisica">
                       Pessoa Física
                     </label>
                   </div>
                   <div class="form-check">
-                    <input value="0" formControlName="pessoa_fisica" class="form-check-input" type="radio"
-                           name="pessoa_fisica" id="Pessoa_juridica" checked>
+                    <input value="JURUDUCA" formControlName="tipoPessoa" class="form-check-input" type="radio"
+                           name="tipoPessoa" id="Pessoa_juridica" checked>
                     <label class="form-check-label" for="Pessoa_juridica">
                       Pessoa Jurídica
                     </label>
@@ -45,15 +45,13 @@
 
                 <div class="col-4 d-flex align-items-center pt-4">
                   <div class="form-check">
-                    <input [disabled]="form.value['pessoa_fisica'] == '1'" value="1" class="form-check-input"
-                           type="radio" name="pessoa_fisica" id="masculino">
+                    <input value="1" formControlName="sexo" class="form-check-input" type="radio" name="sexo" id="masculino">
                     <label class="form-check-label" for="masculino">
                       Masculino
                     </label>
                   </div>
                   <div class="form-check">
-                    <input [disabled]="form.value['pessoa_fisica'] == '1'" value="0" class="form-check-input"
-                           type="radio" name="pessoa_fisica" id="feminino" checked>
+                    <input value="0" formControlName="sexo"  class="form-check-input" type="radio" name="sexo" id="feminino" checked>
                     <label class="form-check-label" for="feminino">
                       Feminino
                     </label>

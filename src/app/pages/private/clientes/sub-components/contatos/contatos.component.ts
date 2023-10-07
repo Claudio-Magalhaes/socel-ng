@@ -5,6 +5,7 @@ import {GenericService} from "../../../../../services/generic-service/generic.se
 import {DgModalComponent} from "@datagrupo/dg-ng-util";
 import {CLIENTE_CONTATOS} from "../../../../../_core/endpoints";
 import Swal from 'sweetalert2';
+import {environment} from "../../../../../../environments/environment";
 
 @Component({
   selector: 'subComponent-contatos',
@@ -30,6 +31,7 @@ export class ContatosComponent implements OnInit {
   })
 
   constructor(public service: GenericService) {
+    service.changePath(environment.apiUrl)
   }
 
   ngOnInit(): void {
@@ -81,7 +83,7 @@ export class ContatosComponent implements OnInit {
 
     const data = {
       ...form,
-      cliente: this.idCliente
+      cliente: { id: this.idCliente }
     }
 
     let request: any;

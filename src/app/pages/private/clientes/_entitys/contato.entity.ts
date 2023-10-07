@@ -3,7 +3,7 @@ import {environment} from "../../../../../environments/environment";
 import {CLIENTE_CONTATOS} from "../../../../_core/endpoints";
 
 @DataServer({
-  path: environment.apiUrl_mock,
+  path: environment.apiUrl,
   context: CLIENTE_CONTATOS
 })
 export class ContatoEntity extends AbstractEntity2 {

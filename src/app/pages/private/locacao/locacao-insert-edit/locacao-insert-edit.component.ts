@@ -73,7 +73,7 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
 
     this.service.get(CLIENTE).subscribe(
       resp => {
-        this.listClientes = resp;
+        this.listClientes = resp.data;
       }
     )
 
@@ -87,13 +87,13 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
   loadSelects(cliente: number | string) {
     this.service.get(CLIENTE_CONTATOS, { params: { cliente } }).subscribe(
       resp => {
-        this.listContato = resp;
+        this.listContato = resp.data;
       }
     )
 
     this.service.get(CLIENTE_ENDERECOS, { params: { cliente } }).subscribe(
       resp => {
-        this.listEndereco = resp;
+        this.listEndereco = resp.data;
       }
     )
 

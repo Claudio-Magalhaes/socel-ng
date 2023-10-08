@@ -7,7 +7,7 @@ import {LOCACAO} from "../../../_core/endpoints";
 import {LancamentoEntity} from "../lancamentos/lancamento.entity";
 
 @DataServer({
-  path: environment.apiUrl_mock,
+  path: environment.apiUrl,
   context: LOCACAO
 })
 export class LocacaoEntity extends AbstractEntity2 {
@@ -35,7 +35,7 @@ export class LocacaoEntity extends AbstractEntity2 {
     this.obsercacoes = obsercacoes;
   }
 
-  @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => String(val.id || '--') })
+  @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => String(val.nome || '--') })
   public cliente: ClientesEntity | undefined
   @DynamicColumn({ headerName: 'Data Início' })
   public dataInicial: string | undefined

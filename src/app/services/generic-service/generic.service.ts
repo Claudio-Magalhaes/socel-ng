@@ -9,6 +9,6 @@ import {AbstractGenericService} from "@datagrupo/dg-ng-util";
 export class GenericService extends AbstractGenericService {
 
   constructor(protected Http: HttpClient) {
-    super(Http, environment.apiUrl_mock)
+    super(Http, environment.apiUrl)
   }
 }

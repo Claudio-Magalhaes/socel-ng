@@ -16,8 +16,8 @@ export class ClientesEntity extends AbstractEntity2 {
     sexo?: string,
     tipoPessoa?: string,
     documento?: string,
-    // enderecos?: EnderecoEntity[],
-    // contatos?: ContatoEntity[]
+    endereco?: EnderecoEntity,
+    contato?: ContatoEntity
   ) {
     super()
     this.id = id;
@@ -25,8 +25,8 @@ export class ClientesEntity extends AbstractEntity2 {
     this.sexo = sexo;
     this.tipoPessoa = tipoPessoa;
     this.documento = documento;
-    // this.enderecos = Array.isArray(enderecos) ? enderecos : [];
-    // this.contatos = Array.isArray(contatos) ? contatos : [];
+    this.endereco = endereco;
+    this.contato = contato;
   }
 
 
@@ -41,7 +41,7 @@ export class ClientesEntity extends AbstractEntity2 {
   public email: string | undefined;
   public documento: string | undefined;
 
-  // public enderecos: EnderecoEntity[] = []
-  // public contatos: ContatoEntity[] = []
+  public endereco: EnderecoEntity | undefined;
+  public contato: ContatoEntity | undefined;
 
 }

@@ -72,7 +72,7 @@ export class EnderecosComponent implements OnInit {
     const form = this.form.value;
     const data = {
       ...this.form.value,
-      cliente: this.idCliente
+      cliente: { id: this.idCliente }
     }
     let request: any;
 

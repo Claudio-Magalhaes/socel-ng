@@ -1,7 +1,7 @@
 
 
 export const CLIENTE = 'clientes';
-export const CLIENTE_ENDERECOS = 'clientes/enderecos';
+export const CLIENTE_ENDERECOS = 'clientes-enderecos';
 export const CLIENTE_CONTATOS = 'clientes-contatos';
 
 export const PRODUTOS = 'produtos';

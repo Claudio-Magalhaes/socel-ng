@@ -17,7 +17,8 @@ export class EnderecoEntity extends AbstractEntity2 {
     rua?: string,
     numero?: string,
     complemento?: string,
-    descricao?: string
+    descricao?: string,
+    principal?: boolean
   ) {
     super();
     this.id = id;
@@ -33,12 +34,19 @@ export class EnderecoEntity extends AbstractEntity2 {
 
   @DynamicColumn({ headerName: 'Bairro' })
   bairro: string | undefined;
+
   @DynamicColumn({ headerName: 'Rua' })
   rua: string | undefined;
+
   @DynamicColumn({ headerName: 'Numero' })
   numero: string | undefined;
+
   @DynamicColumn({ headerName: 'Complemento' })
   complemento: string | undefined;
+
+  @DynamicColumn({ headerName: 'Principal' })
+  principal: boolean | undefined;
+
   cep: string | undefined;
   uf: string | undefined;
   cidade: string | undefined;

@@ -53,11 +53,13 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
 
     this.tableProtudos = this.CdkTable.create('request', {
       columns: [
-        { name: 'produto', headerName: 'Produto', resource: val => val?.nome || '--' },
+        { name: 'nomeProduto', headerName: 'Produto', resource: val => val || '--' },
+        { name: 'valorUnitatio', headerName: 'Valor Unidade' },
         { name: 'quantidade', headerName: 'Quantidade' },
+        { name: 'subTotal', headerName: 'SubTotal' },
       ],
       apiData: {
-        path: environment.apiUrl_mock,
+        path: environment.apiUrl,
         context: LOCACAO_PRODUTOS
       }
     })
@@ -112,7 +114,6 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
       contato: this.entity.contato?.id,
       endereco: this.entity.endereco?.id
     })
-
     this.tableServicos.controls.apiData.set({ params: { locacao: this.entity.id } })
     this.tableProtudos.controls.apiData.set({ params: { locacao: this.entity.id } })
   }
@@ -141,7 +142,6 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
     let total: number = 0;
 
     this[table].data.dataSource.map((item: any) => {
-      console.log(item);
       total = total + Number(item.valor) || 0
     })
 

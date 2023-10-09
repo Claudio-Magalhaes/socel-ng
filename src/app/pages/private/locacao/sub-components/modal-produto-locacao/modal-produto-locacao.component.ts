@@ -32,7 +32,7 @@ export class ModalProdutoLocacaoComponent implements OnInit {
   open(data?: ProdutosEntity) {
     this.service.get(PRODUTOS).subscribe(
       resp => {
-        this.listProdutos = resp;
+        this.listProdutos = resp.data;
       }
     )
 

@@ -8,7 +8,7 @@ import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {
     CdkDynamicGroupModule,
-    CdkDynamicTableModule,
+    CdkDynamicTableModule, DgPaginatorModule,
     DgTableModule
 } from "@datagrupo/dg-ng-util";
 import {NgxMaskModule} from "ngx-mask";
@@ -28,7 +28,8 @@ import {NgxMaskModule} from "ngx-mask";
         DgTableModule,
         CdkDynamicTableModule,
         CdkDynamicGroupModule,
-        NgxMaskModule
+        NgxMaskModule,
+        DgPaginatorModule
     ]
 })
 export class ProdutosModule {

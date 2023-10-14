@@ -18,7 +18,7 @@ export class ModalServicoLocacaoComponent implements OnInit {
   form = new FormGroup({
     id: new FormControl(''),
     servico: new FormControl('', [Validators.required]),
-    valor: new FormControl('', [Validators.required]),
+    subTotal: new FormControl('', [Validators.required]),
   })
 
   public listServicos: ServicoEntity[] = [];
@@ -31,7 +31,7 @@ export class ModalServicoLocacaoComponent implements OnInit {
   open(data?: ServicoEntity) {
     this.service.get(SERVICO).subscribe(
       resp => {
-        this.listServicos = resp;
+        this.listServicos = resp.data;
       }
     )
 
@@ -61,12 +61,13 @@ export class ModalServicoLocacaoComponent implements OnInit {
     }
 
     const form = this.form.value;
+    const locacao = { id: this.licacaoId }
     let request: any
 
     if (!!form.id) {
-      request = this.service.put(LOCACAO_SERVICOS, {...form, locacao: this.licacaoId})
+      request = this.service.put(LOCACAO_SERVICOS, { ...form, locacao })
     } else {
-      request = this.service.post(LOCACAO_SERVICOS, {...form, locacao: this.licacaoId})
+      request = this.service.post(LOCACAO_SERVICOS, { ...form, locacao })
     }
 
     request.subscribe((resp: ServicoEntity) => {

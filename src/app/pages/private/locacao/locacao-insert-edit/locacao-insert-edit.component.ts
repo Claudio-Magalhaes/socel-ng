@@ -66,12 +66,11 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
 
     this.tableServicos = this.CdkTable.create('request', {
       columns: [
-        { name: 'servico', headerName: 'Serviço', resource: val => val.nome || '--' },
-        { name: 'valor', headerName: 'valor' },
+        { name: 'nomeServico', headerName: 'Serviço', resource: val => val || '--' },
+        { name: 'subTotal', headerName: 'valor' },
       ],
-      apiData: { path: environment.apiUrl_mock, context: LOCACAO_SERVICOS }
+      apiData: { path: environment.apiUrl, context: LOCACAO_SERVICOS }
     })
-    this.tableServicos.controls.apiData.set({ context: 'locacao_servicos' })
 
     this.service.get(CLIENTE).subscribe(
       resp => {
@@ -139,12 +138,13 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
   }
 
   totaisTabelas(table: 'tableServicos' | 'tableProtudos') {
-    let total: number = 0;
-
-    this[table].data.dataSource.map((item: any) => {
-      total = total + Number(item.valor) || 0
-    })
-
-    return total;
+    // let total: number = 0;
+  //   const list: any[] = this[table].data?.dataSource || [];
+  //
+  //   list.map((item: any) => {
+  //     total = total + Number(item.valor) || 0
+  //   })
+  //
+    return 0;
   }
 }

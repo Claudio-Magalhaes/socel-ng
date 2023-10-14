@@ -24,7 +24,11 @@
       <dg-table dg-dynamic-table [dynamicTable]="table"></dg-table>
     </div>
     <div class="card-footer">
-      <button class="btn btn-success" [routerLink]="'novo'">Adicionar</button>
+      <dg-paginator dg-dynamic-paginator [dynamicTable]="table"></dg-paginator>
     </div>
   </card>
 </div>
+
+<page-footer>
+  <button class="btn btn-success" [routerLink]="'novo'">Adicionar</button>
+</page-footer>

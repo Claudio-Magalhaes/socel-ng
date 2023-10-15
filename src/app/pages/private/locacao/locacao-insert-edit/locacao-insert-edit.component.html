@@ -80,7 +80,7 @@
               <h4 class="card-title">Produtos</h4>
             </div>
             <div class="col-6">
-              <h5 class="card-title">Valor total de produtos: R$ {{totaisTabelas('tableProtudos')}}</h5>
+              <h5 class="card-title">Valor total de produtos: R${{entity.totalProdutos || '0,00'}}</h5>
             </div>
             <div class="col-2">
               <button (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
@@ -93,6 +93,9 @@
             </dg-table>
           </div>
         </div>
+        <div class="card-footer">
+          <dg-paginator dg-dynamic-paginator [dynamicTable]="tableProtudos"></dg-paginator>
+        </div>
       </card>
     </div>
 
@@ -104,7 +107,7 @@
               <h4 class="card-title">Serviços</h4>
             </div>
             <div class="col-6">
-              <h5 class="card-title">Valor total de serviços: R$ {{totaisTabelas('tableServicos')}}</h5>
+              <h5 class="card-title">Valor total de serviços: R${{entity.totalServicos || '0,00'}}</h5>
             </div>
             <div class="col-2">
             <button (click)="modalServico.open()" class="btn btn-success">Adicionar</button>
@@ -127,8 +130,9 @@
   <button class="btn btn-success" crud-salvar [backAfterSave]="false">Salvar</button>
   <button class="btn btn-success" crud-salvar>Salvar e voltar</button>
   <button class="btn btn-secondary" crud-voltar>Voltar</button>
+  <span class="ms-auto">Total R$:{{ entity?.total || '0,00' }}</span>
 </page-footer>
 
 
-<modal-produto-locacao #modalProduto (afterSave)="tableProtudos.find()" [licacaoId]="entity?.id"></modal-produto-locacao>
-<modal-servico-locacao #modalServico (afterSave)="tableServicos.find()" [licacaoId]="entity?.id"></modal-servico-locacao>
+<modal-produto-locacao #modalProduto (afterSave)="tableProtudos.find(); atualizaTotais()" [licacaoId]="entity?.id"></modal-produto-locacao>
+<modal-servico-locacao #modalServico (afterSave)="tableServicos.find(); atualizaTotais()" [licacaoId]="entity?.id"></modal-servico-locacao>

@@ -35,6 +35,8 @@ export class LocacaoEntity extends AbstractEntity2 {
     this.obsercacoes = obsercacoes;
   }
 
+  @DynamicColumn({ headerName: 'ID' })
+  override id: number | string | undefined;
   @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => String(val.nome || '--') })
   public cliente: ClientesEntity | undefined
   @DynamicColumn({ headerName: 'Data Início' })
@@ -44,7 +46,7 @@ export class LocacaoEntity extends AbstractEntity2 {
   @DynamicColumn({ headerName: 'Status' })
   public status: string | undefined
   @DynamicColumn({ headerName: 'Valor' })
-  public valor: string | undefined
+  public total: string | undefined
   @DynamicColumn({ headerName: 'Faturamento', resource: val => 'CRIAR' })
   public faturamento: LancamentoEntity | undefined
 
@@ -52,5 +54,7 @@ export class LocacaoEntity extends AbstractEntity2 {
   public endereco: EnderecoEntity | undefined
   public descricao: string | undefined
   public obsercacoes: string | undefined
+  public totalServicos: string | number | undefined
+  public totalProdutos: string | number | undefined
 
 }

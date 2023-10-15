@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {LocacaoEntity} from "../locacao.entity";
@@ -18,6 +18,9 @@ import {GenericService} from "../../../../services/generic-service/generic.servi
 import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util";
 import {ProdutosEntity} from "../../produtos/produtos.entity";
 import {ServicoEntity} from "../../servicos/servico.entity";
+import {ModalProdutoLocacaoComponent} from "../sub-components/modal-produto-locacao/modal-produto-locacao.component";
+import {ModalServicoLocacaoComponent} from "../sub-components/modal-servico-locacao/modal-servico-locacao.component";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-locacao-insert-edit',
@@ -25,6 +28,9 @@ import {ServicoEntity} from "../../servicos/servico.entity";
   styleUrls: ['./locacao-insert-edit.component.scss']
 })
 export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntity> implements OnInit {
+
+  @ViewChild('modalProduto') modalProduto!: ModalProdutoLocacaoComponent;
+  @ViewChild('modalServico') modalServico!: ModalServicoLocacaoComponent;
 
   rootEntity = new LocacaoEntity()
   tableProtudos: CdkDynamicTable.tableClass;
@@ -53,23 +59,51 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
 
     this.tableProtudos = this.CdkTable.create('request', {
       columns: [
-        { name: 'nomeProduto', headerName: 'Produto', resource: val => val || '--' },
-        { name: 'valorUnitatio', headerName: 'Valor Unidade' },
-        { name: 'quantidade', headerName: 'Quantidade' },
-        { name: 'subTotal', headerName: 'SubTotal' },
+        {name: 'nomeProduto', headerName: 'Produto', resource: val => val || '--'},
+        {name: 'valorUnitatio', headerName: 'Valor Unidade'},
+        {name: 'quantidade', headerName: 'Quantidade'},
+        {name: 'subTotal', headerName: 'SubTotal'},
       ],
       apiData: {
         path: environment.apiUrl,
         context: LOCACAO_PRODUTOS
+      },
+      actions: {
+        edit: {name: 'Editar', action: val => this.modalProduto.open(val)},
+        remove: {
+          name: 'Remover', action: val => {
+            this.service.delete(LOCACAO_PRODUTOS + '/' + val.id).subscribe(
+              resp => {
+                this.entity = {
+                  ...this.entity,
+                  ...resp.data
+                }
+                this.tableProtudos.find();
+                this.atualizaTotais();
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Produto removido'
+                }).then()
+              }
+            )
+          }
+        },
       }
     })
 
     this.tableServicos = this.CdkTable.create('request', {
       columns: [
-        { name: 'nomeServico', headerName: 'Serviço', resource: val => val || '--' },
-        { name: 'subTotal', headerName: 'valor' },
+        {name: 'nomeServico', headerName: 'Serviço', resource: val => val || '--'},
+        {name: 'subTotal', headerName: 'valor'},
       ],
-      apiData: { path: environment.apiUrl, context: LOCACAO_SERVICOS }
+      apiData: {path: environment.apiUrl, context: LOCACAO_SERVICOS},
+      actions: {
+        edit: {name: 'Editar', action: val => this.modalServico.open(val)},
+        remove: {
+          name: 'Remover', action: val => {
+          }
+        },
+      }
     })
 
     this.service.get(CLIENTE).subscribe(
@@ -86,13 +120,13 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
   }
 
   loadSelects(cliente: number | string) {
-    this.service.get(CLIENTE_CONTATOS, { params: { cliente } }).subscribe(
+    this.service.get(CLIENTE_CONTATOS, {params: {cliente}}).subscribe(
       resp => {
         this.listContato = resp.data;
       }
     )
 
-    this.service.get(CLIENTE_ENDERECOS, { params: { cliente } }).subscribe(
+    this.service.get(CLIENTE_ENDERECOS, {params: {cliente}}).subscribe(
       resp => {
         this.listEndereco = resp.data;
       }
@@ -113,8 +147,8 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
       contato: this.entity.contato?.id,
       endereco: this.entity.endereco?.id
     })
-    this.tableServicos.controls.apiData.set({ params: { locacao: this.entity.id } })
-    this.tableProtudos.controls.apiData.set({ params: { locacao: this.entity.id } })
+    this.tableServicos.controls.apiData.set({params: {locacao: this.entity.id}})
+    this.tableProtudos.controls.apiData.set({params: {locacao: this.entity.id}})
   }
 
   override beforeSaveEntity(): boolean {
@@ -129,22 +163,23 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
     this.entity = {
       ...this.entity,
       ...form,
-      cliente: { id: form.cliente },
-      contato: { id: form.contato },
-      endereco: { id: form.endereco }
+      cliente: {id: form.cliente},
+      contato: {id: form.contato},
+      endereco: {id: form.endereco}
     }
 
     return true;
   }
 
-  totaisTabelas(table: 'tableServicos' | 'tableProtudos') {
-    // let total: number = 0;
-  //   const list: any[] = this[table].data?.dataSource || [];
-  //
-  //   list.map((item: any) => {
-  //     total = total + Number(item.valor) || 0
-  //   })
-  //
-    return 0;
+  atualizaTotais() {
+    if (!this.entity.id) return;
+    this.service.get(LOCACAO + '/total/' + this.entity.id).subscribe(
+      resp => {
+        this.entity = {
+          ...this.entity,
+          ...resp.data
+        }
+      }
+    )
   }
 }

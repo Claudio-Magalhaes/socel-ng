@@ -30,20 +30,22 @@ export class ModalProdutoLocacaoComponent implements OnInit {
   }
 
   open(data?: ProdutosEntity) {
-    this.service.get(PRODUTOS).subscribe(
-      resp => {
-        this.listProdutos = resp.data;
-      }
-    )
-
     if (!!data) {
-      this.service.get(PRODUTOS, { params: { id: data.id } }).subscribe(
+      this.service.get(LOCACAO_PRODUTOS + '/' + data.id).subscribe(
         resp => {
-          this.form.patchValue(resp)
+          this.form.controls['produto'].disable();
+          this.form.patchValue({ ...resp.data })
+          this.listProdutos = [new ProdutosEntity(1, 'teste')]
+          this.modal.open()
         }
       )
     } else {
-      this.modal.open();
+      this.service.get(PRODUTOS).subscribe(
+        resp => {
+          this.listProdutos = resp.data;
+          this.modal.open();
+        }
+      )
     }
   }
 

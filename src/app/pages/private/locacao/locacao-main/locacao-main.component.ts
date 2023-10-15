@@ -19,14 +19,31 @@ export class LocacaoMainComponent implements OnInit {
     private CdkTable: CdkDynamicTableService,
     private router: Router
   ) {
-    this.table = CdkTable.createByCrudEnity2(new LocacaoEntity(), {
-      actions: {
-        edit: {
-          name: 'Editar',
-          dbClick: true,
-          action: (val: LocacaoEntity) => {
-            this.router.navigate(['user', 'locacoes', val?.id]).then()
-          }
+    this.table = CdkTable.createByCrudEnity2(new LocacaoEntity())
+    this.table.controls.actions.setObject({
+      edit: {
+        name: 'Editar',
+        dbClick: true,
+        action: (val: LocacaoEntity) => {
+          this.router.navigate(['user', 'locacoes', val?.id]).then()
+        }
+      },
+      iniciar: {
+        name: 'Iniciar locação',
+        action: (row) => {
+
+        },
+        permission: (row) => {
+          return row.status == 'Aberto'
+        }
+      },
+      cancelar: {
+        name: 'Iniciar locação',
+        action: (row) => {
+
+        },
+        permission: (row) => {
+          return row.status == 'Aberto'
         }
       }
     })

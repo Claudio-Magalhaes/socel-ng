@@ -74,10 +74,6 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
           name: 'Remover', action: val => {
             this.service.delete(LOCACAO_PRODUTOS + '/' + val.id).subscribe(
               resp => {
-                this.entity = {
-                  ...this.entity,
-                  ...resp.data
-                }
                 this.tableProtudos.find();
                 this.atualizaTotais();
                 Swal.fire({
@@ -101,6 +97,16 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
         edit: {name: 'Editar', action: val => this.modalServico.open(val)},
         remove: {
           name: 'Remover', action: val => {
+            this.service.delete(LOCACAO_SERVICOS + '/' + val.id).subscribe(
+              resp => {
+                this.tableServicos.find();
+                this.atualizaTotais();
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Serviço removido'
+                }).then()
+              }
+            )
           }
         },
       }

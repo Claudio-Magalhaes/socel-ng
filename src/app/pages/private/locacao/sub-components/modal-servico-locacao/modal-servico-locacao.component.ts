@@ -29,20 +29,21 @@ export class ModalServicoLocacaoComponent implements OnInit {
   }
 
   open(data?: ServicoEntity) {
-    this.service.get(SERVICO).subscribe(
-      resp => {
-        this.listServicos = resp.data;
-      }
-    )
-
     if (!!data) {
-      this.service.get(PRODUTOS, { params: { id: data.id } }).subscribe(
+      this.service.get(LOCACAO_SERVICOS + '/' + data.id).subscribe(
         resp => {
-          this.form.patchValue(resp)
+          this.form.controls['servico'].disable();
+          this.form.patchValue(resp.data)
+          this.modal.open();
         }
       )
     } else {
-      this.modal.open();
+      this.service.get(SERVICO).subscribe(
+        resp => {
+          this.listServicos = resp.data;
+          this.modal.open();
+        }
+      )
     }
   }
 
@@ -52,6 +53,7 @@ export class ModalServicoLocacaoComponent implements OnInit {
 
   clear() {
     this.form.reset('');
+    this.form.controls['servico'].enable();
   }
 
   save(openAfterSave = false) {

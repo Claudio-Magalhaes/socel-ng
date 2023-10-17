@@ -5,10 +5,11 @@ import { LocacaoInsertEditComponent } from './locacao-insert-edit/locacao-insert
 import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
-    CdkDynamicTableModule, DgAutocomplete2Module, DgModalModule,
-    DgPaginatorModule, DgTableModule
+  CdkDynamicGroupModule,
+  CdkDynamicTableModule, DgAutocomplete2Module, DgModalModule,
+  DgPaginatorModule, DgTableModule
 } from "@datagrupo/dg-ng-util";
 import { ModalProdutoLocacaoComponent } from './sub-components/modal-produto-locacao/modal-produto-locacao.component';
 import { ModalServicoLocacaoComponent } from './sub-components/modal-servico-locacao/modal-servico-locacao.component';
@@ -22,17 +23,19 @@ import { ModalServicoLocacaoComponent } from './sub-components/modal-servico-loc
     ModalProdutoLocacaoComponent,
     ModalServicoLocacaoComponent
   ],
-    imports: [
-        CommonModule,
-        UiModule,
-        DgCrudModule,
-        RouterModule,
-        ReactiveFormsModule,
-        DgPaginatorModule,
-        CdkDynamicTableModule,
-        DgTableModule,
-        DgAutocomplete2Module,
-        DgModalModule
-    ]
+  imports: [
+    CommonModule,
+    UiModule,
+    DgCrudModule,
+    RouterModule,
+    ReactiveFormsModule,
+    DgPaginatorModule,
+    CdkDynamicTableModule,
+    DgTableModule,
+    DgAutocomplete2Module,
+    DgModalModule,
+    FormsModule,
+    CdkDynamicGroupModule
+  ]
 })
 export class LocacaoModule { }

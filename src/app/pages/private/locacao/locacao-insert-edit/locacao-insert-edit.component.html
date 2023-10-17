@@ -130,8 +130,7 @@
 </div>
 
 <page-footer>
-  <button class="btn btn-success" crud-salvar [backAfterSave]="false">Salvar</button>
-  <button class="btn btn-success" crud-salvar>Salvar e voltar</button>
+  <button *ngIf="entity?.status == 'ABERTO'" class="btn btn-success" crud-salvar [backAfterSave]="false">Salvar</button>
   <button class="btn btn-secondary" crud-voltar>Voltar</button>
   <span class="ms-auto">Total R$:{{ entity?.total || '0,00' }}</span>
 </page-footer>

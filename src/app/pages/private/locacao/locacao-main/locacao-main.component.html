@@ -4,14 +4,51 @@
     <div class="card-header">
       <h4 class="card-title">Locações</h4>
     </div>
+    <div class="card-header container-fluid">
+      <div class="row">
+        <div class="col-lx-4 col-lg-4 col-md-6 col-sm-12">
+          <label class="form-label">Nome do cliente</label>
+          <input class="form-control" [(ngModel)]="filters.nomeCliente" dg-dynamic-group="locacoes"
+                 paramName="nomeCliente">
+        </div>
+        <div class="col-lx-2 col-lg-2 col-md-6 col-sm-12">
+          <label class="form-label">Status</label>
+          <select class="form-select" [(ngModel)]="filters.status" dg-dynamic-group="locacoes"
+                 paramName="status">
+            <option value=""></option>
+            <option value="ABERTO">Aberto</option>
+            <option value="EM_LOCACAO">Em locação</option>
+            <option value="FINALIZADO">Finalizado</option>
+          </select>
+        </div>
+        <div class="col-lx-3 col-lg-3 col-md-6 col-sm-12">
+          <label class="form-label">Data Inicial</label>
+          <input type="date" class="form-control" [(ngModel)]="filters.dataInicial" dg-dynamic-group="locacoes"
+                 paramName="dataInicial">
+        </div>
+        <div class="col-lx-3 col-lg-3 col-md-6 col-sm-12">
+          <label class="form-label">Data Final</label>
+          <input type="date" class="form-control" [(ngModel)]="filters.dataFinal" dg-dynamic-group="locacoes"
+                 paramName="dataFinal">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-inline-flex justify-content-center">
+          <button dynamic-group-control="locacoes" filter class="btn btn-success btn-sm m-1">Filtrar</button>
+          <button dynamic-group-control="locacoes" clear class="btn btn-secondary btn-sm m-1">Limpar</button>
+        </div>
+      </div>
+    </div>
     <div class="card-body">
       <dg-table dg-dynamic-table [dynamicTable]="table"></dg-table>
     </div>
     <div class="card-footer">
       <dg-paginator dg-dynamic-paginator [dynamicTable]="table"></dg-paginator>
     </div>
-    <div class="card-footer">
-      <button class="btn btn-success" [routerLink]="'novo'">Adicionar</button>
-    </div>
   </card>
 </div>
+
+
+<page-footer>
+  <button class="btn btn-success" [routerLink]="'novo'">Adicionar</button>
+</page-footer>

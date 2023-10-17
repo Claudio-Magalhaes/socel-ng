@@ -5,6 +5,10 @@ import {
   CdkDynamicTableService
 } from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
+import {GenericService} from "../../../../services/generic-service/generic.service";
+import {LOCACAO} from "../../../../_core/endpoints";
+import {LocacaoService} from "../service/locacao.service";
+import {LocacaoFilters} from "../locacao.filters";
 
 @Component({
   selector: 'app-locacao-main',
@@ -15,11 +19,21 @@ export class LocacaoMainComponent implements OnInit {
 
   table: CdkDynamicTable.tableClass;
 
+  filters = {
+    nomeCliente: '',
+    status: '',
+    dataInicial: '',
+    dataFinal: '',
+  }
+
   constructor(
     private CdkTable: CdkDynamicTableService,
-    private router: Router
+    private router: Router,
+    private service: LocacaoService
   ) {
-    this.table = CdkTable.createByCrudEnity2(new LocacaoEntity())
+    this.table = CdkTable.createByCrudEnity2(new LocacaoEntity(), {
+      filters: { group: 'locacoes', reactive: true, filters: LocacaoFilters }
+    })
     this.table.controls.actions.setObject({
       edit: {
         name: 'Editar',
@@ -31,10 +45,19 @@ export class LocacaoMainComponent implements OnInit {
       iniciar: {
         name: 'Iniciar locação',
         action: (row) => {
-
+          this.service.iniciar(row.id, () => this.table.find())
         },
         permission: (row) => {
-          return row.status == 'Aberto'
+          return row.status == 'ABERTO'
+        }
+      },
+      finalizar: {
+        name: 'Finalizar locação',
+        action: (row) => {
+          this.service.finalizar(row.id, () => this.table.find())
+        },
+        permission: (row) => {
+          return row.status == 'EM_LOCACAO'
         }
       },
       cancelar: {
@@ -47,6 +70,7 @@ export class LocacaoMainComponent implements OnInit {
         }
       }
     })
+    // this.table.controls.filters.
   }
 
   ngOnInit(): void {

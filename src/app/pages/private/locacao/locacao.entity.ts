@@ -39,9 +39,9 @@ export class LocacaoEntity extends AbstractEntity2 {
   override id: number | string | undefined;
   @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => String(val.nome || '--') })
   public cliente: ClientesEntity | undefined
-  @DynamicColumn({ headerName: 'Data Início' })
+  @DynamicColumn({ headerName: 'Data Início', resource: val => !!val ? val.split('-').reverse().join('/') : '--' })
   public dataInicial: string | undefined
-  @DynamicColumn({ headerName: 'Data Fim' })
+  @DynamicColumn({ headerName: 'Data Fim', resource: val => !!val ? val.split('-').reverse().join('/') : '--' })
   public dataFinal: string | undefined
   @DynamicColumn({ headerName: 'Status' })
   public status: string | undefined

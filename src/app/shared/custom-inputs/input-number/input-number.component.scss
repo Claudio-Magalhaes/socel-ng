@@ -1,0 +1,76 @@
+// base do input
+.custom-input-number {
+  display: flex;
+  word-wrap: break-word !important;
+  border-radius: var(--bs-border-radius);
+  width: 100%;
+  max-width: 100%;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+
+  &.reverse {
+    flex-direction: row-reverse;
+
+    input {
+      text-align: start !important;
+      border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+    }
+
+    .root-icon {
+      border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+    }
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+
+  &.ng-touched.ng-invalid {
+    border: solid 1px red !important;
+  }
+}
+
+// input
+.custom-input-number input {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
+
+  transition-duration: 200ms;
+  background: none;
+  border: none;
+  outline: 0;
+  box-shadow: none;
+  border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+  text-align: end;
+
+  &:focus {
+    background: white;
+  }
+}
+
+// icon
+.custom-input-number .root-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding: .1rem;
+  border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+
+  .content-icon {
+    background: #cbcbcb;
+    padding: .1rem .3rem;
+    border-radius: 50%;
+
+    &.percent {
+      font-weight: bolder;
+      padding: .06rem .5rem;
+    }
+  }
+}
+
+.custom-input-number i, span {
+  font-size: 9pt;
+}
+

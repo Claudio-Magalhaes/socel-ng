@@ -12,6 +12,7 @@ import {
     DgTableModule
 } from "@datagrupo/dg-ng-util";
 import {NgxMaskModule} from "ngx-mask";
+import {CustomInputsModule} from "../../../shared/custom-inputs/custom-inputs.module";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {NgxMaskModule} from "ngx-mask";
         CdkDynamicTableModule,
         CdkDynamicGroupModule,
         NgxMaskModule,
-        DgPaginatorModule
+        DgPaginatorModule,
+        CustomInputsModule
     ]
 })
 export class ProdutosModule {

@@ -1,0 +1,24 @@
+<div
+  class="custom-input-number"
+  [class.reverse]="order == 'reverse'"
+  [class.ng-invalid]="controlDir?.invalid"
+  [class.ng-touched]="controlDir?.touched"
+  [class.ng-untouched]="!controlDir?.touched"
+  [class.ng-valid]="!controlDir?.invalid"
+>
+  <input
+    type="text"
+    [class.form-control]="size == 'normal'"
+    [class.form-control-sm]="size == 'sm'"
+    [class.form-control-lg]="size == 'lg'"
+    [formControl]="rootValue"
+    (focusout)="onTouched()"
+    (click)="onTouched()"
+  >
+  <div class="root-icon">
+    <div class="content-icon" [class.percent]="icon == 'percent'">
+      <span *ngIf="icon == 'R$'">R$:</span>
+      <span *ngIf="icon == 'percent'">%</span>
+    </div>
+  </div>
+</div>

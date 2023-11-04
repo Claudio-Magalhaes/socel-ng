@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProdutosEntity} from "../produtos.entity";
 import {
   CdkDynamicTable,
@@ -13,10 +13,11 @@ import {produtosFilters} from "../produtos.filters";
   templateUrl: './podutos-main.component.html',
   styleUrls: ['./podutos-main.component.scss']
 })
-export class PodutosMainComponent implements OnInit {
+export class PodutosMainComponent implements OnInit, OnDestroy {
 
   form = new FormGroup({
-    nome: new FormControl('')
+    nome: new FormControl(''),
+    status: new FormControl(''),
   })
 
   table: CdkDynamicTable.tableClass;
@@ -35,11 +36,15 @@ export class PodutosMainComponent implements OnInit {
           }
         }
       },
-      filters: { group: 'produtos', filters: produtosFilters}
+      filters: { group: 'produtos', reactive: true, filters: produtosFilters}
     })
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.table.destroy()
   }
 
 }

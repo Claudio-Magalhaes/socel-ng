@@ -9,6 +9,7 @@ import {GenericService} from "../../../../services/generic-service/generic.servi
 import {LOCACAO} from "../../../../_core/endpoints";
 import {LocacaoService} from "../service/locacao.service";
 import {LocacaoFilters} from "../locacao.filters";
+import {classesStatus} from "../locacao.table";
 
 @Component({
   selector: 'app-locacao-main',
@@ -82,7 +83,14 @@ export class LocacaoMainComponent implements OnInit {
           }
         }
       }
-    })
+    });
+    this.table.controls.columns.update('id', { tdClass: classesStatus })
+    this.table.controls.columns.update('cliente', { tdClass: classesStatus })
+    this.table.controls.columns.update('dataInicial', { tdClass: classesStatus })
+    this.table.controls.columns.update('dataFinal', { tdClass: classesStatus })
+    this.table.controls.columns.update('status', { tdClass: classesStatus })
+    this.table.controls.columns.update('total', { tdClass: classesStatus })
+    this.table.controls.columns.update('faturamento', { tdClass: classesStatus })
   }
 
   ngOnInit(): void {

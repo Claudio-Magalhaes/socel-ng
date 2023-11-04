@@ -11,13 +11,15 @@ export class ServicoEntity extends AbstractEntity2 {
     id?: number | string,
     nome?: string,
     valorBase?: number | string,
-    descricao?: string
+    descricao?: string,
+    status?: boolean
   ) {
     super();
     this.id = id;
     this.nome = nome;
     this.valorBase = valorBase;
     this.descricao = descricao;
+    this.status = !!status;
   }
 
   @DynamicColumn({ headerName: 'nome' })
@@ -25,6 +27,10 @@ export class ServicoEntity extends AbstractEntity2 {
 
   @DynamicColumn({ headerName: 'Valor Base' })
   valorBase: number | string | undefined
+
+  @DynamicColumn({ headerName: 'Status', resource: val => !!val ? 'ATIVO' : 'INATIVO' })
+  status: boolean = false
+
 
   descricao: string | undefined
 }

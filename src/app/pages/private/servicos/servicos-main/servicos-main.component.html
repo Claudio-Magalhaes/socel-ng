@@ -6,15 +6,31 @@
       <custom-filters group="servicos">
         <div body-filters>
           <form [formGroup]="form">
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-              <label class="form-label">Nome</label>
-              <input
-                class="form-control"
-                formControlName="nome"
-                dg-dynamic-group="servicos"
-                paramName="nome"
-                (clearParams)="form.patchValue({ nome: '' })"
-              >
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label">Nome</label>
+                <input
+                  class="form-control"
+                  formControlName="nome"
+                  dg-dynamic-group="servicos"
+                  paramName="nome"
+                  (clearParams)="form.patchValue({ nome: '' })"
+                >
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label">Status</label>
+                <select
+                  class="form-control"
+                  formControlName="status"
+                  dg-dynamic-group="servicos"
+                  paramName="status"
+                  (clearParams)="form.patchValue({ status: '' })"
+                >
+                  <option value="">Ambos</option>
+                  <option [value]="true">Ativos</option>
+                  <option [value]="false">Inativos</option>
+                </select>
+              </div>
             </div>
           </form>
         </div>
@@ -29,8 +45,9 @@
     <div class="card-footer">
       <dg-paginator dg-dynamic-paginator [dynamicTable]="table"></dg-paginator>
     </div>
-    <div class="card-footer">
-      <button class="btn btn-success" [routerLink]="'novo'">Adicionar</button>
-    </div>
   </card>
 </div>
+
+<page-footer>
+  <button class="btn btn-success" [routerLink]="'novo'">Adicionar</button>
+</page-footer>

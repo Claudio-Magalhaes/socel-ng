@@ -13,7 +13,7 @@
           </div>
           <div class="col-6">
             <label class="form-label">Valor base de Serviço <span class="fc-red">*</span></label>
-            <input class="form-control" formControlName="valorBase">
+            <input-number formControlName="valorBase" order="reverse"></input-number>
           </div>
         </div>
 
@@ -32,5 +32,5 @@
 
 <page-footer>
   <button class="btn btn-success" crud-salvar>Salvar</button>
-  <button class="btn btn-success" crud-voltar>Voltar</button>
+  <button class="btn btn-secondary" crud-voltar>Voltar</button>
 </page-footer>

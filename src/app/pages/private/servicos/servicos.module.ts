@@ -11,6 +11,7 @@ import {
     CdkDynamicTableModule,
     DgPaginatorModule, DgTableModule
 } from "@datagrupo/dg-ng-util";
+import {CustomInputsModule} from "../../../shared/custom-inputs/custom-inputs.module";
 
 
 @NgModule({
@@ -18,16 +19,17 @@ import {
     ServicosMainComponent,
     ServicosInsertEditComponent
   ],
-    imports: [
-        CommonModule,
-        UiModule,
-        DgCrudModule,
-        RouterModule,
-        ReactiveFormsModule,
-        DgPaginatorModule,
-        CdkDynamicTableModule,
-        DgTableModule,
-        CdkDynamicGroupModule
-    ]
+  imports: [
+    CommonModule,
+    UiModule,
+    DgCrudModule,
+    RouterModule,
+    ReactiveFormsModule,
+    DgPaginatorModule,
+    CdkDynamicTableModule,
+    DgTableModule,
+    CdkDynamicGroupModule,
+    CustomInputsModule
+  ]
 })
 export class ServicosModule { }

@@ -32,45 +32,57 @@ export class LocacaoMainComponent implements OnInit {
     private service: LocacaoService
   ) {
     this.table = CdkTable.createByCrudEnity2(new LocacaoEntity(), {
-      filters: { group: 'locacoes', reactive: true, filters: LocacaoFilters }
-    })
-    this.table.controls.actions.setObject({
-      edit: {
-        name: 'Editar',
-        dbClick: true,
-        action: (val: LocacaoEntity) => {
-          this.router.navigate(['user', 'locacoes', val?.id]).then()
-        }
-      },
-      iniciar: {
-        name: 'Iniciar locação',
-        action: (row) => {
-          this.service.iniciar(row.id, () => this.table.find())
+      filters: { group: 'locacoes', reactive: true, filters: LocacaoFilters },
+      actions: {
+        edit: {
+          name: 'Editar',
+          dbClick: true,
+          action: (val: LocacaoEntity) => {
+            this.router.navigate(['user', 'locacoes', val?.id]).then()
+          },
+          permission: row => {
+            return row.status == 'ABERTO';
+          }
         },
-        permission: (row) => {
-          return row.status == 'ABERTO'
-        }
-      },
-      finalizar: {
-        name: 'Finalizar locação',
-        action: (row) => {
-          this.service.finalizar(row.id, () => this.table.find())
+        ver: {
+          name: 'Ver',
+          dbClick: true,
+          action: (val: LocacaoEntity) => {
+            this.router.navigate(['user', 'locacoes', val?.id]).then()
+          },
+          permission: row => {
+            return row.status != 'ABERTO';
+          }
         },
-        permission: (row) => {
-          return row.status == 'EM_LOCACAO'
-        }
-      },
-      cancelar: {
-        name: 'Iniciar locação',
-        action: (row) => {
+        iniciar: {
+          name: 'Iniciar locação',
+          action: (row) => {
+            this.service.iniciar(row.id, () => this.table.find())
+          },
+          permission: (row) => {
+            return row.status == 'ABERTO'
+          }
+        },
+        finalizar: {
+          name: 'Finalizar locação',
+          action: (row) => {
+            this.service.finalizar(row.id, () => this.table.find())
+          },
+          permission: (row) => {
+            return row.status == 'EM_LOCACAO'
+          }
+        },
+        cancelar: {
+          name: 'Iniciar locação',
+          action: (row) => {
 
-        },
-        permission: (row) => {
-          return row.status == 'Aberto'
+          },
+          permission: (row) => {
+            return row.status == 'Aberto'
+          }
         }
       }
     })
-    // this.table.controls.filters.
   }
 
   ngOnInit(): void {

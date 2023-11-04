@@ -111,6 +111,11 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit2<ClientesEnt
     this.tableContatos.controls.apiData.set({params: {cliente: entityData.id}});
   }
 
+  override afterSaveEntity(entityData: any) {
+    this.tableEnderecos.controls.apiData.set({params: {cliente: entityData.id}});
+    this.tableContatos.controls.apiData.set({params: {cliente: entityData.id}});
+  }
+
   override beforeSaveEntity(): boolean {
     if (!this.form.valid) {
       this.form.markAllAsTouched();

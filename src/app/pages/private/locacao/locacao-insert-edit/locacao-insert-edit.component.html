@@ -83,13 +83,13 @@
               <h5 class="card-title">Valor total de produtos: R${{entity.totalProdutos || '0,00'}}</h5>
             </div>
             <div class="col-2">
-              <button (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
+              <button *ngIf="verifyEdit()" (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
             </div>
           </div>
         </div>
         <div class="card-body">
           <div class="row">
-            <dg-table dg-dynamic-table [dynamicTable]="tableProtudos">
+            <dg-table dg-dynamic-table [dynamicTable]="tableProtudos" [showActions]="verifyEdit()">
             </dg-table>
           </div>
         </div>
@@ -110,13 +110,13 @@
               <h5 class="card-title">Valor total de serviços: R${{entity.totalServicos || '0,00'}}</h5>
             </div>
             <div class="col-2">
-            <button (click)="modalServico.open()" class="btn btn-success">Adicionar</button>
+            <button *ngIf="verifyEdit()" (click)="modalServico.open()" class="btn btn-success">Adicionar</button>
             </div>
           </div>
         </div>
         <div class="card-body">
           <div class="row">
-            <dg-table dg-dynamic-table [dynamicTable]="tableServicos">
+            <dg-table dg-dynamic-table [dynamicTable]="tableServicos" [showActions]="verifyEdit()">
             </dg-table>
           </div>
         </div>
@@ -130,9 +130,19 @@
 </div>
 
 <page-footer>
-  <button *ngIf="entity?.status == 'ABERTO'" class="btn btn-success" crud-salvar [backAfterSave]="false">Salvar</button>
+  <button class="btn btn-success" crud-salvar [backAfterSave]="false">Salvar</button>
   <button class="btn btn-secondary" crud-voltar>Voltar</button>
-  <span class="ms-auto">Total R$:{{ entity?.total || '0,00' }}</span>
+  <div class="ms-auto">
+    <h4>Total R$:{{ entity?.total || '0,00' }}</h4>
+    <div class="w-100 d-flex justify-content-end">
+      <span
+        class="badge status ms-auto"
+        [class.text-bg-secondary]="entity?.status == 'ABERTA'"
+        [class.text-bg-success]="entity?.status == 'FINALIZADA'"
+        [class.text-bg-warning]="entity?.status == 'EM_LOCACAO'"
+      >{{entity?.status}}</span>
+    </div>
+  </div>
 </page-footer>
 
 

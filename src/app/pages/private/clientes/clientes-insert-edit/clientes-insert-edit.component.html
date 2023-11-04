@@ -24,12 +24,12 @@
                 <div class="col-4">
                   <div class="mb-3">
                     <label class="form-label">Documento</label>
-                    <input type="text" mask="000.000.000-00" class="form-control" formControlName="documento">
+                    <input type="text" mask="000.000.000-00||00.000.000/0000-00" class="form-control" formControlName="documento">
                   </div>
                 </div>
 
                 <div class="col-4">
-                  <label class="form-label">Tipo de pessoa</label>
+                  <label class="form-label w-100">Tipo de pessoa</label>
                   <div class="btn-group" role="group">
                     <input
                       value="FISICA"
@@ -220,7 +220,7 @@
 
 <page-footer>
   <button class="btn btn-success" crud-salvar [backAfterSave]="false">Salvar</button>
-  <button class="btn btn-success" crud-salvar>Salvar e Voltar</button>
+  <button class="btn btn-success" crud-salvar [backAfterSave]="true">Salvar e Voltar</button>
   <button class="btn btn-secondary" crud-voltar>Voltar</button>
 </page-footer>
 

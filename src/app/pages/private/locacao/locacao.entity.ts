@@ -35,19 +35,33 @@ export class LocacaoEntity extends AbstractEntity2 {
     this.obsercacoes = obsercacoes;
   }
 
-  @DynamicColumn({ headerName: 'ID' })
+  @DynamicColumn({headerName: 'ID'})
   override id: number | string | undefined;
-  @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => String(val.nome || '--') })
+  @DynamicColumn({headerName: 'Cliente', resource: (val: ClientesEntity) => String(val.nome || '--')})
   public cliente: ClientesEntity | undefined
-  @DynamicColumn({ headerName: 'Data Início', resource: val => !!val ? val.split('-').reverse().join('/') : '--' })
+  @DynamicColumn({headerName: 'Data Início', resource: val => !!val ? val.split('-').reverse().join('/') : '--'})
   public dataInicial: string | undefined
-  @DynamicColumn({ headerName: 'Data Fim', resource: val => !!val ? val.split('-').reverse().join('/') : '--' })
+  @DynamicColumn({headerName: 'Data Fim', resource: val => !!val ? val.split('-').reverse().join('/') : '--'})
   public dataFinal: string | undefined
-  @DynamicColumn({ headerName: 'Status' })
+  @DynamicColumn({
+    headerName: 'Status', resource: (val) => {
+      switch (val) {
+        case 'FINALIZADO':
+          return '<span class="badge status text-bg-success">Finalizada</span>'
+        case 'EM_LOCACAO':
+          return '<span class="badge status text-bg-warning">Em locação</span>'
+        case 'ABERTO':
+          return '<span class="badge status text-bg-secondary">Aberta</span>'
+        default:
+          return val;
+      }
+
+    }
+  })
   public status: string | undefined
-  @DynamicColumn({ headerName: 'Valor' })
+  @DynamicColumn({headerName: 'Valor'})
   public total: string | undefined
-  @DynamicColumn({ headerName: 'Faturamento', resource: val => 'CRIAR' })
+  @DynamicColumn({headerName: 'Faturamento', resource: val => 'CRIAR'})
   public faturamento: LancamentoEntity | undefined
 
   public contato: ContatoEntity | undefined

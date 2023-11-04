@@ -3,6 +3,7 @@ import {EnderecoEntity} from "./_entitys/endereco.entity";
 import {ContatoEntity} from "./_entitys/contato.entity";
 import {environment} from "../../../../environments/environment";
 import {CLIENTE} from "../../../_core/endpoints";
+import {CdkDgTable} from "@datagrupo/dg-ng-util";
 
 @DataServer({
   path: environment.apiUrl,
@@ -30,16 +31,29 @@ export class ClientesEntity extends AbstractEntity2 {
   }
 
 
-  @DynamicColumn({ headerName: 'id' })
+  @DynamicColumn({headerName: 'id'})
   override id: string | number | undefined;
 
-  @DynamicColumn({ headerName: 'nome:'})
+  @DynamicColumn({headerName: 'nome'})
   public nome: string | undefined;
+
+  @DynamicColumn({
+    headerName: 'Documento', resource: (val: string | undefined) => {
+      if (!!val) {
+        if(val.length == 11) return CdkDgTable.mask('cpf', val)
+        if(val.length == 14) return CdkDgTable.mask('cnpj', val)
+      }
+      return val || '--';
+    }
+  })
+  public documento: string | undefined;
+
+  @DynamicColumn({headerName: 'Status'})
+  public status: string | undefined
 
   public sexo: string | undefined;
   public tipoPessoa: string | undefined;
   public email: string | undefined;
-  public documento: string | undefined;
 
   public endereco: EnderecoEntity | undefined;
   public contato: ContatoEntity | undefined;

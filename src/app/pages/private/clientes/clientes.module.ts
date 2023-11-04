@@ -5,7 +5,7 @@ import {ClientesInsertEditComponent} from './clientes-insert-edit/clientes-inser
 import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxMaskModule} from "ngx-mask";
 import {
     CdkDynamicGroupModule,
@@ -34,7 +34,8 @@ import {EnderecosComponent} from "./sub-components/enderecos/enderecos.component
         CdkDynamicTableModule,
         DgModalModule,
         DgPaginatorModule,
-        CdkDynamicGroupModule
+        CdkDynamicGroupModule,
+        FormsModule
     ]
 })
 export class ClientesModule {

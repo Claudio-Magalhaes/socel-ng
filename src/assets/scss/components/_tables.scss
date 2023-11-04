@@ -41,3 +41,14 @@
 
   }
 }
+
+
+.dg-table {
+  td {
+    .status {
+      --bs-bg-opacity: .5;
+      border-radius: 15px;
+      font-size: 9pt;
+    }
+  }
+}

@@ -6,15 +6,42 @@
       <custom-filters group="clientes">
         <div body-filters>
           <form [formGroup]="form">
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-              <label class="form-label">Nome</label>
-              <input
-                class="form-control"
-                formControlName="nome"
-                dg-dynamic-group="clientes"
-                paramName="nome"
-                (clearParams)="form.patchValue({ nome: '' })"
-              >
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label">Nome</label>
+                <input
+                  class="form-control"
+                  formControlName="nome"
+                  dg-dynamic-group="clientes"
+                  paramName="nome"
+                  (clearParams)="form.patchValue({ nome: '' })"
+                >
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label">Documento</label>
+                <input
+                  class="form-control"
+                  formControlName="documento"
+                  dg-dynamic-group="clientes"
+                  paramName="documento"
+                  mask="000.000.000-00||00.000.000/0000-00"
+                  (clearParams)="form.patchValue({ documento: '' })"
+                >
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label">Status</label>
+                <select
+                  class="form-control"
+                  formControlName="status"
+                  dg-dynamic-group="clientes"
+                  paramName="status"
+                  (clearParams)="form.patchValue({ status: '' })"
+                >
+                  <option value="">Ambos</option>
+                  <option [value]="true">Ativos</option>
+                  <option [value]="false">Inativos</option>
+                </select>
+              </div>
             </div>
           </form>
         </div>
@@ -22,6 +49,9 @@
     </div>
     <div class="card-body">
       <dg-table dg-dynamic-table [dynamicTable]="table"></dg-table>
+    </div>
+    <div class="card-footer">
+      <dg-paginator dg-dynamic-paginator [dynamicTable]="table"></dg-paginator>
     </div>
   </card>
 </div>

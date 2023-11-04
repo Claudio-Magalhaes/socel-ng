@@ -6,6 +6,7 @@ import {environment} from "../../../../../../environments/environment";
 import {HttpHelperService} from "../../../../../services/http-helper/http-helper.service";
 import {EnderecoEntity} from "../../_entitys/endereco.entity";
 import {DgModalComponent} from "../../../../../../../../../../../../datagrupo/_libs/libs-dg-ng-util/dist/dg-ng-util";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'subComponent-enderecos',
@@ -22,13 +23,15 @@ export class EnderecosComponent implements OnInit {
 
   public form = new FormGroup({
     id: new FormControl(''),
+    descricao: new FormControl(''),
     cep: new FormControl('',[Validators.required]),
     numero: new FormControl('',[Validators.required]),
     cidade: new FormControl(''),
     bairro: new FormControl(''),
     uf: new FormControl(''),
     rua: new FormControl(''),
-    complemento: new FormControl('')
+    complemento: new FormControl(''),
+    principal: new FormControl(''),
   });
 
   constructor(
@@ -55,12 +58,17 @@ export class EnderecosComponent implements OnInit {
   open(data?: EnderecoEntity) {
     if (!this.idCliente) return;
 
-    if (!!data) {
-      this.form.patchValue(data)
+    if (!data) {
       this.modal.open();
-    } else {
-      this.modal.open();
+      return;
     }
+
+    this.service.get(CLIENTE_ENDERECOS + '/' + data.id).subscribe(
+      resp => {
+        this.form.patchValue(resp.data)
+        this.modal.open();
+      }
+    )
   }
 
   save() {
@@ -77,7 +85,7 @@ export class EnderecosComponent implements OnInit {
     let request: any;
 
     if (!!form?.id) {
-      request = this.service.put(CLIENTE_ENDERECOS + '/' + form.id, data)
+      request = this.service.put(CLIENTE_ENDERECOS, data)
     } else {
       // return this.service.save(CLIENTE_ENDERECOS, data, this.dataMock)
       request = this.service.post(CLIENTE_ENDERECOS, data)
@@ -85,6 +93,10 @@ export class EnderecosComponent implements OnInit {
 
     request.subscribe(
       () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro ' + (!form?.id ? 'adicionado' : 'editado') + ' com sucesso'
+        })
         this.modal.close()
         this.afterSave.emit()
       }

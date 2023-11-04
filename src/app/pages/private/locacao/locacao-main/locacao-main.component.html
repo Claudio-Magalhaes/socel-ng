@@ -6,33 +6,100 @@
     </div>
     <div class="card-header container-fluid">
       <div class="row">
-        <div class="col-lx-4 col-lg-4 col-md-6 col-sm-12">
+<!--        <div class="col-lx-4 col-lg-4 col-md-6 col-sm-12">-->
+<!--          <label class="form-label">Nome do cliente</label>-->
+<!--          <input class="form-control" [(ngModel)]="filters.nomeCliente" dg-dynamic-group="locacoes"-->
+<!--                 paramName="nomeCliente">-->
+<!--        </div>-->
+<!--        <div class="col-lx-2 col-lg-2 col-md-6 col-sm-12">-->
+<!--          <label class="form-label">Status</label>-->
+<!--          <select class="form-select" [(ngModel)]="filters.status" dg-dynamic-group="locacoes"-->
+<!--                 paramName="status">-->
+<!--            <option value=""></option>-->
+<!--            <option value="ABERTO">Aberto</option>-->
+<!--            <option value="EM_LOCACAO">Em locação</option>-->
+<!--            <option value="FINALIZADO">Finalizado</option>-->
+<!--          </select>-->
+<!--        </div>-->
+<!--        <div class="col-lx-3 col-lg-3 col-md-6 col-sm-12">-->
+<!--          <label class="form-label">Data Inicial</label>-->
+<!--          <input type="date" class="form-control" [(ngModel)]="filters.dataInicial" dg-dynamic-group="locacoes"-->
+<!--                 paramName="dataInicial">-->
+<!--        </div>-->
+<!--        <div class="col-lx-3 col-lg-3 col-md-6 col-sm-12">-->
+<!--          <label class="form-label">Data Final</label>-->
+<!--          <input type="date" class="form-control" [(ngModel)]="filters.dataFinal" dg-dynamic-group="locacoes"-->
+<!--                 paramName="dataFinal">-->
+<!--        </div>-->
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+          <div class="row">
+            <span class="fs-9">Iniciando entre</span>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <label class="form-label">Data Inicial</label>
+              <input type="date" class="form-control" [(ngModel)]="filters.dataInicial" dg-dynamic-group="locacoes"
+                     paramName="dataInicial">
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <label class="form-label">Data Final</label>
+              <input type="date" class="form-control" [(ngModel)]="filters.dataFinal" dg-dynamic-group="locacoes"
+                     paramName="dataFinal">
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+          <div class="row">
+            <span class="fs-9">Finalizando entre</span>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <label class="form-label">Data Inicial</label>
+              <input type="date" class="form-control" [(ngModel)]="filters.dataInicial" dg-dynamic-group="locacoes"
+                     paramName="dataInicial">
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <label class="form-label">Data Final</label>
+              <input type="date" class="form-control" [(ngModel)]="filters.dataFinal" dg-dynamic-group="locacoes"
+                     paramName="dataFinal">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
           <label class="form-label">Nome do cliente</label>
           <input class="form-control" [(ngModel)]="filters.nomeCliente" dg-dynamic-group="locacoes"
                  paramName="nomeCliente">
         </div>
-        <div class="col-lx-2 col-lg-2 col-md-6 col-sm-12">
-          <label class="form-label">Status</label>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+          <label class="form-label">Renomada</label>
+          <input class="form-control" [(ngModel)]="filters.nomeCliente" dg-dynamic-group="locacoes"
+                 paramName="nomeCliente">
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+          <label class="form-label">Faturada</label>
           <select class="form-select" [(ngModel)]="filters.status" dg-dynamic-group="locacoes"
-                 paramName="status">
+                  paramName="status">
             <option value=""></option>
             <option value="ABERTO">Aberto</option>
             <option value="EM_LOCACAO">Em locação</option>
             <option value="FINALIZADO">Finalizado</option>
           </select>
         </div>
-        <div class="col-lx-3 col-lg-3 col-md-6 col-sm-12">
-          <label class="form-label">Data Inicial</label>
-          <input type="date" class="form-control" [(ngModel)]="filters.dataInicial" dg-dynamic-group="locacoes"
-                 paramName="dataInicial">
-        </div>
-        <div class="col-lx-3 col-lg-3 col-md-6 col-sm-12">
-          <label class="form-label">Data Final</label>
-          <input type="date" class="form-control" [(ngModel)]="filters.dataFinal" dg-dynamic-group="locacoes"
-                 paramName="dataFinal">
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+          <label class="form-label">Status</label>
+          <select class="form-select" [(ngModel)]="filters.status" dg-dynamic-group="locacoes"
+                  paramName="status">
+            <option value=""></option>
+            <option value="ABERTO">Aberto</option>
+            <option value="EM_LOCACAO">Em locação</option>
+            <option value="FINALIZADO">Finalizado</option>
+          </select>
         </div>
       </div>
-      <div class="row">
+
+      <div class="row mt-3">
         <div class="col-12 d-inline-flex justify-content-center">
           <button dynamic-group-control="locacoes" filter class="btn btn-success btn-sm m-1">Filtrar</button>
           <button dynamic-group-control="locacoes" clear class="btn btn-secondary btn-sm m-1">Limpar</button>

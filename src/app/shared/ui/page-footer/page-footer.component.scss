@@ -20,21 +20,12 @@
   }
 
   .row-btn {
-    padding: 1rem 1rem 1rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
     height: 100% !important;
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
   }
-
-  .copyright {
-    padding: 1rem 2rem 1rem 1rem;
-    display: inline-flex;
-    justify-content: flex-end;
-    align-items: center;
-    font-size: 14px;
-  }
-
   button {
     margin: 0 .25rem !important;
   }
@@ -42,9 +33,6 @@
   @media #{$md-layout} {
     height: auto;
 
-    .copyright {
-      padding: 0 2rem 0;
-    }
     .row-btn {
       padding: .5rem 2rem .5rem;
     }
@@ -60,10 +48,6 @@
     width: 100%;
     height: auto;
 
-    .copyright {
-      padding: 0 2rem 0;
-      font-size: 8pt;
-    }
     .row-btn {
       padding: .5rem 2rem .5rem;
     }

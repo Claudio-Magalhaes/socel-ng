@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ClientesEntity} from "../clientes.entity";
 import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util";
 import {FormControl, FormGroup} from "@angular/forms";
@@ -10,10 +10,12 @@ import {clienteFilters} from "../cliente.filters";
   templateUrl: './clientes-main.component.html',
   styleUrls: ['./clientes-main.component.scss']
 })
-export class ClientesMainComponent implements OnInit {
+export class ClientesMainComponent implements OnInit, OnDestroy {
 
   form = new FormGroup({
-    nome: new FormControl('')
+    nome: new FormControl(''),
+    documento: new FormControl(''),
+    status: new FormControl(''),
   })
 
   public entity = new ClientesEntity();
@@ -31,11 +33,15 @@ export class ClientesMainComponent implements OnInit {
           }
         }
       },
-      filters: { group: 'clientes', filters: clienteFilters },
+      filters: { group: 'clientes', filters: clienteFilters, reactive: true },
     })
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.table.destroy();
   }
 
 }

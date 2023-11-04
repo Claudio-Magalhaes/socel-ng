@@ -6,9 +6,23 @@
   <div modal-body>
     <form [formGroup]="form">
       <div class="row">
-        <div class="col-12">
+        <div class="col-xl-11 col-lg-10 col-md-10 col-sm-12">
           <label class="form-label">Descrição</label>
           <input type="text" id="descricao" formControlName="descricao" class="form-control">
+        </div>
+        <div class="col-xl-1 col-lg-2 col-md-2 col-sm-12">
+          <label class="form-label">Principal</label>
+          <div class="d-flex justify-content-lg-center align-items-start">
+            <input #inputPrincipal type="checkbox" formControlName="principal" hidden>
+            <i
+              style="font-size: 20pt"
+              class="bi"
+              [class.bi-star-fill]="!!form.value.principal"
+              [class.fc-yellow]="!!form.value.principal"
+              [class.bi-star]="!form.value.principal"
+              (click)="inputPrincipal.click()"
+            ></i>
+          </div>
         </div>
       </div>
       <div class="row">

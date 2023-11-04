@@ -81,7 +81,21 @@ export class UserLayoutComponent implements OnInit {
         }).then()
       }
       return;
+    } else {
+      if (!data['message']) return;
+      if (!data['message']['error']) return;
+      if (!data['message']['error']['message']) return;
+
+
+      Swal.fire({
+        icon: 'warning',
+        title: data['message']['error']['message']
+      }).then()
+
+      console.log(data['message']['error']['message'])
+
+
     }
-    console.log(data)
+    // console.log(data)
   }
 }

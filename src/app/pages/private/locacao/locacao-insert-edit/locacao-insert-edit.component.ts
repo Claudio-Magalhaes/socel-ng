@@ -155,6 +155,16 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
     })
     this.tableServicos.controls.apiData.set({params: {locacao: this.entity.id}})
     this.tableProtudos.controls.apiData.set({params: {locacao: this.entity.id}})
+
+    if (this.entity.status == 'FINALIZADO') {
+      this.form.controls['cliente'].disable();
+      this.form.controls['contato'].disable();
+      this.form.controls['endereco'].disable();
+      this.form.controls['dataInicial'].disable();
+      this.form.controls['dataFinal'].disable();
+      this.form.controls['descricao'].disable();
+      this.form.controls['observacao'].disable();
+    }
   }
 
   override beforeSaveEntity(): boolean {
@@ -187,5 +197,9 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
         }
       }
     )
+  }
+
+  verifyEdit() {
+    return ['ABERTO'].includes(this.entity.status || '')
   }
 }

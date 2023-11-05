@@ -10,6 +10,7 @@ import {LancamentoTable} from "../lancamento.table";
 import {GenericService} from "../../../../services/generic-service/generic.service";
 import {ModalBaixarComponent} from "../sub-components/modal-baixar/modal-baixar.component";
 import Swal from "sweetalert2";
+import {LANCAMENTO_DESFAZER_PAGAMENTO} from "../../../../_core/endpoints";
 
 @Component({
   selector: 'app-lancamentos-main',
@@ -60,7 +61,17 @@ export class LancamentosMainComponent implements OnInit {
               text: 'Você está prestes a informar ao sistema que o pagamento não foi realizado. Está certo disso?',
               showCancelButton: true,
               cancelButtonText: 'Cancelar'
-            }).then()
+            }).then(confirm => {
+              if (confirm.isConfirmed) {
+                this.table.find();
+                this.service.patch(LANCAMENTO_DESFAZER_PAGAMENTO + val.id, {}).subscribe(resp => {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Pagamento desfeito'
+                  }).then()
+                })
+              }
+            })
           },
           permission: (val: LancamentoEntity) => {
             return !!val.baixado;

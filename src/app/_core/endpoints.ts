@@ -12,6 +12,7 @@ export const SERVICO = 'servicos';
 
 export const LANCAMENTO = 'lancamentos';
 export const LANCAMENTO_BAIXAR = 'lancamentos/baixar';
+export const LANCAMENTO_DESFAZER_PAGAMENTO = 'lancamentos/desfazerPagamento/';
 
 export const USUARIO = 'usuarios';
 

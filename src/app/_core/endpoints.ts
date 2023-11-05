@@ -10,7 +10,8 @@ export const CATEGORIAS = 'categoria';
 
 export const SERVICO = 'servicos';
 
-export const LANCAMENTO = 'lancamento';
+export const LANCAMENTO = 'lancamentos';
+export const LANCAMENTO_BAIXAR = 'lancamentos/baixar';
 
 export const USUARIO = 'usuarios';
 

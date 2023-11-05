@@ -3,6 +3,38 @@
   <card>
     <div class="card-header">
       <h4 class="card-title">Lançamentos</h4>
+      <custom-filters group="produtos">
+        <div body-filters>
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label">Nome</label>
+                <input
+                  class="form-control"
+                  formControlName="nome"
+                  dg-dynamic-group="produtos"
+                  paramName="nome"
+                  (clearParams)="form.patchValue({ nome: '' })"
+                >
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <label class="form-label">Tipo Lançamento</label>
+                <select
+                  class="form-control"
+                  formControlName="tipo"
+                  dg-dynamic-group="lancamentos"
+                  paramName="tipo"
+                  (clearParams)="form.patchValue({ tipo: '' })"
+                >
+                  <option value="">Ambos</option>
+                  <option value="RECEITA">Receita</option>
+                  <option value="DESPESA">Despesa</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </custom-filters>
     </div>
     <div class="card-body">
       <dg-table dg-dynamic-table [dynamicTable]="table"></dg-table>
@@ -19,6 +51,6 @@
 </page-footer>
 
 
-<subComponent-modal-lancamento
-  #modalLancamentos
-></subComponent-modal-lancamento>
+<subComponent-modal-lancamento (afterSave)="table.find()" #modalLancamentos></subComponent-modal-lancamento>
+
+<modal-baixar #modalBaixar (afterSave)="table.find()"></modal-baixar>

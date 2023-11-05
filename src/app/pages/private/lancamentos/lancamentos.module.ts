@@ -4,27 +4,36 @@ import {LancamentosMainComponent} from './lancamentos-main/lancamentos-main.comp
 import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
-import {ModalLancamentoComponent} from './sub-componsnts/modal-lancamento/modal-lancamento.component';
+import {ModalLancamentoComponent} from './sub-components/modal-lancamento/modal-lancamento.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {CdkDynamicTableModule, DgModalModule, DgPaginatorModule, DgTableModule} from "@datagrupo/dg-ng-util";
+import {
+    CdkDynamicGroupModule,
+    CdkDynamicTableModule,
+    DgModalModule,
+    DgPaginatorModule,
+    DgTableModule
+} from "@datagrupo/dg-ng-util";
+import { ModalBaixarComponent } from './sub-components/modal-baixar/modal-baixar.component';
 
 
 @NgModule({
   declarations: [
     LancamentosMainComponent,
-    ModalLancamentoComponent
+    ModalLancamentoComponent,
+    ModalBaixarComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule,
-    ReactiveFormsModule,
-    DgModalModule,
-    DgPaginatorModule,
-    CdkDynamicTableModule,
-    DgTableModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule,
+        DgModalModule,
+        DgPaginatorModule,
+        CdkDynamicTableModule,
+        DgTableModule,
+        CdkDynamicGroupModule
+    ]
 })
 export class LancamentosModule {
 }

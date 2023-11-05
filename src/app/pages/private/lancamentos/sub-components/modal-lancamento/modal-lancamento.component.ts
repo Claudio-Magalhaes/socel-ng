@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LancamentoEntity} from "../../lancamento.entity";
 import {GenericService} from "../../../../../services/generic-service/generic.service";
@@ -14,6 +14,8 @@ import {DgModalComponent} from "@datagrupo/dg-ng-util";
 export class ModalLancamentoComponent implements OnInit {
 
   @ViewChild('modal') modal!: DgModalComponent
+
+  @Output('afterSave') afterSave = new EventEmitter<void>()
 
   public entity = new LancamentoEntity()
 
@@ -57,6 +59,10 @@ export class ModalLancamentoComponent implements OnInit {
     this.modal.open()
   }
 
+  close() {
+    this.modal.close()
+  }
+
   save() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -73,7 +79,8 @@ export class ModalLancamentoComponent implements OnInit {
 
     this.saveOrUpdate(this.entity).subscribe(
       resp => {
-        window.dispatchEvent(new CustomEvent('dg-table-atualizar-event', { detail: 'LancamentoEntity' }))
+        this.afterSave.emit()
+        this.close()
       }
     )
   }
@@ -86,7 +93,7 @@ export class ModalLancamentoComponent implements OnInit {
     }
   }
 
-  public close = () => {
+  clear() {
     this.form.reset('');
     this.entity = new LancamentoEntity();
   }

@@ -5,7 +5,7 @@ import {LANCAMENTO} from "../../../_core/endpoints";
 import {LocacaoEntity} from "../locacao/locacao.entity";
 
 @DataServer({
-  path: environment.apiUrl_mock,
+  path: environment.apiUrl,
   context: LANCAMENTO
 })
 export class LancamentoEntity extends AbstractEntity2 {
@@ -37,18 +37,43 @@ export class LancamentoEntity extends AbstractEntity2 {
     this.locacao = locacao;
   }
 
-  @DynamicColumn({ headerName: 'Tipo' })
+  @DynamicColumn({
+    headerName: 'Tipo', resource: (val: string) => {
+      if (val == 'RECEITA') return '<span class="badge bg-success">Receita</span>'
+      return '<span class="badge bg-danger">Despesa</span>'
+    }
+  })
   public tipo?: string | undefined
 
-  @DynamicColumn({ headerName: 'Cliente', resource: (val: ClientesEntity) => val?.nome || '--' })
+  @DynamicColumn({headerName: 'Cliente', resource: (val: ClientesEntity) => val?.nome || '--'})
   public cliente?: ClientesEntity | undefined
+
+  @DynamicColumn({headerName: 'Valor', resource: val => {
+      return 'R$:' + Number(val)
+        .toLocaleString('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    }})
   public valor?: number | string | undefined
+
+  @DynamicColumn({
+    headerName: 'Vencimento', resource: val => {
+      if (!val) return '';
+      return val.split('-').reverse().join('/')
+    }
+  })
   public data_vencimento?: string | undefined
+
+  @DynamicColumn({
+    headerName: 'Baixado', resource: (val: boolean) => {
+      if (!!val) return 'Pago';
+      return 'Aguardando pagamento'
+    }
+  })
+  public baixado: boolean = false
+
   public data_pagamento?: string | undefined
   public descricao?: string | undefined
   public cliente_fornecedor?: string | undefined
   public forma_pgto?: string | undefined
-  public baixado: boolean = false
   public locacao: LocacaoEntity | undefined
 
 }

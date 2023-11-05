@@ -1,0 +1,25 @@
+<dg-modal
+  #modal
+  (afterClose)="clear()"
+>
+  <div modal-body>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-6">
+          <label>Vencimento</label>
+          <input type="date" class="form-control" formControlName="dataPagamento">
+        </div>
+        <div class="col-6">
+          <label>Valor</label>
+          <select class="form-select" formControlName="formaPagamento">
+            <option value="DINHEIRO">Dinheiro</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div modal-footer>
+    <button class="btn btn-success" (click)="save()">Salvar</button>
+    <button class="btn btn-secondary" (click)="modal.close()">Sair</button>
+  </div>
+</dg-modal>

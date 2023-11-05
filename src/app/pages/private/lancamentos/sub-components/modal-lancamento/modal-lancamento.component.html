@@ -1,6 +1,6 @@
 <dg-modal
   #modal
-  (afterClose)="close()"
+  (afterClose)="clear()"
   [class.modal-fatura-receita]="entity.tipo == 'RECEITA'"
   [class.modal-fatura-despesa]="entity.tipo == 'DESPESA'"
 >

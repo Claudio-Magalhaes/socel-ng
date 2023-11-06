@@ -25,6 +25,7 @@ export class LancamentosMainComponent implements OnInit {
   form = new FormGroup({
     nome: new FormControl(''),
     tipo: new FormControl(''),
+    id: new FormControl(''),
   })
 
   public table: CdkDynamicTable.tableClass;

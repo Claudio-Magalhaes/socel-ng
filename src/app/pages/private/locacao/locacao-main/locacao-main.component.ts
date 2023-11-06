@@ -5,11 +5,8 @@ import {
   CdkDynamicTableService
 } from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
-import {GenericService} from "../../../../services/generic-service/generic.service";
-import {LOCACAO} from "../../../../_core/endpoints";
 import {LocacaoService} from "../service/locacao.service";
-import {LocacaoFilters} from "../locacao.filters";
-import {classesStatus} from "../locacao.table";
+import {classesStatus, LocacaoTable} from "../locacao.table";
 
 @Component({
   selector: 'app-locacao-main',
@@ -21,6 +18,7 @@ export class LocacaoMainComponent implements OnInit {
   table: CdkDynamicTable.tableClass;
 
   filters = {
+    id: '',
     nomeCliente: '',
     status: '',
     dataInicial: '',
@@ -33,7 +31,7 @@ export class LocacaoMainComponent implements OnInit {
     private service: LocacaoService
   ) {
     this.table = CdkTable.createByCrudEnity2(new LocacaoEntity(), {
-      filters: { group: 'locacoes', reactive: true, filters: LocacaoFilters },
+      ...LocacaoTable,
       actions: {
         edit: {
           name: 'Editar',
@@ -74,12 +72,21 @@ export class LocacaoMainComponent implements OnInit {
           }
         },
         cancelar: {
-          name: 'Iniciar locação',
+          name: 'Cancelar',
           action: (row) => {
 
           },
           permission: (row) => {
-            return row.status == 'Aberto'
+            return row.status == 'ABERTO'
+          }
+        },
+        faturar: {
+          name: 'Faturar',
+          action: (row) => {
+
+          },
+          permission: (row: LocacaoEntity) => {
+            return !row.lancamento
           }
         }
       }
@@ -90,7 +97,7 @@ export class LocacaoMainComponent implements OnInit {
     this.table.controls.columns.update('dataFinal', { tdClass: classesStatus })
     this.table.controls.columns.update('status', { tdClass: classesStatus })
     this.table.controls.columns.update('total', { tdClass: classesStatus })
-    this.table.controls.columns.update('faturamento', { tdClass: classesStatus })
+    // this.table.controls.columns.update('faturamento', { tdClass: classesStatus })
   }
 
   ngOnInit(): void {

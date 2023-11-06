@@ -12,10 +12,15 @@
                 <input
                   class="form-control"
                   formControlName="nome"
-                  dg-dynamic-group="produtos"
+                  dg-dynamic-group="lancamentos"
                   paramName="nome"
                   (clearParams)="form.patchValue({ nome: '' })"
                 >
+              </div>
+              <div class="col-xl-1 col-lg-6 col-md-12 col-sm-12">
+                <label class="form-label">ID</label>
+                <input class="form-control" formControlName="id" dg-dynamic-group="lancamentos"
+                       paramName="id">
               </div>
               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                 <label class="form-label">Tipo Lançamento</label>

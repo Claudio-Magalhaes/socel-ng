@@ -5,6 +5,7 @@ import {EnderecoEntity} from "../clientes/_entitys/endereco.entity";
 import {environment} from "../../../../environments/environment";
 import {LOCACAO} from "../../../_core/endpoints";
 import {LancamentoEntity} from "../lancamentos/lancamento.entity";
+import {funcIconsFaturado} from "../lancamentos/lancamento.table";
 
 @DataServer({
   path: environment.apiUrl,
@@ -17,6 +18,7 @@ export class LocacaoEntity extends AbstractEntity2 {
     cliente?: ClientesEntity,
     contato?: ContatoEntity,
     endereco?: EnderecoEntity,
+    lancamento?: LancamentoEntity,
     status?: string,
     dataInicial?: string,
     dataFinal?: string,
@@ -33,6 +35,7 @@ export class LocacaoEntity extends AbstractEntity2 {
     this.dataFinal = dataFinal;
     this.descricao = descricao;
     this.obsercacoes = obsercacoes;
+    this.lancamento = lancamento;
   }
 
   @DynamicColumn({headerName: 'ID'})
@@ -59,10 +62,20 @@ export class LocacaoEntity extends AbstractEntity2 {
     }
   })
   public status: string | undefined
+
   @DynamicColumn({headerName: 'Valor'})
   public total: string | undefined
-  @DynamicColumn({headerName: 'Faturamento', resource: val => 'CRIAR'})
-  public faturamento: LancamentoEntity | undefined
+
+  @DynamicColumn({
+    headerName: 'Faturamento', resource: (val: LancamentoEntity | undefined) => {
+      if (!!val) {
+        return funcIconsFaturado(!!val, val)
+      }
+      return '<span class="material-symbols-outlined" data-toggle="tooltip" data-placement="top" title="Aguardando Faturamento">' +
+        'note_add</span>'
+    }
+  })
+  public lancamento: LancamentoEntity | undefined
 
   public contato: ContatoEntity | undefined
   public endereco: EnderecoEntity | undefined

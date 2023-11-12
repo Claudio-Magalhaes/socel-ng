@@ -34,6 +34,7 @@ export class ClientesMainComponent implements OnInit, OnDestroy {
         }
       },
       filters: { group: 'clientes', filters: clienteFilters, reactive: true },
+      sort: true
     })
   }
 

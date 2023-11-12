@@ -5,7 +5,7 @@ import {CLIENTE_ENDERECOS} from "../../../../../_core/endpoints";
 import {environment} from "../../../../../../environments/environment";
 import {HttpHelperService} from "../../../../../services/http-helper/http-helper.service";
 import {EnderecoEntity} from "../../_entitys/endereco.entity";
-import {DgModalComponent} from "../../../../../../../../../../../../datagrupo/_libs/libs-dg-ng-util/dist/dg-ng-util";
+import {DgModalComponent} from "@datagrupo/dg-ng-util";
 import Swal from "sweetalert2";
 
 @Component({

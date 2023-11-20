@@ -6,6 +6,7 @@ import {environment} from "../../../../environments/environment";
 import {LOCACAO} from "../../../_core/endpoints";
 import {LancamentoEntity} from "../lancamentos/lancamento.entity";
 import {funcIconsFaturado} from "../lancamentos/lancamento.table";
+import {classesStatus} from "./locacao.table";
 
 @DataServer({
   path: environment.apiUrl,
@@ -38,18 +39,18 @@ export class LocacaoEntity extends AbstractEntity2 {
     this.lancamento = lancamento;
   }
 
-  @DynamicColumn({headerName: 'ID'})
+  @DynamicColumn({headerName: 'ID', tdClass: classesStatus})
   override id: number | string | undefined;
-  @DynamicColumn({headerName: 'Cliente', resource: (val: ClientesEntity) => String(val.nome || '--')})
+  @DynamicColumn({headerName: 'Cliente', tdClass: classesStatus, resource: (val: ClientesEntity) => String(val.nome || '--')})
   public cliente: ClientesEntity | undefined
-  @DynamicColumn({headerName: 'Data Início', resource: val => !!val ? val.split('-').reverse().join('/') : '--'})
+  @DynamicColumn({headerName: 'Data Início', tdClass: classesStatus, resource: val => !!val ? val.split('-').reverse().join('/') : '--'})
   public dataInicial: string | undefined
-  @DynamicColumn({headerName: 'Data Fim', resource: val => !!val ? val.split('-').reverse().join('/') : '--'})
+  @DynamicColumn({headerName: 'Data Fim', tdClass: classesStatus, resource: val => !!val ? val.split('-').reverse().join('/') : '--'})
   public dataFinal: string | undefined
   @DynamicColumn({
-    headerName: 'Status', resource: (val) => {
+    headerName: 'Status', tdClass: classesStatus, resource: (val) => {
       switch (val) {
-        case 'FINALIZADO':
+        case 'FINALIZADA':
           return '<span class="badge status text-bg-success">Finalizada</span>'
         case 'EM_LOCACAO':
           return '<span class="badge status text-bg-warning">Em locação</span>'
@@ -58,16 +59,15 @@ export class LocacaoEntity extends AbstractEntity2 {
         default:
           return val;
       }
-
     }
   })
   public status: string | undefined
 
-  @DynamicColumn({headerName: 'Valor'})
+  @DynamicColumn({headerName: 'Valor', tdClass: classesStatus})
   public total: string | undefined
 
   @DynamicColumn({
-    headerName: 'Faturamento', resource: (val: LancamentoEntity | undefined) => {
+    headerName: 'Faturamento', tdClass: classesStatus, resource: (val: LancamentoEntity | undefined) => {
       if (!!val) {
         return funcIconsFaturado(!!val, val)
       }

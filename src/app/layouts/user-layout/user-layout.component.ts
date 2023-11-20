@@ -81,6 +81,8 @@ export class UserLayoutComponent implements OnInit {
    */
   @HostListener('window:default-actions-dg-tables-router', ['$event'])
   defaultFunctionsDgTablesRouter(ev: CustomEvent<(string | number)[]>) {
+    alert('oi')
+    return;
     this.router.navigate(ev.detail).then(() => {
       window.scrollTo({ top: 0 });
     })

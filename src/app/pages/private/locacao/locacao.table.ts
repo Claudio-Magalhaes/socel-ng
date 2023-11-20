@@ -1,5 +1,7 @@
 import {CdkDynamicTable} from "@datagrupo/dg-ng-util";
 import {LocacaoEntity} from "./locacao.entity";
+import {genereteDefaultActionTable} from "../../../_core/config/dg-ng-util/config-local-dynamic-table";
+import {receiveEventLocacaoActions} from "./service/locacao.service";
 
 /**
  * Função para retornar cor de linha conforme a data de vencimento da locação
@@ -32,7 +34,7 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
 export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
   filters: {
     group: 'locacoes',
-    reactive: true,
+    reactive: false,
     filters: {
       id: {
         reactive: true, findFunc: val => {
@@ -49,6 +51,27 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
           return {status: val}
         }
       },
+      dataInicial_inicio: {
+        findFunc: val => {
+          return {dataInicial_inicio: val}
+        }
+      },
+      dataInicial_fim: {
+        findFunc: val => {
+          return {dataInicial_fim: val}
+        }
+      },
+      dataFinal_inicio: {
+        findFunc: val => {
+          return {dataFinal_inicio: val}
+        }
+      },
+      dataFinal_fim: {
+        findFunc: val => {
+          return {dataFinal_fim: val}
+        }
+      },
+
       dataInicial: {
         reactive: true, findFunc: val => {
           return {dataInicial: val}
@@ -63,29 +86,19 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
   },
   actions: {
     edit: {
-      name: 'Editar',
+      name: 'Abrir',
       dbClick: true,
       action: (val: LocacaoEntity) => {
-        // this.router.navigate(['user', 'locacoes', val?.id]).then()
-      },
-      permission: row => {
-        return row.status == 'ABERTO';
-      }
-    },
-    ver: {
-      name: 'Ver',
-      dbClick: true,
-      action: (val: LocacaoEntity) => {
-        // this.router.navigate(['user', 'locacoes', val?.id]).then()
-      },
-      permission: row => {
-        return row.status != 'ABERTO';
+        if(!val?.id) return
+        genereteDefaultActionTable.link(['user', 'locacoes', val?.id])
       }
     },
     iniciar: {
       name: 'Iniciar locação',
       action: (row) => {
-        // this.service.iniciar(row.id, () => this.table.find())
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'iniciar', row }
+        }))
       },
       permission: (row) => {
         return row.status == 'ABERTO'
@@ -94,7 +107,9 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
     finalizar: {
       name: 'Finalizar locação',
       action: (row) => {
-        // this.service.finalizar(row.id, () => this.table.find())
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'finalizar', row }
+        }))
       },
       permission: (row) => {
         return row.status == 'EM_LOCACAO'
@@ -103,7 +118,9 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
     cancelar: {
       name: 'Cancelar',
       action: (row) => {
-
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'cancelar', row }
+        }))
       },
       permission: (row) => {
         return row.status == 'ABERTO'
@@ -112,12 +129,17 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
     faturar: {
       name: 'Faturar',
       action: (row) => {
-
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'faturar', row }
+        }))
       },
       permission: (row: LocacaoEntity) => {
         return !row.lancamento
       }
     }
   },
-  sort: true
+  sort: true,
+  pagination: {
+    sort: 'dataInicial,DESC'
+  }
 }

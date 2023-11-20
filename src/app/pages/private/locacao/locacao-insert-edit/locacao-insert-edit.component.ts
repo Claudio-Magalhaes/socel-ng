@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 import {LocacaoEntity} from "../locacao.entity";
 import {environment} from "../../../../../environments/environment";
 import {
@@ -21,6 +20,7 @@ import {ServicoEntity} from "../../servicos/servico.entity";
 import {ModalProdutoLocacaoComponent} from "../sub-components/modal-produto-locacao/modal-produto-locacao.component";
 import {ModalServicoLocacaoComponent} from "../sub-components/modal-servico-locacao/modal-servico-locacao.component";
 import Swal from "sweetalert2";
+import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
 
 @Component({
   selector: 'app-locacao-insert-edit',

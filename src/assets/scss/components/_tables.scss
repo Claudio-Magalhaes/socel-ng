@@ -52,3 +52,16 @@
     }
   }
 }
+
+.dg-table.table-locacao {
+  tr:has(> td.locacao-vencendo) {
+    background: rgba(234, 234, 39, 0.5);
+  }
+  tr:has(> td.locacao-vencendo-hoje) {
+    background: rgba(68, 68, 68, 0.3);
+  }
+
+  tr:has(> td.locacao-atrazada) {
+    background: rgba(255, 0, 0, 0.3);
+  }
+}

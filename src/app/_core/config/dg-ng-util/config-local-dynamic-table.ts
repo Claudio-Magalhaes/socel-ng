@@ -51,7 +51,7 @@ export const genereteDefaultActionTable = {
       )
     )
   },
-  link: (router: string[]) => {
+  link: (router: (string | number)[]) => {
     window.dispatchEvent(
       new CustomEvent('default-actions-dg-tables-router',
         {detail: router}))

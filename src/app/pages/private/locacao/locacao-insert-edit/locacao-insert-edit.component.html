@@ -71,62 +71,62 @@
         </div>
       </card>
     </div>
-
-    <div *ngIf="!!entity?.id" class="container-data">
-      <card>
-        <div class="card-header">
-          <div class="row">
-            <div class="col-4">
-              <h4 class="card-title">Produtos</h4>
-            </div>
-            <div class="col-6">
-              <h5 class="card-title">Valor total de produtos: R${{entity.totalProdutos || '0,00'}}</h5>
-            </div>
-            <div class="col-2">
-              <button *ngIf="verifyEdit()" (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <dg-table dg-dynamic-table [dynamicTable]="tableProtudos" [showActions]="verifyEdit()">
-            </dg-table>
-          </div>
-        </div>
-        <div class="card-footer">
-          <dg-paginator dg-dynamic-paginator [dynamicTable]="tableProtudos"></dg-paginator>
-        </div>
-      </card>
-    </div>
-
-    <div *ngIf="!!entity?.id" class="container-data">
-      <card>
-        <div class="card-header">
-          <div class="row">
-            <div class="col-4">
-              <h4 class="card-title">Serviços</h4>
-            </div>
-            <div class="col-6">
-              <h5 class="card-title">Valor total de serviços: R${{entity.totalServicos || '0,00'}}</h5>
-            </div>
-            <div class="col-2">
-            <button *ngIf="verifyEdit()" (click)="modalServico.open()" class="btn btn-success">Adicionar</button>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <dg-table dg-dynamic-table [dynamicTable]="tableServicos" [showActions]="verifyEdit()">
-            </dg-table>
-          </div>
-        </div>
-        <div class="card-footer">
-          <dg-paginator dg-dynamic-paginator [dynamicTable]="tableServicos"></dg-paginator>
-        </div>
-      </card>
-    </div>
-
   </form>
+
+
+  <div *ngIf="!!entity?.id" class="container-data">
+    <card>
+      <div class="card-header">
+        <div class="row">
+          <div class="col-4">
+            <h4 class="card-title">Produtos</h4>
+          </div>
+          <div class="col-6">
+            <h5 class="card-title">Valor total de produtos: R${{entity.totalProdutos || '0,00'}}</h5>
+          </div>
+          <div class="col-2">
+            <button *ngIf="verifyEdit()" (click)="modalProduto.open()" class="btn btn-success">Adicionar</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <dg-table dg-dynamic-table [dynamicTable]="tableProtudos" [showActions]="verifyEdit()">
+          </dg-table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <dg-paginator dg-dynamic-paginator [dynamicTable]="tableProtudos"></dg-paginator>
+      </div>
+    </card>
+  </div>
+
+  <div *ngIf="!!entity?.id" class="container-data">
+    <card>
+      <div class="card-header">
+        <div class="row">
+          <div class="col-4">
+            <h4 class="card-title">Serviços</h4>
+          </div>
+          <div class="col-6">
+            <h5 class="card-title">Valor total de serviços: R${{entity.totalServicos || '0,00'}}</h5>
+          </div>
+          <div class="col-2">
+            <button *ngIf="verifyEdit()" (click)="modalServico.open()" class="btn btn-success">Adicionar</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <dg-table dg-dynamic-table [dynamicTable]="tableServicos" [showActions]="verifyEdit()">
+          </dg-table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <dg-paginator dg-dynamic-paginator [dynamicTable]="tableServicos"></dg-paginator>
+      </div>
+    </card>
+  </div>
 </div>
 
 <page-footer>

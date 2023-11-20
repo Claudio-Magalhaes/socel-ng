@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util";
+import {LocacaoEntity} from "../../locacao/locacao.entity";
+import {LocacaoTable} from "../../locacao/locacao.table";
 
 @Component({
   selector: 'app-dashboard-main',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardMainComponent implements OnInit {
 
-  constructor() { }
+  public locacoesAtrazadas: CdkDynamicTable.tableClass;
+
+  constructor(private createTable: CdkDynamicTableService) {
+    this.locacoesAtrazadas = createTable.createByCrudEnity2(new LocacaoEntity(), LocacaoTable)
+    this.locacoesAtrazadas.controls.columns.remove('dataInicial')
+    this.locacoesAtrazadas.controls.columns.remove('lancamento')
+    this.locacoesAtrazadas.controls.columns.remove('total')
+  }
 
   ngOnInit(): void {
   }

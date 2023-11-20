@@ -32,5 +32,6 @@ export const LancamentoTable: CdkDynamicTable.createDynamicTable = {
       nome: { findFunc: val => defaultFindFunc(val, 'nome')},
       tipo: { findFunc: val => defaultFindFunc(val, 'tipo')},
     }
-  }
+  },
+  sort: true
 }

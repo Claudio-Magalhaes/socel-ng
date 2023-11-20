@@ -31,7 +31,9 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
 
 export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
   filters: {
-    group: 'locacoes', reactive: true, filters: {
+    group: 'locacoes',
+    reactive: true,
+    filters: {
       id: {
         reactive: true, findFunc: val => {
           return {id: val}
@@ -59,5 +61,63 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
       },
     }
   },
-  sort: ['dataFinal']
+  actions: {
+    edit: {
+      name: 'Editar',
+      dbClick: true,
+      action: (val: LocacaoEntity) => {
+        // this.router.navigate(['user', 'locacoes', val?.id]).then()
+      },
+      permission: row => {
+        return row.status == 'ABERTO';
+      }
+    },
+    ver: {
+      name: 'Ver',
+      dbClick: true,
+      action: (val: LocacaoEntity) => {
+        // this.router.navigate(['user', 'locacoes', val?.id]).then()
+      },
+      permission: row => {
+        return row.status != 'ABERTO';
+      }
+    },
+    iniciar: {
+      name: 'Iniciar locação',
+      action: (row) => {
+        // this.service.iniciar(row.id, () => this.table.find())
+      },
+      permission: (row) => {
+        return row.status == 'ABERTO'
+      }
+    },
+    finalizar: {
+      name: 'Finalizar locação',
+      action: (row) => {
+        // this.service.finalizar(row.id, () => this.table.find())
+      },
+      permission: (row) => {
+        return row.status == 'EM_LOCACAO'
+      }
+    },
+    cancelar: {
+      name: 'Cancelar',
+      action: (row) => {
+
+      },
+      permission: (row) => {
+        return row.status == 'ABERTO'
+      }
+    },
+    faturar: {
+      name: 'Faturar',
+      action: (row) => {
+
+      },
+      permission: (row: LocacaoEntity) => {
+        return !row.lancamento
+      }
+    }
+  },
+  sort: true
 }

@@ -23,3 +23,37 @@ export const configLocalDynamicTable: setConfigDynamicTable = {
     };
   }
 }
+
+
+export declare type generateActionRemove = {
+  id: string | number | (string | number)[] | undefined,
+  url: string,
+  callback: string | (() => void),
+  messageBefore?: { title: string, text: string },
+  messageAfter?: { title: string, text: string }
+}
+
+export const genereteDefaultActionTable = {
+  remover: (data: generateActionRemove) => {
+    if (data.id == undefined) return;
+
+    window.dispatchEvent(
+      new CustomEvent('default-actions-dg-tables-remove',
+        {
+          detail: {
+            id: data.id,
+            url: data.url,
+            callback: data.callback,
+            messageBefore: data.messageBefore,
+            messageAfter: data.messageAfter
+          }
+        }
+      )
+    )
+  },
+  link: (router: string[]) => {
+    window.dispatchEvent(
+      new CustomEvent('default-actions-dg-tables-router',
+        {detail: router}))
+  }
+}

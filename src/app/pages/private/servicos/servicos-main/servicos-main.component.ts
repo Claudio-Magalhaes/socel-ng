@@ -35,10 +35,17 @@ export class ServicosMainComponent implements OnInit, OnDestroy {
           }
         }
       },
-      filters: { group: 'servicos', reactive: true, filters: {
-        nome: { findFunc: val => { return { nome: val } } },
-        status: { findFunc: val => { return { status: val } } }
-        } }
+      filters: {
+        group: 'servicos', reactive: true, filters: {
+          nome: {
+            findFunc: val => { return {nome: val} }
+          },
+          status: {
+            findFunc: val => { return {status: val} }
+          }
+        }
+      },
+      sort: true
     })
   }
 

@@ -7,7 +7,7 @@ import {
 import {Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
 import {ModalCategoriaInsertEditComponent} from "../modal-categoria-insert-edit/modal-categoria-insert-edit.component";
-import {categoriaFilters} from "../categoria.filters";
+import {CategoriasTable} from "../categorias.table";
 
 @Component({
   selector: 'app-categoria-main',
@@ -28,17 +28,7 @@ export class CategoriaMainComponent implements OnInit {
     public cdkTable: CdkDynamicTableService,
     private router: Router
   ) {
-    this.table = cdkTable.createByCrudEnity2(new CategoriasEntity(), {
-      actions: {
-        edit: {
-          name: "Editar",
-          dbClick: true,
-          action: (val: CategoriasEntity) => this.modal.open(val)
-          // action: (val: CategoriasEntity) => router.navigate(['user', 'categorias', val?.id]).then()
-        }
-      },
-      filters: { group: 'categorias', filters: categoriaFilters }
-    })
+    this.table = cdkTable.createByCrudEnity2(new CategoriasEntity(), CategoriasTable)
   }
 
   ngOnInit(): void {

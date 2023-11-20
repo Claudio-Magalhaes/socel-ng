@@ -4,6 +4,7 @@ import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {clienteFilters} from "../cliente.filters";
+import {ClientesTable} from "../clientes.table";
 
 @Component({
   selector: 'app-clientes-main',
@@ -25,17 +26,19 @@ export class ClientesMainComponent implements OnInit, OnDestroy {
     public cdkTable: CdkDynamicTableService,
     private router: Router
   ) {
-    this.table = cdkTable.createByCrudEnity2(new ClientesEntity(), {
-      actions: {
-        editar: {
-          name: 'Editar', dbClick: true, action: val => {
-            this.router.navigate(['user', 'clientes', val.id]).then()
-          }
-        }
-      },
-      filters: { group: 'clientes', filters: clienteFilters, reactive: true },
-      sort: true
-    })
+    this.table = cdkTable.createByCrudEnity2(new ClientesEntity(), ClientesTable)
+
+    // this.table = cdkTable.createByCrudEnity2(new ClientesEntity(), {
+    //   actions: {
+    //     editar: {
+    //       name: 'Editar', dbClick: true, action: val => {
+    //         this.router.navigate(['user', 'clientes', val.id]).then()
+    //       }
+    //     }
+    //   },
+    //   filters: { group: 'clientes', filters: clienteFilters, reactive: true },
+    //   sort: true
+    // })
   }
 
   ngOnInit(): void {

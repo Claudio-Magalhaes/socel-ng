@@ -2,6 +2,10 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {InterfaceMenuList} from "./components/navigation/navigation.component";
 import Swal from "sweetalert2";
 import {CdkAbstractInsertEdit} from "@datagrupo/dg-crud";
+import {generateActionRemove} from "../../_core/config/dg-ng-util/config-local-dynamic-table";
+import {Router} from "@angular/router";
+import {GenericService} from "../../services/generic-service/generic.service";
+import {DynamicGroupClass} from "@datagrupo/dg-ng-util";
 
 @Component({
   selector: 'app-user-layout',
@@ -58,9 +62,69 @@ export class UserLayoutComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private service: GenericService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  /**#############################################################
+   * ##### METODOS GLOBAIS
+   #############################################################*/
+
+  /**
+   * Metodo de action da tabela
+   * Esse realiza um routerLink para a rota recebida
+   * @param ev
+   */
+  @HostListener('window:default-actions-dg-tables-router', ['$event'])
+  defaultFunctionsDgTablesRouter(ev: CustomEvent<(string | number)[]>) {
+    this.router.navigate(ev.detail).then(() => {
+      window.scrollTo({ top: 0 });
+    })
+  }
+
+  //TODO criar ajuste para multiplos ids
+  /**
+   * Metodo de action da tabela
+   * Esse realiza a exclusão de um ou mais registros
+   * Verifique os dados em "<generateActionRemove>"
+   * @param ev
+   */
+  @HostListener('window:default-actions-dg-tables-remove', ['$event'])
+  defaultFunctionsDgTablesRemove(ev: CustomEvent<generateActionRemove>) {
+    const data = ev.detail
+    Swal.fire({
+      icon: 'question',
+      title: data.messageBefore?.title || 'Remover Registro',
+      text: data.messageBefore?.text || 'Deseja remover esse registro',
+      showCancelButton: true
+    }).then(confirm => {
+      if (confirm.isConfirmed){
+        if (confirm.isConfirmed){
+          this.service.delete(data.url + '/' + data.id, {  }).subscribe(
+            () => {
+              if (data.callback) {
+                if (typeof data.callback == 'string') {
+                  if (!data.callback) return;
+                  DynamicGroupClass.dispacherFilter(data.callback)
+                } else {
+                  data.callback();
+                }
+              }
+              Swal.fire({
+                icon: 'success',
+                title: data.messageAfter?.title || 'Registro remover',
+                text: data.messageAfter?.text || 'O registro foi remover com sucesso!',
+                timer: 3000
+              }).then()
+            }
+          )
+        }
+      }
+    })
   }
 
   @HostListener('window:crud-callback-message', ['$event'])

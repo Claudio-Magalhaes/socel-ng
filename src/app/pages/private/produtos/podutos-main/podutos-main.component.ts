@@ -4,9 +4,8 @@ import {
   CdkDynamicTable,
   CdkDynamicTableService
 } from "@datagrupo/dg-ng-util";
-import {Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
-import {produtosFilters} from "../produtos.filters";
+import {ProdutosTable} from "../produtos.table";
 
 @Component({
   selector: 'app-podutos-main',
@@ -23,21 +22,9 @@ export class PodutosMainComponent implements OnInit, OnDestroy {
   table: CdkDynamicTable.tableClass;
 
   constructor(
-    private CdkTable: CdkDynamicTableService,
-    private router: Router
+    private CdkTable: CdkDynamicTableService
   ) {
-    this.table = CdkTable.createByCrudEnity2(new ProdutosEntity(), {
-      actions: {
-        edit: {
-          name: 'Editar',
-          dbClick: true,
-          action: (val: ProdutosEntity) => {
-            this.router.navigate(['user', 'produtos', val?.id]).then()
-          }
-        }
-      },
-      filters: { group: 'produtos', reactive: true, filters: produtosFilters}
-    })
+    this.table = CdkTable.createByCrudEnity2(new ProdutosEntity(), ProdutosTable)
   }
 
   ngOnInit(): void {

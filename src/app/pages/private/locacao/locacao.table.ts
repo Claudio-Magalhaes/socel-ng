@@ -31,6 +31,18 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
   return '';
 }
 
+export const filters = {
+  id: '',
+  nomeCliente: '',
+  status: '',
+  dataInicial_inicio: '',
+  dataInicial_fim: '',
+  dataFinal_inicio: '',
+  dataFinal_fim: '',
+  renovada: '',
+  faturada: '',
+}
+
 export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
   filters: {
     group: 'locacoes',
@@ -140,6 +152,6 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
   },
   sort: true,
   pagination: {
-    sort: 'dataInicial,DESC'
+    sort: 'dataInicial,ASC'
   }
 }

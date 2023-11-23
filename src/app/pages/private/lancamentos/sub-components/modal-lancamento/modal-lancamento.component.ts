@@ -7,7 +7,7 @@ import {ClientesEntity} from "../../../clientes/clientes.entity";
 import {DgModalComponent} from "@datagrupo/dg-ng-util";
 
 @Component({
-  selector: 'subComponent-modal-lancamento',
+  selector: 'modal-lancamento',
   templateUrl: './modal-lancamento.component.html',
   styleUrls: ['./modal-lancamento.component.scss']
 })
@@ -28,11 +28,6 @@ export class ModalLancamentoComponent implements OnInit {
 
   public listClientes: ClientesEntity[] = [];
   constructor(private service: GenericService) {
-    service.get(CLIENTE).subscribe(
-      resp => {
-        this.listClientes = resp.data;
-      }
-    )
   }
 
   ngOnInit(): void {
@@ -48,15 +43,27 @@ export class ModalLancamentoComponent implements OnInit {
     this.modal.open()
   }
 
-  open(val: LancamentoEntity){
-    this.entity = val;
+  async open(val: LancamentoEntity) {
+    await this.service.get(CLIENTE).subscribe(
+      resp => {
+        this.listClientes = resp.data;
+      }
+    )
 
-    this.form.patchValue({
-      ...val,
-      cliente: val.cliente?.id
-    })
+    if (!val) return this.modal.open();
 
-    this.modal.open()
+    await this.service.get(LANCAMENTO + '/' + val.id).subscribe(
+      resp => {
+        this.entity = resp.data;
+
+        this.form.patchValue({
+          ...resp.data,
+          cliente: val.cliente?.id
+        })
+
+        this.modal.open()
+      }
+    )
   }
 
   close() {

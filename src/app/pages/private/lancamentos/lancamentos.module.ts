@@ -17,11 +17,14 @@ import { ModalBaixarComponent } from './sub-components/modal-baixar/modal-baixar
 
 
 @NgModule({
-  declarations: [
-    LancamentosMainComponent,
-    ModalLancamentoComponent,
-    ModalBaixarComponent
-  ],
+    declarations: [
+        LancamentosMainComponent,
+        ModalLancamentoComponent,
+        ModalBaixarComponent
+    ],
+    exports: [
+        ModalLancamentoComponent
+    ],
     imports: [
         CommonModule,
         UiModule,

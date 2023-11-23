@@ -14,7 +14,7 @@ export class LancamentoEntity extends AbstractEntity2 {
   constructor(
     id?: number | string,
     cliente?: ClientesEntity,
-    valor?: number | string,
+    total?: number | string,
     data_vencimento?: string,
     data_pagamento?: string,
     descricao?: string,
@@ -27,7 +27,7 @@ export class LancamentoEntity extends AbstractEntity2 {
     super();
     this.id = id;
     this.cliente = cliente;
-    this.valor = valor;
+    this.total = total;
     this.data_vencimento = data_vencimento;
     this.data_pagamento = data_pagamento;
     this.descricao = descricao;
@@ -53,12 +53,14 @@ export class LancamentoEntity extends AbstractEntity2 {
   public cliente?: ClientesEntity | undefined
 
   @DynamicColumn({
-    headerName: 'Valor', resource: val => {
+    headerName: 'Valor', resource: (val,row) => {
+      console.log('val', val)
+      console.log('row', row)
       return 'R$:' + Number(val)
         .toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2})
     }
   })
-  public valor?: number | string | undefined
+  public total?: number | string | undefined
 
   @DynamicColumn({
     headerName: 'Vencimento', resource: val => {

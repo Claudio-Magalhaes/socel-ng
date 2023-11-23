@@ -13,6 +13,7 @@ import {
 } from "@datagrupo/dg-ng-util";
 import { ModalProdutoLocacaoComponent } from './sub-components/modal-produto-locacao/modal-produto-locacao.component';
 import { ModalServicoLocacaoComponent } from './sub-components/modal-servico-locacao/modal-servico-locacao.component';
+import {LancamentosModule} from "../lancamentos/lancamentos.module";
 
 
 
@@ -23,19 +24,20 @@ import { ModalServicoLocacaoComponent } from './sub-components/modal-servico-loc
     ModalProdutoLocacaoComponent,
     ModalServicoLocacaoComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule,
-    ReactiveFormsModule,
-    DgPaginatorModule,
-    CdkDynamicTableModule,
-    DgTableModule,
-    DgAutocomplete2Module,
-    DgModalModule,
-    FormsModule,
-    CdkDynamicGroupModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule,
+        DgPaginatorModule,
+        CdkDynamicTableModule,
+        DgTableModule,
+        DgAutocomplete2Module,
+        DgModalModule,
+        FormsModule,
+        CdkDynamicGroupModule,
+        LancamentosModule
+    ]
 })
 export class LocacaoModule { }

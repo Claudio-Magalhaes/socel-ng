@@ -13,7 +13,6 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
   if (
     ['FINALIZADO', 'FINALIZADA', 'ABERTO', 'CANCELADO', 'RENOVADO']
       .includes((row?.status || '').toUpperCase())) return '';
-  debugger
   let dataFinal = new Date(row.dataFinal)
   let dataAtual = new Date();
 
@@ -119,7 +118,7 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
         }))
       },
       permission: (row) => {
-        return row.status == 'ABERTO'
+        return row.status.toUpperCase() == 'ABERTO'
       }
     },
     finalizar: {
@@ -152,7 +151,18 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
         }))
       },
       permission: (row: LocacaoEntity) => {
-        return !row.lancamento
+        return !row.lancamento && ( row.status != 'ABERTO' )
+      }
+    },
+    verLancamento: {
+      name: 'Ver faturamento',
+      action: (row) => {
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'verLancamento', row }
+        }))
+      },
+      permission: (row: LocacaoEntity) => {
+        return !!row.lancamento
       }
     }
   },

@@ -1,4 +1,4 @@
-import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {LocacaoEntity} from "../locacao.entity";
 import {
   CdkDynamicTable,
@@ -7,6 +7,7 @@ import {
 import {Router} from "@angular/router";
 import {LocacaoService, receiveEventLocacaoActions} from "../service/locacao.service";
 import {classesStatus, filters, LocacaoTable} from "../locacao.table";
+import {ModalLancamentoComponent} from "../../lancamentos/sub-components/modal-lancamento/modal-lancamento.component";
 
 @Component({
   selector: 'app-locacao-main',
@@ -14,6 +15,8 @@ import {classesStatus, filters, LocacaoTable} from "../locacao.table";
   styleUrls: ['./locacao-main.component.scss']
 })
 export class LocacaoMainComponent implements OnInit, OnDestroy {
+
+  @ViewChild('modalLancamento') modalLancamento!: ModalLancamentoComponent;
 
   table: CdkDynamicTable.tableClass;
 
@@ -42,7 +45,18 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
 
   @HostListener('window:locacao-action-receive', ['$event'])
   receiveActionsTableLocacao(ev: CustomEvent<receiveEventLocacaoActions>) {
-    this.service.receiveEventLocacaoActions(ev.detail, () => this.table.find())
+    if (ev.detail.typeEvent == 'verLancamento') {
+      if (!ev.detail.row?.lancamento) return;
+      this.modalLancamento.open(ev.detail.row.lancamento).then()
+    }
+
+    this.service.receiveEventLocacaoActions(ev.detail, (resp?: any) => {
+      if (ev.detail.typeEvent == 'faturar') {
+        if (!resp.lancamento) return;
+        this.modalLancamento.open(resp.lancamento).then()
+      }
+      this.table.find()
+    })
   }
 
   ngOnDestroy(): void {

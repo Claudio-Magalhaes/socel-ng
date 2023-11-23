@@ -156,6 +156,13 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
     this.tableServicos.controls.apiData.set({params: {locacao: this.entity.id}})
     this.tableProtudos.controls.apiData.set({params: {locacao: this.entity.id}})
 
+    if (!!this.entity?.cliente) {
+      this.listClientes = [
+        ...(this.entity.cliente ? [this.entity.cliente] : []),
+        ...this.listClientes
+      ]
+    }
+
     if (this.entity.status == 'FINALIZADO') {
       this.form.controls['cliente'].disable();
       this.form.controls['contato'].disable();

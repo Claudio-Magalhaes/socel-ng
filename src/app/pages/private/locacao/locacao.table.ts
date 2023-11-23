@@ -10,8 +10,10 @@ import {receiveEventLocacaoActions} from "./service/locacao.service";
  */
 export const classesStatus = (val: string, row: LocacaoEntity): string => {
   if (!row.dataFinal) return '';
-  if (['FINALIZADO', 'FINALIZADA', 'ABERTO', 'CANCELADO'].includes(row?.status || '')) return '';
-
+  if (
+    ['FINALIZADO', 'FINALIZADA', 'ABERTO', 'CANCELADO', 'RENOVADO']
+      .includes((row?.status || '').toUpperCase())) return '';
+  debugger
   let dataFinal = new Date(row.dataFinal)
   let dataAtual = new Date();
 
@@ -25,6 +27,10 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
   dataComAcressimo.setDate(dataAtual.getDate() + 5);
 
   if (dataComAcressimo >= dataFinal) {
+    return 'locacao-atrazada'
+  }
+
+  if (new Date() > dataFinal) {
     return 'locacao-atrazada'
   }
 

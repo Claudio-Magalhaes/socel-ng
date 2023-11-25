@@ -12,10 +12,11 @@
               <dg-autocomplete
                 formControlName="cliente"
                 typeFilter="outside"
-                [data]="listClientes"
                 key="id"
                 label="nome"
                 classes="form-control"
+                (searchFilterValue)="this.findCliente($event)"
+                [data]="listClientes"
               ></dg-autocomplete>
             </div>
             <div class="col-4">

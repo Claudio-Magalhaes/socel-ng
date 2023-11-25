@@ -6,18 +6,15 @@
   width: 100%;
   max-width: 100%;
   border: var(--bs-border-width) solid var(--bs-border-color);
+  flex-direction: row-reverse;
 
-  &.reverse {
-    flex-direction: row-reverse;
+  input {
+    text-align: start !important;
+    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+  }
 
-    input {
-      text-align: start !important;
-      border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
-    }
-
-    .root-icon {
-      border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
-    }
+  .root-icon {
+    border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
   }
 
   &:focus-within {

@@ -47,13 +47,13 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
   receiveActionsTableLocacao(ev: CustomEvent<receiveEventLocacaoActions>) {
     if (ev.detail.typeEvent == 'verLancamento') {
       if (!ev.detail.row?.lancamento) return;
-      this.modalLancamento.open(ev.detail.row.lancamento).then()
+      this.modalLancamento.open(ev.detail.row.lancamento)
     }
 
     this.service.receiveEventLocacaoActions(ev.detail, (resp?: any) => {
       if (ev.detail.typeEvent == 'faturar') {
         if (!resp.lancamento) return;
-        this.modalLancamento.open(resp.lancamento).then()
+        this.modalLancamento.open(resp.lancamento)
       }
       this.table.find()
     })

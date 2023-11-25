@@ -2,8 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
 import {DgModalComponent} from "@datagrupo/dg-ng-util";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {GenericService} from "../../../../../services/generic-service/generic.service";
-import {LOCACAO_SERVICOS, PRODUTOS, SERVICO} from "../../../../../_core/endpoints";
+import {LOCACAO_SERVICOS, PRODUTOS, SERVICO, SERVICO_FILTER} from "../../../../../_core/endpoints";
 import {ServicoEntity} from "../../../servicos/servico.entity";
+import {LancamentoEntity} from "../../../lancamentos/lancamento.entity";
 
 @Component({
   selector: 'modal-servico-locacao',
@@ -34,6 +35,9 @@ export class ModalServicoLocacaoComponent implements OnInit {
         resp => {
           this.form.controls['servico'].disable();
           this.form.patchValue(resp.data)
+          if (!!resp.data.servico) {
+            this.listServicos = [resp.data.servico]
+          }
           this.modal.open();
         }
       )
@@ -84,5 +88,17 @@ export class ModalServicoLocacaoComponent implements OnInit {
     })
   }
 
+  findServicos(nome: string) {
+    this.service.get(SERVICO_FILTER, { params: { nome } }).subscribe(
+      resp => {
+        this.listServicos = resp.data;
+      }
+    )
+  }
 
+  setValorBase(lancamento: ServicoEntity[]) {
+    this.form.patchValue({
+      subTotal: lancamento[0].valorBase
+    })
+  }
 }

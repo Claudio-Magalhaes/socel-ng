@@ -21,7 +21,7 @@ export class ModalLancamentoComponent implements OnInit {
 
   public form = new FormGroup({
     cliente: new FormControl('', [Validators.required]),
-    valor: new FormControl('', [Validators.required]),
+    total: new FormControl('', [Validators.required]),
     data_vencimento: new FormControl('', [Validators.required]),
     descricao: new FormControl(''),
   })
@@ -58,8 +58,12 @@ export class ModalLancamentoComponent implements OnInit {
 
         this.form.patchValue({
           ...resp.data,
-          cliente: val.cliente?.id
+          cliente: resp.data?.cliente?.id,
         })
+
+        if (!!resp.data.cliente) {
+          this.listClientes.push(resp.data.cliente)
+        }
 
         this.modal.open()
       }

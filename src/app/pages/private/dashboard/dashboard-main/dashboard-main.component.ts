@@ -27,7 +27,8 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
       //@ts-ignore
       apiData: {
         params: { atrazadas: true }
-      }
+      },
+      filters: { ...LocacaoTable.filters, group: 'locacoesAtrazadas'}
     })
     this.locacoesAtrazadas.controls.columns.remove('dataInicial')
     this.locacoesAtrazadas.controls.columns.remove('lancamento')
@@ -41,7 +42,8 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
       //@ts-ignore
       apiData: {
         params: { atrazada: true }
-      }
+      },
+      filters: { ...LocacaoTable.filters, group: 'locacoesVencendo'}
     })
     this.locacoesVencendo.controls.columns.remove('dataInicial')
     this.locacoesVencendo.controls.columns.remove('lancamento')
@@ -55,7 +57,8 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
       //@ts-ignore
       apiData: {
         params: { naoFaturada: true }
-      }
+      },
+      filters: { ...LocacaoTable.filters, group: 'locacoesNaoFaturada'}
     })
     this.locacoesNaoFaturada.controls.columns.remove('dataInicial')
     this.locacoesNaoFaturada.controls.columns.remove('lancamento')

@@ -3,7 +3,8 @@ import {DgModalComponent} from "@datagrupo/dg-ng-util";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProdutosEntity} from "../../../produtos/produtos.entity";
 import {GenericService} from "../../../../../services/generic-service/generic.service";
-import {LOCACAO_PRODUTOS, PRODUTOS} from "../../../../../_core/endpoints";
+import {LOCACAO_PRODUTOS, PRODUTOS, PRODUTOS_FILTER} from "../../../../../_core/endpoints";
+import {ServicoEntity} from "../../../servicos/servico.entity";
 
 @Component({
   selector: 'modal-produto-locacao',
@@ -34,8 +35,13 @@ export class ModalProdutoLocacaoComponent implements OnInit {
       this.service.get(LOCACAO_PRODUTOS + '/' + data.id).subscribe(
         resp => {
           this.form.controls['produto'].disable();
-          this.form.patchValue({ ...resp.data })
-          this.listProdutos = [new ProdutosEntity(1, 'teste')]
+          this.form.patchValue({
+            ...resp.data,
+            produto: resp.data?.produto?.id || ''
+          })
+          if (!!resp.data.produto) {
+            this.listProdutos = [resp.data.produto]
+          }
           this.modal.open()
         }
       )
@@ -63,13 +69,13 @@ export class ModalProdutoLocacaoComponent implements OnInit {
       return;
     }
 
-    const form = this.form.value;
+    const { produto, ...form} = this.form.value;
     let request: any
 
     if (!!form.id) {
-      request = this.service.put(LOCACAO_PRODUTOS, {...form, locacao: this.licacaoId})
+      request = this.service.put(LOCACAO_PRODUTOS, {...form, produto: { id: produto },locacao: {id: this.licacaoId}})
     } else {
-      request = this.service.post(LOCACAO_PRODUTOS, {...form, locacao: this.licacaoId})
+      request = this.service.post(LOCACAO_PRODUTOS, {...form, produto: { id: produto },locacao: {id: this.licacaoId}})
     }
 
     request.subscribe((resp: ProdutosEntity) => {
@@ -84,4 +90,11 @@ export class ModalProdutoLocacaoComponent implements OnInit {
     })
   }
 
+  findServicos(nome: string) {
+    this.service.get(PRODUTOS_FILTER, { params: { nome } }).subscribe(
+      resp => {
+        this.listProdutos = resp.data;
+      }
+    )
+  }
 }

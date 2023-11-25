@@ -1,9 +1,8 @@
-import {Component, forwardRef, Input, OnChanges, OnInit, Optional, Self, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, Optional, Self, SimpleChanges} from '@angular/core';
 import {
-  ControlContainer,
   ControlValueAccessor,
   FormControl,
-  FormGroupDirective, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl,
+  NgControl,
   ValidationErrors,
   Validators
 } from "@angular/forms";
@@ -16,7 +15,6 @@ import {
 export class InputNumberComponent implements ControlValueAccessor, Validators, OnChanges {
 
   @Input() icon: 'percent' | 'R$' = "R$";
-  @Input() order: 'reverse' | 'row' = "row";
   @Input() size: 'normal' | 'lg' | 'sm' = 'normal';
 
   constructor(@Optional() @Self() public controlDir: NgControl) {
@@ -60,20 +58,6 @@ export class InputNumberComponent implements ControlValueAccessor, Validators, O
   }
 
   convertTypeNumber = {
-    toBrBKP: (val: string | number): string => {
-      if (typeof val == 'string') {
-        if (isNaN(Number(val))) {
-          val = 0;
-        }
-      }
-
-      return Number(val)
-        .toLocaleString("BRL", {
-            maximumFractionDigits: 2,
-            minimumFractionDigits: 2
-          }
-        )
-    },
     toBr: (val: string | number): string => {
       if (typeof val == 'string') {
         if (isNaN(Number(val))) {

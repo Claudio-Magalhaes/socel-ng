@@ -9,13 +9,15 @@
             formControlName="servico"
             label="nome"
             typeFilter="outside"
+            (searchFilterValue)="findServicos($event)"
+            (close)="setValorBase($event)"
             [data]="listServicos"
           >
           </dg-autocomplete>
         </div>
         <div class="col-4">
           <label class="form-label">Valor</label>
-          <input class="form-control" formControlName="subTotal">
+          <input-number formControlName="subTotal"></input-number>
         </div>
       </div>
     </form>

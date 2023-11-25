@@ -8,7 +8,7 @@ import {ModalLancamentoComponent} from './sub-components/modal-lancamento/modal-
 import {ReactiveFormsModule} from "@angular/forms";
 import {
     CdkDynamicGroupModule,
-    CdkDynamicTableModule,
+    CdkDynamicTableModule, DgAutocomplete2Module,
     DgModalModule,
     DgPaginatorModule,
     DgTableModule
@@ -35,7 +35,8 @@ import { ModalBaixarComponent } from './sub-components/modal-baixar/modal-baixar
         DgPaginatorModule,
         CdkDynamicTableModule,
         DgTableModule,
-        CdkDynamicGroupModule
+        CdkDynamicGroupModule,
+        DgAutocomplete2Module
     ]
 })
 export class LancamentosModule {

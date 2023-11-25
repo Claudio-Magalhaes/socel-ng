@@ -1,14 +1,17 @@
 
 
 export const CLIENTE = 'clientes';
+export const CLIENTE_NOME = 'clientes/nome/';
 export const CLIENTE_ENDERECOS = 'clientes-enderecos';
 export const CLIENTE_CONTATOS = 'clientes-contatos';
 
 export const PRODUTOS = 'produtos';
+export const PRODUTOS_FILTER = 'produtos/filter';
 
 export const CATEGORIAS = 'categoria';
 
 export const SERVICO = 'servicos';
+export const SERVICO_FILTER = 'servicos/filter';
 
 export const LANCAMENTO = 'lancamentos';
 export const LANCAMENTO_BAIXAR = 'lancamentos/baixar';

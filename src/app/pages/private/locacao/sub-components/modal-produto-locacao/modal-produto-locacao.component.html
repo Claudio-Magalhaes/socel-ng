@@ -4,20 +4,20 @@
       <div class="row">
         <div class="col-8">
           <label class="form-label">Produto</label>
-<!--          <input class="form-control" formControlName="produto">-->
-
           <dg-autocomplete
             classes="form-control"
             formControlName="produto"
             label="nome"
+            key="id"
             typeFilter="outside"
+            (searchFilterValue)="findServicos($event)"
             [data]="listProdutos"
           >
           </dg-autocomplete>
         </div>
         <div class="col-4">
           <label class="form-label">Quantidade</label>
-          <input class="form-control" formControlName="quantidade">
+          <input type="number" class="form-control" formControlName="quantidade">
         </div>
       </div>
     </form>

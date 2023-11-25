@@ -14,6 +14,7 @@ import {
 import { ModalProdutoLocacaoComponent } from './sub-components/modal-produto-locacao/modal-produto-locacao.component';
 import { ModalServicoLocacaoComponent } from './sub-components/modal-servico-locacao/modal-servico-locacao.component';
 import {LancamentosModule} from "../lancamentos/lancamentos.module";
+import {CustomInputsModule} from "../../../shared/custom-inputs/custom-inputs.module";
 
 
 
@@ -37,7 +38,8 @@ import {LancamentosModule} from "../lancamentos/lancamentos.module";
         DgModalModule,
         FormsModule,
         CdkDynamicGroupModule,
-        LancamentosModule
+        LancamentosModule,
+        CustomInputsModule
     ]
 })
 export class LocacaoModule { }

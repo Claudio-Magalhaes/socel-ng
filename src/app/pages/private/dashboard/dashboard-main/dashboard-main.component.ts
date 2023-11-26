@@ -5,6 +5,7 @@ import {LocacaoTable} from "../../locacao/locacao.table";
 import {LocacaoService, receiveEventLocacaoActions} from "../../locacao/service/locacao.service";
 import {ModalLancamentoComponent} from "../../lancamentos/sub-components/modal-lancamento/modal-lancamento.component";
 import {Router} from "@angular/router";
+import {DASHBOARD_LOCACAO} from "../../../../_core/endpoints";
 
 @Component({
   selector: 'app-dashboard-main',
@@ -44,20 +45,20 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
     this.locacoesAtrazadas.controls.columns.remove('lancamento')
     this.locacoesAtrazadas.controls.columns.remove('total')
 
-    this.locacoesVencendo = this.createTable.createByCrudEnity2(new LocacaoEntity(), {
-      ...LocacaoTable,
-      pagination: {
-        size: 5
-      },
-      //@ts-ignore
-      apiData: {
-        params: { atrazada: true }
-      },
-      filters: { ...LocacaoTable.filters, group: 'locacoesVencendo'}
-    })
-    this.locacoesVencendo.controls.columns.remove('dataInicial')
-    this.locacoesVencendo.controls.columns.remove('lancamento')
-    this.locacoesVencendo.controls.columns.remove('total')
+    // this.locacoesVencendo = this.createTable.createByCrudEnity2(new LocacaoEntity(), {
+    //   ...LocacaoTable,
+    //   pagination: {
+    //     size: 5
+    //   },
+    //   //@ts-ignore
+    //   apiData: {
+    //     params: { atrazada: true }
+    //   },
+    //   filters: { ...LocacaoTable.filters, group: 'locacoesVencendo'}
+    // })
+    // this.locacoesVencendo.controls.columns.remove('dataInicial')
+    // this.locacoesVencendo.controls.columns.remove('lancamento')
+    // this.locacoesVencendo.controls.columns.remove('total')
 
     this.locacoesNaoFaturada = this.createTable.createByCrudEnity2(new LocacaoEntity(), {
       ...LocacaoTable,
@@ -71,23 +72,23 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
       filters: { ...LocacaoTable.filters, group: 'locacoesNaoFaturada'}
     })
     this.locacoesNaoFaturada.controls.columns.remove('dataInicial')
-    // this.locacoesNaoFaturada.controls.columns.remove('lancamento')
     this.locacoesNaoFaturada.controls.columns.remove('total')
 
-    this.locacoesComecando = this.createTable.createByCrudEnity2(new LocacaoEntity(), {
-      ...LocacaoTable,
-      pagination: {
-        size: 5
-      },
-      //@ts-ignore
-      apiData: {
-        params: { naoFaturada: true }
-      },
-      filters: { ...LocacaoTable.filters, group: 'locacoesComecando'}
-    })
-    this.locacoesComecando.controls.columns.remove('dataInicial')
-    this.locacoesComecando.controls.columns.remove('lancamento')
-    this.locacoesComecando.controls.columns.remove('total')
+    // this.locacoesComecando = this.createTable.createByCrudEnity2(new LocacaoEntity(), {
+    //   ...LocacaoTable,
+    //   pagination: {
+    //     size: 5
+    //   },
+    //   //@ts-ignore
+    //   apiData: {
+    //     path: DASHBOARD_LOCACAO,
+    //     params: { naoFaturada: true }
+    //   },
+    //   filters: { ...LocacaoTable.filters, group: 'locacoesComecando'}
+    // })
+    // this.locacoesComecando.controls.columns.remove('dataInicial')
+    // this.locacoesComecando.controls.columns.remove('lancamento')
+    // this.locacoesComecando.controls.columns.remove('total')
   }
 
   ngOnInit(): void {
@@ -95,6 +96,9 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.locacoesAtrazadas.destroy()
+    this.locacoesNaoFaturada.destroy()
+    this.locacoesVencendo.destroy()
+    this.locacoesComecando.destroy()
   }
 
   @HostListener('window:locacao-action-receive', ['$event'])

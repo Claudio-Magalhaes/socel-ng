@@ -19,6 +19,8 @@ export const LANCAMENTO_DESFAZER_PAGAMENTO = 'lancamentos/desfazerPagamento/';
 
 export const USUARIO = 'usuarios';
 
+export const DASHBOARD_LOCACAO = 'dashboard/locacoes';
+
 export const LOCACAO = 'locacao';
 export const LOCACAO_RENOVAR = 'locacao/renovar/';
 export const LOCACAO_FATURAR = 'locacao/faturar/';

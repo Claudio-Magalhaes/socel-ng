@@ -24,7 +24,8 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
 
   constructor(
     private CdkTable: CdkDynamicTableService,
-    private service: LocacaoService
+    private service: LocacaoService,
+    private router: Router
   ) {
     this.table = CdkTable.createByCrudEnity2(new LocacaoEntity(), LocacaoTable);
     this.table.controls.filters.patchValue({ dataInicial_inicio: this.getPrimeiroDiaMes() });
@@ -54,6 +55,10 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
       if (ev.detail.typeEvent == 'faturar') {
         if (!resp.lancamento) return;
         this.modalLancamento.open(resp.lancamento)
+      }
+      if (ev.detail.typeEvent == 'renovar') {
+        console.log(resp)
+        this.router.navigate(['user', 'locacoes', resp.id]).then()
       }
       this.table.find()
     })

@@ -164,7 +164,42 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
       permission: (row: LocacaoEntity) => {
         return !!row.lancamento
       }
-    }
+    },
+    renovar: {
+      name: "Renovar",
+      action: (row) => {
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'renovar', row }
+        }))
+      },
+      permission: (row: LocacaoEntity) => {
+        if (row.status?.toUpperCase() == 'FINALIZADA') {
+          const dataComAcressimo = new Date(row.dataFinal || '');
+          let dateCurrent = new Date();
+          dataComAcressimo.setDate(dataComAcressimo.getDate() + 5);
+
+          if (dateCurrent <= dataComAcressimo) return true;
+        }
+        if (row.status?.toUpperCase() == 'EM_LOCACAO') {
+          const dataFinal = new Date(row.dataFinal || '');
+          let dateCurrent = new Date();
+
+          if (dateCurrent >= dataFinal) return true;
+        }
+
+        return false;
+      }
+    },
+    verRenocacao: {
+      name: 'Ver renovação',
+      action: (val: LocacaoEntity) => {
+        if(!val?.renovacao?.id) return
+        genereteDefaultActionTable.link(['user', 'locacoes', val?.renovacao.id])
+      },
+      permission: (row: LocacaoEntity) => {
+        return row.status?.toUpperCase() == 'RENOVADO';
+      }
+    },
   },
   sort: true,
   pagination: {

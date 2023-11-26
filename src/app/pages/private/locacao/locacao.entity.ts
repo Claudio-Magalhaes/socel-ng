@@ -20,6 +20,7 @@ export class LocacaoEntity extends AbstractEntity2 {
     contato?: ContatoEntity,
     endereco?: EnderecoEntity,
     lancamento?: LancamentoEntity,
+    renovacao?: LocacaoEntity,
     status?: string,
     dataInicial?: string,
     dataFinal?: string,
@@ -37,6 +38,7 @@ export class LocacaoEntity extends AbstractEntity2 {
     this.descricao = descricao;
     this.obsercacoes = obsercacoes;
     this.lancamento = lancamento;
+    this.renovacao = renovacao;
   }
 
   @DynamicColumn({headerName: 'ID', tdClass: classesStatus})
@@ -77,6 +79,7 @@ export class LocacaoEntity extends AbstractEntity2 {
   })
   public lancamento: LancamentoEntity | undefined
 
+  public renovacao: LocacaoEntity | undefined
   public contato: ContatoEntity | undefined
   public endereco: EnderecoEntity | undefined
   public descricao: string | undefined

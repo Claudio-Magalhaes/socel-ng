@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardMainComponent } from './dashboard-main/dashboard-main.component';
 import {CdkDynamicTableModule, DgPaginatorModule, DgTableModule} from "@datagrupo/dg-ng-util";
 import {UiModule} from "../../../shared/ui/ui.module";
+import {LancamentosModule} from "../lancamentos/lancamentos.module";
 
 
 
@@ -10,12 +11,13 @@ import {UiModule} from "../../../shared/ui/ui.module";
   declarations: [
     DashboardMainComponent
   ],
-  imports: [
-    CommonModule,
-    CdkDynamicTableModule,
-    UiModule,
-    DgTableModule,
-    DgPaginatorModule
-  ]
+    imports: [
+        CommonModule,
+        CdkDynamicTableModule,
+        UiModule,
+        DgTableModule,
+        DgPaginatorModule,
+        LancamentosModule
+    ]
 })
 export class DashboardModule { }

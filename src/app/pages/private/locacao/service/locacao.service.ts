@@ -1,11 +1,11 @@
 import {HostListener, Injectable} from '@angular/core';
 import {GenericService} from "../../../../services/generic-service/generic.service";
 import Swal from "sweetalert2";
-import {LOCACAO, LOCACAO_FATURAR, LOCACAO_STATUS} from "../../../../_core/endpoints";
+import {LOCACAO, LOCACAO_FATURAR, LOCACAO_RENOVAR, LOCACAO_STATUS} from "../../../../_core/endpoints";
 import {LocacaoEntity} from "../locacao.entity";
 
 export declare type receiveEventLocacaoActions = {
-  typeEvent: 'iniciar' | 'finalizar' | 'cancelar' | 'faturar' | 'verLancamento',
+  typeEvent: 'iniciar' | 'finalizar' | 'cancelar' | 'faturar' | 'verLancamento' | 'renovar',
   row: LocacaoEntity
 };
 
@@ -74,6 +74,27 @@ export class LocacaoService {
     }).then(confirm => {
       if (confirm.isConfirmed) {
         this.changeStatus(id, 'FINALIZADA', callback)
+      }
+    })
+  }
+
+  renovar(id: number | string, callback?: (val: any) => void) {
+    Swal.fire({
+      icon: 'question',
+      title: 'Renovar Locação',
+      text: 'Uma nova locação será criaca com os mesmos dados, exceto os serviços realizados. '+
+        'Caso não exista um lançamento para essa locação, ele será automaticamente criado.',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar'
+    }).then(confirm => {
+      if (confirm.isConfirmed) {
+        this.service.patch(LOCACAO_RENOVAR + id, {}).subscribe(
+          resp => {
+            if (callback) {
+              callback(resp.data)
+            }
+          }
+        )
       }
     })
   }

@@ -133,7 +133,10 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
 
     this.service.get(CLIENTE).subscribe(
       resp => {
-        this.listClientes = resp.data;
+        this.listClientes = [
+          ...resp.data,
+          ...this.listClientes
+        ];
       }
     )
 

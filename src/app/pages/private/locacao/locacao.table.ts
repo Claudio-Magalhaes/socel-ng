@@ -53,52 +53,51 @@ export const LocacaoTable: CdkDynamicTable.createDynamicTable = {
     group: 'locacoes',
     reactive: false,
     filters: {
-      id: {
-        reactive: true, findFunc: val => {
-          return {id: val}
-        }
-      },
-      nomeCliente: {
-        reactive: true, findFunc: val => {
-          return {nomeCliente: val}
-        }
-      },
-      status: {
-        reactive: true, findFunc: val => {
-          return {status: val}
-        }
-      },
-      dataInicial_inicio: {
-        findFunc: val => {
-          return {dataInicial_inicio: val}
-        }
-      },
-      dataInicial_fim: {
-        findFunc: val => {
-          return {dataInicial_fim: val}
-        }
-      },
-      dataFinal_inicio: {
-        findFunc: val => {
-          return {dataFinal_inicio: val}
-        }
-      },
-      dataFinal_fim: {
-        findFunc: val => {
-          return {dataFinal_fim: val}
-        }
-      },
-
-      dataInicial: {
-        reactive: true, findFunc: val => {
-          return {dataInicial: val}
-        }
-      },
-      dataFinal: {
-        reactive: true, findFunc: val => {
-          return {dataFinal: val}
-        }
-      },
+      // id: {
+      //   reactive: true, findFunc: val => {
+      //     return {id: val}
+      //   }
+      // },
+      // nomeCliente: {
+      //   reactive: true, findFunc: val => {
+      //     return {nomeCliente: val}
+      //   }
+      // },
+      // status: {
+      //   reactive: true, findFunc: val => {
+      //     return {status: val}
+      //   }
+      // },
+      // dataInicial_inicio: {
+      //   findFunc: val => {
+      //     return {dataInicial_inicio: val}
+      //   }
+      // },
+      // dataInicial_fim: {
+      //   findFunc: val => {
+      //     return {dataInicial_fim: val}
+      //   }
+      // },
+      // dataFinal_inicio: {
+      //   findFunc: val => {
+      //     return {dataFinal_inicio: val}
+      //   }
+      // },
+      // dataFinal_fim: {
+      //   findFunc: val => {
+      //     return {dataFinal_fim: val}
+      //   }
+      // },
+      // dataInicial: {
+      //   reactive: true, findFunc: val => {
+      //     return {dataInicial: val}
+      //   }
+      // },
+      // dataFinal: {
+      //   reactive: true, findFunc: val => {
+      //     return {dataFinal: val}
+      //   }
+      // },
     }
   },
   actions: {

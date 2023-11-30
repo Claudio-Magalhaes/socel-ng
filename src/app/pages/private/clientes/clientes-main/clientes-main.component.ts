@@ -26,7 +26,7 @@ export class ClientesMainComponent implements OnInit, OnDestroy {
     public cdkTable: CdkDynamicTableService,
     private router: Router
   ) {
-    this.table = cdkTable.createByCrudEnity2(new ClientesEntity(), ClientesTable)
+    this.table = cdkTable.createByEntity(new ClientesEntity())
 
     // this.table = cdkTable.createByCrudEnity2(new ClientesEntity(), {
     //   actions: {

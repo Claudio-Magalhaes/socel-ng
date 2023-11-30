@@ -34,48 +34,39 @@ export class LancamentosMainComponent implements OnInit {
     private CdkTable: CdkDynamicTableService,
     private service: GenericService
   ) {
-    this.table = CdkTable.createByCrudEnity2(new LancamentoEntity(), {
-      ...LancamentoTable,
+    this.table = CdkTable.createByEntity(new LancamentoEntity(), {
       actions: {
         edit: {
-          name: 'Editar',
-          dbClick: true,
-          action: (val: LancamentoEntity) => {
-            this.modalLancamento.open(val)
-          }
-        },
-        baixar: {
-          name: 'Baixar',
-          action: (val: LancamentoEntity) => {
-            this.modalBaixar.open(val)
+          edit: {
+            action: (val: LancamentoEntity) => {
+              this.modalLancamento.open(val)
+            }
           },
-          permission: (val: LancamentoEntity) => {
-            return !val.baixado;
-          }
-        },
-        desfazer: {
-          name: 'Desfazer pagamento',
-          action: (val: LancamentoEntity) => {
-            Swal.fire({
-              icon: 'question',
-              title: 'Desfazer pagamento',
-              text: 'Você está prestes a informar ao sistema que o pagamento não foi realizado. Está certo disso?',
-              showCancelButton: true,
-              cancelButtonText: 'Cancelar'
-            }).then(confirm => {
-              if (confirm.isConfirmed) {
-                this.table.find();
-                this.service.patch(LANCAMENTO_DESFAZER_PAGAMENTO + val.id, {}).subscribe(resp => {
-                  Swal.fire({
-                    icon: 'success',
-                    title: 'Pagamento desfeito'
-                  }).then()
-                })
-              }
-            })
+          baixar: {
+            action: (val: LancamentoEntity) => {
+              this.modalBaixar.open(val)
+            },
           },
-          permission: (val: LancamentoEntity) => {
-            return !!val.baixado;
+          desfazer: {
+            action: (val: LancamentoEntity) => {
+              Swal.fire({
+                icon: 'question',
+                title: 'Desfazer pagamento',
+                text: 'Você está prestes a informar ao sistema que o pagamento não foi realizado. Está certo disso?',
+                showCancelButton: true,
+                cancelButtonText: 'Cancelar'
+              }).then(confirm => {
+                if (confirm.isConfirmed) {
+                  this.table.find();
+                  this.service.patch(LANCAMENTO_DESFAZER_PAGAMENTO + val.id, {}).subscribe(resp => {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Pagamento desfeito'
+                    }).then()
+                  })
+                }
+              })
+            },
           }
         }
       }

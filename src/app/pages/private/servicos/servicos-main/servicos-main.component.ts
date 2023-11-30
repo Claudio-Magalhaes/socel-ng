@@ -25,28 +25,7 @@ export class ServicosMainComponent implements OnInit, OnDestroy {
     private CdkTable: CdkDynamicTableService,
     private router: Router
   ) {
-    this.table = CdkTable.createByCrudEnity2(new ServicoEntity(), {
-      actions: {
-        edit: {
-          name: 'Editar',
-          dbClick: true,
-          action: (val: ServicoEntity) => {
-            this.router.navigate(['user', 'servicos', val?.id]).then()
-          }
-        }
-      },
-      filters: {
-        group: 'servicos', reactive: true, filters: {
-          nome: {
-            findFunc: val => { return {nome: val} }
-          },
-          status: {
-            findFunc: val => { return {status: val} }
-          }
-        }
-      },
-      sort: true
-    })
+    this.table = CdkTable.createByEntity(new ServicoEntity())
   }
 
   ngOnInit(): void {

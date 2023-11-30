@@ -28,7 +28,7 @@ export class CategoriaMainComponent implements OnInit {
     public cdkTable: CdkDynamicTableService,
     private router: Router
   ) {
-    this.table = cdkTable.createByCrudEnity2(new CategoriasEntity(), CategoriasTable)
+    this.table = cdkTable.createByEntity(new CategoriasEntity())
   }
 
   ngOnInit(): void {

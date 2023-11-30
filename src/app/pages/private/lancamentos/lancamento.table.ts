@@ -28,9 +28,9 @@ export const funcIconsFaturado = (val: boolean, row: LancamentoEntity) => {
 export const LancamentoTable: CdkDynamicTable.createDynamicTable = {
   filters: {
     group: 'lancamentos', reactive: true, filters: {
-      id: { findFunc: val => defaultFindFunc(val, 'id')},
-      nome: { findFunc: val => defaultFindFunc(val, 'nome')},
-      tipo: { findFunc: val => defaultFindFunc(val, 'tipo')},
+      // id: { findFunc: val => defaultFindFunc(val, 'id')},
+      // nome: { findFunc: val => defaultFindFunc(val, 'nome')},
+      // tipo: { findFunc: val => defaultFindFunc(val, 'tipo')},
     }
   },
   sort: true

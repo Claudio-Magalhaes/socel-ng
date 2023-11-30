@@ -24,7 +24,7 @@ export class PodutosMainComponent implements OnInit, OnDestroy {
   constructor(
     private CdkTable: CdkDynamicTableService
   ) {
-    this.table = CdkTable.createByCrudEnity2(new ProdutosEntity(), ProdutosTable)
+    this.table = CdkTable.createByEntity(new ProdutosEntity())
   }
 
   ngOnInit(): void {

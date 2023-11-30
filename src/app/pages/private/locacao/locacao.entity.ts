@@ -1,4 +1,4 @@
-import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {ClientesEntity} from "../clientes/clientes.entity";
 import {ContatoEntity} from "../clientes/_entitys/contato.entity";
 import {EnderecoEntity} from "../clientes/_entitys/endereco.entity";
@@ -7,10 +7,174 @@ import {LOCACAO} from "../../../_core/endpoints";
 import {LancamentoEntity} from "../lancamentos/lancamento.entity";
 import {funcIconsFaturado} from "../lancamentos/lancamento.table";
 import {classesStatus} from "./locacao.table";
+import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
+import {genereteDefaultActionTable} from "../../../_core/config/dg-ng-util/config-local-dynamic-table";
+import {receiveEventLocacaoActions} from "./service/locacao.service";
 
 @DataServer({
   path: environment.apiUrl,
   context: LOCACAO
+})
+@DynamicTableEntity({
+  api: {
+    path: environment.apiUrl,
+    context: LOCACAO
+  },
+  filters: {
+    group: 'locacoes',
+    reactive: false,
+    filters: {
+      // id: {
+      //   reactive: true, findFunc: val => {
+      //     return {id: val}
+      //   }
+      // },
+      // nomeCliente: {
+      //   reactive: true, findFunc: val => {
+      //     return {nomeCliente: val}
+      //   }
+      // },
+      // status: {
+      //   reactive: true, findFunc: val => {
+      //     return {status: val}
+      //   }
+      // },
+      // dataInicial_inicio: {
+      //   findFunc: val => {
+      //     return {dataInicial_inicio: val}
+      //   }
+      // },
+      // dataInicial_fim: {
+      //   findFunc: val => {
+      //     return {dataInicial_fim: val}
+      //   }
+      // },
+      // dataFinal_inicio: {
+      //   findFunc: val => {
+      //     return {dataFinal_inicio: val}
+      //   }
+      // },
+      // dataFinal_fim: {
+      //   findFunc: val => {
+      //     return {dataFinal_fim: val}
+      //   }
+      // },
+      // dataInicial: {
+      //   reactive: true, findFunc: val => {
+      //     return {dataInicial: val}
+      //   }
+      // },
+      // dataFinal: {
+      //   reactive: true, findFunc: val => {
+      //     return {dataFinal: val}
+      //   }
+      // },
+    }
+  },
+  actions: {
+    edit: {
+      name: 'Abrir',
+      dbClick: true,
+      action: (val: LocacaoEntity) => {
+        if(!val?.id) return
+        genereteDefaultActionTable.link(['user', 'locacoes', val?.id])
+      }
+    },
+    iniciar: {
+      name: 'Iniciar locação',
+      action: (row) => {
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'iniciar', row }
+        }))
+      },
+      permission: (row) => {
+        return row.status.toUpperCase() == 'ABERTO'
+      }
+    },
+    finalizar: {
+      name: 'Finalizar locação',
+      action: (row) => {
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'finalizar', row }
+        }))
+      },
+      permission: (row) => {
+        return row.status == 'EM_LOCACAO'
+      }
+    },
+    cancelar: {
+      name: 'Cancelar',
+      action: (row) => {
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'cancelar', row }
+        }))
+      },
+      permission: (row) => {
+        return row.status == 'ABERTO'
+      }
+    },
+    faturar: {
+      name: 'Faturar',
+      action: (row) => {
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'faturar', row }
+        }))
+      },
+      permission: (row: LocacaoEntity) => {
+        return !row.lancamento && ( row.status != 'ABERTO' )
+      }
+    },
+    verLancamento: {
+      name: 'Ver faturamento',
+      action: (row) => {
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'verLancamento', row }
+        }))
+      },
+      permission: (row: LocacaoEntity) => {
+        return !!row.lancamento
+      }
+    },
+    renovar: {
+      name: "Renovar",
+      action: (row) => {
+        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
+          detail: <receiveEventLocacaoActions>{ typeEvent: 'renovar', row }
+        }))
+      },
+      permission: (row: LocacaoEntity) => {
+        if (row.status?.toUpperCase() == 'FINALIZADA') {
+          const dataComAcressimo = new Date(row.dataFinal || '');
+          let dateCurrent = new Date();
+          dataComAcressimo.setDate(dataComAcressimo.getDate() + 5);
+
+          if (dateCurrent <= dataComAcressimo) return true;
+        }
+        if (row.status?.toUpperCase() == 'EM_LOCACAO') {
+          const dataFinal = new Date(row.dataFinal || '');
+          let dateCurrent = new Date();
+
+          if (dateCurrent >= dataFinal) return true;
+        }
+
+        return false;
+      }
+    },
+    verRenocacao: {
+      name: 'Ver renovação',
+      action: (val: LocacaoEntity) => {
+        if(!val?.renovacao?.id) return
+        genereteDefaultActionTable.link(['user', 'locacoes', val?.renovacao.id])
+      },
+      permission: (row: LocacaoEntity) => {
+        return row.status?.toUpperCase() == 'RENOVADO';
+      }
+    },
+  },
+  sort: true,
+  pagination: {
+    sort: 'dataInicial,ASC'
+  }
 })
 export class LocacaoEntity extends AbstractEntity2 {
 

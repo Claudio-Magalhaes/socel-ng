@@ -27,7 +27,7 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
     private service: LocacaoService,
     private router: Router
   ) {
-    this.table = CdkTable.createByCrudEnity2(new LocacaoEntity(), LocacaoTable);
+    this.table = CdkTable.createByEntity(new LocacaoEntity());
     this.table.controls.filters.patchValue({ dataInicial_inicio: this.getPrimeiroDiaMes() });
     this.table.controls.filters.setClearFunctions({ dataInicial_inicio: this.getPrimeiroDiaMes() })
   }

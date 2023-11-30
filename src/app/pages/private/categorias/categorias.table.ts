@@ -7,7 +7,7 @@ export const CategoriasTable: CdkDynamicTable.createDynamicTable = {
     group: 'categorias',
     reactive: true,
     filters: {
-      nome: { findFunc: val => { return { nome_like: val} }, reactive: true }
+      // nome: { findFunc: val => { return { nome_like: val} }, reactive: true }
     }
   },
   actions: {

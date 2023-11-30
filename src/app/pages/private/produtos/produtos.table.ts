@@ -7,8 +7,8 @@ export const ProdutosTable: CdkDynamicTable.createDynamicTable = {
     group: 'produtos',
     reactive: true,
     filters: {
-      nome: { findFunc: val => { return { nome: val} }, reactive: true },
-      status: { findFunc: val => { return { status: val} }, reactive: true }
+      // nome: { findFunc: val => { return { nome: val} }, reactive: true },
+      // status: { findFunc: val => { return { status: val} }, reactive: true }
     }
   },
   sort: true,

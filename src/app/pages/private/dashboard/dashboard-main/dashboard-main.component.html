@@ -1,83 +1,83 @@
-<div id="dashboard-page" class="container-fluid">
-  <div class="row">
-    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <card>
-        <div class="card-header">
-          <h4 class="card-title">Locações Atrazadas</h4>
-        </div>
-        <div class="card-body">
-          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesAtrazadas"></dg-table>
-        </div>
-        <div class="card-footer">
-          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesAtrazadas"></dg-paginator>
-        </div>
-      </card>
-    </div>
-    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <card>
-        <div class="card-header">
-          <h4 class="card-title">Locações aguardando faturamento</h4>
-        </div>
-        <div class="card-body">
-          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesNaoFaturada"></dg-table>
-        </div>
-        <div class="card-footer">
-          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesNaoFaturada"></dg-paginator>
-        </div>
-      </card>
-    </div>
-  </div>
-  <div class="row mt-3">
-    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <card>
-        <div class="card-header">
-          <h4 class="card-title">Locações começando em 20 dias</h4>
-        </div>
-
-<!--        <div class="card-header container-fluid">-->
-<!--          <div class="row">-->
-<!--            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">-->
-<!--              <label class="form-label">Começando em até:</label>-->
-<!--              <input-->
-<!--                type="number"-->
-<!--                class="form-control"-->
-<!--                dg-dynamic-group="locacoesAComecar"-->
-<!--                paramName="dataStart"-->
-<!--                [formControl]="filtrosLocacao.dataStart"-->
-<!--              >-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="row mt-3">-->
-<!--            <div class="col-12 d-inline-flex justify-content-center">-->
-<!--              <button dynamic-group-control="locacoesAComecar" filter class="btn btn-success btn-sm m-1">Filtrar</button>-->
-<!--              <button dynamic-group-control="locacoesAComecar" clear class="btn btn-secondary btn-sm m-1">Limpar</button>-->
-<!--            </div>-->
-<!--          </div>-->
+<!--<div id="dashboard-page" class="container-fluid">-->
+<!--  <div class="row">-->
+<!--    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">-->
+<!--      <card>-->
+<!--        <div class="card-header">-->
+<!--          <h4 class="card-title">Locações Atrazadas</h4>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesAtrazadas"></dg-table>-->
+<!--        </div>-->
+<!--        <div class="card-footer">-->
+<!--          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesAtrazadas"></dg-paginator>-->
+<!--        </div>-->
+<!--      </card>-->
+<!--    </div>-->
+<!--    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">-->
+<!--      <card>-->
+<!--        <div class="card-header">-->
+<!--          <h4 class="card-title">Locações aguardando faturamento</h4>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesNaoFaturada"></dg-table>-->
+<!--        </div>-->
+<!--        <div class="card-footer">-->
+<!--          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesNaoFaturada"></dg-paginator>-->
+<!--        </div>-->
+<!--      </card>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="row mt-3">-->
+<!--    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">-->
+<!--      <card>-->
+<!--        <div class="card-header">-->
+<!--          <h4 class="card-title">Locações começando em 20 dias</h4>-->
 <!--        </div>-->
 
-        <div class="card-body">
-          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesComecando"></dg-table>
-        </div>
-        <div class="card-footer">
-          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesComecando"></dg-paginator>
-        </div>
-      </card>
-    </div>
-    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <card>
-        <div class="card-header">
-          <h4 class="card-title">Locações vencendo em 20 dias</h4>
-        </div>
-        <div class="card-body">
-          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesVencendo"></dg-table>
-        </div>
-        <div class="card-footer">
-          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesVencendo"></dg-paginator>
-        </div>
-      </card>
-    </div>
-  </div>
-</div>
+<!--&lt;!&ndash;        <div class="card-header container-fluid">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">&ndash;&gt;-->
+<!--&lt;!&ndash;              <label class="form-label">Começando em até:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <input&ndash;&gt;-->
+<!--&lt;!&ndash;                type="number"&ndash;&gt;-->
+<!--&lt;!&ndash;                class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                dg-dynamic-group="locacoesAComecar"&ndash;&gt;-->
+<!--&lt;!&ndash;                paramName="dataStart"&ndash;&gt;-->
+<!--&lt;!&ndash;                [formControl]="filtrosLocacao.dataStart"&ndash;&gt;-->
+<!--&lt;!&ndash;              >&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
 
-<modal-lancamento #modalLancamento></modal-lancamento>
+<!--&lt;!&ndash;          <div class="row mt-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-12 d-inline-flex justify-content-center">&ndash;&gt;-->
+<!--&lt;!&ndash;              <button dynamic-group-control="locacoesAComecar" filter class="btn btn-success btn-sm m-1">Filtrar</button>&ndash;&gt;-->
+<!--&lt;!&ndash;              <button dynamic-group-control="locacoesAComecar" clear class="btn btn-secondary btn-sm m-1">Limpar</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        <div class="card-body">-->
+<!--          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesComecando"></dg-table>-->
+<!--        </div>-->
+<!--        <div class="card-footer">-->
+<!--          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesComecando"></dg-paginator>-->
+<!--        </div>-->
+<!--      </card>-->
+<!--    </div>-->
+<!--    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">-->
+<!--      <card>-->
+<!--        <div class="card-header">-->
+<!--          <h4 class="card-title">Locações vencendo em 20 dias</h4>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesVencendo"></dg-table>-->
+<!--        </div>-->
+<!--        <div class="card-footer">-->
+<!--          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesVencendo"></dg-paginator>-->
+<!--        </div>-->
+<!--      </card>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<modal-lancamento #modalLancamento></modal-lancamento>-->

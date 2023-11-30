@@ -1,11 +1,35 @@
-import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {PRODUTOS} from "../../../_core/endpoints";
 import {CategoriasEntity} from "../categorias/categorias.entity";
+import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
+import {genereteDefaultActionTable} from "../../../_core/config/dg-ng-util/config-local-dynamic-table";
 
 @DataServer({
   path: environment.apiUrl,
   context: PRODUTOS
+})
+@DynamicTableEntity({
+  api: {
+    path: environment.apiUrl,
+    context: PRODUTOS
+  },
+  filters: {
+    group: 'produtos',
+    reactive: true,
+    filters: {
+      // nome: { findFunc: val => { return { nome: val} }, reactive: true },
+      // status: { findFunc: val => { return { status: val} }, reactive: true }
+    }
+  },
+  sort: true,
+  actions: {
+    editar: {
+      name: 'Editar', dbClick: true, action: val => {
+        genereteDefaultActionTable.link(['user', 'produtos', val.id])
+      }
+    }
+  },
 })
 export class ProdutosEntity extends AbstractEntity2 {
 

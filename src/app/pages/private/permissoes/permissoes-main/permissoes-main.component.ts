@@ -19,17 +19,7 @@ export class PermissoesMainComponent implements OnInit {
     private CdkTable: CdkDynamicTableService,
     private router: Router
   ) {
-    this.table = CdkTable.createByCrudEnity2(new PermissaoEntity(), {
-      actions: {
-        edit: {
-          name: 'Editar',
-          dbClick: true,
-          action: (val: PermissaoEntity) => {
-            this.router.navigate(['user', 'configuracoes', 'permissoes', val?.id]).then()
-          }
-        }
-      }
-    })
+    this.table = CdkTable.createByEntity(new PermissaoEntity())
   }
 
   ngOnInit(): void {

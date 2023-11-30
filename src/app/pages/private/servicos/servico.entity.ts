@@ -1,10 +1,37 @@
-import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {SERVICO} from "../../../_core/endpoints";
+import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
 
 @DataServer({
   path: environment.apiUrl,
   context: SERVICO
+})
+@DynamicTableEntity({
+  api: {
+    path: environment.apiUrl,
+    context: SERVICO
+  },
+  actions: {
+    edit: {
+      name: 'Editar',
+      dbClick: true,
+      action: (val: ServicoEntity) => {
+        // this.router.navigate(['user', 'servicos', val?.id]).then()
+      }
+    }
+  },
+  filters: {
+    group: 'servicos', reactive: true, filters: {
+      // nome: {
+      //   findFunc: val => { return {nome: val} }
+      // },
+      // status: {
+      //   findFunc: val => { return {status: val} }
+      // }
+    }
+  },
+  sort: true
 })
 export class ServicoEntity extends AbstractEntity2 {
   constructor(

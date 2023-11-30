@@ -20,13 +20,15 @@ export class UsuariosMainComponent implements OnInit {
     private cdkTable: CdkDynamicTableService,
     private router: Router
   ) {
-    this.table = cdkTable.createByCrudEnity2(new UsuariosEntity(), {
+    this.table = cdkTable.createByEntity(new UsuariosEntity(), {
       actions: {
-        edit: {
-          name: 'Editar',
-          dbClick: true,
-          action: (val: ServicoEntity) => {
-            this.router.navigate(['user', 'configuracoes', 'usuarios', val?.id])
+        add: {
+          edit: {
+            name: 'Editar',
+            dbClick: true,
+            action: (val: ServicoEntity) => {
+              this.router.navigate(['user', 'configuracoes', 'usuarios', val?.id])
+            }
           }
         }
       }

@@ -7,9 +7,9 @@ export const ClientesTable: CdkDynamicTable.createDynamicTable = {
     group: 'clientes',
     reactive: true,
     filters: {
-      nome: { findFunc: val => { return { nome: val} }, reactive: true },
-      status: { findFunc: val => { return { status: val} }, reactive: true },
-      documento: { findFunc: val => { return { documento: val} }, reactive: true }
+      // nome: { findFunc: val => { return { nome: val} }, reactive: true },
+      // status: { findFunc: val => { return { status: val} }, reactive: true },
+      // documento: { findFunc: val => { return { documento: val} }, reactive: true }
     }
   },
   sort: true,

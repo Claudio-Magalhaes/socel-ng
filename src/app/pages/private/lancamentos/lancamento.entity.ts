@@ -1,13 +1,46 @@
-import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {ClientesEntity} from "../clientes/clientes.entity";
 import {environment} from "../../../../environments/environment";
-import {LANCAMENTO} from "../../../_core/endpoints";
+import {LANCAMENTO, LANCAMENTO_DESFAZER_PAGAMENTO} from "../../../_core/endpoints";
 import {LocacaoEntity} from "../locacao/locacao.entity";
 import {funcIconsFaturado} from "./lancamento.table";
+import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
+import Swal from "sweetalert2";
 
 @DataServer({
   path: environment.apiUrl,
   context: LANCAMENTO
+})
+@DynamicTableEntity({
+  api: {
+    path: environment.apiUrl,
+    context: LANCAMENTO
+  },
+  actions: {
+    edit: {
+      name: 'Editar',
+      dbClick: true,
+      action: (val: LancamentoEntity) => {}
+    },
+    baixar: {
+      name: 'Baixar',
+      action: (val: LancamentoEntity) => {},
+      permission: (val: LancamentoEntity) => {
+        return !val.baixado;
+      }
+    },
+    desfazer: {
+      name: 'Desfazer pagamento',
+      action: (val: LancamentoEntity) => {},
+      permission: (val: LancamentoEntity) => {
+        return !!val.baixado;
+      }
+    }
+  },
+  filters: {
+    group: 'lancamentos', reactive: true
+  },
+  sort: true
 })
 export class LancamentoEntity extends AbstractEntity2 {
 

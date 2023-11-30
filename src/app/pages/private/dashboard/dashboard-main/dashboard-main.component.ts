@@ -4,6 +4,8 @@ import {LocacaoService, receiveEventLocacaoActions} from "../../locacao/service/
 import {ModalLancamentoComponent} from "../../lancamentos/sub-components/modal-lancamento/modal-lancamento.component";
 import {Router} from "@angular/router";
 import {FormControl} from "@angular/forms";
+import {LocacaoEntity} from "../../locacao/locacao.entity";
+import {DASHBOARD_LOCACAO} from "../../../../_core/endpoints";
 
 @Component({
   selector: 'app-dashboard-main',
@@ -32,78 +34,65 @@ export class DashboardMainComponent implements OnInit, OnDestroy {
   }
 
   createTables() {
-    // this.locacoesAtrazadas = this.createTable.createByCrudEnity2(new LocacaoEntity(), {
-    //   ...LocacaoTable,
-    //   pagination: {
-    //     size: 5
-    //   },
-    //   //@ts-ignore
-    //   apiData: {
-    //     context: DASHBOARD_LOCACAO,
-    //     params: {atrazadas: true}
-    //   },
-    //   filters: {...LocacaoTable.filters, group: 'locacoesAtrazadas'}
-    // })
-    // this.locacoesAtrazadas.controls.columns.remove('dataInicial')
-    // this.locacoesAtrazadas.controls.columns.remove('lancamento')
-    // this.locacoesAtrazadas.controls.columns.remove('total')
-    //
-    // this.locacoesNaoFaturada = this.createTable.createByCrudEnity2(new LocacaoEntity(), {
-    //   ...LocacaoTable,
-    //   pagination: {
-    //     size: 5
-    //   },
-    //   //@ts-ignore
-    //   apiData: {
-    //     context: DASHBOARD_LOCACAO,
-    //     params: {naoFaturada: true}
-    //   },
-    //   filters: {...LocacaoTable.filters, group: 'locacoesNaoFaturada'}
-    // })
-    // this.locacoesNaoFaturada.controls.columns.remove('dataInicial')
-    // this.locacoesNaoFaturada.controls.columns.remove('total')
-    //
-    // this.locacoesComecando = this.createTable.createByCrudEnity2(new LocacaoEntity(), {
-    //   ...LocacaoTable,
-    //   pagination: {
-    //     size: 5
-    //   },
-    //   //@ts-ignore
-    //   apiData: {
-    //     context: DASHBOARD_LOCACAO,
-    //     params: {aComecar: true}
-    //   },
-    //   filters: {...LocacaoTable.filters, reactive: false, group: 'locacoesAComecar'}
-    // })
-    // this.locacoesComecando.controls.columns.remove('dataFinal')
-    // this.locacoesComecando.controls.columns.remove('lancamento')
-    // this.locacoesComecando.controls.columns.remove('total')
-    //
-    // this.locacoesVencendo = this.createTable.createByEntity(new LocacaoEntity(), {
-    //   ...LocacaoTable,
-    //   pagination: {
-    //     size: 5
-    //   },
-    //   //@ts-ignore
-    //   apiData: {
-    //     context: DASHBOARD_LOCACAO,
-    //     params: { aVencer: true }
-    //   },
-    //   filters: { ...LocacaoTable.filters, group: 'locacoesVencendo'}
-    // })
-    // this.locacoesVencendo.controls.columns.remove('dataInicial')
-    // this.locacoesVencendo.controls.columns.remove('lancamento')
-    // this.locacoesVencendo.controls.columns.remove('total')
+    this.locacoesAtrazadas = this.createTable.createByEntity(new LocacaoEntity(), {
+      pagination: {
+        size: 5
+      },
+      api: {
+        context: DASHBOARD_LOCACAO,
+        params: {atrazadas: true}
+      },
+      filters: { group: 'locacoesAtrazadas', filters: {} },
+      columns: {
+        remove: ['dataInicial', 'lancamento', 'total']
+      }
+    })
+
+    this.locacoesNaoFaturada = this.createTable.createByEntity(new LocacaoEntity(), {
+      pagination: {
+        size: 5
+      },
+      api: {
+        context: DASHBOARD_LOCACAO,
+        params: {naoFaturada: true}
+      },
+      filters: { filters: {}, group: 'locacoesNaoFaturada'},
+      columns: { remove: ['dataInicial', 'total'] }
+    })
+
+    this.locacoesComecando = this.createTable.createByEntity(new LocacaoEntity(), {
+      pagination: {
+        size: 5
+      },
+      api: {
+        context: DASHBOARD_LOCACAO,
+        params: {aComecar: true}
+      },
+      filters: { filters: {}, group: 'locacoesAComecar'},
+      columns: { remove: ['dataFinal', 'lancamento', 'total'] }
+    })
+
+    this.locacoesVencendo = this.createTable.createByEntity(new LocacaoEntity(), {
+      pagination: {
+        size: 5
+      },
+      api: {
+        context: DASHBOARD_LOCACAO,
+        params: { aVencer: true }
+      },
+      filters: { filters: {}, group: 'locacoesVencendo'},
+      columns: { remove: ['dataInicial', 'lancamento', 'total'] }
+    })
   }
 
   ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
-    // this.locacoesAtrazadas.destroy()
-    // this.locacoesNaoFaturada.destroy()
-    // this.locacoesVencendo.destroy()
-    // this.locacoesComecando.destroy()
+    this.locacoesAtrazadas.destroy()
+    this.locacoesNaoFaturada.destroy()
+    this.locacoesVencendo.destroy()
+    this.locacoesComecando.destroy()
   }
 
   @HostListener('window:locacao-action-receive', ['$event'])

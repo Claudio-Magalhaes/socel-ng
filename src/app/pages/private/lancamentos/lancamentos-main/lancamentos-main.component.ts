@@ -6,7 +6,6 @@ import {
   CdkDynamicTableService
 } from "@datagrupo/dg-ng-util";
 import {FormControl, FormGroup} from "@angular/forms";
-import {LancamentoTable} from "../lancamento.table";
 import {GenericService} from "../../../../services/generic-service/generic.service";
 import {ModalBaixarComponent} from "../sub-components/modal-baixar/modal-baixar.component";
 import Swal from "sweetalert2";

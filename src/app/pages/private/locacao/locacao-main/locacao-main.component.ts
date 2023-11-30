@@ -6,7 +6,6 @@ import {
 } from "@datagrupo/dg-ng-util";
 import {Router} from "@angular/router";
 import {LocacaoService, receiveEventLocacaoActions} from "../service/locacao.service";
-import {classesStatus, filters, LocacaoTable} from "../locacao.table";
 import {ModalLancamentoComponent} from "../../lancamentos/sub-components/modal-lancamento/modal-lancamento.component";
 
 @Component({
@@ -20,7 +19,17 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
 
   table: CdkDynamicTable.tableClass;
 
-  filters = filters;
+  filters = {
+    id: '',
+    nomeCliente: '',
+    status: '',
+    dataInicial_inicio: '',
+    dataInicial_fim: '',
+    dataFinal_inicio: '',
+    dataFinal_fim: '',
+    renovada: '',
+    faturada: '',
+  };
 
   constructor(
     private CdkTable: CdkDynamicTableService,

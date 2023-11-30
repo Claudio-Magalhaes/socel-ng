@@ -3,8 +3,6 @@ import {ClientesEntity} from "../clientes.entity";
 import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {clienteFilters} from "../cliente.filters";
-import {ClientesTable} from "../clientes.table";
 
 @Component({
   selector: 'app-clientes-main',

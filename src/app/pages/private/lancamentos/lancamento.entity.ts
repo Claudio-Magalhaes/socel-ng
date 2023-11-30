@@ -3,9 +3,26 @@ import {ClientesEntity} from "../clientes/clientes.entity";
 import {environment} from "../../../../environments/environment";
 import {LANCAMENTO, LANCAMENTO_DESFAZER_PAGAMENTO} from "../../../_core/endpoints";
 import {LocacaoEntity} from "../locacao/locacao.entity";
-import {funcIconsFaturado} from "./lancamento.table";
 import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
 import Swal from "sweetalert2";
+
+export
+const funcIconsFaturado = (val: boolean, row: LancamentoEntity) => {
+  if (!!val) {
+    return '<span class="material-symbols-outlined fatura-pago" data-toggle="tooltip" data-placement="top" title="Pago">select_check_box</span>';
+  }
+  if (row.data_vencimento && !val) {
+    const date = new Date(row.data_vencimento)
+    const loucurasDoJs = new Date().toLocaleDateString('pt-br')
+    const currentDate = new Date(loucurasDoJs.split('/').reverse().join('-'));
+
+    if (date < currentDate) {
+      return '<span class="material-symbols-outlined fatura-atrazado" data-toggle="tooltip" data-placement="top" title="Atrazado">hourglass_bottom</span>';
+    }
+  }
+
+  return '<span class="material-symbols-outlined" data-toggle="tooltip" data-placement="top" title="Aguardando Pagamento">hourglass_top</span>'
+}
 
 @DataServer({
   path: environment.apiUrl,

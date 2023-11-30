@@ -5,7 +5,6 @@ import {
   CdkDynamicTableService
 } from "@datagrupo/dg-ng-util";
 import {FormControl, FormGroup} from "@angular/forms";
-import {ProdutosTable} from "../produtos.table";
 
 @Component({
   selector: 'app-podutos-main',

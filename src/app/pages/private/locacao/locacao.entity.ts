@@ -4,12 +4,44 @@ import {ContatoEntity} from "../clientes/_entitys/contato.entity";
 import {EnderecoEntity} from "../clientes/_entitys/endereco.entity";
 import {environment} from "../../../../environments/environment";
 import {LOCACAO} from "../../../_core/endpoints";
-import {LancamentoEntity} from "../lancamentos/lancamento.entity";
-import {funcIconsFaturado} from "../lancamentos/lancamento.table";
-import {classesStatus} from "./locacao.table";
+import {funcIconsFaturado, LancamentoEntity} from "../lancamentos/lancamento.entity";
 import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
 import {genereteDefaultActionTable} from "../../../_core/config/dg-ng-util/config-local-dynamic-table";
 import {receiveEventLocacaoActions} from "./service/locacao.service";
+
+/**
+ * Função para retornar cor de linha conforme a data de vencimento da locação
+ * @param val
+ * @param row
+ */
+export const classesStatus = (val: string, row: LocacaoEntity): string => {
+  if (!row.dataFinal) return '';
+  if (
+    ['FINALIZADO', 'FINALIZADA', 'ABERTO', 'CANCELADO', 'RENOVADO']
+      .includes((row?.status || '').toUpperCase())) return '';
+  let dataFinal = new Date(row.dataFinal)
+  let dataAtual = new Date();
+
+  if (
+    dataAtual.toLocaleDateString('pt-BR', {timeZone: 'UTC'}) ==
+    dataFinal.toLocaleDateString('pt-BR', {timeZone: 'UTC'})) {
+    return 'locacao-vencendo-hoje'
+  }
+
+  let dataComAcressimo = new Date();
+  dataComAcressimo.setDate(dataAtual.getDate() + 5);
+
+  if (dataComAcressimo >= dataFinal) {
+    return 'locacao-atrazada'
+  }
+
+  if (new Date() > dataFinal) {
+    return 'locacao-atrazada'
+  }
+
+  return '';
+}
+
 
 @DataServer({
   path: environment.apiUrl,
@@ -22,54 +54,7 @@ import {receiveEventLocacaoActions} from "./service/locacao.service";
   },
   filters: {
     group: 'locacoes',
-    reactive: false,
-    filters: {
-      // id: {
-      //   reactive: true, findFunc: val => {
-      //     return {id: val}
-      //   }
-      // },
-      // nomeCliente: {
-      //   reactive: true, findFunc: val => {
-      //     return {nomeCliente: val}
-      //   }
-      // },
-      // status: {
-      //   reactive: true, findFunc: val => {
-      //     return {status: val}
-      //   }
-      // },
-      // dataInicial_inicio: {
-      //   findFunc: val => {
-      //     return {dataInicial_inicio: val}
-      //   }
-      // },
-      // dataInicial_fim: {
-      //   findFunc: val => {
-      //     return {dataInicial_fim: val}
-      //   }
-      // },
-      // dataFinal_inicio: {
-      //   findFunc: val => {
-      //     return {dataFinal_inicio: val}
-      //   }
-      // },
-      // dataFinal_fim: {
-      //   findFunc: val => {
-      //     return {dataFinal_fim: val}
-      //   }
-      // },
-      // dataInicial: {
-      //   reactive: true, findFunc: val => {
-      //     return {dataInicial: val}
-      //   }
-      // },
-      // dataFinal: {
-      //   reactive: true, findFunc: val => {
-      //     return {dataFinal: val}
-      //   }
-      // },
-    }
+    reactive: false
   },
   actions: {
     edit: {

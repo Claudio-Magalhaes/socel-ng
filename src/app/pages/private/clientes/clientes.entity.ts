@@ -17,12 +17,7 @@ import {genereteDefaultActionTable} from "../../../_core/config/dg-ng-util/confi
   },
   filters: {
     group: 'clientes',
-    reactive: true,
-    filters: {
-      // nome: { findFunc: (val: any) => { return { nome: val} }, reactive: true },
-      // status: { findFunc: (val: any) => { return { status: val} }, reactive: true },
-      // documento: { findFunc: (val: any) => { return { documento: val} }, reactive: true }
-    }
+    reactive: true
   },
   sort: true,
   actions: {

@@ -1,11 +1,8 @@
 import {Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CdkDynamicTable, CdkDynamicTableService} from "@datagrupo/dg-ng-util"
-import {LocacaoEntity} from "../../locacao/locacao.entity";
-import {LocacaoTable} from "../../locacao/locacao.table";
 import {LocacaoService, receiveEventLocacaoActions} from "../../locacao/service/locacao.service";
 import {ModalLancamentoComponent} from "../../lancamentos/sub-components/modal-lancamento/modal-lancamento.component";
 import {Router} from "@angular/router";
-import {DASHBOARD_LOCACAO} from "../../../../_core/endpoints";
 import {FormControl} from "@angular/forms";
 
 @Component({

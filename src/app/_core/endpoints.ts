@@ -2,6 +2,7 @@
 
 export const CLIENTE = 'clientes';
 export const CLIENTE_NOME = 'clientes/nome/';
+export const CLIENTE_FILTER = 'clientes/filter';
 export const CLIENTE_ENDERECOS = 'clientes-enderecos';
 export const CLIENTE_CONTATOS = 'clientes-contatos';
 

@@ -1,0 +1,156 @@
+<div id="dashboard-page" class="container-fluid">
+  <div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+      <card>
+        <div class="card-header">
+          <h4 class="card-title">Locações Atrazadas</h4>
+        </div>
+        <div class="card-body">
+          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesAtrazadas"></dg-table>
+        </div>
+        <div class="card-footer">
+          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesAtrazadas"></dg-paginator>
+        </div>
+      </card>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+      <card>
+        <div class="card-header">
+          <h4 class="card-title">Locações aguardando faturamento</h4>
+        </div>
+        <div class="card-body">
+          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesNaoFaturada"></dg-table>
+        </div>
+        <div class="card-footer">
+          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesNaoFaturada"></dg-paginator>
+        </div>
+      </card>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+      <card>
+        <form [formGroup]="formFiltersComecando">
+          <div class="card-header">
+            <h4 class="card-title">
+              Locações começando até o dia
+              {{dataInTitleCard.comecando}}
+            </h4>
+            <p class="card-subtitle">Começando em
+              <input type="number" style="width: 70px" formControlName="totalDias">
+              <b> dias</b>
+            </p>
+          </div>
+
+          <div class="card-header container-fluid">
+            <div class="row">
+              <div class="col-xl-8 col-lg-6 col-md-12 col-sm-12">
+                <label class="form-label">Cliente</label>
+                <dg-autocomplete
+                  formControlName="cliente"
+                  classes="form-control"
+                  typeFilter="outside"
+                  label="nome"
+                  key="id"
+                  dg-dynamic-group="locacoesAComecar"
+                  paramName="cliente"
+                  (searchFilterValue)="filterCliente('comecando', $event)"
+                  [data]="clientesLists.comecando"
+                ></dg-autocomplete>
+              </div>
+
+              <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <label class="form-label">Começando em até:</label>
+                <input
+                  [min]="currentDate"
+                  type="date"
+                  class="form-control"
+                  dg-dynamic-group="locacoesAComecar"
+                  paramName="prazoInicio"
+                  formControlName="prazoInicio"
+                >
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-12 d-inline-flex justify-content-center">
+                <button dynamic-group-control="locacoesAComecar" filter class="btn btn-success btn-sm m-1">Filtrar</button>
+                <button dynamic-group-control="locacoesAComecar" clear class="btn btn-secondary btn-sm m-1">Limpar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="card-body">
+          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesComecando"></dg-table>
+        </div>
+        <div class="card-footer">
+          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesComecando"></dg-paginator>
+        </div>
+      </card>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+      <card>
+        <form [formGroup]="formFiltersvencendo">
+          <div class="card-header">
+            <h4 class="card-title">
+              Locações vencendo até o dia
+              {{dataInTitleCard.vencendo}}
+            </h4>
+            <p class="card-subtitle">Começando em
+              <input type="number" style="width: 70px" formControlName="totalDias">
+              <b> dias</b>
+            </p>
+          </div>
+
+          <div class="card-header container-fluid">
+            <div class="row">
+              <div class="col-xl-8 col-lg-6 col-md-12 col-sm-12">
+                <label class="form-label">Cliente</label>
+                <dg-autocomplete
+                  formControlName="cliente"
+                  classes="form-control"
+                  typeFilter="outside"
+                  label="nome"
+                  key="id"
+                  dg-dynamic-group="locacoesVencendo"
+                  paramName="cliente"
+                  (searchFilterValue)="filterCliente('vencendo', $event)"
+                  [data]="clientesLists.comecando"
+                ></dg-autocomplete>
+              </div>
+
+              <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <label class="form-label">Começando em até:</label>
+                <input
+                  [min]="currentDate"
+                  type="date"
+                  class="form-control"
+                  dg-dynamic-group="locacoesVencendo"
+                  paramName="prazoVencimento"
+                  formControlName="prazoVencimento"
+                >
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-12 d-inline-flex justify-content-center">
+                <button dynamic-group-control="locacoesVencendo" filter class="btn btn-success btn-sm m-1">Filtrar</button>
+                <button dynamic-group-control="locacoesVencendo" clear class="btn btn-secondary btn-sm m-1">Limpar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="card-body">
+          <dg-table classes="table-locacao" dg-dynamic-table [dynamicTable]="locacoesVencendo"></dg-table>
+        </div>
+        <div class="card-footer">
+          <dg-paginator dg-dynamic-paginator [dynamicTable]="locacoesVencendo"></dg-paginator>
+        </div>
+      </card>
+    </div>
+  </div>
+</div>
+
+<modal-lancamento #modalLancamento></modal-lancamento>

@@ -8,7 +8,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 
-@import "../node_modules/bootstrap/scss/bootstrap";
+//@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 @import "../node_modules/@datagrupo/dg-ng-util/assets/scss/dg-ng-util";
 

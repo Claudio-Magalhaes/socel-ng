@@ -1,10 +1,17 @@
-import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {environment} from "../../../../../environments/environment";
 import {CLIENTE_ENDERECOS} from "../../../../_core/endpoints";
+import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
 
 @DataServer({
   path: environment.apiUrl,
   context: CLIENTE_ENDERECOS
+})
+@DynamicTableEntity({
+  api: {
+    path: environment.apiUrl,
+    context: CLIENTE_ENDERECOS
+  }
 })
 export class EnderecoEntity extends AbstractEntity2 {
 

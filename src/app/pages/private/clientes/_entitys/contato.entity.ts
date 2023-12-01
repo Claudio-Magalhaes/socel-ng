@@ -1,10 +1,17 @@
-import {AbstractEntity2, DataServer, DynamicColumn} from "@datagrupo/dg-crud";
+import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {environment} from "../../../../../environments/environment";
 import {CLIENTE_CONTATOS} from "../../../../_core/endpoints";
+import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
 
 @DataServer({
   path: environment.apiUrl,
   context: CLIENTE_CONTATOS
+})
+@DynamicTableEntity({
+  api: {
+    path: environment.apiUrl,
+    context: CLIENTE_CONTATOS
+  }
 })
 export class ContatoEntity extends AbstractEntity2 {
 

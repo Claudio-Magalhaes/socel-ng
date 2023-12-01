@@ -3,9 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LocacaoEntity} from "../locacao.entity";
 import {environment} from "../../../../../environments/environment";
 import {
-  CLIENTE,
   CLIENTE_CONTATOS,
-  CLIENTE_ENDERECOS, CLIENTE_NOME,
+  CLIENTE_ENDERECOS, CLIENTE_FILTER,
   LOCACAO,
   LOCACAO_PRODUTOS,
   LOCACAO_SERVICOS
@@ -131,7 +130,7 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
       }
     })
 
-    this.service.get(CLIENTE).subscribe(
+    this.service.get(CLIENTE_FILTER).subscribe(
       resp => {
         this.listClientes = [
           ...resp.data,
@@ -253,7 +252,7 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
   }
 
   findCliente(val:string) {
-    this.service.get(CLIENTE_NOME + val).subscribe(
+    this.service.get(CLIENTE_FILTER, { params: { nome: val } }).subscribe(
       resp => {
         this.listClientes = resp.data;
       }

@@ -28,6 +28,7 @@ export const LOCACAO_FATURAR = 'locacao/faturar/';
 export const LOCACAO_STATUS = 'locacao/status';
 export const LOCACAO_PRODUTOS = 'locacao-produtos';
 export const LOCACAO_SERVICOS = 'locacao-servicos';
+export const LOCACAO_PRINT = 'locacao/print/';
 
 export const PERMISSAO = 'permissao';
 

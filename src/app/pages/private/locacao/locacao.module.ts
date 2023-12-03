@@ -15,6 +15,7 @@ import { ModalProdutoLocacaoComponent } from './sub-components/modal-produto-loc
 import { ModalServicoLocacaoComponent } from './sub-components/modal-servico-locacao/modal-servico-locacao.component';
 import {LancamentosModule} from "../lancamentos/lancamentos.module";
 import {CustomInputsModule} from "../../../shared/custom-inputs/custom-inputs.module";
+import { PrintLocacaoComponent } from './sub-components/print-locacao/print-locacao.component';
 
 
 
@@ -23,7 +24,8 @@ import {CustomInputsModule} from "../../../shared/custom-inputs/custom-inputs.mo
     LocacaoMainComponent,
     LocacaoInsertEditComponent,
     ModalProdutoLocacaoComponent,
-    ModalServicoLocacaoComponent
+    ModalServicoLocacaoComponent,
+    PrintLocacaoComponent
   ],
     imports: [
         CommonModule,

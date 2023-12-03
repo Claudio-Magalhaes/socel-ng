@@ -155,6 +155,12 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
         return row.status?.toUpperCase() == 'RENOVADO';
       }
     },
+    print: {
+      name: 'Imprimir',
+      action: (val: LocacaoEntity) => {
+        window.open(window.location.origin + '/user/locacoes/imprimir/' + val.id)
+      }
+    }
   },
   sort: true,
   pagination: {
@@ -235,5 +241,8 @@ export class LocacaoEntity extends AbstractEntity2 {
   public obsercacoes: string | undefined
   public totalServicos: string | number | undefined
   public totalProdutos: string | number | undefined
+
+  public produtos: any[] | undefined
+  public servicos: any[] | undefined
 
 }

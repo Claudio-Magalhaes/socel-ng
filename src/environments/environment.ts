@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3001/api/',
-  apiUrl_mock: 'http://localhost:3000/'
+  apiUrl_mock: 'http://localhost:3000/',
+  teste: ''
 };
 
 /*

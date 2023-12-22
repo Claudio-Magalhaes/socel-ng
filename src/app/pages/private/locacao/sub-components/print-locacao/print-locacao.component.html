@@ -2,122 +2,109 @@
   <div class="page">
     <header>
       <div class="row">
-        <div class="col-4">
+        <div class="col-4 col-data">
           <img class="logo-imprecao" src="assets/img/logo-socel.PNG">
         </div>
         <div class="col-8">
-          <h1>Cabeçalho</h1>
-          <p>Outras informações do cabeçalho...</p>
+          <div class="row">
+            <div class="col-9 col-data">
+              <label class="form-label">ID Locação:</label>
+              <p>SOCEL SOCIEDADE CARIOCA DE EQUIPAMENTOS LTDA</p>
+            </div>
+            <div class="col-3 col-data">
+              <label class="form-label">ID Locação:</label>
+              <p>18195</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 col-data">
+              <label class="form-label">CNPJ</label>
+              <p>29.464.872/0001-92</p>
+            </div>
+            <div class="col-5 col-data">
+              <label class="form-label">E-mail</label>
+              <p>socel.andaimes@gmail.com</p>
+            </div>
+            <div class="col-3 col-data">
+              <label class="form-label">Telefone</label>
+              <p>98578-8137</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-9 col-data">
+              <label class="form-label">Logradouro:</label>
+              <p>Rua Barão de Melgaço</p>
+            </div>
+            <div class="col-3 col-data">
+              <label class="form-label">Numero</label>
+              <p>1210</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-data">
+          <label class="form-label">Nome do Cliente</label>
+          <p>{{locacao.cliente?.nome}}</p>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-2 col-data">
+          <label class="form-label">Pessoa</label>
+          <p>{{locacao.cliente?.tipoPessoa}}</p>
+        </div>
+        <div class="col-4 col-data">
+          <label class="form-label">CPF/CNPJ:</label>
+          <p>{{locacao.cliente?.documento}}</p>
+        </div>
+        <div class="col-3 col-data">
+          <label class="form-label">Data Inicial</label>
+          <p>{{locacao.dataInicial}}</p>
+        </div>
+        <div class="col-3 col-data">
+          <label class="form-label">Data Final:</label>
+          <p>{{locacao.dataFinal}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 col-data">
+          <label class="form-label">Logradouro</label>
+          <p>{{locacao.endereco?.rua}}</p>
+        </div>
+        <div class="col-2 col-data">
+          <label class="form-label">Numero</label>
+          <p>{{locacao.endereco?.numero}}</p>
+        </div>
+        <div class="col-4 col-data">
+          <label class="form-label">Complemento</label>
+          <p>{{locacao.endereco?.complemento}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 col-data">
+          <label class="form-label">Cep</label>
+          <p>25233-001</p>
+        </div>
+        <div class="col-4 col-data">
+          <label class="form-label">Bairro:</label>
+          <p>{{locacao.endereco?.bairro}}</p>
+        </div>
+        <div class="col-3 col-data">
+          <label class="form-label">Cidade</label>
+          <p>{{locacao.endereco?.cidade}}</p>
+        </div>
+        <div class="col-1 col-data">
+          <label class="form-label">Estado</label>
+          <p>{{locacao.endereco?.uf}}</p>
+        </div>
+        <div class="col-2 col-data">
+          <label class="form-label">Telefone</label>
+          <p>{{locacao.contato?.telefone}}</p>
         </div>
       </div>
     </header>
 
-    <div class="row">
-      <div class="col-4 col-data">
-        <img class="logo-imprecao" src="assets/img/logo-socel.PNG">
-      </div>
-      <div class="col-8">
-        <div class="row">
-          <div class="col-9 col-data">
-            <label class="form-label">ID Locação:</label>
-            <p>SOCEL SOCIEDADE CARIOCA DE EQUIPAMENTOS LTDA</p>
-          </div>
-          <div class="col-3 col-data">
-            <label class="form-label">ID Locação:</label>
-            <p>18195</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4 col-data">
-            <label class="form-label">CNPJ</label>
-            <p>29.464.872/0001-92</p>
-          </div>
-          <div class="col-5 col-data">
-            <label class="form-label">E-mail</label>
-            <p>socel.andaimes@gmail.com</p>
-          </div>
-          <div class="col-3 col-data">
-            <label class="form-label">Telefone</label>
-            <p>98578-8137</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-9 col-data">
-            <label class="form-label">Logradouro:</label>
-            <p>Rua Barão de Melgaço</p>
-          </div>
-          <div class="col-3 col-data">
-            <label class="form-label">Numero</label>
-            <p>1210</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12 col-data">
-        <label class="form-label">Nome do Cliente</label>
-        <p>{{locacao.cliente?.nome}}</p>
-      </div>
-
-    </div>
-
-    <div class="row">
-      <div class="col-2 col-data">
-        <label class="form-label">Pessoa</label>
-        <p>{{locacao.cliente?.tipoPessoa}}</p>
-      </div>
-      <div class="col-4 col-data">
-        <label class="form-label">CPF/CNPJ:</label>
-        <p>{{locacao.cliente?.documento}}</p>
-      </div>
-      <div class="col-3 col-data">
-        <label class="form-label">Data Inicial</label>
-        <p>{{locacao.dataInicial}}</p>
-      </div>
-      <div class="col-3 col-data">
-        <label class="form-label">Data Final:</label>
-        <p>{{locacao.dataFinal}}</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-data">
-        <label class="form-label">Logradouro</label>
-        <p>{{locacao.endereco?.rua}}</p>
-      </div>
-      <div class="col-2 col-data">
-        <label class="form-label">Numero</label>
-        <p>{{locacao.endereco?.numero}}</p>
-      </div>
-      <div class="col-4 col-data">
-        <label class="form-label">Complemento</label>
-        <p>{{locacao.endereco?.complemento}}</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-2 col-data">
-        <label class="form-label">Cep</label>
-        <p>25233-001</p>
-      </div>
-      <div class="col-4 col-data">
-        <label class="form-label">Bairro:</label>
-        <p>{{locacao.endereco?.bairro}}</p>
-      </div>
-      <div class="col-3 col-data">
-        <label class="form-label">Cidade</label>
-        <p>{{locacao.endereco?.cidade}}</p>
-      </div>
-      <div class="col-1 col-data">
-        <label class="form-label">Estado</label>
-        <p>{{locacao.endereco?.uf}}</p>
-      </div>
-      <div class="col-2 col-data">
-        <label class="form-label">Telefone</label>
-        <p>{{locacao.contato?.telefone}}</p>
-      </div>
-    </div>
 
 
 
@@ -187,6 +174,10 @@
         </table>
       </div>
     </div>
+
+    <footer>
+      assinatura
+    </footer>
   </div>
 <!--  <div class="page">-->
 <!--    <div class="subpage">Page 2/2</div>-->

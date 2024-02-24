@@ -23,7 +23,8 @@ export class ServicosInsertEditComponent extends AbstractInsertEdit2<ServicoEnti
   constructor(
     public config: InsertEditConfig2
   ) {
-    super(config, { path: environment.apiUrl, context: SERVICO })
+    // super(config, { path: environment.apiUrl, context: SERVICO })
+    super(config)
   }
 
   override ngOnInit(): void {

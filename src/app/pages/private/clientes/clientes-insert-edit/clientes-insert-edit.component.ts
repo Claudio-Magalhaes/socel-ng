@@ -44,7 +44,7 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit2<ClientesEnt
     private cdkTable: CdkDynamicTableService,
     private service: GenericService
   ) {
-    super(config, {backAfterSave: false})
+    super(config)
     service.changePath(environment.apiUrl);
     this.tableEnderecos = cdkTable.createByEntity(new EnderecoEntity(), {
       // actions: {

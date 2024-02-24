@@ -1,11 +1,13 @@
-import {setRootConfigDgCrud} from "@datagrupo/dg-crud";
+import {CdkCrudConfig} from "@datagrupo/dg-crud";
 
 
-export const ConfigLocalDgCrud: setRootConfigDgCrud = {
-  pipeRequest: (resp: any) => resp?.data || resp,
-  typeData: {
-    findOne: 'param',
-    // update: 'param'
+export const ConfigLocalDgCrud: CdkCrudConfig.setRepository = {
+  api: {
+    inputPipe: (resp: any) => resp?.data || resp,
+    typeData: {
+      findOne: 'param',
+      update: 'data'
+    }
   },
   typeCallbackMessage: 'event',
 }

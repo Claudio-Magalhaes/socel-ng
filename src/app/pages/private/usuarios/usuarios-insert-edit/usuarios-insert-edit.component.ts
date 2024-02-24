@@ -29,7 +29,8 @@ export class UsuariosInsertEditComponent extends AbstractInsertEdit2<UsuariosEnt
     public config: InsertEditConfig2,
     public service: GenericService
   ) {
-    super(config, { path: environment.apiUrl, context: USUARIO });
+    // super(config, { path: environment.apiUrl, context: USUARIO });
+    super(config);
 
     service.get(PERMISSAO).subscribe(
       resp => {

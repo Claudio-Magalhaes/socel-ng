@@ -32,7 +32,7 @@ export class PodutosInsertEditComponent extends AbstractInsertEdit2<ProdutosEnti
     public config: InsertEditConfig2,
     private service: GenericService
   ) {
-    super(config, { path: environment.apiUrl, context: PRODUTOS })
+    super(config)
     service.changePath(environment.apiUrl)
     service.get(CATEGORIAS).subscribe(
       resp => {

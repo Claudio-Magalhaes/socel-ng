@@ -5,7 +5,7 @@ import {PermissoesInsertEditComponent} from './permissoes-insert-edit/permissoes
 import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
   CdkDynamicTableModule, DgPaginatorModule,
   DgTableModule
@@ -17,16 +17,17 @@ import {
     PermissoesMainComponent,
     PermissoesInsertEditComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule,
-    ReactiveFormsModule,
-    DgTableModule,
-    CdkDynamicTableModule,
-    DgPaginatorModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule,
+        DgTableModule,
+        CdkDynamicTableModule,
+        DgPaginatorModule,
+        FormsModule
+    ]
 })
 export class PermissoesModule {
 }

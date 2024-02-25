@@ -5,11 +5,12 @@ import { UsuariosInsertEditComponent } from './usuarios-insert-edit/usuarios-ins
 import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
   CdkDynamicTableModule,
   DgPaginatorModule, DgTableModule
 } from "@datagrupo/dg-ng-util";
+import {NgxMaskModule} from "ngx-mask";
 
 
 
@@ -18,15 +19,17 @@ import {
     UsuariosMainComponent,
     UsuariosInsertEditComponent
   ],
-  imports: [
-    CommonModule,
-    UiModule,
-    DgCrudModule,
-    RouterModule,
-    ReactiveFormsModule,
-    DgPaginatorModule,
-    CdkDynamicTableModule,
-    DgTableModule
-  ]
+    imports: [
+        CommonModule,
+        UiModule,
+        DgCrudModule,
+        RouterModule,
+        ReactiveFormsModule,
+        DgPaginatorModule,
+        CdkDynamicTableModule,
+        DgTableModule,
+        NgxMaskModule,
+        FormsModule
+    ]
 })
 export class UsuariosModule { }

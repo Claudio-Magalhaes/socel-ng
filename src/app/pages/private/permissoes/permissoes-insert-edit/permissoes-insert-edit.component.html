@@ -13,11 +13,217 @@
           </div>
         </div>
       </form>
-
+    </div>
+    <div class="card-body" *ngIf="!!entity">
       <div class="row">
         <div class="col-12">
-          criar conjunto de permissões
+          <div class="row">
+            <h6>Cliente</h6>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.ver" class="form-check-input" type="checkbox" id="cliente_ver">
+                <label class="form-check-label" for="cliente_ver">Ver</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.adicionar" class="form-check-input" type="checkbox" id="cliente_adicionar">
+                <label class="form-check-label" for="cliente_adicionar">Adicionar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.editar" class="form-check-input" type="checkbox" id="cliente_editar">
+                <label class="form-check-label" for="cliente_editar">editar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.remover" class="form-check-input" type="checkbox" id="cliente_remover">
+                <label class="form-check-label" for="cliente_remover">remover</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.endereco_adicionar" class="form-check-input" type="checkbox" id="cliente_endereco_adicionar">
+                <label class="form-check-label" for="cliente_endereco_adicionar">Adicionar endereço</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.endereco_editar" class="form-check-input" type="checkbox" id="cliente_endereco_editar">
+                <label class="form-check-label" for="cliente_endereco_editar">Editar endereço</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.endereco_remover" class="form-check-input" type="checkbox" id="cliente_endereco_remover">
+                <label class="form-check-label" for="cliente_endereco_remover">Remover endereço</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.contato_adicionar" class="form-check-input" type="checkbox" id="cliente_contato_adicionar">
+                <label class="form-check-label" for="cliente_contato_adicionar">Adicionar contato</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.contato_editar" class="form-check-input" type="checkbox" id="cliente_contato_editar">
+                <label class="form-check-label" for="cliente_contato_editar">Editar contato</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.cliente.contato_remover" class="form-check-input" type="checkbox" id="cliente_contato_remover">
+                <label class="form-check-label" for="cliente_contato_remover">Remover contato</label>
+              </div>
+            </div>
+          </div>
         </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <h6>Produtos</h6>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.produto.ver" class="form-check-input" type="checkbox" id="produtos_ver">
+                <label class="form-check-label" for="produtos_ver">Ver</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.produto.adicionar" class="form-check-input" type="checkbox" id="produtos_adicionar">
+                <label class="form-check-label" for="produtos_adicionar">Adicionar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.produto.editar" class="form-check-input" type="checkbox" id="produtos_editar">
+                <label class="form-check-label" for="produtos_editar">editar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.produto.remover" class="form-check-input" type="checkbox" id="produtos_remover">
+                <label class="form-check-label" for="produtos_remover">remover</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <h6>Serviços</h6>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.servico.ver" class="form-check-input" type="checkbox" id="servicos_ver">
+                <label class="form-check-label" for="servicos_ver">Ver</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.servico.adicionar" class="form-check-input" type="checkbox" id="servicos_adicionar">
+                <label class="form-check-label" for="servicos_adicionar">Adicionar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.servico.editar" class="form-check-input" type="checkbox" id="servicos_editar">
+                <label class="form-check-label" for="servicos_editar">editar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.servico.remover" class="form-check-input" type="checkbox" id="servicos_remover">
+                <label class="form-check-label" for="servicos_remover">remover</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <h6>Locações</h6>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.locacao.ver" class="form-check-input" type="checkbox" id="locacoes_ver">
+                <label class="form-check-label" for="locacoes_ver">Ver</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.locacao.adicionar" class="form-check-input" type="checkbox" id="locacoes_adicionar">
+                <label class="form-check-label" for="locacoes_adicionar">Adicionar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.locacao.editar" class="form-check-input" type="checkbox" id="locacoes_editar">
+                <label class="form-check-label" for="locacoes_editar">editar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.locacao.remover" class="form-check-input" type="checkbox" id="locacoes_remover">
+                <label class="form-check-label" for="locacoes_remover">remover</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <h6>Lançamentos</h6>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.lancamentos.ver" class="form-check-input" type="checkbox" id="lancamentos_ver">
+                <label class="form-check-label" for="lancamentos_ver">Ver</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.lancamentos.adicionar" class="form-check-input" type="checkbox" id="lancamentos_adicionar">
+                <label class="form-check-label" for="lancamentos_adicionar">Adicionar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.lancamentos.editar" class="form-check-input" type="checkbox" id="lancamentos_editar">
+                <label class="form-check-label" for="lancamentos_editar">editar</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-switch">
+                <input [(ngModel)]="entity.permissoes.lancamentos.remover" class="form-check-input" type="checkbox" id="lancamentos_remover">
+                <label class="form-check-label" for="lancamentos_remover">remover</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
       </div>
     </div>
   </card>

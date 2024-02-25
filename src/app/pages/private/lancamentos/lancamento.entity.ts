@@ -104,8 +104,6 @@ export class LancamentoEntity extends AbstractEntity2 {
 
   @DynamicColumn({
     headerName: 'Valor', resource: (val,row) => {
-      console.log('val', val)
-      console.log('row', row)
       return 'R$:' + Number(val)
         .toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2})
     }

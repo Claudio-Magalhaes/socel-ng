@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsuariosEntity} from "../usuarios.entity";
 import {AbstractInsertEdit2, InsertEditConfig2} from "@datagrupo/dg-crud";
-import {environment} from "../../../../../environments/environment";
-import {PERMISSAO, USUARIO} from "../../../../_core/endpoints";
 import {GenericService} from "../../../../services/generic-service/generic.service";
 
 @Component({
@@ -17,8 +15,7 @@ export class UsuariosInsertEditComponent extends AbstractInsertEdit2<UsuariosEnt
 
   public form = new FormGroup({
     nome: new FormControl('', [Validators.required]),
-    cpf: new FormControl('', [Validators.required]),
-    permissao: new FormControl('', [Validators.required]),
+    cpf: new FormControl(''),
     email: new FormControl('', [Validators.required]),
     telefone: new FormControl(''),
   })
@@ -29,14 +26,7 @@ export class UsuariosInsertEditComponent extends AbstractInsertEdit2<UsuariosEnt
     public config: InsertEditConfig2,
     public service: GenericService
   ) {
-    // super(config, { path: environment.apiUrl, context: USUARIO });
     super(config);
-
-    service.get(PERMISSAO).subscribe(
-      resp => {
-        this.listPermission = resp;
-      }
-    )
   }
 
   override ngOnInit(): void {
@@ -44,9 +34,10 @@ export class UsuariosInsertEditComponent extends AbstractInsertEdit2<UsuariosEnt
   }
 
   override afterFetchEntity() {
+    console.log(this.entity)
+    debugger
     this.form.patchValue({
-      ...this.entity,
-      permissao: this.entity?.permissao
+      ...this.entity
     })
   }
 
@@ -61,7 +52,6 @@ export class UsuariosInsertEditComponent extends AbstractInsertEdit2<UsuariosEnt
     this.entity = {
       ...this.entity,
       ...form,
-      permissao: form.permissao
     }
 
     return true;

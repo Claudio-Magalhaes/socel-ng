@@ -20,6 +20,8 @@ export const LANCAMENTO_DESFAZER_PAGAMENTO = 'lancamentos/desfazerPagamento/';
 
 export const USUARIO = 'usuarios';
 
+export const LOGIN = 'auth/login';
+
 export const DASHBOARD_LOCACAO = 'dashboard/locacoes';
 
 export const LOCACAO = 'locacao';

@@ -19,13 +19,6 @@
 
           <div class="row">
             <div class="col-4">
-              <label class="form-label">Permissão</label>
-              <select class="form-select" formControlName="permissao">
-                <option disabled selected value="">Selecione uma permissão</option>
-                <option *ngFor="let p of listPermission" [value]="p.id">{{p.nome}}</option>
-              </select>
-            </div>
-            <div class="col-4">
               <label class="form-label">CPF</label>
               <input class="form-control" mask="000.000.000-00" formControlName="cpf">
             </div>

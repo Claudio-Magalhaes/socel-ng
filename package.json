@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@datagrupo/dg-crud": "1.2.3",
+    "@datagrupo/dg-ng": "^0.1.1",
     "@datagrupo/dg-ng-util": "^0.5.1",
     "@popperjs/core": "^2.11.6",
     "@sweetalert2/ngx-sweetalert2": "^11.0.0",

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {GenericService} from "../../../services/generic-service/generic.service";
 import {LOGIN} from "../../../_core/endpoints";
+import {TokenService} from "../../../services/token-service/token.service";
+import {SessionService} from "../../../services/session-service/session.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-site-home',
@@ -17,7 +20,12 @@ export class SiteHomeComponent implements OnInit {
 
   // viewPass: boolean = false;
 
-  constructor(private service: GenericService) { }
+  constructor(
+    private service: GenericService,
+    private token: TokenService,
+    private session: SessionService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +40,9 @@ export class SiteHomeComponent implements OnInit {
 
     this.service.post(LOGIN, form).subscribe(resp => {
       if(resp.status) {
-        // this.
+        this.token.saveToken(resp.data.access_token);
+        this.session.setUser();
+        this.router.navigate(['/user']).then()
       }
     })
   }

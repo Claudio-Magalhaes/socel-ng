@@ -10,6 +10,9 @@ import {PermissoesModule} from "./permissoes/permissoes.module";
 import {UsuariosModule} from "./usuarios/usuarios.module";
 import {LocacaoModule} from "./locacao/locacao.module";
 import {LancamentosModule} from "./lancamentos/lancamentos.module";
+import {SessionService} from "../../services/session-service/session.service";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AddTokenInterceptor} from "../../_core/interceptors/add-token/add-token.interceptor";
 
 
 @NgModule({
@@ -27,6 +30,10 @@ import {LancamentosModule} from "./lancamentos/lancamentos.module";
     UsuariosModule,
     PermissoesModule,
     // DadosEmpresaModule
+  ],
+  providers: [
+    SessionService,
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
   ]
 })
 export class UserModule { }

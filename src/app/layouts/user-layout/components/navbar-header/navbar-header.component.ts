@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SidebarComponent} from "../sidebar/sidebar.component";
+import {SessionService} from "../../../../services/session-service/session.service";
 
 @Component({
   selector: 'navbar-header',
@@ -10,7 +11,7 @@ export class NavbarHeaderComponent implements OnInit {
 
   @Output() changeSidebar = new EventEmitter<any>()
 
-  constructor() { }
+  constructor(private session: SessionService) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +26,7 @@ export class NavbarHeaderComponent implements OnInit {
 
   sair() {
     if (confirm('sair do sistema?')) {
-      // this.session.logout()
+      this.session.logout()
     }
   }
 

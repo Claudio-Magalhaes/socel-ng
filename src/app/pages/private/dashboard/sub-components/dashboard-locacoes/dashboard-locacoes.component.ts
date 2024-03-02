@@ -21,6 +21,8 @@ export class DashboardLocacoesComponent implements OnInit, OnDestroy {
 
   public currentDate: string;
 
+  tabelaExibicao: 'atrasadas' | 'faturamento' | 'comecando' | 'vencendo' = 'atrasadas';
+
   clientesLists = {
     comecando: [],
     vencendo: [],

@@ -1,1 +1,41 @@
-<dashboard-locacoes></dashboard-locacoes>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 d-inline-flex justify-content-start">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <span class="nav-link" (click)="grupoExibicao = 'locacoes'" [class.active]="grupoExibicao == 'locacoes'">Locações</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" (click)="grupoExibicao = 'produtos'" [class.active]="grupoExibicao == 'produtos'">Produtos</span>
+        </li>
+      </ul>
+    </div>
+    <hr>
+  </div>
+</div>
+
+<div [hidden]="grupoExibicao != 'locacoes'" class="container-fluid">
+  <dashboard-locacoes></dashboard-locacoes>
+</div>
+
+<div *ngIf="grupoExibicao == 'produtos'" class="container-fluid">
+  <div class="row">
+    <div class="col-12 d-inline-flex justify-content-start">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <span class="nav-link active">Produtos em estoque</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" href="#">Produtos alugados</span>
+        </li>
+      </ul>
+    </div>
+    <hr>
+  </div>
+
+  <p>Criar tabelas de produtos</p>
+</div>
+
+
+
+<!--<dashboard-locacoes></dashboard-locacoes>-->

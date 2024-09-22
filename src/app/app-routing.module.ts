@@ -4,6 +4,7 @@ import {SiteHomeComponent} from "./pages/public/site-home/site-home.component";
 import {UserLayoutComponent} from "./layouts/user-layout/user-layout.component";
 import {PrintLocacaoComponent} from "./pages/private/locacao/sub-components/print-locacao/print-locacao.component";
 import {SessionGuard} from "./_core/guards/session/session.guard";
+import {LoginComponent} from "./pages/public/login/login.component";
 
 const routes: Routes = [
 
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: '',
     component: SiteHomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'user',

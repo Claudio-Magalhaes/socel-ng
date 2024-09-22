@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-12">
+                <label class="form-label"> </label>
+                <input name="email" formControlName="username" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label class="form-label"> </label>
+                <input name="password" formControlName="password" class="form-control">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button (click)="login()" class="btn btn-success">Logar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

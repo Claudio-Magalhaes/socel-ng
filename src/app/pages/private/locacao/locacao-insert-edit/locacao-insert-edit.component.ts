@@ -215,7 +215,7 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
       return false;
     }
 
-    const form = this.form.value;
+    const form = this.form.getRawValue();
 
     // @ts-ignore
     this.entity = {
@@ -223,7 +223,8 @@ export class LocacaoInsertEditComponent extends AbstractInsertEdit2<LocacaoEntit
       ...form,
       cliente: {id: form.cliente},
       contato: {id: form.contato},
-      endereco: {id: form.endereco}
+      endereco: {id: form.endereco},
+      total: Number(this.entity.total)
     }
 
     return true;

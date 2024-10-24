@@ -7,6 +7,7 @@ import {SidebarComponent} from "./user-layout/components/sidebar/sidebar.compone
 import {NavigationComponent} from "./user-layout/components/navigation/navigation.component";
 import {MatIconModule} from "@angular/material/icon";
 import {NavbarHeaderComponent} from "./user-layout/components/navbar-header/navbar-header.component";
+import {PublicLayoutModule} from "./public-layout/public-layout.module";
 
 
 
@@ -21,7 +22,8 @@ import {NavbarHeaderComponent} from "./user-layout/components/navbar-header/navb
   imports: [
     CommonModule,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    PublicLayoutModule
   ]
 })
 export class LayoutsModule { }

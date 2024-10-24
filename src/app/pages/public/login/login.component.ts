@@ -5,6 +5,7 @@ import {GenericService} from "../../../services/generic-service/generic.service"
 import {TokenService} from "../../../services/token-service/token.service";
 import {SessionService} from "../../../services/session-service/session.service";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  visivlePass: boolean = false;
 
   form = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -44,6 +47,12 @@ export class LoginComponent implements OnInit {
         this.session.setUser();
         this.router.navigate(['/user']).then();
       }
+    }, error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Usuário ou senha incorretos',
+        timer: 5000
+      }).then();
     });
   }
 }

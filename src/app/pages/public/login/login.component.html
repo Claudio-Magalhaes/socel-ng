@@ -2,23 +2,33 @@
   <div class="row justify-content-center mt-5">
     <div class="col-4">
       <div class="card">
+        <div class="card-header d-inline-flex justify-content-center">
+          <h4 class="card-title">Login</h4>
+        </div>
         <div class="card-body">
           <form [formGroup]="form">
             <div class="row">
               <div class="col-12">
-                <label class="form-label"> </label>
+                <label class="form-label">Email</label>
                 <input name="email" formControlName="username" class="form-control">
               </div>
             </div>
             <div class="row">
               <div class="col-12">
-                <label class="form-label"> </label>
-                <input name="password" formControlName="password" class="form-control">
+                <label class="form-label">Senha</label>
+                <div class="input-group">
+                  <input [type]="visivlePass ? 'text' : 'password'" name="password" formControlName="password" class="form-control">
+                  <span class="input-group-text">
+                    <mat-icon *ngIf="visivlePass" (click)="visivlePass = !visivlePass">visibility</mat-icon>
+                    <mat-icon *ngIf="!visivlePass" (click)="visivlePass = !visivlePass">visibility_off</mat-icon>
+                  </span>
+                </div>
+
               </div>
             </div>
           </form>
         </div>
-        <div class="card-footer">
+        <div class="card-footer d-inline-flex justify-content-center">
           <button (click)="login()" class="btn btn-success">Logar</button>
         </div>
       </div>

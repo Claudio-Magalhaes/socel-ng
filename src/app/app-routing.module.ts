@@ -5,6 +5,7 @@ import {UserLayoutComponent} from "./layouts/user-layout/user-layout.component";
 import {PrintLocacaoComponent} from "./pages/private/locacao/sub-components/print-locacao/print-locacao.component";
 import {SessionGuard} from "./_core/guards/session/session.guard";
 import {LoginComponent} from "./pages/public/login/login.component";
+import {PublicLayoutComponent} from "./layouts/public-layout/public-layout/public-layout.component";
 
 const routes: Routes = [
 
@@ -13,13 +14,19 @@ const routes: Routes = [
     component: PrintLocacaoComponent,
   },
 
+  // {
+  //   path: '',
+  //   component: SiteHomeComponent
+  // },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
   {
     path: '',
-    component: SiteHomeComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
+    component: PublicLayoutComponent,
+    loadChildren: () =>
+      import('./pages/public/public.module').then((m) => m.PublicModule)
   },
   {
     path: 'user',
@@ -28,6 +35,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/private/user.module').then((m) => m.UserModule)
   },
+
 
   {
     path: '**',

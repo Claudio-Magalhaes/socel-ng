@@ -17,7 +17,7 @@ import {receiveEventLocacaoActions} from "./service/locacao.service";
 export const classesStatus = (val: string, row: LocacaoEntity): string => {
   if (!row.dataFinal) return '';
   if (
-    ['FINALIZADO', 'FINALIZADA', 'ABERTO', 'CANCELADO', 'RENOVADO']
+    ['FINALIZADO', 'FINALIZADO', 'ABERTO', 'CANCELADO', 'RENOVADO']
       .includes((row?.status || '').toUpperCase())) return '';
   let dataFinal = new Date(row.dataFinal)
   let dataAtual = new Date();
@@ -67,11 +67,7 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
     },
     iniciar: {
       name: 'Iniciar locação',
-      action: (row) => {
-        window.dispatchEvent(new CustomEvent('locacao-action-receive', {
-          detail: <receiveEventLocacaoActions>{ typeEvent: 'iniciar', row }
-        }))
-      },
+      action: () => {},
       permission: (row) => {
         return row.status.toUpperCase() == 'ABERTO'
       }
@@ -83,9 +79,19 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
           detail: <receiveEventLocacaoActions>{ typeEvent: 'finalizar', row }
         }))
       },
-      permission: (row) => {
-        return row.status == 'EM_LOCACAO'
+      permission: (row:LocacaoEntity) => {
+        return row.status == 'EM_LOCACAO' && !!row.lancamento
       }
+    },
+    backToAberto: {
+      name: 'Voltar para "Aberto"',
+      action: () => {},
+      permission: row => row.status == "EM_LOCACAO"
+    },
+    backToLocacao: {
+      name: 'Voltar para "Em Locação"',
+      action: () => {},
+      permission: row => row.status == "FINALIZADO"
     },
     cancelar: {
       name: 'Cancelar',
@@ -128,7 +134,7 @@ export const classesStatus = (val: string, row: LocacaoEntity): string => {
         }))
       },
       permission: (row: LocacaoEntity) => {
-        if (row.status?.toUpperCase() == 'FINALIZADA') {
+        if (row.status?.toUpperCase() == 'FINALIZADO') {
           const dataComAcressimo = new Date(row.dataFinal || '');
           let dateCurrent = new Date();
           dataComAcressimo.setDate(dataComAcressimo.getDate() + 5);
@@ -207,7 +213,7 @@ export class LocacaoEntity extends AbstractEntity2 {
   @DynamicColumn({
     headerName: 'Status', tdClass: classesStatus, resource: (val) => {
       switch (val) {
-        case 'FINALIZADA':
+        case 'FINALIZADO':
           return '<span class="badge status text-bg-success">Finalizada</span>'
         case 'EM_LOCACAO':
           return '<span class="badge status text-bg-warning">Em locação</span>'

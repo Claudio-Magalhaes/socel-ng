@@ -27,14 +27,28 @@ export class ModalLancamentoComponent implements OnInit {
   })
 
   public listClientes: ClientesEntity[] = [];
+
   constructor(private service: GenericService) {
   }
 
   ngOnInit(): void {
   }
 
-  addReceita() {
+  addReceita(data?: Partial<LancamentoEntity>) {
     this.entity.tipo = 'RECEITA'
+    if (data) {
+      this.form.patchValue({
+        cliente: data?.cliente?.id || '',
+        total: data?.total,
+        data_vencimento: data?.data_vencimento || '',
+        descricao: data?.descricao || ''
+      })
+
+      if (data.cliente) {
+        this.listClientes = [data.cliente];
+        this.form.controls['cliente'].disable();
+      }
+    }
     this.modal.open()
   }
 
@@ -85,7 +99,7 @@ export class ModalLancamentoComponent implements OnInit {
     this.entity = {
       ...this.entity,
       ...form,
-      cliente: { id: form.cliente }
+      cliente: {id: form.cliente}
     }
 
     this.saveOrUpdate(this.entity).subscribe(

@@ -7,6 +7,7 @@ import {
 import {Router} from "@angular/router";
 import {LocacaoService, receiveEventLocacaoActions} from "../service/locacao.service";
 import {ModalLancamentoComponent} from "../../lancamentos/sub-components/modal-lancamento/modal-lancamento.component";
+import {LancamentoEntity} from "../../lancamentos/lancamento.entity";
 
 @Component({
   selector: 'app-locacao-main',
@@ -36,9 +37,49 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
     private service: LocacaoService,
     private router: Router
   ) {
-    this.table = CdkTable.createByEntity(new LocacaoEntity());
-    this.table.controls.filters.patchValue({ dataInicial_inicio: this.getPrimeiroDiaMes() });
-    this.table.controls.filters.setClearFunctions({ dataInicial_inicio: this.getPrimeiroDiaMes() })
+    this.table = CdkTable.createByEntity(new LocacaoEntity(),
+      {
+        actions: {
+          edit: {
+            iniciar: {
+              action: (row: LocacaoEntity) => {
+                this.service.iniciar(row, (faturar) => {
+                  this.table.find()
+                  if (faturar) {
+                    this.modalLancamento.addReceita(new LancamentoEntity(
+                      undefined,
+                      row.cliente,
+                      row.total,
+                      row.dataFinal,
+                      undefined,
+                      'Faturamento da locação '+row.id,
+                      '',
+                      '',
+                      '',
+                      false,
+                      <LocacaoEntity>{ id: row.id },
+                    ));
+                  }
+                })
+              }
+            },
+            finalizar: {
+              action: row => {
+                this.service.finalizar(row.id, () => this.table.find())
+              }
+            },
+            backToAberto: {
+              action: row => this.service.previousStage(row.id, () => this.table.find())
+            },
+            backToLocacao: {
+              action: row => this.service.previousStage(row.id, () => this.table.find())
+            }
+          }
+        }
+      }
+    );
+    this.table.controls.filters.patchValue({dataInicial_inicio: this.getPrimeiroDiaMes()});
+    this.table.controls.filters.setClearFunctions({dataInicial_inicio: this.getPrimeiroDiaMes()})
   }
 
   ngOnInit(): void {
@@ -51,6 +92,22 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
     primeiroDia = primeiroDia.split('/').reverse().join('-')
 
     return primeiroDia
+  }
+
+  @HostListener('window:locacao-nextStatus', ['$event'])
+  receiveEventNextStage(ev: CustomEvent<number | string>) {
+    if (!ev.detail) return;
+    this.service.nextStage(ev.detail, () => {
+      this.table.find()
+    });
+  }
+
+  @HostListener('window:locacao-peviousStatus', ['$event'])
+  receiveEventPeviousStage(ev: CustomEvent<number | string>) {
+    if (!ev.detail) return;
+    this.service.previousStage(ev.detail, () => {
+      this.table.find()
+    });
   }
 
   @HostListener('window:locacao-action-receive', ['$event'])
@@ -75,6 +132,22 @@ export class LocacaoMainComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.table.destroy();
+  }
+
+  faturarLocacao(locacao: LocacaoEntity) {
+    this.modalLancamento.addReceita(new LancamentoEntity(
+      undefined,
+      locacao.cliente,
+      locacao.total,
+      locacao.dataFinal,
+      undefined,
+      'Faturamento da locação '+locacao.id,
+      '',
+      '',
+      '',
+      false,
+      <LocacaoEntity>{ id: locacao.id },
+    ));
   }
 
 }

@@ -1,8 +1,15 @@
 import {HostListener, Injectable} from '@angular/core';
 import {GenericService} from "../../../../services/generic-service/generic.service";
 import Swal from "sweetalert2";
-import {LOCACAO, LOCACAO_FATURAR, LOCACAO_RENOVAR, LOCACAO_STATUS} from "../../../../_core/endpoints";
+import {
+  LOCACAO,
+  LOCACAO_FATURAR,
+  LOCACAO_NEXT_STAGE, LOCACAO_PREVIOUS_STAGE,
+  LOCACAO_RENOVAR,
+  LOCACAO_STATUS
+} from "../../../../_core/endpoints";
 import {LocacaoEntity} from "../locacao.entity";
+import {replaceEndpointParams} from "../../../../helpers/replace-endpoint.helpers";
 
 export declare type receiveEventLocacaoActions = {
   typeEvent: 'iniciar' | 'finalizar' | 'cancelar' | 'faturar' | 'verLancamento' | 'renovar',
@@ -22,12 +29,24 @@ export class LocacaoService {
     )
   }
 
-  public iniciar(id: number | string, callback?: () => void) {
+  public nextStage(id: number | string, callback?: () => void) {
+    this.service.patch(replaceEndpointParams(LOCACAO_NEXT_STAGE, id), {}).subscribe(
+      resp => !!callback ? callback() : null
+    )
+  }
+
+  public previousStage(id: number | string, callback?: () => void) {
+    this.service.patch(replaceEndpointParams(LOCACAO_PREVIOUS_STAGE, id), {}).subscribe(
+      resp => !!callback ? callback() : null
+    )
+  }
+
+  public iniciar(locacao: LocacaoEntity, callback?: (faturar?: boolean) => void) {
     Swal.fire({
       icon: 'question',
       title: 'Iniciar locação',
       text: 'Você não poderá mais editar os PRODUTOS e SERVIÇOS desta locação',
-      showDenyButton: true,
+      showDenyButton: !locacao.lancamento,
       showCancelButton: true,
       confirmButtonText: "Iniciar",
       denyButtonText: `Iniciar e faturar`,
@@ -35,9 +54,13 @@ export class LocacaoService {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.changeStatus(id, 'EM_LOCACAO', callback)
+        this.nextStage(locacao.id!, callback)
       } else if (result.isDenied) {
-        Swal.fire("Changes are not saved", "", "info");
+        this.nextStage(locacao.id!, () => {
+          if (callback) {
+            callback(true)
+          }
+        })
       }
     });
   }
@@ -73,7 +96,7 @@ export class LocacaoService {
       showCancelButton: true
     }).then(confirm => {
       if (confirm.isConfirmed) {
-        this.changeStatus(id, 'FINALIZADA', callback)
+        this.changeStatus(id, 'FINALIZADO', callback)
       }
     })
   }
@@ -106,6 +129,11 @@ export class LocacaoService {
     if (ev.typeEvent == 'verLancamento') return;
 
     if (!ev.row?.id) return
-    this[ev.typeEvent](ev.row.id, callback)
+
+    // if (ev.typeEvent == 'f')
+    // this[ev.typeEvent](ev.row.id, callback)
   }
+
+
+
 }

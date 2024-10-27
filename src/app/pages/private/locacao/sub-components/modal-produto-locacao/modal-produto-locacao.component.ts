@@ -61,6 +61,7 @@ export class ModalProdutoLocacaoComponent implements OnInit {
 
   clear() {
     this.form.reset('');
+    this.form.controls['produto'].enable()
   }
 
   save(openAfterSave = false) {

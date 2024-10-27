@@ -171,7 +171,14 @@
       <div class="row">
         <card>
           <div class="card-header">
-            <h4 class="card-title">Endereços</h4>
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <h4 class="card-title">Endereços</h4>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <button class="btn btn-success" (click)="enderecosModal.open()">Adicionar</button>
+              </div>
+            </div>
           </div>
 
           <div class="card-body">
@@ -184,7 +191,7 @@
           </div>
 
           <div class="card-footer">
-            <button class="btn btn-success" (click)="enderecosModal.open()">Adicionar</button>
+            <dg-paginator dg-dynamic-paginator [dynamicTable]="tableEnderecos"></dg-paginator>
           </div>
         </card>
       </div>
@@ -194,7 +201,14 @@
       <div class="row">
         <card>
           <div class="card-header">
-            <h4 class="card-title">Contatos</h4>
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <h4 class="card-title">Contatos</h4>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <button class="btn btn-success" (click)="contatoModal.open()">Adicionar</button>
+              </div>
+            </div>
           </div>
 
           <div class="card-body">
@@ -207,9 +221,6 @@
           </div>
           <div class="card-footer">
             <dg-paginator dg-dynamic-paginator [dynamicTable]="tableContatos"></dg-paginator>
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-success" (click)="contatoModal.open()">Adicionar</button>
           </div>
         </card>
       </div>

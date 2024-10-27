@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-6">
           <label>Valor</label>
-          <input class="form-control" formControlName="total">
+          <input-number formControlName="total" order="reverse"></input-number>
         </div>
         <div class="col-6">
           <label>Vencimento</label>
@@ -30,14 +30,29 @@
         </div>
       </div>
 
-      <div class="row mt-3 mb-3">
+      <div class="row mt-3">
         <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="fatura_paga">
-            <label class="form-check-label" for="fatura_paga">
-              Essa fatura já está paga
-            </label>
+          <div class="alert alert-secondary" role="alert">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" formControlName="baixado" id="fatura_paga">
+              <label class="form-check-label fs-12" for="fatura_paga">
+                Essa fatura já está paga
+              </label>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <div *ngIf="form.value.baixado" class="row mb-3">
+        <div class="col-4">
+          <label class="form-label">Data de pagamento</label>
+          <input type="date" class="form-control" formControlName="">
+        </div>
+        <div class="col-4">
+          <label class="form-label">Forma de pagamento</label>
+          <select class="form-select" formControlName="formaPagamento">
+            <option value="DINHEIRO">Dinheiro</option>
+          </select>
         </div>
       </div>
 

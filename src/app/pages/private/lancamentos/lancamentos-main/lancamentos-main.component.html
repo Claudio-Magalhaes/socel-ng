@@ -3,7 +3,7 @@
   <card>
     <div class="card-header">
       <h4 class="card-title">Lançamentos</h4>
-      <custom-filters group="produtos">
+      <custom-filters group="lancamentos">
         <div body-filters>
           <form [formGroup]="form">
             <div class="row">
@@ -34,6 +34,20 @@
                   <option value="">Ambos</option>
                   <option value="RECEITA">Receita</option>
                   <option value="DESPESA">Despesa</option>
+                </select>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                <label class="form-label">Pago</label>
+                <select
+                  class="form-control"
+                  formControlName="baixado"
+                  dg-dynamic-group="lancamentos"
+                  paramName="baixado"
+                  (clearParams)="form.patchValue({ baixado: '' })"
+                >
+                  <option value="">Ambos</option>
+                  <option [value]="true">Sim</option>
+                  <option [value]="false">Não</option>
                 </select>
               </div>
             </div>

@@ -5,7 +5,7 @@ import {UiModule} from "../../../shared/ui/ui.module";
 import {DgCrudModule} from "@datagrupo/dg-crud";
 import {RouterModule} from "@angular/router";
 import {ModalLancamentoComponent} from './sub-components/modal-lancamento/modal-lancamento.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
     CdkDynamicGroupModule,
     CdkDynamicTableModule, DgAutocomplete2Module,
@@ -14,6 +14,7 @@ import {
     DgTableModule
 } from "@datagrupo/dg-ng-util";
 import { ModalBaixarComponent } from './sub-components/modal-baixar/modal-baixar.component';
+import {CustomInputsModule} from "../../../shared/custom-inputs/custom-inputs.module";
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { ModalBaixarComponent } from './sub-components/modal-baixar/modal-baixar
         CdkDynamicTableModule,
         DgTableModule,
         CdkDynamicGroupModule,
-        DgAutocomplete2Module
+        DgAutocomplete2Module,
+        CustomInputsModule,
+        FormsModule
     ]
 })
 export class LancamentosModule {

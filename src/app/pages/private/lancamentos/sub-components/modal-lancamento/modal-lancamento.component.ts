@@ -23,6 +23,7 @@ export class ModalLancamentoComponent implements OnInit {
     cliente: new FormControl('', [Validators.required]),
     total: new FormControl('', [Validators.required]),
     data_vencimento: new FormControl('', [Validators.required]),
+    baixado: new FormControl(false),
     descricao: new FormControl(''),
   })
 
@@ -35,26 +36,38 @@ export class ModalLancamentoComponent implements OnInit {
   }
 
   addReceita(data?: Partial<LancamentoEntity>) {
-    this.entity.tipo = 'RECEITA'
-    if (data) {
-      this.form.patchValue({
-        cliente: data?.cliente?.id || '',
-        total: data?.total,
-        data_vencimento: data?.data_vencimento || '',
-        descricao: data?.descricao || ''
-      })
+    this.service.get(CLIENTE).subscribe(
+      resp => {
+        this.listClientes = resp.data;
 
-      if (data.cliente) {
-        this.listClientes = [data.cliente];
-        this.form.controls['cliente'].disable();
+        this.entity.tipo = 'RECEITA'
+        if (data) {
+          this.form.patchValue({
+            cliente: data?.cliente?.id || '',
+            total: data?.total,
+            data_vencimento: data?.data_vencimento || '',
+            descricao: data?.descricao || ''
+          })
+
+          if (data.cliente) {
+            this.listClientes = [data.cliente];
+            this.form.controls['cliente'].disable();
+          }
+        }
+        this.modal.open()
       }
-    }
-    this.modal.open()
+    )
   }
 
   addDespesa() {
-    this.entity.tipo = 'DESPESA'
-    this.modal.open()
+    this.service.get(CLIENTE).subscribe(
+      resp => {
+        this.listClientes = resp.data;
+
+        this.entity.tipo = 'DESPESA'
+        this.modal.open()
+      }
+    )
   }
 
   async open(val: LancamentoEntity) {

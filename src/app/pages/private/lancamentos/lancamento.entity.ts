@@ -33,6 +33,9 @@ const funcIconsFaturado = (val: boolean, row: LancamentoEntity) => {
     path: environment.apiUrl,
     context: LANCAMENTO
   },
+  pagination: {
+    sort: 'data_vencimento,desc'
+  },
   actions: {
     edit: {
       name: 'Editar',

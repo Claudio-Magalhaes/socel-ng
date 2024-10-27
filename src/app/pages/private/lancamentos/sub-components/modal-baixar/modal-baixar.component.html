@@ -1,16 +1,17 @@
 <dg-modal
   #modal
   (afterClose)="clear()"
+  title="Baixar lançamento"
 >
   <div modal-body>
     <form [formGroup]="form">
       <div class="row">
         <div class="col-6">
-          <label>Vencimento</label>
+          <label>data Pagamento</label>
           <input type="date" class="form-control" formControlName="dataPagamento">
         </div>
         <div class="col-6">
-          <label>Valor</label>
+          <label>Forma de pagamento</label>
           <select class="form-select" formControlName="formaPagamento">
             <option value="DINHEIRO">Dinheiro</option>
           </select>

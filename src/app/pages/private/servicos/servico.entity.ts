@@ -2,6 +2,7 @@ import {AbstractEntity2, DataServer} from "@datagrupo/dg-crud";
 import {environment} from "../../../../environments/environment";
 import {SERVICO} from "../../../_core/endpoints";
 import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
+import {genereteDefaultActionTable} from "../../../_core/config/dg-ng-util/config-local-dynamic-table";
 
 @DataServer({
   path: environment.apiUrl,
@@ -17,7 +18,8 @@ import {DynamicTableEntity, DynamicColumn} from "@datagrupo/dg-ng-util";
       name: 'Editar',
       dbClick: true,
       action: (val: ServicoEntity) => {
-        // this.router.navigate(['user', 'servicos', val?.id]).then()
+        if (!val?.id) return;
+        genereteDefaultActionTable.link(['user', 'servicos', val.id])
       }
     }
   },

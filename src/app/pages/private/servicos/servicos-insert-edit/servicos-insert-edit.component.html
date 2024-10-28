@@ -7,13 +7,39 @@
     <div class="card-body">
       <form [formGroup]="form">
         <div class="row">
-          <div class="col-6">
+          <div class="col-5">
             <label class="form-label">Nome <span class="fc-red">*</span></label>
             <input class="form-control" formControlName="nome">
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <label class="form-label">Valor base de Serviço <span class="fc-red">*</span></label>
             <input-number formControlName="valorBase" order="reverse"></input-number>
+          </div>
+          <div class="col-2">
+            <label class="form-label w-100">Status</label>
+            <div class="btn-group" role="group">
+              <input
+                [value]="true"
+                formControlName="status"
+                class="btn-check"
+                type="radio"
+                name="status"
+                id="ativo_sim"
+                autocomplete="off"
+              >
+              <label class="btn btn-outline-primary" for="ativo_sim">Ativo</label>
+
+              <input
+                [value]="false"
+                formControlName="status"
+                class="btn-check"
+                type="radio"
+                name="status"
+                id="ativo_false"
+                autocomplete="off"
+              >
+              <label class="btn btn-outline-primary" for="ativo_false">Inativo</label>
+            </div>
           </div>
         </div>
 

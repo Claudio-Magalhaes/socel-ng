@@ -18,6 +18,7 @@ export class ServicosInsertEditComponent extends AbstractInsertEdit2<ServicoEnti
     nome: new FormControl('', [Validators.required]),
     valorBase: new FormControl('', [Validators.required]),
     descricao: new FormControl(''),
+    status: new FormControl(true, ),
   })
 
   constructor(

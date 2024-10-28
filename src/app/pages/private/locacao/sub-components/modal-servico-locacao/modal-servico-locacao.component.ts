@@ -42,7 +42,7 @@ export class ModalServicoLocacaoComponent implements OnInit {
         }
       )
     } else {
-      this.service.get(SERVICO).subscribe(
+      this.service.get(SERVICO_FILTER).subscribe(
         resp => {
           this.listServicos = resp.data;
           this.modal.open();
@@ -98,7 +98,7 @@ export class ModalServicoLocacaoComponent implements OnInit {
 
   setValorBase(lancamento: ServicoEntity[]) {
     this.form.patchValue({
-      subTotal: lancamento[0].valorBase
+      subTotal: lancamento[0].valorBase || 0
     })
   }
 }

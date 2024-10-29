@@ -47,27 +47,31 @@ export class ClientesInsertEditComponent extends AbstractInsertEdit2<ClientesEnt
     super(config)
     service.changePath(environment.apiUrl);
     this.tableEnderecos = cdkTable.createByEntity(new EnderecoEntity(), {
-      // actions: {
-      //   edit: { name: 'Editar', dbClick: true, action: (val: EnderecoEntity) => this.enderecosModal.open(val) },
-      //   principal: { name: 'Tornar principal', action: (val: EnderecoEntity) => {
-      //       Swal.fire({
-      //         icon: 'question',
-      //         title: 'Tornar esse contato o principal?',
-      //         text: 'Isso fará o contato aparecer no perfil desse cliente',
-      //         showCancelButton: true
-      //       }).then(resp => {
-      //         if (resp.isConfirmed) {
-      //           this.service.patch(CLIENTE_ENDERECOS + '/principal', { cliente: this.entity.id, id: val.id }).subscribe(
-      //             resp => {
-      //               this.entity.endereco = val;
-      //               this.tableEnderecos.find();
-      //             }
-      //           )
-      //         }
-      //       })
-      //     }
-      //   }
-      // }
+      actions: {
+        edit: {
+          edit: {
+            name: 'Editar', dbClick: true, action: (val: EnderecoEntity) => this.enderecosModal.open(val)
+          },
+          principal: { name: 'Tornar principal', action: (val: EnderecoEntity) => {
+              Swal.fire({
+                icon: 'question',
+                title: 'Tornar esse contato o principal?',
+                text: 'Isso fará o contato aparecer no perfil desse cliente',
+                showCancelButton: true
+              }).then(resp => {
+                if (resp.isConfirmed) {
+                  this.service.patch(CLIENTE_ENDERECOS + '/principal', { cliente: this.entity.id, id: val.id }).subscribe(
+                    resp => {
+                      this.entity.endereco = val;
+                      this.tableEnderecos.find();
+                    }
+                  )
+                }
+              })
+            }
+          }
+        }
+      }
     })
     this.tableContatos = cdkTable.createByEntity(new ContatoEntity())
     this.tableContatos.controls.actions.setObject({

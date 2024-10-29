@@ -39,6 +39,9 @@ export class EnderecoEntity extends AbstractEntity2 {
     this.descricao = descricao;
   }
 
+  @DynamicColumn({ headerName: 'Descrição' })
+  descricao: string | undefined;
+
   @DynamicColumn({ headerName: 'Bairro' })
   bairro: string | undefined;
 
@@ -57,5 +60,4 @@ export class EnderecoEntity extends AbstractEntity2 {
   cep: string | undefined;
   uf: string | undefined;
   cidade: string | undefined;
-  descricao: string | undefined;
 }

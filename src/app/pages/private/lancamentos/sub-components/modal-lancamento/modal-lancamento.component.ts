@@ -23,13 +23,19 @@ export class ModalLancamentoComponent implements OnInit {
     cliente: new FormControl('', [Validators.required]),
     total: new FormControl('', [Validators.required]),
     data_vencimento: new FormControl('', [Validators.required]),
-    baixado: new FormControl(false),
     descricao: new FormControl(''),
+    baixado: new FormControl(false),
+    data_pagamento: new FormControl('', [Validators.required]),
+    forma_pgto: new FormControl('', [Validators.required]),
   })
 
   public listClientes: ClientesEntity[] = [];
 
   constructor(private service: GenericService) {
+    this.form.controls['baixado'].valueChanges.subscribe((val: boolean) => {
+      this.form.controls['data_pagamento'][val ? 'enable' : 'disable' ]()
+      this.form.controls['forma_pgto'][val ? 'enable' : 'disable' ]()
+    })
   }
 
   ngOnInit(): void {
